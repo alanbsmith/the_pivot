@@ -1,6 +1,8 @@
-dinner_dash
-===========
+# DinnerDash  
+##### A Turing School Project.
 
-First experience in a non-guided Rails project.  
+As a Turing Students, this is our first experience in a non-guided Rails project.  
 
-The work on this project is based on this requirements: http://tutorials.jumpstartlab.com/projects/dinner_dash.html
+The work on this project is based on this requirements: http://tutorials.jumpstartlab.com/projects/dinner_dash.html  
+
+The live site is (or gonna be): http://dinnerdash.herokuapp.com
