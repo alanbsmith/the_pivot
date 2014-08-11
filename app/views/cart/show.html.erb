@@ -1,0 +1,12 @@
+<h1> Your Cart </h1>
+
+<ul>
+  <% cart.items.each do |item|  %>
+    <li>
+      <%= link_to "#{item.name}", item_path(item) %>
+      <%= item.price %>
+      <%= item.photo %>
+      <%= item.quantity %>
+    </li>
+      <% end %>
+  </ul>
