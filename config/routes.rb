@@ -55,5 +55,5 @@ Rails.application.routes.draw do
   #   end
 
   root to: "site#index"
-
+  resources :items
 end
