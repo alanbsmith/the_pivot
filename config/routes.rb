@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  root to: "site#index"
+  resources :items
+  resources :categories
+
+  namespace :administrator do
+    resources :items
+    resources :categories
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -54,6 +63,4 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  root to: "site#index"
-  resources :items
 end

@@ -1,0 +1,24 @@
+<h1>Our menu</h1>
+<hr/>
+<table>
+  <% @items.each do |item| %>
+  <tr>
+    <td><image src='<%= item.photo %>' alt='delicious iceSCREAM' height="50" width="50"></img></td>
+    <td><%= item.title %></td>
+    <td><%= item.description %></td>
+    <td><%= item.price %></td>
+    <td><select name='Status' default=<% item.status %> >
+          <option>Active</option>
+          <option>Retired <% flash.notice %></option>
+        </select></td>
+    <td><select  multiple name='Categories'>
+          <% Category.all.each do |category| %>  <!-- how do you do this? -->
+            <option><%= category.title %></option>
+          <% end %>
+        </select></td>
+    <td><%= link_to 'Edit', edit_administrator_item_path(item) %></td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to 'Create New Item', new_administrator_item_path %>
+<%= link_to 'Create New Category', new_administrator_category_path %>

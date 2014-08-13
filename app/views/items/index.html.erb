@@ -1,7 +1,7 @@
 <h1>Our menu</h1>
 <hr/>
 <table>
-  <% Items.all.each do |item| %>
+  <% @items.each do |item| %>
   <tr>
     <td><%= item.title %></td>
     <td><%= item.description %></td>

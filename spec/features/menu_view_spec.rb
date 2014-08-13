@@ -5,8 +5,8 @@ describe "menu", type: :feature do
     Item.create(title:"Chocolate yummy yumm", description: "Chocolate so good you'll wanna slap yo mama", price: 400, photo: "icecreamslug.com", status: "active")
     Item.create(title:"Vanilla willya please", description: "Vanilla is the bomb for you mom!", price: 325, photo: "icecreamslug.com", status: "active")
     Item.create(title:"Strawberry berry tasty", description: "Strawbeeeeeerrrry! Is good for me!", price: 450, photo: "icecreamslug.com", status: "active")
-    
-    @items =  Items.all 
+
+    @items =  Item.all
     visit items_path
   end
 
@@ -24,12 +24,12 @@ describe "menu", type: :feature do
     end
   end
 
-  # it 'adds an item to the cart' do
-  #   pending
-  #   within("//table") do
-  #     first(:button, 'Add to Cart').click
-  #   end
-  #   visit cart_path(?????)
-  #   expect(page).to have_content(???????)
-  # end
+  it 'adds an item to the cart' do
+    item = @items.first
+    within("//table") do
+      first(:button, 'Add to Cart').click
+    end
+    # visit cart_path(orders/show)
+    # expect(page).to have_content(item)
+  end
 end

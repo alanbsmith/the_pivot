@@ -1,5 +1,4 @@
 class ItemsController<ActionController::Base
-  def index
-    @items = Item.all
+  def edit
   end
 end
