@@ -6,6 +6,13 @@
     <td><%= item.title %></td>
     <td><%= item.description %></td>
     <td><%= item.price %></td>
+    <td><select name='Quantity[num]'>
+          <%quantity= Array(1..10)%>
+          <%quantity.each do |num| %>
+            <option name='Quantity[num]'><%= num %>
+            <% end %></option>
+        </select></td>
+    <td><input type='button' method='POST' value='Add to Cart' name='Add to Cart'/></td>
   </tr>
   <% end %>
 </table>
