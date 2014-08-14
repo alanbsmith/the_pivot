@@ -52,7 +52,7 @@ describe "admin_menu", type: :feature do
   end
 
   it 'creates a new item' do
-    pending
+    pending   # start here
     page.click_link('Create New Item')
     page.fill_in('Title', with: 'Bananaramma you full of goodness')
     page.fill_in('Description', with: "Don't be so dirty! It's just bananas and cream")
@@ -64,7 +64,7 @@ describe "admin_menu", type: :feature do
   end
 
   it 'has a select menu to change the status of the item' do
-    expect(page).to have_select('status')
+      page.has_css?('table tr td form select.status')
   end
 
   it 'changes the status of an item' do
@@ -72,10 +72,10 @@ describe "admin_menu", type: :feature do
   end
 
   it 'has a multi-select menu to add categories to an item' do
-    expect(page).to have_select('category')
+    page.has_css?('table tr td form select.categories')
   end
 
-  it 'adds and removes items from a category' do
+  it 'adds and removes categories from items' do
     pending
   end
 end
