@@ -30,8 +30,8 @@ describe "menu", type: :feature do
       first(:button, 'Add to Cart').click
     end
 
-    # order = Order.new
-    # visit order_path(1)
+    # order = Order.create(status: "Open")
+    # visit order_path(order.id)
     # expect(page).to have_content(order.order_items.first)
   end
 end

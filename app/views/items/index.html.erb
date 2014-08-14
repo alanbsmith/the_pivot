@@ -12,7 +12,8 @@
             <option name='Quantity[num]'><%= num %>
             <% end %></option>
         </select></td>
-    <td><input type='button' method='POST' value='Add to Cart' name='Add to Cart'/></td>
+    <td><%= button_to "Add to Cart", order_path(1) %>
+    <!-- <td><input type='button' method='POST' value='Add to Cart' name='Add to Cart'/></td> -->
   </tr>
   <% end %>
 </table>

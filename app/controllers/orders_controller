@@ -1,14 +1,12 @@
 class OrdersController < ActionController::Base
   def show
-    @order = Order.find(params[:id])
+    current_order ||= Order.create(order_params)
   end
 
   def new
-    current_order ||= Order.new(order_params)
-    current_order.order_items.create(item_id: params[:id], order_id: current_order.id)
+    current_order ||= Order.create(order_params)
+    current_order.order_items.create(item_id: item.id, order_id: current_order.id)
   end
-
-
 
   def order_params
     require(:order).permits(:status, :total, :receiving)
