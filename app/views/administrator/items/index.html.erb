@@ -6,16 +6,12 @@
     <td><image src='<%= item.photo %>' alt='delicious iceSCREAM' height="50" width="50"></img></td>
     <td><%= item.title %></td>
     <td><%= item.description %></td>
-    <td><%= item.price %></td>
-    <td><select name='Status' default=<% item.status %> >
-          <option>Active</option>
-          <option>Retired <% flash.notice %></option>
-        </select></td>
-    <td><select  multiple name='Categories'>
-          <% Category.all.each do |category| %>  <!-- how do you do this? -->
-            <option><%= category.title %></option>
-          <% end %>
-        </select></td>
+    <td><%= item.price %></td>    
+    <td><%= select_tag(item[:status], options_for_select([['Active', 1],['Retired', 2]], 1))%></td>
+    <td><%= select_tag item[:category],options_for_select(
+      Category.all.collect {|c| [c.title] }),multiple: true %>
+    </td>
+    
     <td><%= link_to 'Edit', edit_administrator_item_path(item) %></td>
   </tr>
   <% end %>

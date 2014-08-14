@@ -31,16 +31,42 @@ describe "admin_menu", type: :feature do
     end
   end
 
+  it 'edits an item' do
+    item     = @items.first
+    old_item = item.title
+
+    within('//table') do
+      first(:link, 'Edit').click
+    end
+    page.fill_in('Title', with: 'Chocolate Monkey Madness')
+    page.click_button('Update Item')
+
+    expect(current_path).to eq(administrator_items_path)
+    expect(page).to have_content('Chocolate Monkey Madness')
+    expect(page).to_not have_content(old_item)
+  end
+
   it 'has a link to add an item' do
     expect(page).to have_link('Create New Item', href: new_administrator_item_path)
+  end
+
+  it 'creates a new item' do
+    pending
   end
 
   it 'has a select menu to change the status of the item' do
     expect(page).to have_select('Status')
   end
 
+  it 'changes the status of an item' do
+    pending
+  end
+
   it 'has a multi-select menu to add categories to an item' do
     expect(page).to have_select('Categories')
   end
 
+  it 'adds and removes items from a category' do
+    pending
+  end
 end
