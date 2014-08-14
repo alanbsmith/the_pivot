@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: "site#index"
   resources :items
   resources :categories
+  resources :orders
 
   namespace :administrator do
     resources :items

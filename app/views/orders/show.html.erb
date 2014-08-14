@@ -1,0 +1,6 @@
+<h1> This is your order </h1>
+
+<ul>
+  <% @order.items.each do |item| %>
+    <li><%= item.title %></li>
+  <% end %>
