@@ -6,7 +6,8 @@ describe "admin_menu", type: :feature do
     Item.create(title:"Vanilla willya please", description: "Vanilla is the bomb for you mom!", price: 325, photo: "icecreamslug.com", status: "active")
     Item.create(title:"Strawberry berry tasty", description: "Strawbeeeeeerrrry! Is good for me!", price: 450, photo: "icecreamslug.com", status: "active")
 
-    @items =  Item.all
+    @items = Item.all
+    @item  = Item.new
 
     # Category.create(title:"Chocolate", description:"Who doesn't like chocolate? Hilter that's who.")
     # Category.create(title:"Vanilla", description: "It's not as boring as white people")
@@ -32,7 +33,6 @@ describe "admin_menu", type: :feature do
   end
 
   it 'edits an item' do
-    pending
     item     = @items.first
     old_item = item.title
 
@@ -40,7 +40,7 @@ describe "admin_menu", type: :feature do
       first(:link, 'Edit').click
     end
     page.fill_in('Title', with: 'Chocolate Monkey Madness')
-    page.click_button('Update Item')
+    page.click_button('Update this Item')
 
     expect(current_path).to eq(administrator_items_path)
     expect(page).to have_content('Chocolate Monkey Madness')
@@ -52,6 +52,7 @@ describe "admin_menu", type: :feature do
   end
 
   it 'creates a new item' do
+    pending
     page.click_link('Create New Item')
     page.fill_in('Title', with: 'Bananaramma you full of goodness')
     page.fill_in('Description', with: "Don't be so dirty! It's just bananas and cream")

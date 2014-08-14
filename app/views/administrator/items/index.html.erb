@@ -7,15 +7,14 @@
     <td><%= item.title %></td>
     <td><%= item.description %></td>
     <td><%= item.price %></td>
-
-    <!-- we will need a form, we may not need a submit
-      need to look into the rails magic -->    
-    <td><%= select_tag(:status, options_for_select([['Active', 1],['Retired', 2]], 1))%></td>
-    <td><%= select_tag :category,options_for_select(
-      Category.all.collect {|c| [c.title] }),multiple: true %>
-    </td>
-    
-    <td><%= link_to 'Edit', edit_administrator_item_path(item) %></td>
+<!-- form -->
+    <td><%= form_for item, url: administrator_item_path(item), html: {class: 'status_form'} do |f| %>
+        <%= f.select(:status, options_for_select([['Active', 1],['Retired', 2]], 1))%>
+        <%= f.select(:categories_list, Category.all.collect {|c| [c.title] }, {}, {multiple: true, size: Category.all.count}) %>
+        <%= f.submit "Update" %>
+        <% end %>
+      </td>
+      <td><%= link_to 'Edit', edit_administrator_item_path(item) %></td>
   </tr>
   <% end %>
 </table>
