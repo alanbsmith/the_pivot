@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814215915) do
+ActiveRecord::Schema.define(version: 20140814234107) do
 
   create_table "addresses", force: true do |t|
     t.integer  "user_id"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20140814215915) do
     t.string   "last_name"
     t.string   "email"
     t.string   "username"
-    t.string   "digest"
+    t.string   "password_digest"
     t.string   "salt"
     t.integer  "address_id"
     t.datetime "created_at"
