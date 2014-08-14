@@ -32,6 +32,7 @@ describe "admin_menu", type: :feature do
   end
 
   it 'edits an item' do
+    pending
     item     = @items.first
     old_item = item.title
 
@@ -51,11 +52,18 @@ describe "admin_menu", type: :feature do
   end
 
   it 'creates a new item' do
-    pending
+    page.click_link('Create New Item')
+    page.fill_in('Title', with: 'Bananaramma you full of goodness')
+    page.fill_in('Description', with: "Don't be so dirty! It's just bananas and cream")
+    page.fill_in('Price', with: '450')
+    page.click_button('Create this Item')
+
+    expect(current_path).to eq(administrator_items_path)
+    expect(page).to have_content('Bananaramma you full of goodness')
   end
 
   it 'has a select menu to change the status of the item' do
-    expect(page).to have_select('Status')
+    expect(page).to have_select('status')
   end
 
   it 'changes the status of an item' do
@@ -63,7 +71,7 @@ describe "admin_menu", type: :feature do
   end
 
   it 'has a multi-select menu to add categories to an item' do
-    expect(page).to have_select('Categories')
+    expect(page).to have_select('category')
   end
 
   it 'adds and removes items from a category' do
