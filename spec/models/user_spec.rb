@@ -1,13 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  before { @user = User.new(first_name: "firstname", last_name: "lastname", email: "user@example.com") }
+  before { @user = User.new(first_name: "firstname", last_name: "lastname", email: "user@example.com",
+                            password: "haithere", password_confirmation: 'haithere' ) }
 
   subject { @user }
 
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
   it { should respond_to(:email) }
+  it { should respond_to(:digest) }
+  it { should respond_to(:password) }
+  it { should respond_to(:password_confirmation) }
+
+  it { should be_valid }
 
   it "should not be valid without a first name" do
     @user.first_name = nil
@@ -70,6 +76,18 @@ RSpec.describe User, :type => :model do
     it { should_not be_valid }
   end
 
+  describe 'when password is not presend' do
+    before do
+      @user = User.new(first_name: "bob", last_name: 'gu', email: "bobgu@example.com",
+                       password: " ", password_confirmation: " " )
+    end
 
+    it { should_not be_valid }
+  end
+
+  describe "when password doesn't match confirmation" do
+    before { @user.password_confirmation = "mismatch" }
+    it { should_not be_valid }
+  end
 
 end
