@@ -76,7 +76,7 @@ RSpec.describe User, :type => :model do
     it { should_not be_valid }
   end
 
-  describe 'when password is not presend' do
+  describe 'when password is not present' do
     before do
       @user = User.new(first_name: "bob", last_name: 'gu', email: "bobgu@example.com",
                        password: " ", password_confirmation: " " )
@@ -88,6 +88,23 @@ RSpec.describe User, :type => :model do
   describe "when password doesn't match confirmation" do
     before { @user.password_confirmation = "mismatch" }
     it { should_not be_valid }
+  end
+
+  describe "when passwor is too short" do
+    before { @user.password = "seven" }
+    it { should_not be_valid }
+  end
+
+  it 'when password is correct user is authenticated' do
+    @user.save
+    authenticated_user = @user.authenticate("haithere")
+    expect(authenticated_user).to be_valid
+  end
+
+  it 'when password is incorrect user is not authenticated' do
+    @user.save
+    unauthenticated_user = @user.authenticate("wrongpassword")
+    expect(unauthenticated_user).to eq(false)
   end
 
 end
