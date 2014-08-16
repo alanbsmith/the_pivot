@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  root to: "site#index"
+  root to: "static_pages#home"
   resources :items
   resources :categories
   resources :orders
+
+  get "static_pages/home" => 'static_pages#home'
+  get "static_pages/about"
+  get "static_pages/contact"
+
 
   namespace :administrator do
     resources :items

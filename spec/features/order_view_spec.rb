@@ -18,5 +18,6 @@ RSpec.describe "the order view", type: :feature do
         expect(page).to have_content(item.title)
       end
     end
+    
   end
 end

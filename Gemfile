@@ -29,6 +29,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3'
   gem 'capybara'
+  gem 'rails_layout'
 end
 
 group :production do
