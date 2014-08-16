@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :orders
 
-  get "static_pages/home" => 'static_pages#home'
-  get "static_pages/about"
-  get "static_pages/contact"
+  get "/home" => 'static_pages#home'
+  get "/about" => 'static_pages#about'
+  get "/contact" => 'static_pages#contact'
 
 
   namespace :administrator do
