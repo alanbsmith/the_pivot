@@ -1,19 +1,42 @@
-<h1>Our Items</h1>
-<hr/>
-<table>
-  <% @items.each do |item| %>
-  <tr>
-    <td><%= item.title %></td>
-    <td><%= item.description %></td>
-    <td><%= item.price %></td>
-    <td><select name='Quantity[num]'>
-          <%quantity= Array(1..10)%>
-          <%quantity.each do |num| %>
-            <option name='Quantity[num]'><%= num %>
-            <% end %></option>
-        </select></td>
-    <td><%= button_to "Add to Cart", order_path(1) %>
-    <!-- <td><input type='button' method='POST' value='Add to Cart' name='Add to Cart'/></td> -->
-  </tr>
-  <% end %>
+<%- model_class = Item -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:photo) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= link_to item.id, item_path(item) %></td>
+        <td><%= item.title %></td>
+        <td><%= item.description %></td>
+        <td><%= item.price %></td>
+        <td><%= item.photo %></td>
+        <td><%= item.status %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_item_path(item), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      item_path(item),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_item_path,
+            :class => 'btn btn-primary' %>
