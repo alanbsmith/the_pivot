@@ -47,14 +47,14 @@
           <a class="brand" href="/home">Scream n' Cream</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Contact", "/contact"  %></li>
-              <li><%= link_to "Items", "/items"  %></li>
+              <li><%= link_to "Contact", contact_path  %></li>
+              <li><%= link_to "Items", items_path  %></li>
               <li><%= link_to "Cart", "/cart"  %></li>
             </ul>
               <div class="navbar pull-right">
                 <ul class="nav">
                   <div><li><%= link_to "Sign In", "/sign_in"  %>|</li>
-                  <li><%= link_to "Register", "/register"  %></li></div>
+                  <li><%= link_to "Register", register_path  %></li></div>
                 </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -66,10 +66,14 @@
     <div class="container">
         <div class="row">
           <div class="span8">
-            <%= bootstrap_flash %>
             <%= yield %>
+            <%= bootstrap_flash %>
+            <br />
+            <br />
+            <%= debug(params) if Rails.env.development? %>
           </div>
-          <div class="span4">
+          </div>
+          <div class="span3">
             <div class="container">
               <h3>About Us</h3>
 
