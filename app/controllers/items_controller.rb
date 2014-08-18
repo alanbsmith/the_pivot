@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  respond_to :html, :xml, :json
+
   def index
     @items = Item.all
   end
@@ -8,12 +10,12 @@ class ItemsController < ApplicationController
     @item.save
     
     if @item.save
-     respond_with @item, location: menu_items_url
+      respond_with @item, location: administrator_items_url
+      flash.notice = "A new item: '#{@item.title}' was successfully created"
     else
-     flash[:notice] = "Not Saved"
+      flash[:notice] = "Not Saved"
     end
-    # flash.notice = "A new item: '#{@item.title}' was successfully created"
-    redirect_to administrator_items_path
+    # redirect_to administrator_items_path
   end
 
   private
@@ -24,10 +26,6 @@ class ItemsController < ApplicationController
                                    :image, 
                                    :status, 
                                    :categories_list)
-    end
-
-    def set_item
-      @item = Item.find(params[:id]) 
     end
 
     def lookup_item

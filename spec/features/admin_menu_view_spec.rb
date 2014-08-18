@@ -78,9 +78,9 @@ describe "admin_menu", type: :feature do
       page.has_css?('table tr td form select.status')
   end
 
-  # it 'changes the status of an item' do
-  #   pending
-  # end
+  it 'changes the status of an item' do
+    pending
+  end
 
   it 'has a multi-select menu to add categories to an item' do
     page.has_css?('table tr td form select.categories')
