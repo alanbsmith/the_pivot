@@ -68,7 +68,6 @@ describe "admin_menu", type: :feature do
 
     within('//table') do
       first(:link, 'Delete').click
-      click_link('Yes')
     end
 
     expect(current_path).to eq(administrator_items_path)

@@ -28,4 +28,4 @@
   <strong>Current Status:</strong>
   <%= @item.status %>
 </p>
-<%= link_to 'Delete this item', administrator_item_path(@item), :method => :DELETE, data: {confirm:  "Do you really want to delete this item?!"} %>
+<%= link_to 'Delete this item', administrator_item_path(@item), method: :delete %>

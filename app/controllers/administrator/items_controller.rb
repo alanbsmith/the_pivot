@@ -1,4 +1,4 @@
-class Administrator::ItemsController<ActionController::Base
+class Administrator::ItemsController < ApplicationController
   before_action :lookup_item, only: [:show, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
@@ -17,7 +17,12 @@ class Administrator::ItemsController<ActionController::Base
     @item = Item.new(item_params)
     @item.save
     
-    flash.notice = "A new item: '#{@item.title}' was successfully created"
+    if @item.save
+     respond_with @item, location: menu_items_url
+    else
+     flash[:notice] = "Not Saved"
+    end
+    # flash.notice = "A new item: '#{@item.title}' was successfully created"
     redirect_to administrator_items_path
   end
 
@@ -35,11 +40,17 @@ class Administrator::ItemsController<ActionController::Base
     # don't forget to create the notice
   end
 
-  def destroy   #WHAT THE FUCK!!!
+  def destroy
+    # add a transaction method so that an active item cannot be destroyed
+    # write a test to support this use, once you have the basic use working!
+        # @item.transaction do
+        #   @item.status == "retired"
+        #   @item.destroy
+        # end
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to administrator_items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

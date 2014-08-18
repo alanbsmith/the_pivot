@@ -1,4 +1,4 @@
-class ItemsController<ActionController::Base
+class ItemsController < ApplicationController
   def index
     @items = Item.all
   end
@@ -7,7 +7,12 @@ class ItemsController<ActionController::Base
     @item = Item.new(item_params)
     @item.save
     
-    flash.notice = "A new item: '#{@item.title}' was successfully created"
+    if @item.save
+     respond_with @item, location: menu_items_url
+    else
+     flash[:notice] = "Not Saved"
+    end
+    # flash.notice = "A new item: '#{@item.title}' was successfully created"
     redirect_to administrator_items_path
   end
 
