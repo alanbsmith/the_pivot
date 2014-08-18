@@ -2,9 +2,9 @@ require 'feature_helper'
 
 describe "admin_menu", type: :feature do
   before(:each) do
-    Item.create(title:"Chocolate yummy yumm", description: "Chocolate so good you'll wanna slap yo mama", price: 400, photo: "icecreamslug.com", status: "active")
-    Item.create(title:"Vanilla willya please", description: "Vanilla is the bomb for you mom!", price: 325, photo: "icecreamslug.com", status: "active")
-    Item.create(title:"Strawberry berry tasty", description: "Strawbeeeeeerrrry! Is good for me!", price: 450, photo: "icecreamslug.com", status: "active")
+    Item.create(title:"Chocolate yummy yumm", description: "Chocolate so good you'll wanna slap yo mama", price: 400, image: "icecreamslug.com", status: "active")
+    Item.create(title:"Vanilla willya please", description: "Vanilla is the bomb for you mom!", price: 325, image: "icecreamslug.com", status: "active")
+    Item.create(title:"Strawberry berry tasty", description: "Strawbeeeeeerrrry! Is good for me!", price: 450, image: "icecreamslug.com", status: "active")
 
     @items = Item.all
     @item  = Item.new
@@ -52,7 +52,6 @@ describe "admin_menu", type: :feature do
   end
 
   it 'creates a new item' do
-    pending   # start here
     page.click_link('Create New Item')
     page.fill_in('Title', with: 'Bananaramma you full of goodness')
     page.fill_in('Description', with: "Don't be so dirty! It's just bananas and cream")
@@ -63,19 +62,32 @@ describe "admin_menu", type: :feature do
     expect(page).to have_content('Bananaramma you full of goodness')
   end
 
+  it 'deletes an item' do
+    item         = @items.first
+    deleted_item = item.title
+
+    within('//table') do
+      first(:link, 'Delete').click
+      click_link('Yes')
+    end
+
+    expect(current_path).to eq(administrator_items_path)
+    expect(page).to_not have_content(deleted_item)
+  end
+
   it 'has a select menu to change the status of the item' do
       page.has_css?('table tr td form select.status')
   end
 
-  it 'changes the status of an item' do
-    pending
-  end
+  # it 'changes the status of an item' do
+  #   pending
+  # end
 
   it 'has a multi-select menu to add categories to an item' do
     page.has_css?('table tr td form select.categories')
   end
 
-  it 'adds and removes categories from items' do
-    pending
-  end
+  # it 'adds and removes categories from items' do
+  #   pending
+  # end
 end

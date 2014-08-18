@@ -3,6 +3,7 @@
 <table>
   <% @items.each do |item| %>
   <tr>
+    <td><%= image_tag item.image.url(:thumb) %>
     <td><%= item.title %></td>
     <td><%= item.description %></td>
     <td><%= item.price %></td>

@@ -1,20 +1,21 @@
-<h1>Our menu</h1>
+<h1>Administrator Menu View</h1>
 <hr/>
 <table>
   <% @items.each do |item| %>
   <tr>
-    <td><image src='<%= item.photo %>' alt='delicious iceSCREAM' height="50" width="50"></img></td>
+    <td><%= image_tag item.image.url(:thumb) %>
     <td><%= item.title %></td>
     <td><%= item.description %></td>
     <td><%= item.price %></td>
-<!-- form -->
     <td><%= form_for item, url: administrator_item_path(item), html: {class: 'status_form'} do |f| %>
         <%= f.select(:status, options_for_select([['Active', 1],['Retired', 2]], 1))%>
         <%= f.select(:categories_list, Category.all.collect {|c| [c.title] }, {}, {multiple: true, size: Category.all.count}) %>
         <%= f.submit "Update" %>
         <% end %>
       </td>
-      <td><%= link_to 'Edit', edit_administrator_item_path(item) %></td>
+      <td><%= link_to 'Edit', edit_administrator_item_path(item) %>
+          <%= link_to 'Delete', administrator_item_path(item), confirm: 'Are you sure?', :method => :DELETE %>
+      </td>
   </tr>
   <% end %>
 </table>
