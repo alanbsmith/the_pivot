@@ -5,8 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-
-    redirect_to register_path, :notice => "Successfully registered!"
+    redirect_to register_path, success: "Registration successful!"
   end
 
 

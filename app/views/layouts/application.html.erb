@@ -53,8 +53,9 @@
             </ul>
               <div class="navbar pull-right">
                 <ul class="nav">
-                  <div><li><%= link_to "Sign In", "/sign_in"  %>|</li>
-                  <li><%= link_to "Register", register_path  %></li></div>
+                  <li><%= link_to "Sign In", "/sign_in"  %></li>
+                  <li><%= link_to "|", "#" %></li>
+                  <li><%= link_to "Register", register_path  %></li>
                 </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -65,23 +66,22 @@
 
     <div class="container">
         <div class="row">
-          <div class="span8">
+          <div class="span10">
             <%= yield %>
-            <%= bootstrap_flash %>
             <br />
             <br />
             <%= debug(params) if Rails.env.development? %>
           </div>
           </div>
-          <div class="span3">
+          <!-- <div class="span2">
             <div class="container">
               <h3>About Us</h3>
 
                 <p>Some information about us here</p>
               </ul>
             </div><!--/.well -->
-          </div><!--/span-->
-        </div><!--/row-->
+          <!-- </div><!--/span-->
+        <!-- </div><!--/row-->
 
       <footer>
         <p>&copy; Scream n' Cream 2014</p>
