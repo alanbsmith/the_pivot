@@ -11,7 +11,7 @@ describe "admin_categories", type: :feature do
     visit administrator_categories_path
   end
 
-  it 'has a list of categories to the admin' do
+  it 'shows a list of categories to the admin' do
     @categories.each do |category|
       expect(page).to have_content(category.title)
       expect(page).to have_content(category.description)
@@ -42,7 +42,7 @@ describe "admin_categories", type: :feature do
     category         = @categories.first
     deleted_category = category.title
 
-    within('//table') do
+    within('//ul') do
       first(:link, 'Delete').click
       # click_link('Yes')
     end
@@ -61,7 +61,7 @@ describe "admin_categories", type: :feature do
     category     = @categories.first
     old_category = category.title
 
-    within('//table') do
+    within('//ul') do
       first(:link, 'Edit').click
     end
     page.fill_in('Title', with: 'Chocomore')

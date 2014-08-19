@@ -36,7 +36,7 @@ describe "admin_menu", type: :feature do
     item     = @items.first
     old_item = item.title
 
-    within('//table') do
+    within('//ul') do
       first(:link, 'Edit').click
     end
     page.fill_in('Title', with: 'Chocolate Monkey Madness')
@@ -72,7 +72,7 @@ describe "admin_menu", type: :feature do
     item         = @items.first
     deleted_item = item.title
 
-    within('//table') do
+    within('//ul') do
       first(:link, 'Delete').click
     end
 
@@ -84,9 +84,9 @@ describe "admin_menu", type: :feature do
       page.has_css?('table tr td form select.status')
   end
 
-  it 'changes the status of an item' do
-    pending
-  end
+  # it 'changes the status of an item' do
+  #   pending
+  # end
 
   it 'has a multi-select menu to add categories to an item' do
     page.has_css?('table tr td form select.categories')
