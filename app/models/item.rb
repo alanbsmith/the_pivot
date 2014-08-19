@@ -1,14 +1,16 @@
 class Item < ActiveRecord::Base
-  # validates :name, 
-  #            presence: true, 
+  has_many :order_items
+  has_many :orders, through: :order_items
+  # validates :name,
+  #            presence: true,
   #            uniqueness: true
-  # validates :description, 
-  #            presence: true, 
+  # validates :description,
+  #            presence: true,
   #            length: { in: 10..255 }
-  # validates :image, 
+  # validates :image,
   #            presence: true
-  # validates :price, 
-  #            presence: true, 
+  # validates :price,
+  #            presence: true,
   #            numericality: { greater_than: 0 }
   # validates :status: true
 

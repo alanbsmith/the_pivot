@@ -19,7 +19,7 @@ describe "menu", type: :feature do
   it 'has an add to cart button' do
     within("//table") do
       @items.each do |item|
-        expect(page).to have_button('Add to Cart')
+        expect(page).to have_link('Add To Cart')
       end
     end
   end
@@ -27,9 +27,11 @@ describe "menu", type: :feature do
   it 'adds an item to the cart' do
     item = @items.first
     within("//table") do
-      first(:button, 'Add to Cart').click
+      # first(:button, 'Add to Cart').click
     end
-    # visit cart_path(orders/show)
-    # expect(page).to have_content(item)
+
+    # order = Order.create(status: "Open")
+    # visit order_path(order.id)
+    # expect(page).to have_content(order.order_items.first)
   end
 end
