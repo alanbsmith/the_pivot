@@ -1,0 +1,32 @@
+<h1>Add a new menu item</h1>
+
+<%= form_for @item, html: {multipart: true} do |f| %>
+  
+  <div class='field' id='itemtitle'>
+    <%= f.label :title %><br/>
+    <%= f.text_field :title %>
+  </div>
+  <div class='field' id='itemdescription'>
+    <%= f.label :description %><br/>
+    <%= f.text_area :description, size: "30x12" %>
+  </div>
+  <div class='field' id='itemprice'>
+    <%= f.label :price %><br/>
+    <%= f.text_field :price %>
+  </div>
+  <div class='field' id='itemcategories'>
+    <%= f.label :categories_list %>
+    <%= f.select(:categories_list, Category.all.collect {|c| [c.title] }, {}, {multiple: true, size: Category.all.count}) %>
+  </div>
+  <div class='field' id='itemstatus'>
+    <%= f.label :status %><br/>
+    <%= f.select(:status, options_for_select([['Active', 1],['Retired', 2]], 1))%>
+  </div>
+  <div class='field' id='itemphoto' %>
+    <%= f.label :image %><br/>
+    <%= f.file_field :image %>
+  </div>
+  <div class='actions'>
+    <%= f.submit "Create this Item" %>
+  </div>
+<% end %>
