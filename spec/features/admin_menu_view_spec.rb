@@ -2,9 +2,9 @@ require 'feature_helper'
 
 describe "admin_menu", type: :feature do
   before(:each) do
-    Item.create(title:"Chocolate yummy yumm", description: "Chocolate so good you'll wanna slap yo mama", price: 400, image: "icecreamslug.com", status: "active")
-    Item.create(title:"Vanilla willya please", description: "Vanilla is the bomb for you mom!", price: 325, image: "icecreamslug.com", status: "active")
-    Item.create(title:"Strawberry berry tasty", description: "Strawbeeeeeerrrry! Is good for me!", price: 450, image: "icecreamslug.com", status: "active")
+    Item.create(title:"Chocolate yummy yumm", description: "Chocolate so good you'll wanna slap yo mama", price: 400, image: "icecreamslug.com", status: 1)
+    Item.create(title:"Vanilla willya please", description: "Vanilla is the bomb for you mom!", price: 325, image: "icecreamslug.com", status: 1)
+    Item.create(title:"Strawberry berry tasty", description: "Strawbeeeeeerrrry! Is good for me!", price: 450, image: "icecreamslug.com", status: 1)
 
     @items = Item.all
     @item  = Item.new
@@ -84,15 +84,22 @@ describe "admin_menu", type: :feature do
       page.has_css?('table tr td form select.status')
   end
 
-  # it 'changes the status of an item' do
-  #   pending
-  # end
+  it 'changes the status of an item and the item dissapears from the user menu' do
+    item         = @items.first
+    deleted_item = item.title
 
-  it 'has a multi-select menu to add categories to an item' do
-    page.has_css?('table tr td form select.categories')
+    visit items_path
+    # binding.pry
+    expect(page).to have_content(item.title)
+
+    visit administrator_items_path
+    within('//ul') do
+      first(:link, 'Edit').click
+    end
+    select('Retired', from: 'Status')
+    click_button('Update this Item')
+
+    visit items_path
+    expect(page).to_not have_content(deleted_item)
   end
-
-  # it 'adds and removes categories from items' do
-  #   pending
-  # end
 end

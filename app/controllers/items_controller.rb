@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   respond_to :html, :xml, :json
 
   def index
-    @items = Item.all
+    @items = Item.where(status: 1)
   end
 
   def create
@@ -15,15 +15,21 @@ class ItemsController < ApplicationController
     else
       flash[:notice] = "Not Saved"
     end
-    # redirect_to administrator_items_path
   end
 
   private
     def item_params
+<<<<<<< HEAD
+      params.require(:item).permit(:title, 
+                                   :description, 
+                                   :price, 
+                                   :image, 
+=======
       params.require(:item).permit(:title,
                                    :description,
                                    :price,
                                    :image,
+>>>>>>> 0dd7fb5229f1534176acd29ea3daa833be575c99
                                    :status,
                                    :categories_list)
     end

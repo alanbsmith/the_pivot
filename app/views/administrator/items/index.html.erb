@@ -11,7 +11,9 @@
     <li><strong>Current Status:</strong> <%= item.status %></li>
     <!-- <td><strong>Assigned Categories:</strong> <%= item.categories_list %> -->
     <li><%= link_to 'Edit', edit_administrator_item_path(item) %></li>
-    <li><%= link_to 'Delete', administrator_item_path(item), method: :delete, data:{ confirm: "Are you sure you want to delete the item: '#{item.title}'" } %></li>
-<br/>
-  <% end %>
+    <li><%= link_to 'Delete', administrator_item_path(item), method: :delete, data:{ confirm: "Are you sure you want to delete the item: '#{item.title}'" } %>
+    </li>
 </ul>
+<br/>
+</tr>
+<% end %>
