@@ -11,13 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20140814234107) do
-||||||| merged common ancestors
-ActiveRecord::Schema.define(version: 20140813222715) do
-=======
+# ActiveRecord::Schema.define(version: 20140814234107) do
+# ActiveRecord::Schema.define(version: 20140813222715) do
 ActiveRecord::Schema.define(version: 20140816191212) do
->>>>>>> b9db55c4b68781a07dfb254af3d1eef17ab2e49f
 
   create_table "addresses", force: true do |t|
     t.integer  "user_id"
