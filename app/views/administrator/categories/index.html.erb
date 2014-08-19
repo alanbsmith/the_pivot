@@ -5,8 +5,10 @@
   <tr>
     <td><%= category.title %></td>
     <td><%= category.description %></td>
-    <td><%= link_to 'Edit', edit_administrator_category_path(category) %></td>
-    <td><%= link_to 'Delete', category, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    <td>
+      <%= link_to 'Edit', edit_administrator_category_path(category) %>
+      <%= link_to 'Delete', administrator_category_path(category), confirm: 'Are you sure?', :method => :DELETE %>
+    </td>
   </tr>
   <% end %>
 </table>

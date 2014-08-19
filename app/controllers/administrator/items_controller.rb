@@ -9,14 +9,14 @@ class Administrator::ItemsController<ActionController::Base
   def new
     @item = Item.new
   end
-  
+
   def show
   end
 
   def create
     @item = Item.new(item_params)
     @item.save
-    
+
     flash.notice = "A new item: '#{@item.title}' was successfully created"
     redirect_to administrator_items_path
   end
@@ -39,23 +39,23 @@ class Administrator::ItemsController<ActionController::Base
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to administrator_items_path, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     def item_params
-      params.require(:item).permit(:title, 
-                                   :description, 
-                                   :price, 
-                                   :image, 
-                                   :status, 
+      params.require(:item).permit(:title,
+                                   :description,
+                                   :price,
+                                   :image,
+                                   :status,
                                    :categories_list)
     end
 
     def set_item
-      @item = Item.find(params[:id]) 
+      @item = Item.find(params[:id])
     end
 
     def lookup_item

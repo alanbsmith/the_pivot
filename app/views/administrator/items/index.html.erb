@@ -12,10 +12,11 @@
         <%= f.select(:categories_list, Category.all.collect {|c| [c.title] }, {}, {multiple: true, size: Category.all.count}) %>
         <%= f.submit "Update" %>
         <% end %>
-      </td>
-      <td><%= link_to 'Edit', edit_administrator_item_path(item) %>
-          <%= link_to 'Delete', administrator_item_path(item), confirm: 'Are you sure?', :method => :DELETE %>
-      </td>
+    </td>
+    <td>
+      <%= link_to 'Edit', edit_administrator_item_path(item) %>
+      <%= link_to 'Delete', administrator_item_path(item), confirm: 'Are you sure?', :method => :DELETE %>
+    </td>
   </tr>
   <% end %>
 </table>
