@@ -17,10 +17,6 @@ class Administrator::ItemsController < ApplicationController
     redirect_to administrator_items_path
   end
 
-  def retire
-    # don't forget to create the notice
-  end
-
   def destroy
     # add a transaction method so that an active item cannot be destroyed
     # write a test to support this use, once you have the basic use working!
@@ -42,7 +38,7 @@ class Administrator::ItemsController < ApplicationController
                                    :description, 
                                    :price, 
                                    :image, 
-                                   :status, 
+                                   :status,
                                    :categories_list)
     end
 
