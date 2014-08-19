@@ -90,7 +90,7 @@ RSpec.describe User, :type => :model do
     it { should_not be_valid }
   end
 
-  describe "when passwor is too short" do
+  describe "when password is too short" do
     before { @user.password = "seven" }
     it { should_not be_valid }
   end
