@@ -13,6 +13,11 @@ class Administrator::ItemsController < ApplicationController
   def show
   end
 
+
+  def categories
+    @categories = Item.categories
+  end
+
   def create
     @item = Item.new(item_params)
     @item.save
@@ -48,17 +53,10 @@ class Administrator::ItemsController < ApplicationController
 
   private
     def item_params
-<<<<<<< HEAD
-      params.require(:item).permit(:title,
-                                   :description,
-                                   :price,
-                                   :image,
-=======
       params.require(:item).permit(:title, 
                                    :description, 
                                    :price, 
                                    :image, 
->>>>>>> 27e26126b00564031e276f70aa9903c7a39e7819
                                    :status,
                                    :categories_list)
     end

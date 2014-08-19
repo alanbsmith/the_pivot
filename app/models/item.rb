@@ -1,6 +1,10 @@
 class Item < ActiveRecord::Base
   has_many :order_items
   has_many :orders, through: :order_items
+  has_many :categorizations
+  has_many :categories, through: :categorizations
+  mount_uploader :image, ImageUploader
+
   # validates :name,
   #            presence: true,
   #            uniqueness: true
@@ -18,14 +22,6 @@ class Item < ActiveRecord::Base
 
   scope :active,  -> { where(status: 1) }
   scope :retired, -> { where(status: 2) }
-
-  # scope: find_by_price, -> { where(price: 'price' ) } <-- not sure about this one...
-
-        # --> Write tests for the above scopes!
-
-  has_many :categorizations
-  has_many :categories, through: :categorizations
-  mount_uploader :image, ImageUploader
 
   def categories_list
     Category.all

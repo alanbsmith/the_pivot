@@ -1,31 +1,56 @@
 <h1>You can edit this item below</h1>
+<br/>
 <%= form_for @item, url: administrator_item_path(@item), method: :patch do |f| %>
+
+<div class='row'>
+  <div style="float:left;width:33.33333333%">
+    <div class='field' id='itemtitle'>
+      <%= f.label :title %><br/>
+      <%= f.text_field :title %>
+    </div>
+  </div>
+
+  <div style='float:left;width:33.33333333%'>
+    <div class='field' id='itemprice'>
+      <%= f.label :price %><br/>
+      <%= f.text_field :price %>
+    </div>
+  </div>
+
+  <div style="float:left;width:33.33333333%">
+    <p class='field' name='itemstatus'>
+      <%= f.label :status %><br/>
+      <%= f.select(:status, options_for_select([['Active', 1],['Retired', 2]], 1 ))%>
+    </p>
+  </div>
+</div>
+
+<div class='row'>
+  <div style='float:left;width:33.33333333%'>
+    <div class='field' id='itemdescription'>
+      <%= f.label :description %><br/>
+      <%= f.text_area :description, size: "30x12" %>
+    </div>
+  </div>
   
-  <div class='field' id='itemtitle'>
-    <%= f.label :title %><br/>
-    <%= f.text_field :title %>
+  <div style='float:left;width:33.33333333%'>
+    <div class='field' id='itemcategories'>
+      <%= f.label :categorizations %><br/>
+      <%= f.select(:categorizations, Category.all.collect {|c| [c.title] }, {}, {multiple: true, size: Category.all.count}) %>
+    </div>
   </div>
-  <div class='field' id='itemdescription'>
-    <%= f.label :description %><br/>
-    <%= f.text_area :description, size: "30x12" %>
+
+  <div style='float:left;width:33.33333333%'>
+    <div class='field' id='itemphoto' %>
+      <%= f.label :image %><br/>
+      <%= f.file_field :image %>
+    </div>
   </div>
-  <div class='field' id='itemprice'>
-    <%= f.label :price %><br/>
-    <%= f.text_field :price %>
-  </div>
-  <div class='field' id='itemcategories'>
-    <%= f.label :categories_list %>
-    <%= f.select(:categories_list, Category.all.collect {|c| [c.title] }, {}, {multiple: true, size: Category.all.count}) %>
-  </div>
-  <div class='field' name='itemstatus'>
-    <%= f.label :status %><br/>
-    <%= f.select(:status, options_for_select([['Active', 1],['Retired', 2]], 1 ))%>
-  </div>
-  <div class='field' id='itemphoto' %>
-    <%= f.label :image %><br/>
-    <%= f.file_field :image %>
-  </div>
+</div>
+<div style='float:right;width:33.33333333%'>
   <div class='actions'>
     <%= f.submit "Update this Item" %>
   </div>
+</div>
+
 <% end %>

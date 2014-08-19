@@ -22,7 +22,7 @@ describe "admin_menu", type: :feature do
       expect(page).to have_content(item.title)
       expect(page).to have_content(item.description)
       expect(page).to have_content(item.price)
-      # expect(page).to have_image(item.photo) come back to this...
+      # expect(page).to have_image(item.image) come back to this...
     end
   end
 
@@ -89,7 +89,6 @@ describe "admin_menu", type: :feature do
     deleted_item = item.title
 
     visit items_path
-    # binding.pry
     expect(page).to have_content(item.title)
 
     visit administrator_items_path

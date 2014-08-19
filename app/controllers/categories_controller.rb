@@ -1,9 +1,10 @@
-
-
-
 class CategoriesController < ApplicationController
   def index
     @categories = Category.all
+  end
+
+  def show
+    @category = Category.find(params[:id])
   end
 
   def create
@@ -13,7 +14,6 @@ class CategoriesController < ApplicationController
     flash.notice = "A new category: '#{@category.title}' was successfully created"
     redirect_to administrator_categories_path
   end
-
 
   private
 
