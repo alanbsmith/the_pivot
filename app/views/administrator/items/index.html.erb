@@ -1,23 +1,17 @@
 <h1>Administrator Menu View</h1>
 <hr/>
-<table>
-  <% @items.each do |item| %>
-  <tr>
-    <td><%= image_tag item.image.url(:thumb) %>
-    <td><%= item.title %></td>
-    <td><%= item.description %></td>
-    <td><%= item.price %></td>
-    <td><%= form_for item, url: administrator_item_path(item), html: {class: 'status_form'} do |f| %>
-        <%= f.select(:status, options_for_select([['Active', 1],['Retired', 2]], 1))%>
-        <%= f.select(:categories_list, Category.all.collect {|c| [c.title] }, {}, {multiple: true, size: Category.all.count}) %>
-        <%= f.submit "Update" %>
-        <% end %>
-      </td>
-      <td><%= link_to 'Edit', edit_administrator_item_path(item) %>
-          <%= link_to 'Delete', administrator_item_path(item), confirm: 'Are you sure?', :method => :DELETE %>
-      </td>
-  </tr>
-  <% end %>
-</table>
 <%= link_to 'Create New Item', new_administrator_item_path %>
 <%= link_to 'Create New Category', new_administrator_category_path %>
+<ul>
+  <% @items.each do |item| %>
+    <li><%= image_tag item.image.url(:thumb) %> </li>
+    <li><%= item.title %></li>
+    <li><%= item.description %></li>
+    <li><%= item.price %></li>
+    <li><strong>Current Status:</strong> <%= item.status %></li>
+    <!-- <td><strong>Assigned Categories:</strong> <%= item.categories_list %> -->
+    <li><%= link_to 'Edit', edit_administrator_item_path(item) %></li>
+    <li><%= link_to 'Delete', administrator_item_path(item), method: :delete, data:{ confirm: "Are you sure you want to delete the item: '#{item.title}'" } %></li>
+<br/>
+  <% end %>
+</ul>

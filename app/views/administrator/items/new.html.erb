@@ -14,14 +14,13 @@
     <%= f.label :price %><br/>
     <%= f.text_field :price %>
   </div>
-  <div class='field' id='itemcatagories'>
+  <div class='field' id='itemcategories'>
     <%= f.label :categories_list %>
-    <%= select_tag 'categories_list', options_for_select(Category.all.collect { |c| [c.title] }, multiple: true, size: Category.all.count) %>
+    <%= f.select(:categories_list, Category.all.collect {|c| [c.title] }, {}, {multiple: true, size: Category.all.count}) %>
   </div>
-
   <div class='field' id='itemstatus'>
     <%= f.label :status %><br/>
-    <%= select_tag(:status, options_for_select([['Active', 1],['Retired', 2]], 1)) %>
+    <%= f.select(:status, options_for_select([['Active', 1],['Retired', 2]], 1))%>
   </div>
   <div class='field' id='itemphoto' %>
     <%= f.label :image %><br/>

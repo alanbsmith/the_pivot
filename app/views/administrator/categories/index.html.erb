@@ -1,13 +1,12 @@
 <h1>Our menu</h1>
 <hr/>
-<table>
-  <% @categories.each do |category| %>
-  <tr>
-    <td><%= category.title %></td>
-    <td><%= category.description %></td>
-    <td><%= link_to 'Edit', edit_administrator_category_path(category) %></td>
-    <td><%= link_to 'Delete', category, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-  </tr>
-  <% end %>
-</table>
 <%= link_to 'Create New Category', new_administrator_category_path %>
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= category.title %></li>
+    <li><%= category.description %></li>
+    <li><%= link_to 'Edit', edit_administrator_category_path(category) %></li>
+    <li><%= link_to 'Delete', administrator_category_path(category), confirm: 'Are you sure?', :method => :DELETE %></li>
+<br/>
+  <% end %>
+</ul>
