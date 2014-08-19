@@ -11,8 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-# ActiveRecord::Schema.define(version: 20140814234107) do
-# ActiveRecord::Schema.define(version: 20140813222715) do
 ActiveRecord::Schema.define(version: 20140816191212) do
 
   create_table "addresses", force: true do |t|

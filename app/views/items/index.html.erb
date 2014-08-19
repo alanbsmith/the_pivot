@@ -9,7 +9,7 @@
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:price) %></th>
-      <th><%= model_class.human_attribute_name(:photo) %></th>
+      <th><%= model_class.human_attribute_name(:image) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -21,7 +21,7 @@
         <td><%= item.title %></td>
         <td><%= item.description %></td>
         <td><%= item.price %></td>
-        <td><%= item.photo %></td>
+        <td><%= item.image %></td>
         <td><%= item.status %></td>
         <td>
           <%= link_to t('.add_to_cart', :default => t("helpers.links.add_to_cart")),
