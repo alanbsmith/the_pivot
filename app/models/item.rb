@@ -16,8 +16,9 @@ class Item < ActiveRecord::Base
 
         # --> Write tests for all of the above validations then uncomment them!
 
-  # scope: active_items,  -> { where(status: 'active')  }
-  # scope: retired_items, -> { where(status: 'retired') }
+  scope :active,  -> { where(status: 1) }
+  scope :retired, -> { where(status: 2) }
+
   # scope: find_by_price, -> { where(price: 'price' ) } <-- not sure about this one...
 
         # --> Write tests for the above scopes!

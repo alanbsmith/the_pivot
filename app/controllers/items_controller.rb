@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   respond_to :html, :xml, :json
 
   def index
-    @items = Item.where(status: 1)
+    @items = Item.active
   end
 
   def create
@@ -19,17 +19,10 @@ class ItemsController < ApplicationController
 
   private
     def item_params
-<<<<<<< HEAD
-      params.require(:item).permit(:title, 
-                                   :description, 
-                                   :price, 
-                                   :image, 
-=======
       params.require(:item).permit(:title,
                                    :description,
                                    :price,
                                    :image,
->>>>>>> 0dd7fb5229f1534176acd29ea3daa833be575c99
                                    :status,
                                    :categories_list)
     end

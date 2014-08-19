@@ -21,7 +21,7 @@ class Administrator::ItemsController < ApplicationController
     # add a transaction method so that an active item cannot be destroyed
     # write a test to support this use, once you have the basic use working!
         # @item.transaction do
-        #   @item.status == "retired"
+        #   @item.retired
         #   @item.destroy
         # end
     @item.destroy

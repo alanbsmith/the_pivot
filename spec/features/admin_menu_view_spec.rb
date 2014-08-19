@@ -36,7 +36,7 @@ describe "admin_menu", type: :feature do
     item     = @items.first
     old_item = item.title
 
-    within('//ul') do
+    within('//table') do
       first(:link, 'Edit').click
     end
     page.fill_in('Title', with: 'Chocolate Monkey Madness')
@@ -66,7 +66,7 @@ describe "admin_menu", type: :feature do
     item         = @items.first
     deleted_item = item.title
 
-    within('//ul') do
+    within('//table') do
       first(:link, 'Delete').click
     end
 
@@ -87,7 +87,7 @@ describe "admin_menu", type: :feature do
     expect(page).to have_content(item.title)
     
     visit administrator_items_path
-    within('//ul') do
+    within('//table') do
       first(:link, 'Edit').click
     end
     select('Retired', from: 'Status')
