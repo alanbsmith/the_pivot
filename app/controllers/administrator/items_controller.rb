@@ -10,6 +10,20 @@ class Administrator::ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def show
+  end
+
+  def create
+    @item = Item.new(item_params)
+    @item.save
+
+    flash.notice = "A new item: '#{@item.title}' was successfully created"
+    redirect_to administrator_items_path
+  end
+
+  def edit
+  end
+
   def update
     @item.update(item_params)
 
@@ -34,10 +48,17 @@ class Administrator::ItemsController < ApplicationController
 
   private
     def item_params
+<<<<<<< HEAD
+      params.require(:item).permit(:title,
+                                   :description,
+                                   :price,
+                                   :image,
+=======
       params.require(:item).permit(:title, 
                                    :description, 
                                    :price, 
                                    :image, 
+>>>>>>> 27e26126b00564031e276f70aa9903c7a39e7819
                                    :status,
                                    :categories_list)
     end

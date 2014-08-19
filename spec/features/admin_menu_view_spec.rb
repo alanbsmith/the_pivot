@@ -62,6 +62,12 @@ describe "admin_menu", type: :feature do
     expect(page).to have_content('Bananaramma you full of goodness')
   end
 
+  it 'has a links to delete the items' do
+    @items.each do |item|
+      expect(page).to have_link('Delete', href: administrator_item_path(item))
+    end
+  end
+
   it 'deletes an item' do
     item         = @items.first
     deleted_item = item.title
@@ -85,7 +91,7 @@ describe "admin_menu", type: :feature do
     visit items_path
     # binding.pry
     expect(page).to have_content(item.title)
-    
+
     visit administrator_items_path
     within('//table') do
       first(:link, 'Edit').click
