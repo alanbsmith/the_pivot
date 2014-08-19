@@ -13,6 +13,18 @@
     <%= f.label :price %><br/>
     <%= f.text_field :price %>
   </div>
+  <div class='field' id='itemcategories'>
+    <%= f.label :categories_list %>
+    <%= f.select(:categories_list, Category.all.collect {|c| [c.title] }, {}, {multiple: true, size: Category.all.count}) %>
+  </div>
+  <div class='field' id='itemstatus'>
+    <%= f.label :status %><br/>
+    <%= f.select(:status, options_for_select([['Active', 1],['Retired', 2]], 1))%>
+  </div>
+  <div class='field' id='itemphoto' %>
+    <%= f.label :image %><br/>
+    <%= f.file_field :image %>
+  </div>
   <div class='actions'>
     <%= f.submit "Update this Item" %>
   </div>

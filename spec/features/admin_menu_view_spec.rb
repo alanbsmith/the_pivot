@@ -74,7 +74,6 @@ describe "admin_menu", type: :feature do
 
     within('//table') do
       first(:link, 'Delete').click
-    #   click_link('Yes')
     end
 
     expect(current_path).to eq(administrator_items_path)
@@ -85,9 +84,9 @@ describe "admin_menu", type: :feature do
       page.has_css?('table tr td form select.status')
   end
 
-  # it 'changes the status of an item' do
-  #   pending
-  # end
+  it 'changes the status of an item' do
+    pending
+  end
 
   it 'has a multi-select menu to add categories to an item' do
     page.has_css?('table tr td form select.categories')
