@@ -27,6 +27,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (5.0.1.20140414130214)
     autoprefixer-rails (2.2.0.20140804)
       execjs
@@ -67,6 +68,8 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     kgio (2.9.2)
+    launchy (2.4.2)
+      addressable (~> 2.3)
     less (2.3.1)
       commonjs (~> 0.2.6)
     less-rails (2.3.2)
@@ -193,6 +196,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails
+  launchy
   less-rails
   mini_magick (~> 3.8.0)
   pg

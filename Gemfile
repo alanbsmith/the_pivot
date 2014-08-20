@@ -38,6 +38,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'capybara'
   gem 'rails_layout'
+  gem 'launchy'
 end
 
 group :production do
