@@ -54,7 +54,16 @@
               <div class="navbar pull-right">
                 <ul class="nav">
                 <% if signed_in? %>
-                  <li><%= link_to "Signout", signout_path, method: "delete" %></li>
+                  <li><%= link_to "Users", '#' %></li>
+                  <li id="fat-menu" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Account <b class="caret"></b>
+                    </a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Profile", current_user %></li>
+                    <li><%= link_to "Settings", '#' %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to "Signout", signout_path, method: "delete" %></li>
                 <% else %>
                   <li><%= link_to "Sign In", signin_path  %></li>
                   <li><%= link_to "Register", register_path  %></li>
@@ -65,8 +74,6 @@
       </div>
     </div>
   </div>
-
-
 
     <div class="container">
         <div class="row">
