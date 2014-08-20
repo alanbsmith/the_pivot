@@ -136,4 +136,81 @@ item20 = Item.create(title:      "Lemon Custard",
                     price:       249,
                     status:      1)
 
+category1 = Category.create(title: "Rockanillas",
+                            description: "Yellow is the new black")
+
+category2 = Category.create(title: "Chocolate Yumm Yumm",
+                            description: "The flavor of love")
+
+category3 = Category.create(title: "Strawbellisima",
+                            description: "Pink for you")
+
+category4 = Category.create(title: "Animalism!",
+                            description: "Flavors from the farm")
+
+category5 = Category.create(title: "Badass",
+                            description: "Just for real rockstars")
+
+
+# categorization1  = Categorization.create(item_id: 1 ,
+#                                         category_id: 1  )
+#
+# categorization2  = Categorization.create(item_id: 2 ,
+#                                         category_id: 1 )
+#
+# categorization3  = Categorization.create(item_id: 3 ,
+#                                         category_id: 1 )
+#
+# categorization4  = Categorization.create(item_id: 4 ,
+#                                         category_id: 2 )
+#
+# categorization5  = Categorization.create(item_id: 5 ,
+#                                         category_id: 2 )
+#
+# categorization6  = Categorization.create(item_id: 6 ,
+#                                         category_id: 2 )
+#
+# categorization7  = Categorization.create(item_id: 7 ,
+#                                         category_id: 3 )
+#
+# categorization8  = Categorization.create(item_id: 8 ,
+#                                         category_id: 3 )
+#
+# categorization9  = Categorization.create(item_id: 9 ,
+#                                         category_id: 3 )
+#
+# categorization10 = Categorization.create(item_id: 10 ,
+#                                         category_id: 4 )
+#
+# categorization11 = Categorization.create(item_id: 11 ,
+#                                         category_id: 4 )
+#
+# categorization12 = Categorization.create(item_id: 12 ,
+#                                         category_id: 4 )
+#
+# categorization13 = Categorization.create(item_id: 13 ,
+#                                         category_id: 4 )
+#
+# categorization14 = Categorization.create(item_id: 14 ,
+#                                         category_id: 4 )
+#
+# categorization15 = Categorization.create(item_id: 15 ,
+#                                         category_id: 5 )
+#
+# categorization16 = Categorization.create(item_id: 16 ,
+#                                         category_id: 5 )
+#
+# categorization17 = Categorization.create(item_id: 17 ,
+#                                         category_id: 5 )
+#
+# categorization18 = Categorization.create(item_id: 18 ,
+#                                         category_id: 5 )
+#
+# categorization19 = Categorization.create(item_id: 19 ,
+#                                         category_id: 5 )
+#
+# categorization20 = Categorization.create(item_id: 20 ,
+#                                         category_id: 5 )
+#
+
 puts "============= Seeding Data End ============="
