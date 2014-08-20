@@ -53,8 +53,12 @@
             </ul>
               <div class="navbar pull-right">
                 <ul class="nav">
-                  <li><%= link_to "Sign In", "/sign_in"  %></li>
+                <% if signed_in? %>
+                  <li><%= link_to "Signout", "signout_path", method: "delete" %></li>
+                <% else %>
+                  <li><%= link_to "Sign In", signin_path  %></li>
                   <li><%= link_to "Register", register_path  %></li>
+                <% end %>
                 </ul>
           </div><!--/.nav-collapse -->
         </div>
