@@ -32,7 +32,7 @@ class Item < ActiveRecord::Base
     end
 
     def ensure_not_referenced_by_any_order_item
-      if line_items.empty?
+      if order_items.empty?
         return true
       else
         errors.add(:base, 'Order Items Present')

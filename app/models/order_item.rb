@@ -3,7 +3,7 @@ class OrderItem < ActiveRecord::Base
   belongs_to :order
 
   def total_price
-    product.price * quantity
+    item.price * quantity
   end
 
 end
