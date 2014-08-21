@@ -56,11 +56,12 @@
               <div class="navbar pull-right">
                 <ul class="nav">
                 <% if signed_in? %>
-                  <li><%= link_to "Users", '#' %></li>
                   <li><%= link_to "Signout", signout_path, method: "delete" %></li>
                   <li id="fat-menu" class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %>
+                      <% if current_user %>
+                        <%= "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}" %>
+                      <% end %>
                         <b class="caret"></b>
                     </a>
 
@@ -68,6 +69,9 @@
                     <li><%= link_to "Profile", user_path(current_user) %></li>
                     <li class="divider"></li>
                     <li><%= link_to "Order History", "#" %></li>
+                    <% if current_user.role == "admin" %>
+                      <%= link_to "Dashboard", "#" %>
+                    <% end %>
                 <% else %>
                   <li><%= link_to "Sign In", "/signin"  %></li>
                   <li><%= link_to "Register", register_path  %></li>

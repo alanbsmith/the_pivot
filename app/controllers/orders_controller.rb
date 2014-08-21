@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   include CurrentOrder
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  include SessionsHelper
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :checkout]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
   def show
@@ -21,6 +22,18 @@ class OrdersController < ApplicationController
         notice: 'Your cart is currently empty' }
         format.json { head :no_content }
     end
+  end
+
+  def checkout
+    @order.update(status: 'open')
+
+    respond_to do |format|
+      format.html { redirect_to review_path }
+      format.json { head :no_content }
+    end
+  end
+
+  def review
   end
 
   private
