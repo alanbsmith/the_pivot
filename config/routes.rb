@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   match "/register", to: "users#new",        via: "get"
   match "/signin",   to: "sessions#new",     via: "get"
   match "/signout",  to: "sessions#destroy", via: "delete"
+  
+  match "/checkout", to: "orders#checkout",    via: "post"
 
   namespace :administrator do
     resources :items
