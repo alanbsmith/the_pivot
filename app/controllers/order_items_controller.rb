@@ -9,7 +9,8 @@ class OrderItemsController < ApplicationController
 
     respond_to do |format|
       if @order_item.save
-        format.html { redirect_to items_path }
+        format.html { redirect_to items_path,
+          notice: "#{item.title} has been added to your cart."}
         format.json { render action: 'show',
           status: :created, location: @order_item }
       else
