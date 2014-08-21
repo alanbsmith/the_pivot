@@ -153,11 +153,28 @@ category4 = Category.create(title:       "Animalism!",
 category5 = Category.create(title:       "Badass",
                             description: "Just for real rockstars")
 
-category1.items << item1  && item2  && item3  && item4
-category2.items << item5  && item6  && item7  && item8
-category3.items << item9  && item10 && item11 && item12
-category4.items << item12 && item13 && item14 && item15
-category5.items << item16 && item17 && item18 && item19 && item20
+category1.items << item1
+category1.items << item2
+category1.items << item3
+category1.items << item4
+category2.items << item5
+category2.items << item6
+category2.items << item7
+category2.items << item8
+category3.items << item9
+category3.items << item10
+category3.items << item11
+category3.items << item12
+category4.items << item13
+category4.items << item14
+category4.items << item15
+category4.items << item16
+category5.items << item17
+category5.items << item18
+category5.items << item19
+category5.items << item20
+
+
 
 # Create the users
 #
