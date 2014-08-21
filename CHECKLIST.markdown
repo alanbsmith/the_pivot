@@ -17,6 +17,9 @@ HORACIO
 
 COREY
 ===========================
+- fix admin category tests
+- implement user address / profile
+- add user ID link to admin/order dashboard
 
 
 
