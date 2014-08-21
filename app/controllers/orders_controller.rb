@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     @order.destroy if @order.id == session[:order_id]
     session[:order_id] = nil
     respond_to do |format|
-      format.html { redirect_to store_url,
+      format.html { redirect_to items_url,
         notice: 'Your cart is currently empty' }
         format.json { head :no_content }
     end

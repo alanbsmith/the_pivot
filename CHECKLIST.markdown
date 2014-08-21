@@ -15,9 +15,9 @@ suggestions
 
 What's your project timeline look like for the next week? Will you be cutting scope or adding extras?
 
-unauthenticated cart
-  become an authenticated cart (register, previously registered now login)
-  remove items
+√ <!-- unauthenticated cart -->
+ become an authenticated cart (register, previously registered now login)
+√ <!-- remove items -->
 
 login
 √ <!-- authorization -->
