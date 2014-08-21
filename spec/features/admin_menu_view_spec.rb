@@ -2,23 +2,29 @@ require 'feature_helper'
 
 describe "admin_menu", type: :feature do
   before(:each) do
+    @admin_user = User.create(email: "admin@example.com", password: "adminpassword", password_confirmation: "adminpassword",
+                        first_name: "admin", last_name: "whatever", role: "admin")
+
     Item.create(title:"Chocolate yummy yumm", description: "Chocolate so good you'll wanna slap yo mama", price: 400, image: "icecreamslug.com", status: 1)
     Item.create(title:"Vanilla willya please", description: "Vanilla is the bomb for you mom!", price: 325, image: "icecreamslug.com", status: 1)
     Item.create(title:"Strawberry berry tasty", description: "Strawbeeeeeerrrry! Is good for me!", price: 450, image: "icecreamslug.com", status: 1)
 
     @items = Item.all
     @item  = Item.new
-
+    visit home_path
     # Category.create(title:"Chocolate", description:"Who doesn't like chocolate? Hilter that's who.")
     # Category.create(title:"Vanilla", description: "It's not as boring as white people")
     # Category.create(title:"Strawberry", description: "This counts as a fruit right?")
     #
     # @categories = Category.all
-    visit administrator_items_path
   end
 
   it "shows the items to an admin" do
+    admin_login
     @items.each do |item|
+      visit administrator_items_path
+
+      expect(current_path).to eq(administrator_items_path)
       expect(page).to have_content(item.title)
       expect(page).to have_content(item.description)
       expect(page).to have_content(item.price)
@@ -27,12 +33,16 @@ describe "admin_menu", type: :feature do
   end
 
   it 'has a links to edit the items' do
+    admin_login
+    visit administrator_items_path
     @items.each do |item|
       expect(page).to have_link('Edit', href: edit_administrator_item_path(item))
     end
   end
 
   it 'edits an item' do
+    admin_login
+    visit administrator_items_path
     item     = @items.first
     old_item = item.title
 
@@ -48,10 +58,14 @@ describe "admin_menu", type: :feature do
   end
 
   it 'has a link to add an item' do
+    admin_login
+    visit administrator_items_path
     expect(page).to have_link('Create New Item', href: new_administrator_item_path)
   end
 
   it 'creates a new item' do
+    admin_login
+    visit administrator_items_path
     page.click_link('Create New Item')
     page.fill_in('Title', with: 'Bananaramma you full of goodness')
     page.fill_in('Description', with: "Don't be so dirty! It's just bananas and cream")
@@ -63,12 +77,16 @@ describe "admin_menu", type: :feature do
   end
 
   it 'has a links to delete the items' do
+    admin_login
+    visit administrator_items_path
     @items.each do |item|
       expect(page).to have_link('Delete', href: administrator_item_path(item))
     end
   end
 
   it 'deletes an item' do
+    admin_login
+    visit administrator_items_path
     item         = @items.first
     deleted_item = item.title
 
@@ -81,10 +99,14 @@ describe "admin_menu", type: :feature do
   end
 
   it 'has a select menu to change the status of the item' do
+      admin_login
+      visit administrator_items_path
       page.has_css?('table tr td form select.status')
   end
 
   it 'changes the status of an item and the item dissapears from the user menu' do
+    admin_login
+    visit administrator_items_path
     item         = @items.first
     deleted_item = item.title
 
