@@ -19,7 +19,7 @@ describe "menu", type: :feature do
   it 'has an add to cart button' do
     within("//table") do
       @items.each do |item|
-        expect(page).to have_link('Add To Cart')
+        expect(page).to have_button('Add To Cart')
       end
     end
   end
