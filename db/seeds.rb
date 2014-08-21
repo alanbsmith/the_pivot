@@ -8,7 +8,8 @@
 
 puts "============= Seeding Data Start ============="
 
-item1 = Item.create(title: "Vanillisimo",
+item1 = Item.create(id: 1,
+                    title: "Vanillisimo",
                     description: "The secret to the richer and creamier vanilla
                     flavor is the French custard base in this ice cream.",
                     price: 299,
@@ -136,81 +137,64 @@ item20 = Item.create(title:      "Lemon Custard",
                     price:       249,
                     status:      1)
 
-category1 = Category.create(title: "Rockanillas",
+category1 = Category.create(id: 1,
+                            title:       "Rockanillas",
                             description: "Yellow is the new black")
 
-category2 = Category.create(title: "Chocolate Yumm Yumm",
+category2 = Category.create(title:       "Chocolate Yumm Yumm",
                             description: "The flavor of love")
 
-category3 = Category.create(title: "Strawbellisima",
+category3 = Category.create(title:       "Strawbellisima",
                             description: "Pink for you")
 
-category4 = Category.create(title: "Animalism!",
+category4 = Category.create(title:       "Animalism!",
                             description: "Flavors from the farm")
 
-category5 = Category.create(title: "Badass",
+category5 = Category.create(title:       "Badass",
                             description: "Just for real rockstars")
 
+category1.items << item1  && item2  && item3  && item4
+category2.items << item5  && item6  && item7  && item8
+category3.items << item9  && item10 && item11 && item12
+category3.items << item12 && item13 && item14 && item15
+category4.items << item16 && item17 && item18 && item19 && item20
 
-# categorization1  = Categorization.create(item_id: 1 ,
-#                                         category_id: 1  )
+# Create the users
 #
-# categorization2  = Categorization.create(item_id: 2 ,
-#                                         category_id: 1 )
+# user1 = User.create(first_name:      "Jeff",
+#                     last_name:       "Casimir",
+#                     email:           "jeff@jumpstartlab.com"
+#                     username:        "jeff",
+#                     password_digest: "",
+#                     salt:            "",
+#                     address_id:      "",
+#                     type:            "")
 #
-# categorization3  = Categorization.create(item_id: 3 ,
-#                                         category_id: 1 )
+# user1 = User.create(first_name:      "Jorge",
+#                     last_name:       "Tellez",
+#                     email:           "jorge@jumpstartlab.com"
+#                     username:        "jorge",
+#                     password_digest: "",
+#                     salt:            "",
+#                     address_id:      "",
+#                     type:            "")
 #
-# categorization4  = Categorization.create(item_id: 4 ,
-#                                         category_id: 2 )
+# user1 = User.create(first_name:      "Josh",
+#                     last_name:       "Cheek",
+#                     email:           "josh@jumpstartlab.com"
+#                     username:        "josh",
+#                     password_digest: "",
+#                     salt:            "",
+#                     address_id:      "",
+#                     type:            "")
 #
-# categorization5  = Categorization.create(item_id: 5 ,
-#                                         category_id: 2 )
-#
-# categorization6  = Categorization.create(item_id: 6 ,
-#                                         category_id: 2 )
-#
-# categorization7  = Categorization.create(item_id: 7 ,
-#                                         category_id: 3 )
-#
-# categorization8  = Categorization.create(item_id: 8 ,
-#                                         category_id: 3 )
-#
-# categorization9  = Categorization.create(item_id: 9 ,
-#                                         category_id: 3 )
-#
-# categorization10 = Categorization.create(item_id: 10 ,
-#                                         category_id: 4 )
-#
-# categorization11 = Categorization.create(item_id: 11 ,
-#                                         category_id: 4 )
-#
-# categorization12 = Categorization.create(item_id: 12 ,
-#                                         category_id: 4 )
-#
-# categorization13 = Categorization.create(item_id: 13 ,
-#                                         category_id: 4 )
-#
-# categorization14 = Categorization.create(item_id: 14 ,
-#                                         category_id: 4 )
-#
-# categorization15 = Categorization.create(item_id: 15 ,
-#                                         category_id: 5 )
-#
-# categorization16 = Categorization.create(item_id: 16 ,
-#                                         category_id: 5 )
-#
-# categorization17 = Categorization.create(item_id: 17 ,
-#                                         category_id: 5 )
-#
-# categorization18 = Categorization.create(item_id: 18 ,
-#                                         category_id: 5 )
-#
-# categorization19 = Categorization.create(item_id: 19 ,
-#                                         category_id: 5 )
-#
-# categorization20 = Categorization.create(item_id: 20 ,
-#                                         category_id: 5 )
-#
+# user1 = User.create(first_name:      "Rachel",
+#                     last_name:       "Warbelow",
+#                     email:           "rachel@jumpstartlab.com"
+#                     username:        "rachel",
+#                     password_digest: "",
+#                     salt:            "",
+#                     address_id:      "",
+#                     type:            "")
 
 puts "============= Seeding Data End ============="
