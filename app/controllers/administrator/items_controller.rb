@@ -32,8 +32,6 @@ class Administrator::ItemsController < ApplicationController
 
   def update
     @item.update(item_params)
-
-    flash.notice = "Item: '#{@item.title}' has been updated"
     redirect_to administrator_items_path
   end
 
