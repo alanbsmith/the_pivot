@@ -4,6 +4,7 @@ class Administrator::ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @user  = User.find_by(params[:id])
   end
 
   def new
