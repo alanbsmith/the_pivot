@@ -156,8 +156,8 @@ category5 = Category.create(title:       "Badass",
 category1.items << item1  && item2  && item3  && item4
 category2.items << item5  && item6  && item7  && item8
 category3.items << item9  && item10 && item11 && item12
-category3.items << item12 && item13 && item14 && item15
-category4.items << item16 && item17 && item18 && item19 && item20
+category4.items << item12 && item13 && item14 && item15
+category5.items << item16 && item17 && item18 && item19 && item20
 
 # Create the users
 #
