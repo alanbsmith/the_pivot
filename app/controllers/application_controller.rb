@@ -3,8 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   include SessionsHelper
+  include CurrentOrder
 
-  before_action :set_cart
+  before_action :set_order
   # made up bullshit about what authentication means
   #
   # class SessionsController
@@ -27,17 +28,17 @@ class ApplicationController < ActionController::Base
   #   @current_user ||= User.find session[:user_id]
   # end
 
-  def cart
-    @cart ||= Order.new do |cart|
-      session[:cart].each do |item_id, quantity|
-        cart.order_items.build item_id: item_id, quantity: quantity
-      end
-    end
-  end
+  # def cart
+  #   @cart ||= Order.new do |cart|
+  #     session[:cart].each do |item_id, quantity|
+  #       cart.order_items.build item_id: item_id, quantity: quantity
+  #     end
+  #   end
+  # end
 
   private
 
-  def set_cart
-    session[:cart] ||= {}
-  end
+  # def set_cart
+  #   session[:cart] ||= {}
+  # end
 end

@@ -6,18 +6,22 @@ RSpec.describe "the order view", type: :feature do
   describe "items" do
     before(:each) do
       order.items.create(title: "tangerine",
-      price: 1000)
+      price: 5.25)
       order.items.create(title: "mango",
-      price: 1000)
+      price: 5.25)
       visit order_path(order)
     end
+
 
 
     it "shows the items for an order" do
       order.items.each do |item|
         expect(page).to have_content(item.title)
+        expect(page).to have_content('$5.25')
       end
     end
-    
+
+
+
   end
 end

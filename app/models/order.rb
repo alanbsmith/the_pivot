@@ -13,9 +13,10 @@ class Order < ActiveRecord::Base
   end
 
   def total_price
-    order_items.to_a.sum { |item| item.total_price }
+    order_items.to_a.sum { |order_item| order_item.total_price }
   end
 end
 
-
-
+# migration
+# add_index :order_items, [:item_id, :order_id], unique: true
+# model level validation on OrderItem -> friendly errors

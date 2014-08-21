@@ -30,5 +30,6 @@ class CombineItemsInOrder < ActiveRecord::Migration
 
       #remove original item
       order_item.destroy
+    end
   end
 end
