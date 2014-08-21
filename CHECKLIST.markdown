@@ -1,7 +1,16 @@
 suggestions
   √ <!-- - 0. fix tests -->
-- 1. get auth working
+  √ <!-- 1. get auth working -->
 - 2. cart flow (esp unauth to auth)
+
+  senario 1) I come to the site as an unauth user, add to cart, then signin, and want cart
+  senario 2) I come to the site, sign in, then add to cart
+  senario 3) I come to the site, add to cart, then leave
+  senario 4) I come to the site, add to cart, sign up / sign in, and now want my cart
+
+    ==> make an order
+      - when you sign in pass the order_id to the auth user (via cookie)
+
 - 3. continuous integration
 
 What's your project timeline look like for the next week? Will you be cutting scope or adding extras?
@@ -11,7 +20,7 @@ unauthenticated cart
   remove items
 
 login
-authorization
+√ <!-- authorization -->
   can't view other user's data
   can't checkout
   can't view admin stuff
