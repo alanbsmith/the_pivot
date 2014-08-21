@@ -1,5 +1,8 @@
 class Item < ActiveRecord::Base
   has_many :order_items
+
+  before_destroy :ensure_not_referenced_by_any_order_item
+
   has_many :orders, through: :order_items
   has_many :categorizations
   has_many :categories, through: :categorizations
@@ -23,7 +26,17 @@ class Item < ActiveRecord::Base
   scope :active,  -> { where(status: 1) }
   scope :retired, -> { where(status: 2) }
 
-  def categories_list
-    Category.all
-  end
+  private
+    def categories_list
+      Category.all
+    end
+
+    def ensure_not_referenced_by_any_order_item
+      if line_items.empty?
+        return true
+      else
+        errors.add(:base, 'Order Items Present')
+        return false
+      end
+    end
 end

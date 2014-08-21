@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :order_items
 
   match "/home",    to: "static_pages#home",    via: "get"
   match "/about",   to: "static_pages#about",   via: "get"

@@ -1,6 +1,21 @@
-<h1> This is your order </h1>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
 
-<ul>
-  <% @order.items.each do |item| %>
-    <li><%= item.title %></li>
+<h1> Your current order </h1>
+<table>
+  <% @order.order_items.each do |cart_item| %>
+  <tr>
+    <td><%= cart_item.item.title %> </td>
+    <td><%= number_to_currency(cart_item.price) %></td>
+    <td><%= cart_item.quantity %></td>
   <% end %>
+
+  <tr class="total_line">
+    <td> Total </td>
+    <td><%= number_to_currency(@order.total_price) %></td>
+  </tr>
+</table>
+<%= button_to 'Empty cart', @order, method: :delete,
+  data: { confirm: 'Are you sure?' } %>
+
