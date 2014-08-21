@@ -6,9 +6,11 @@
 <table class="order-items">
   <% @order.order_items.each do |cart_item| %>
   <tr>
-    <td><%= cart_item.item.title %> </td>
+    <td><%= image_tag cart_item.item.image.url(:user_thumb) %></td>
+    <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
     <td><%= number_to_currency(cart_item.item.price) %></td>
     <td><%= cart_item.quantity %></td>
+    <td><%= button_to 'Remove From Cart', cart_item ,method: :delete %></td>
   <% end %>
 
   <tr class="total_line">
