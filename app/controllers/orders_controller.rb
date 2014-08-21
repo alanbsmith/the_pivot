@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
   include CurrentOrder
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
   def show
     @order = Order.find(params[:id])
+    binding.pry
   end
 
   def new
@@ -16,7 +17,7 @@ class OrdersController < ApplicationController
     @order.destroy if @order.id == session[:order_id]
     session[:order_id] = nil
     respond_to do |format|
-      format.html { redirect_to store_url,
+      format.html { redirect_to items_url,
         notice: 'Your cart is currently empty' }
         format.json { head :no_content }
     end

@@ -49,7 +49,9 @@
             <ul class="nav">
               <li><%= link_to "Contact", contact_path  %></li>
               <li><%= link_to "Items", items_path  %></li>
-              <li><%= link_to "Cart", "/cart"  %></li>
+              <% if @order_item %>
+                <li><%= link_to "Cart", order_path(@order_items.order)  %></li>
+              <% end %>
             </ul>
               <div class="navbar pull-right">
                 <ul class="nav">
