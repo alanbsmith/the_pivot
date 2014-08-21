@@ -6,14 +6,14 @@ RSpec.describe User, :type => :model do
 
   subject { @user }
 
-  it { should respond_to(:first_name) }
-  it { should respond_to(:last_name) }
-  it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
+    it { should respond_to(:first_name) }
+    it { should respond_to(:last_name) }
+    it { should respond_to(:email) }
+    it { should respond_to(:password_digest) }
+    it { should respond_to(:password) }
+    it { should respond_to(:password_confirmation) }
 
-  it { should be_valid }
+    it { should be_valid }
 
   it "should not be valid without a first name" do
     @user.first_name = nil
@@ -106,5 +106,4 @@ RSpec.describe User, :type => :model do
     unauthenticated_user = @user.authenticate("wrongpassword")
     expect(unauthenticated_user).to eq(false)
   end
-
 end
