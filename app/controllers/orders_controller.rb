@@ -28,9 +28,12 @@ class OrdersController < ApplicationController
     @order.update(status: 'open')
 
     respond_to do |format|
-      format.html { redirect_to something_url}
+      format.html { redirect_to review_path }
       format.json { head :no_content }
     end
+  end
+
+  def review
   end
 
   private
