@@ -4,8 +4,10 @@ class Item < ActiveRecord::Base
   before_destroy :ensure_not_referenced_by_any_order_item
 
   has_many :orders, through: :order_items
+  
   has_many :categorizations
   has_many :categories, through: :categorizations
+  
   mount_uploader :image, ImageUploader
 
   # validates :name,
@@ -25,6 +27,15 @@ class Item < ActiveRecord::Base
 
   scope :active,  -> { where(status: 1) }
   scope :retired, -> { where(status: 2) }
+
+
+    def num_to_status
+      if item.status == 1
+        item.status = 'active'
+      else item.status == 2
+        item.status = 'retired'
+      end
+    end
 
   private
     def categories_list
