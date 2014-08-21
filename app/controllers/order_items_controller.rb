@@ -1,7 +1,7 @@
 class OrderItemsController < ApplicationController
   include CurrentOrder
   before_action :set_order, only: [:create]
-  before_action :set_order_item, only: [:show, :edit, :update, :destroy]
+  # before_action :set_order_item, only: [:show, :edit, :update, :destroy]
 
   def create
     item = Item.find(params[:item_id])
@@ -21,8 +21,22 @@ class OrderItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @order_item = OrderItem.find(params[:id])
+    @order_item.destroy
+
+    respond_to do |format|
+      format.html { redirect_to order_path(@order_item.order), notice: 'Item was successfully removed form cart.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     def order_items_params
       params.require(:order_item).permit(:item_id)
+    end
+
+    def order
+      @order
     end
 end
