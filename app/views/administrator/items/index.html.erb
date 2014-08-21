@@ -11,9 +11,9 @@
     <td><%= item.description %></td>
     <td><%= item.price %></td>
     <td><strong>Current Status:</strong> <%= item.status %></td>
-  
-    <td><strong>Assigned Categories:</strong> 
-    	<% item.categorizations.each do |category| %>
+
+    <td><strong>Assigned Categories:</strong>
+    	<% item.categories.each do |category| %>
     	<%= category.title %>
     	<% end %></td>
 
