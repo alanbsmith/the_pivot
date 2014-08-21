@@ -99,6 +99,7 @@ describe "admin_menu", type: :feature do
     click_button('Update this Item')
 
     visit items_path
+    save_and_open_page
     expect(page).to_not have_content(deleted_item)
   end
 end
