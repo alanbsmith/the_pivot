@@ -179,6 +179,7 @@ category5.items << item20
 #                     address_id:      "",
 #                     type:            "")
 #
+
 # user1 = User.create(first_name:      "Jorge",
 #                     last_name:       "Tellez",
 #                     email:           "jorge@jumpstartlab.com"

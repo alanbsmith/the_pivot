@@ -17,7 +17,6 @@
     <td><%= item.description %></td>
     <td><%= number_to_currency(item.price) %></td>
     <td><strong>Current Status:</strong> <%= item.status %></td>
-  
     <td><strong>Assigned Categories:</strong> 
     	<% item.categories.each do |category| %>
     	<%= category.title %>
