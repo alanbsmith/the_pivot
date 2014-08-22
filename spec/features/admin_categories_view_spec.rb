@@ -8,10 +8,12 @@ describe "admin_categories", type: :feature do
 
     @categories = Category.all
     @category   = Category.new
-    visit administrator_categories_path
+    visit home_path
   end
 
   it 'shows a list of categories to the admin' do
+    admin_login
+    visit administrator_categories_path
     @categories.each do |category|
       expect(page).to have_content(category.title)
       expect(page).to have_content(category.description)
@@ -19,10 +21,16 @@ describe "admin_categories", type: :feature do
   end
 
   it 'has a link to create a category' do
+    admin_login
+    visit administrator_categories_path
     expect(page).to have_link('Create New Category', href: new_administrator_category_path)
   end
 
   it 'adds a category' do
+    admin_login
+    visit administrator_categories_path
+
+
     page.click_link('Create New Category')
     page.fill_in('Title', with: 'Banana')
     page.fill_in('Description', with: "Monkey's favorite fruit")
@@ -33,12 +41,18 @@ describe "admin_categories", type: :feature do
   end
 
   it 'has a link to destroy a category' do
+    admin_login
+    visit administrator_categories_path
+
     @categories.each do |category|
       expect(page).to have_link('Delete', href: administrator_category_path(category))
     end
   end
 
   it 'destroys a category' do
+    admin_login
+    visit administrator_categories_path
+
     category         = @categories.first
     deleted_category = category.title
 
@@ -52,12 +66,18 @@ describe "admin_categories", type: :feature do
   end
 
   it 'has a link to edit a category' do
+    admin_login
+    visit administrator_categories_path
+
     @categories.each do |category|
       expect(page).to have_link('Edit', href: edit_administrator_category_path(category))
     end
   end
 
   it 'edits a category' do
+    admin_login
+    visit administrator_categories_path
+
     category     = @categories.first
     old_category = category.title
 

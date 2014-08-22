@@ -16,6 +16,7 @@ RSpec.describe 'the User view', type: :feature do
     end
 
     it 'can register a user' do
+      User.delete_all
       users = User.all
       expect(users.count).to eq(0)
       visit register_path

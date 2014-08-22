@@ -177,7 +177,7 @@ category5.items << item20
 #                     password_digest: "",
 #                     salt:            "",
 #                     address_id:      "",
-#                     type:            "")
+#                     role:            "")
 #
 
 # user1 = User.create(first_name:      "Jorge",
@@ -187,16 +187,21 @@ category5.items << item20
 #                     password_digest: "",
 #                     salt:            "",
 #                     address_id:      "",
-#                     type:            "")
+#                     role:            "")
 #
-# user1 = User.create(first_name:      "Josh",
-#                     last_name:       "Cheek",
-#                     email:           "josh@jumpstartlab.com"
-#                     username:        "josh",
-#                     password_digest: "",
-#                     salt:            "",
-#                     address_id:      "",
-#                     type:            "")
+admin_josh = User.create(first_name:     "Josh",
+                  last_name:             "Cheek",
+                  email:                 "josh@jumpstartlab.com",
+                  username:              "josh",
+                  password:              "password",
+                  password_confirmation: "password",
+                  role:                   "admin")
+admin_rachel = User.create(first_name:     "Rachel",
+                  last_name:             "Warbelow",
+                  email:                 "rachel@jumpstartlab.com",
+                  password:              "password",
+                  password_confirmation: "password",
+                  role:                   "default")
 #
 # user1 = User.create(first_name:      "Rachel",
 #                     last_name:       "Warbelow",
@@ -205,6 +210,6 @@ category5.items << item20
 #                     password_digest: "",
 #                     salt:            "",
 #                     address_id:      "",
-#                     type:            "")
+#                     role:            "")
 
 puts "============= Seeding Data End ============="
