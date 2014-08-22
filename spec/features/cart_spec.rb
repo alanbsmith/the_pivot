@@ -19,6 +19,8 @@ describe 'manipulating the cart' do
     visit order_path(orderitem.order)
 
     click_on("Checkout")
+
+    expect(current_path).to eq(signin_path)
   end
 
   describe 'adding items to cart', type: :feature do

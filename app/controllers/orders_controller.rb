@@ -25,11 +25,16 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    @order.update(status: 'open')
+    if signed_in?
+      @order.update(status: 'open')
 
-    respond_to do |format|
-      format.html { redirect_to review_path }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to review_path }
+        format.json { head :no_content }
+      end
+    else
+      flash.notice = "You need to sign in to order delicious icecream!"
+      redirect_to signin_path
     end
   end
 
