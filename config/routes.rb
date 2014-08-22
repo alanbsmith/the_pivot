@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :order_items
+  resources :addresses
 
   match "/home",    to: "static_pages#home",    via: "get"
   match "/about",   to: "static_pages#about",   via: "get"
@@ -19,12 +20,18 @@ Rails.application.routes.draw do
   match "/checkout", to: "orders#checkout",  via: "post"
   match "/review",   to: "orders#review",    via: "get"
 
+  namespace :user do
+    resources :addresses
+    resources :orders
+  end
 
   namespace :administrator do
     resources :admins
     resources :items
     resources :categories
     resources :orders
+    resources :users
+    resources :addresses
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,34 @@
+<h1>Administrator Users View</h1>
+
+<hr/>
+
+<p style="float:left;width:33.33333333%">
+  <%= link_to 'Create New Item', new_administrator_item_path %></p>
+<p style="float:left;width:33.33333333%">
+  <%= link_to 'Categories Dashboard', administrator_categories_path %></p>
+<p style="float:left;width:33.33333333%">
+  <%= link_to 'Orders Dashboard', administrator_orders_path %></p>
+
+<hr/>
+<table class='table'>
+
+  <tr>
+    <th>User ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Address</th>
+  </tr>
+
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.role %></td>
+    <td><%= link_to 'Address', user_address_path(user) %></td> 
+  </tr>
+<% end %>
+</table>
