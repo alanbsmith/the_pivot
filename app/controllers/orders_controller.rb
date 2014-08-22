@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def new
+    ## need to put user id in here
     current_order ||= Order.new(order_params)
     raise "Boom"
     current_order.order_items.create(item_id: params[:id], order_id: current_order.id)
