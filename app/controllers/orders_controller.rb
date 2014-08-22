@@ -26,16 +26,21 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    if signed_in?
-      @order.update(status: 'open')
+    if @order.order_items.empty?
+      redirect_to items_url, notice: "Your cart is empty"
+      return
 
-      respond_to do |format|
-        format.html { redirect_to review_path }
-        format.json { head :no_content }
+      if signed_in?
+        @order.update(status: 'open')
+
+        respond_to do |format|
+          format.html { redirect_to review_path }
+          format.json { head :no_content }
+        end
+      else
+        flash.notice = "You need to sign in to order delicious icecream!"
+        redirect_to signin_path
       end
-    else
-      flash.notice = "You need to sign in to order delicious icecream!"
-      redirect_to signin_path
     end
   end
 
