@@ -1,3 +1,28 @@
+TAN
+===========================
+- bug in the show for menu items (within show template)
+- Admin dash board, with admin dropdown
+===========================
+
+HILARY
+===========================
+- cart orders stuff
+===========================
+
+HORACIO
+===========================
+- retrofit testing for admin/order
+- fix/link up categories selector (in both: new item & edit item) so categories attach to item
+===========================
+
+COREY
+===========================
+- fix admin category tests
+- implement user address / profile
+- add user ID link to admin/order dashboard
+
+
+
 suggestions
   √ <!-- - 0. fix tests -->
   √ <!-- 1. get auth working -->

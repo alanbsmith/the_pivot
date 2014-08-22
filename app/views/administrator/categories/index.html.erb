@@ -1,12 +1,26 @@
-<h1>Categories</h1>
+<h1>Administrator Categories Dashboard</h1>
 <hr/>
-<%= link_to 'Create New Category', new_administrator_category_path %>
-<ul>
+
+<p style="float:left;width:33.33333333%">
+  <%= link_to 'Create New Category', new_administrator_category_path %>
+<p style="float:left;width:33.33333333%">
+  <%= link_to 'Menu Items Dashboard', administrator_items_path %></p>
+<p style="float:left;width:33.33333333%">
+  <%= link_to 'Categories Dashboard', administrator_categories_path %></p>
+
+<hr/>
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
   <% @categories.each do |category| %>
-    <li><%= category.title %></li>
-    <li><%= category.description %></li>
-    <li><%= link_to 'Edit', edit_administrator_category_path(category) %></li>
-    <li><%= link_to 'Delete', administrator_category_path(category), confirm: 'Are you sure?', :method => :DELETE %></li>
-<br/>
-  <% end %>
-</ul>
+  <tr>
+    <td align="left"><%= category.title %></td>
+    <td align="left"><%= category.description %></td>
+    <td><%= link_to 'Edit', edit_administrator_category_path(category) %></td>
+    <td><%= link_to 'Delete', administrator_category_path(category), confirm: 'Are you sure?', :method => :DELETE %></td>
+  </tr>
+<% end %>
+</table>

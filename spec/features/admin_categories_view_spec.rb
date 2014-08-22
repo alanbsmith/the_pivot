@@ -42,7 +42,7 @@ describe "admin_categories", type: :feature do
     category         = @categories.first
     deleted_category = category.title
 
-    within('//ul') do
+    within('//table') do
       first(:link, 'Delete').click
       # click_link('Yes')
     end
@@ -61,7 +61,7 @@ describe "admin_categories", type: :feature do
     category     = @categories.first
     old_category = category.title
 
-    within('//ul') do
+    within('//table') do
       first(:link, 'Edit').click
     end
     page.fill_in('Title', with: 'Chocomore')

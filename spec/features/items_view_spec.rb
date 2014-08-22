@@ -2,9 +2,9 @@ require 'feature_helper'
 
 describe "menu", type: :feature do
   before(:each) do
-    Item.create(title:"Chocolate yummy yumm", description: "Chocolate so good you'll wanna slap yo mama", price: 400, image: "icecreamslug.com", status: 1)
-    Item.create(title:"Vanilla willya please", description: "Vanilla is the bomb for you mom!", price: 325, image: "icecreamslug.com", status: 1)
-    Item.create(title:"Strawberry berry tasty", description: "Strawbeeeeeerrrry! Is good for me!", price: 450, image: "icecreamslug.com", status: 1)
+    @item1 = Item.create(title:"Chocolate yummy yumm", description: "Chocolate so good you'll wanna slap yo mama", price: 400, image: "icecreamslug.com", status: 1)
+    @item2 = Item.create(title:"Vanilla willya please", description: "Vanilla is the bomb for you mom!", price: 325, image: "icecreamslug.com", status: 1)
+    @item3 = Item.create(title:"Strawberry berry tasty", description: "Strawbeeeeeerrrry! Is good for me!", price: 450, image: "icecreamslug.com", status: 1)
 
     @items =  Item.all
     visit items_path
@@ -14,6 +14,11 @@ describe "menu", type: :feature do
     @items.each do |item|
       expect(page).to have_content(item.title)
     end
+  end
+
+  it "has a link to show the item" do
+    click_link('Chocolate yummy yumm')
+    expect(current_path).to eq(item_path(@item1))
   end
 
   it 'has an add to cart button' do
