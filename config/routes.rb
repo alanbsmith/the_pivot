@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   namespace :administrator do
+    resources :admins
     resources :items
     resources :categories
     resources :orders
