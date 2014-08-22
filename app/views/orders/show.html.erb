@@ -32,6 +32,5 @@
     </tr>
   </tbody>
 </table>
-<%= button_to 'Empty cart', @order, method: :delete,
-  data: { confirm: 'Are you sure?' } %>
+<%= button_to 'Empty Cart', order_path(@order), method: :delete %>
 <%= button_to 'Checkout', checkout_path %>

@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
     else
 
       if signed_in?
-        @order.update(status: 'open')
+        @order.update(status: 'open', user_id: current_user.id)
 
         respond_to do |format|
           format.html { redirect_to review_path }
@@ -44,6 +44,7 @@ class OrdersController < ApplicationController
   end
 
   def review
+    
   end
 
   private
