@@ -2,7 +2,8 @@ TAN
 ===============================================================
 <!-- - bug in the show for menu items (within show template)-->
 <!-- - Admin dash board, with admin dropdown -->
-- Whats Tan doing??? Finding waldo...
+- sessions helper testing
+- Admin dashboard homepage --> usable data presentation (graphs etc.)
 ===============================================================
 
 HILARY
