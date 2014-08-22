@@ -3,9 +3,13 @@ require 'feature_helper'
 describe 'manipulating the cart' do
   it 'removes items from cart' do
     item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-    order = Order.create(status: 'cart')
-    orderitem = OrderItem.create(order: order, item: item)
-    visit order_path(orderitem.order)
+    visit items_path
+
+    click_on('Add To Cart')
+
+    expect(current_path).to eq(items_path)
+
+    click_on('Cart')
 
     click_on('Empty cart')
 
@@ -14,9 +18,13 @@ describe 'manipulating the cart' do
 
   it 'checks out' do
     item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-    order = Order.create(status: 'cart')
-    orderitem = OrderItem.create(order: order, item: item)
-    visit order_path(orderitem.order)
+    visit items_path
+
+    click_on('Add To Cart')
+
+    expect(current_path).to eq(items_path)
+
+    click_on('Cart')
 
     click_on("Checkout")
 

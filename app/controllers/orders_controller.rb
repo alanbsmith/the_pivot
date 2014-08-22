@@ -9,10 +9,8 @@ class OrdersController < ApplicationController
   end
 
   def new
-    ## need to put user id in here
-    current_order ||= Order.new(order_params)
-    raise "Boom"
-    current_order.order_items.create(item_id: params[:id], order_id: current_order.id)
+    @order ||= Order.new(order_params)
+    @order.order_items.create(item_id: params[:id], order_id: current_order.id)
   end
 
   def destroy
@@ -28,7 +26,7 @@ class OrdersController < ApplicationController
   def checkout
     if @order.order_items.empty?
       redirect_to items_url, notice: "Your cart is empty"
-      return
+    else
 
       if signed_in?
         @order.update(status: 'open')
@@ -41,6 +39,7 @@ class OrdersController < ApplicationController
         flash.notice = "You need to sign in to order delicious icecream!"
         redirect_to signin_path
       end
+
     end
   end
 
