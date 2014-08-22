@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resources :items
 
   resources :categories
-  resources :orders
+  resources :carts
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :order_items
+  resources :cart_items
 
   match "/home",    to: "static_pages#home",    via: "get"
   match "/about",   to: "static_pages#about",   via: "get"
@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   match "/register", to: "users#new",        via: "get"
   match "/signin",   to: "sessions#new",     via: "get"
   match "/signout",  to: "sessions#destroy", via: "delete"
-  match "/checkout", to: "orders#checkout",  via: "post"
-  match "/review",   to: "orders#review",    via: "get"
+  # match "/checkout", to: "orders#checkout",  via: "post"
+  # match "/review",   to: "orders#review",    via: "get"
 
 
   namespace :administrator do

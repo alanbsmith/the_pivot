@@ -1,12 +1,12 @@
 <%- model_class = Item -%>
 <div class="page-header">
-  <h1> Your Order </h1>
+  <h1> Your Cart </h1>
   <% if notice %>
   <p id="notice"><%= notice %></p>
   <% end %>
 </div>
 
-<table class="table table-striped order-items ">
+<table class="table table-striped cart-items ">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:image) %></th>
@@ -17,7 +17,7 @@
     </tr>
   </thead>
   <tbody>
-  <% @order.order_items.each do |cart_item| %>
+  <% @cart.cart_items.each do |cart_item| %>
     <tr>
       <td><%= image_tag cart_item.item.image.url(:user_thumb) %></td>
       <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
@@ -28,10 +28,9 @@
 
     <tr class="total_line">
       <td> Total </td>
-      <td><%= number_to_currency(@order.total_price) %></td>
+      <td><%= number_to_currency(@cart.total_price) %></td>
     </tr>
   </tbody>
 </table>
-<%= button_to 'Empty cart', @order, method: :delete,
+<%= button_to 'Empty cart', @cart, method: :delete,
   data: { confirm: 'Are you sure?' } %>
-<%= button_to 'Checkout', checkout_path %>
