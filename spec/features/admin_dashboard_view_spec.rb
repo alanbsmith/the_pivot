@@ -3,10 +3,7 @@ require 'feature_helper'
 describe 'the admin dashboard' do
 
   before(:each) do
-    @admin_user = User.create(email: "admin@example.com", password: "adminpassword", password_confirmation: "adminpassword",
-                        first_name: "admin", last_name: "whatever", role: "admin"
-    )
-    @default_user = User.create(email: "user@example.com", password: "userpassword", password_confirmation: "userpassword",
+      @default_user = User.create(email: "user@example.com", password: "userpassword", password_confirmation: "userpassword",
                         first_name: "user", last_name: "whatever", role: "default"
     )
     visit home_path
@@ -26,6 +23,26 @@ describe 'the admin dashboard' do
 
     it 'dashboard link takes admin to dashboard' do
       admin_login
+      click_link("Dashboard")
+      expect(current_path).to eq(administrator_admins_path)
+    end
+
+    it 'has a link for manage categories' do
+      admin_login
+      visit administrator_admins_path
+      expect(page).to have_link("Manage Categories")
+    end
+
+    it 'has a link to manage menu items' do
+      admin_login
+      visit administrator_admins_path
+      expect(page).to have_link("Manage Items")
+    end
+
+    it 'has a link for manage order' do
+      admin_login
+      visit administrator_admins_path
+      expect(page).to have_link("Manage Orders")
     end
   end
 

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
 
   namespace :administrator do
+    resources :admins
     resources :items
     resources :categories
     resources :orders

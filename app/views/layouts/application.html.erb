@@ -70,7 +70,7 @@
                     <li class="divider"></li>
                     <li><%= link_to "Order History", "#" %></li>
                     <% if current_user.role == "admin" %>
-                      <%= link_to "Dashboard", "#" %>
+                      <%= link_to "Dashboard", administrator_admins_path %>
                     <% end %>
                 <% else %>
                   <li><%= link_to "Sign In", "/signin"  %></li>

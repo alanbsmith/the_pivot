@@ -1,0 +1,20 @@
+<div class="page-header">
+  <h1>Admin Dashboard</h1>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Panels</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= link_to 'Manage Categories', administrator_categories_path %></td>
+        <td><%= link_to 'Manage Orders', administrator_orders_path %></td>
+        <td><%= link_to 'Manage Items', administrator_items_path %></td>
+      </tr>
+  </tbody>
+</table>
