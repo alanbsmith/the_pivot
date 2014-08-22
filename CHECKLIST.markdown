@@ -1,25 +1,34 @@
 TAN
-===========================
-- bug in the show for menu items (within show template)
-- Admin dash board, with admin dropdown
-===========================
+===============================================================
+<!-- - bug in the show for menu items (within show template)-->
+<!-- - Admin dash board, with admin dropdown -->
+- Whats Tan doing??? Finding waldo...
+===============================================================
 
 HILARY
 ===========================
-- cart orders stuff
+- cart orders stuff(pending)
 ===========================
+
 
 HORACIO
-===========================
-- retrofit testing for admin/order
+==============================================================================================
+- retrofit testing for admin/order(pending)
 - fix/link up categories selector (in both: new item & edit item) so categories attach to item
-===========================
+==============================================================================================
+
 
 COREY
-===========================
-- fix admin category tests
-- implement user address / profile
+===========================================
+<!-- - fix admin category tests -->
+- implement user address / profile 
 - add user ID link to admin/order dashboard
+===========================================
+
+This Weekend ==================================
+- By Sunday, Base spec is met
+
+===============================================
 
 
 
