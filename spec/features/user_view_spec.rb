@@ -3,14 +3,15 @@ require 'feature_helper'
 RSpec.describe 'the User view', type: :feature do
 
   describe 'the register view' do
+    before(:each) do
+      visit home_path
+    end
 
     it 'has link to register user' do
-      visit home_path
       expect(page).to have_link('Register')
     end
 
     it 'displays the registration page' do
-      visit home_path
       click_link('Register')
       expect(current_path).to eq(register_path)
     end
@@ -30,6 +31,21 @@ RSpec.describe 'the User view', type: :feature do
       expect(registered_user.email).to eq("user@example.com")
     end
 
+    it 'can log in as default user' do
+      default_login
+      expect(current_path).to eq(items_path)
+    end
+
+    it 'cannot access the administrator items page' do
+      default_login
+      visit administrator_items_path
+      expect(current_path).to_not eq(administrator_items_path)
+    end
+
+    it 'default user cannot access dashboard link' do
+      default_login
+      expect(page).to_not have_link("Dashboard")
+    end
   end
 
 end

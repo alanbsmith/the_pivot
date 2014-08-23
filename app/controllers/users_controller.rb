@@ -6,16 +6,16 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    redirect_to register_path, success: "Registration successful!"
+    redirect_to register_path, notice: "Registration Successful!"
   end
 
 
 
   def user_params
-    params.require(:user).permit(:email, 
-                                 :first_name, 
-                                 :last_name, 
-                                 :password, 
+    params.require(:user).permit(:email,
+                                 :first_name,
+                                 :last_name,
+                                 :password,
                                  :password_confirmation
                                  )
   end

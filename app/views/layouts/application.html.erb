@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+``<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -66,11 +66,16 @@
                     </a>
 
                   <ul class="dropdown-menu">
+                    <% if current_user && current_user.role == "default" %>
                     <li><%= link_to "Profile", user_path(current_user) %></li>
-                    <li class="divider"></li>
                     <li><%= link_to "Order History", "#" %></li>
+                    <% end %>
                     <% if current_user.role == "admin" %>
                       <%= link_to "Dashboard", administrator_admins_path %>
+                      <%= link_to "Manage Items", administrator_items_path %>
+                      <%= link_to "Manage Categories", administrator_categories_path %>
+                      <%= link_to "Manage Orders", administrator_orders_path %>
+
                     <% end %>
                 <% else %>
                   <li><%= link_to "Sign In", "/signin"  %></li>
