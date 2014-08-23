@@ -1,7 +1,5 @@
 TAN
 ===============================================================
-<!-- - bug in the show for menu items (within show template)-->
-<!-- - Admin dash board, with admin dropdown -->
 - sessions helper testing
 - Admin dashboard homepage --> usable data presentation (graphs etc.)
 ===============================================================
@@ -22,7 +20,7 @@ HORACIO
 COREY
 ===========================================
 <!-- - fix admin category tests -->
-- implement user address / profile 
+- implement user address / profile
 - add user ID link to admin/order dashboard
 ===========================================
 
