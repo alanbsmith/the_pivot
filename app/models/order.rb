@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   has_many :order_items, dependent: :destroy
   has_many :items, through: :order_items
+  belongs_to :user
 
   def add_item(item_id)
     current_item = order_items.find_by(item_id: item_id)
@@ -11,7 +12,7 @@ class Order < ActiveRecord::Base
     end
     current_item
   end
-  
+
 
   def total_price
     order_items.to_a.sum { |order_item| order_item.total_price }

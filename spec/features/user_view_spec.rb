@@ -6,6 +6,9 @@ describe 'the User view', type: :feature do
       before(:each) do
         @default_user = User.create(email: "user@example.com", password: "userpassword", password_confirmation: "userpassword",
                           first_name: "user", last_name: "whatever", role: "default")
+
+
+
       visit home_path
     end
 
@@ -58,6 +61,25 @@ describe 'the User view', type: :feature do
       default_login
       click_link('Profile')
       expect(current_path).to eq(user_path(@default_user))
+    end
+
+    it 'profile page displays information about user' do
+      visit user_path(@default_user)
+      expect(page).to have_content(@default_user.first_name)
+      expect(page).to have_content(@default_user.last_name)
+    end
+
+    it 'default user has a view orders link' do
+      default_login
+      expect(page).to have_link('View Orders')
+    end
+
+    it 'view orders page should have all associated orders with user' do
+      user_orders = @default_user.orders
+      binding.pry
+      default_login
+      click_link("View Orders")
+      expect(page).to have_content(user_orders)
     end
   end
 

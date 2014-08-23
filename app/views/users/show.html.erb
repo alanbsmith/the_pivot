@@ -1,1 +1,19 @@
-<h1>User Profile</h1>
+<%- model_class = User -%>
+<h1> Your Profile </h1>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+</div>
+
+<table class="profile table">
+  <table>
+    <tr><th>First Name:</th>
+      <td colspan="2">  <%= @user.first_name %></td></tr>
+      <tr><th>Last Name:</th>
+        <td colspan="2">  <%= @user.last_name %></td></tr>
+      </tr>
+      <tr>
+        <th>E-mail:</th>
+        <td colspan="2">  rachel@jumpstart_lab</td>
+      </tr>
+  </table>
