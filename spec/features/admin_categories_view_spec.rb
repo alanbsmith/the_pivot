@@ -2,6 +2,10 @@ require 'feature_helper'
 
 describe "admin_categories", type: :feature do
   before(:each) do
+
+    @admin_user = User.create(email: "admin@example.com", password: "adminpassword", password_confirmation: "adminpassword",
+                        first_name: "admin", last_name: "whatever", role: "admin")
+
     Category.create(title:"Chocolate", description:"Who doesn't like chocolate? Hilter that's who.")
     Category.create(title:"Vanilla", description: "It's not as boring as white people")
     Category.create(title:"Strawberry", description: "This counts as a fruit right?")

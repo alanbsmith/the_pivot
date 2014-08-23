@@ -2,14 +2,6 @@ require 'rails_helper'
 require 'capybara/rails'
 require 'capybara/rspec'
 
-@admin_user = User.create(email: "admin@example.com", password: "adminpassword", password_confirmation: "adminpassword",
-                    first_name: "admin", last_name: "whatever", role: "admin")
-
-
-@default_user = User.create(email: "user@example.com", password: "userpassword", password_confirmation: "userpassword",
-                  first_name: "user", last_name: "whatever", role: "default"
-)
-
 
   def admin_login
     click_link('Sign In')
@@ -18,6 +10,8 @@ require 'capybara/rspec'
     fill_in("Password", with: "adminpassword")
     click_button('Signin')
   end
+
+
 
   def default_login
     click_link('Sign In')
