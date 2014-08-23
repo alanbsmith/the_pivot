@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
           format.json { head :no_content }
         end
       else
-        flash.notice = "You need to sign in to order delicious icecream!"
+        # flash.notice = "You need to sign in to order delicious icecream!"
         redirect_to signin_path
       end
 
@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
   end
 
   def review
-
+    session[:order_id] = nil
   end
 
   private

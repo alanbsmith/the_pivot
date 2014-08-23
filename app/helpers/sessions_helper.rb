@@ -6,6 +6,7 @@ module SessionsHelper
                                  expires: 1.hour.from_now.utc } # may need to change this...
     user.update_attribute(:remember_token, User.digest(remember_token))
     self.current_user = user
+    user.orders << @order
   end
 
   def sign_out
