@@ -2,8 +2,8 @@ require 'rails_helper'
 require 'capybara/rails'
 require 'capybara/rspec'
 
-@admin_user = User.create(email: "admin@example.com", password: "adminpassword", password_confirmation: "adminpassword",
-                    first_name: "admin", last_name: "whatever", role: "admin")
+# @admin_user = User.create(email: "admin@example.com", password: "adminpassword", password_confirmation: "adminpassword",
+#                     first_name: "admin", last_name: "whatever", role: "admin")
 
 
 @default_user = User.create(email: "user@example.com", password: "userpassword", password_confirmation: "userpassword",
