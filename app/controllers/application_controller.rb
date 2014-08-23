@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   before_action :order
 
   def order
-    @order ||= session[:order_id]
+    @order ||= Order.find(session[:order_id]) if session[:order_id]
   end
 end

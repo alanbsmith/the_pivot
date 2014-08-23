@@ -4,7 +4,7 @@ class OrderItemsController < ApplicationController
 
   def create
     item = Item.find(params[:item_id])
-    order = current_order
+    order = Order.find(session[:order_id])
     @order_item = order.add_item(item.id)
 
     respond_to do |format|
