@@ -45,7 +45,12 @@ class OrdersController < ApplicationController
   end
 
   def review
+  end
+
+  def complete
+    @order.update(status: 'complete')
     session[:order_id] = nil
+    redirect_to home_path
   end
 
   private

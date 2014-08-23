@@ -13,9 +13,23 @@
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:price) %></th>
       <th><%= model_class.human_attribute_name(:quantity) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
+    <% @order.order_items.each do |cart_item| %>
+      <tr>
+        <td><%= image_tag cart_item.item.image.url(:user_thumb) %></td>
+        <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
+        <td><%= number_to_currency(cart_item.item.price) %></td>
+        <td><%= cart_item.quantity %></td>
+      <% end %>
+
+      <tr class="total_line">
+        <td> Total </td>
+        <td><%= number_to_currency(@order.total_price) %></td>
+      </tr>
+    </tbody>
+  </table>
   </tbody>
 </table>
+<%= button_to 'Complete Order', complete_order_path %>
