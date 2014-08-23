@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    # @order = Order.find(params[:id], user_id: current_user.id)
   end
 
   def new
@@ -14,7 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order.destroy if @order.id == session[:order_id]
+    Order.find(session[:order_id]).destroy
     session[:order_id] = nil
     respond_to do |format|
       format.html { redirect_to items_url,
@@ -44,7 +45,7 @@ class OrdersController < ApplicationController
   end
 
   def review
-    
+
   end
 
   private
