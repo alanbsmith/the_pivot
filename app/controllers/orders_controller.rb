@@ -9,9 +9,8 @@ class OrdersController < ApplicationController
   end
 
   def new
-    current_order ||= Order.new(order_params)
-    raise "Boom"
-    current_order.order_items.create(item_id: params[:id], order_id: current_order.id)
+    @order ||= Order.new(order_params)
+    @order.order_items.create(item_id: params[:id], order_id: current_order.id)
   end
 
   def destroy
@@ -25,11 +24,22 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    @order.update(status: 'open')
+    if @order.order_items.empty?
+      redirect_to items_url, notice: "Your cart is empty"
+    else
 
-    respond_to do |format|
-      format.html { redirect_to review_path }
-      format.json { head :no_content }
+      if signed_in?
+        @order.update(status: 'open')
+
+        respond_to do |format|
+          format.html { redirect_to review_path }
+          format.json { head :no_content }
+        end
+      else
+        flash.notice = "You need to sign in to order delicious icecream!"
+        redirect_to signin_path
+      end
+
     end
   end
 
