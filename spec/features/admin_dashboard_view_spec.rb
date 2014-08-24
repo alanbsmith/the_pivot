@@ -1,5 +1,5 @@
 require 'feature_helper'
-
+require 'pry'
 describe 'the admin dashboard' do
 
   before(:each) do

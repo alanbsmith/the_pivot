@@ -11,7 +11,7 @@ RSpec.describe "StaticPagesSpecs", :type => :request do
       end
 
       it "should have the right title 'Home'" do
-        pending
+        skip
         visit root_path
         expect(page).to have_title("Scream n' Cream | Home")
       end
@@ -31,7 +31,7 @@ RSpec.describe "StaticPagesSpecs", :type => :request do
       end
 
       it "should have the right title 'About Us'" do
-        pending
+        skip
         visit about_path
         expect(page).to have_title("Scream n' Cream | About Us")
       end
