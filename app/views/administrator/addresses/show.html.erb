@@ -1,0 +1,22 @@
+<h1><%= "#{@user.last_name}, #{@user.first_name}" %></h1>
+<hr/>
+  <table>
+    <th><%= link_to "Dashboard Home", administrator_admins_path %></th>
+    <th><%= link_to "Users Dashboard", administrator_users_path %></th>
+    <th><%= link_to "Menu Items Dashboard", administrator_items_path %></th>
+    <th><%= link_to "Categories Dashboard", administrator_categories_path %></th>
+    <th><%= link_to "Orders Dashboard", administrator_orders_path %></th>
+
+<hr/>
+<ul>
+    <li><%= @user.email %></li>
+    <li><%= @user.role %></li>
+      <ul>
+        <li><%= @user.street %></li>
+        <li><%= @user.city %></li>
+        <li><%= @user.state %></li>
+        <li><%= @user.zipcode %></li>
+      </ul>
+</ul>
+
+<%= link_to "Order History", user_order_path(@user), class: 'btn' %>

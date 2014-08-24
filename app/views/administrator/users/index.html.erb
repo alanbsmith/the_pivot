@@ -1,9 +1,10 @@
 <h1>Administrator Users View</h1>
 
 <hr/>
-
 <p style="float:left;width:33.33333333%">
-  <%= link_to 'Create New Item', new_administrator_item_path %></p>
+  <%= link_to 'Dashboard Home', administrator_admins_path %></p>
+<p style="float:left;width:33.33333333%">
+  <%= link_to 'Menu Items Dashboard', administrator_items_path %></p>
 <p style="float:left;width:33.33333333%">
   <%= link_to 'Categories Dashboard', administrator_categories_path %></p>
 <p style="float:left;width:33.33333333%">
@@ -28,7 +29,7 @@
     <td><%= user.last_name %></td>
     <td><%= user.email %></td>
     <td><%= user.role %></td>
-    <td><%= link_to 'Address', user_address_path(user) %></td> 
+    <td><%= link_to 'Address', administrator_address_path(user.id) %></td> 
   </tr>
 <% end %>
 </table>
