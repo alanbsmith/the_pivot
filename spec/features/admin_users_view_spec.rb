@@ -31,20 +31,20 @@ describe "admin_user_dashboard", type: :feature do
       expect(page).to have_content(user.last_name)
       expect(page).to have_content(user.email)
       expect(page).to have_content(user.role)
-      expect(page).to have_link('Address', href: administrator_address_path(user))
+      expect(page).to have_link('Profile', href: administrator_address_path(user))
     end
   end
 
   it 'has links to other dashboards' do
-    expect(page).to have_link('Dashboard Home',       href: administrator_admins_path)
-    expect(page).to have_link('Menu Items Dashboard', href: administrator_items_path)
-    expect(page).to have_link('Categories Dashboard', href: administrator_categories_path)
-    expect(page).to have_link('Orders Dashboard',     href: administrator_orders_path)
+    expect(page).to have_link('Admin Home',       href: administrator_admins_path)
+    expect(page).to have_link('Manage Items', href: administrator_items_path)
+    expect(page).to have_link('Manage Categories', href: administrator_categories_path)
+    expect(page).to have_link('Manage Orders',     href: administrator_orders_path)
   end
 
   it 'can find a users address' do
     within('//table') do
-      first(:link, 'Address').click
+      first(:link, 'Profile').click
     end
     expect(current_path).to eq(administrator_address_path(@user))
 
