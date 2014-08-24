@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
   root to: "static_pages#home"
-  resources :items
 
+  resources :items
   resources :categories
   resources :orders
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :order_items
-  resources :addresses
 
   match "/home",    to: "static_pages#home",    via: "get"
   match "/about",   to: "static_pages#about",   via: "get"
@@ -23,7 +22,6 @@ Rails.application.routes.draw do
 
 
   namespace :user do
-    resources :addresses
     resources :orders
   end
 
@@ -33,7 +31,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :orders
     resources :users
-    resources :addresses
+    resources :addresses, through: :users
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
