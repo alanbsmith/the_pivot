@@ -13,11 +13,13 @@ Rails.application.routes.draw do
   match "/about",   to: "static_pages#about",   via: "get"
   match "/contact", to: "static_pages#contact", via: "get"
 
-  match "/register", to: "users#new",        via: "get"
-  match "/signin",   to: "sessions#new",     via: "get"
-  match "/signout",  to: "sessions#destroy", via: "delete"
-  match "/checkout", to: "orders#checkout",  via: "post"
-  match "/review",   to: "orders#review",    via: "get"
+  match "/register",         to: "users#new",          via: "get"
+  match "/signin",           to: "sessions#new",       via: "get"
+  match "/signout",          to: "sessions#destroy",   via: "delete"
+  match "/checkout",         to: "orders#checkout",    via: "post"
+  match "/review",           to: "orders#review",      via: "get"
+  match "/complete_order",   to: "orders#complete",    via: "post"
+
 
   namespace :user do
     resources :orders

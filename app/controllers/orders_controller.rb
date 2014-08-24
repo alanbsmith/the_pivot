@@ -6,17 +6,16 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    # @order = Order.find(params[:id], user_id: current_user.id)
   end
 
   def new
-    ## need to put user id in here
-    current_order ||= Order.new(order_params)
-    raise "Boom"
-    current_order.order_items.create(item_id: params[:id], order_id: current_order.id)
+    @order ||= Order.new(order_params)
+    @order.order_items.create(item_id: params[:id], order_id: current_order.id)
   end
 
   def destroy
-    @order.destroy if @order.id == session[:order_id]
+    Order.find(session[:order_id]).destroy
     session[:order_id] = nil
     respond_to do |format|
       format.html { redirect_to items_url,
@@ -26,20 +25,32 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    if signed_in?
-      @order.update(status: 'open')
-
-      respond_to do |format|
-        format.html { redirect_to review_path }
-        format.json { head :no_content }
-      end
+    if @order.order_items.empty?
+      redirect_to items_url, notice: "Your cart is empty"
     else
-      flash.notice = "You need to sign in to order delicious icecream!"
-      redirect_to signin_path
+
+      if signed_in?
+        @order.update(status: 'open', user_id: current_user.id)
+
+        respond_to do |format|
+          format.html { redirect_to review_path }
+          format.json { head :no_content }
+        end
+      else
+        # flash.notice = "You need to sign in to order delicious icecream!"
+        redirect_to signin_path
+      end
+
     end
   end
 
   def review
+  end
+
+  def complete
+    @order.update(status: 'complete')
+    session[:order_id] = nil
+    redirect_to home_path
   end
 
   private
