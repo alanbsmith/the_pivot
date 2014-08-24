@@ -1,12 +1,12 @@
 <h1><%= "#{@user.last_name}, #{@user.first_name}" %></h1>
 <hr/>
   <table>
-    <th><%= link_to "Dashboard Home", administrator_admins_path %></th>
-    <th><%= link_to "Users Dashboard", administrator_users_path %></th>
-    <th><%= link_to "Menu Items Dashboard", administrator_items_path %></th>
-    <th><%= link_to "Categories Dashboard", administrator_categories_path %></th>
-    <th><%= link_to "Orders Dashboard", administrator_orders_path %></th>
-
+    <th><%= link_to "Dashboard Home", administrator_admins_path, class: "btn"%></th>
+    <th><%= link_to "Users Dashboard", administrator_users_path, class: "btn" %></th>
+    <th><%= link_to "Menu Items Dashboard", administrator_items_path, class: "btn" %></th>
+    <th><%= link_to "Categories Dashboard", administrator_categories_path, class: "btn" %></th>
+    <th><%= link_to "Orders Dashboard", administrator_orders_path, class: "btn" %></th>
+</table>
 <hr/>
 <ul>
     <li><%= @user.email %></li>
@@ -18,5 +18,22 @@
         <li><%= @user.zipcode %></li>
       </ul>
 </ul>
+<hr/>
 
-<%= link_to "Order History", user_order_path(@user), class: 'btn' %>
+<h3>Order History for: <%= "#{@user.first_name}" %></h3>
+<table>
+  <th>
+    <th>Status</th>
+    <th>Total</th>
+    <th>Created at</th>
+    <th>Receiving method</th>
+  </th>
+  <%= @user.orders.each do |order| %>
+    <tr>
+      <td><%= order.status %></td>
+      <td><%= order.total %></td>
+      <td><%= order.created_at %></td>
+      <td><%= order.receiving %></td>
+    </tr>
+  <% end %>
+</table>

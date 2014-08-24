@@ -1,18 +1,24 @@
-<h1>Administrator Orders Dashboard</h1>
-<table class='table'>
-    <tr>
-    <th>
-      <%= form_for @order, url: administrator_order_path(@order), method: :find_by do |f| %>
+<h1>Manage Orders</h1>
+
+<hr/>
+
+<p style="float:left;width:25%">
+  <%= link_to 'Admin Home', administrator_admins_path, class: 'btn' %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Manage Categories', administrator_categories_path, class: 'btn' %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Manage Items', administrator_items_path, class: 'btn' %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Manage Users', administrator_users_path, class: 'btn' %></p>
+
+<%= form_for @order, url: administrator_order_path(@order), method: :find_by do |f| %>
       <%= f.label :find_orders_by_status %>
       <%= f.text_field :status %>
       <%= f.submit "Find Now" %>
       <% end %>
-    </th>
-    <th><%= link_to 'Menu Items Dashboard', administrator_items_path %></th>
-    <th><%= link_to 'Categories Dashboard', administrator_categories_path %></th>
-    <th><%= link_to 'Users Dashboard', administrator_users_path %></th>
-  </tr>
 
+
+<table>
   <tr>
     <th>User ID</th>
     <th>Total</th>

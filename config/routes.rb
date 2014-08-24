@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
   root to: "static_pages#home"
-  resources :items
 
+  resources :items
   resources :categories
   resources :orders
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :order_items
-  resources :addresses
 
   match "/home",    to: "static_pages#home",    via: "get"
   match "/about",   to: "static_pages#about",   via: "get"
@@ -21,7 +20,6 @@ Rails.application.routes.draw do
   match "/review",   to: "orders#review",    via: "get"
 
   namespace :user do
-    resources :addresses
     resources :orders
   end
 

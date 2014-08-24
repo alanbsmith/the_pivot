@@ -55,25 +55,10 @@ describe "admin_user_dashboard", type: :feature do
     expect(page).to have_content(@user.state)
     expect(page).to have_content(@user.zipcode)
 
-    expect(page).to have_link('Order History',        href: user_order_path(@user))
     expect(page).to have_link('Dashboard Home',       href: administrator_admins_path)
     expect(page).to have_link('Users Dashboard',      href: administrator_users_path)
     expect(page).to have_link('Menu Items Dashboard', href: administrator_items_path)
     expect(page).to have_link('Categories Dashboard', href: administrator_categories_path)
     expect(page).to have_link('Orders Dashboard',     href: administrator_orders_path)
   end
-
-  it 'can find a users order history' do
-    within('//table') do
-      first(:link, 'Address').click
-    end
-
-    click_link('Order History')
-
-    expect(current_path).to eq(user_order_path(@user))
-
-    # expect(page).to have_content(@user.order something?)
-
-  end
-
 end
