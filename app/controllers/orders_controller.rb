@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    # @order = Order.find(params[:id], user_id: current_user.id)
   end
 
   def new
@@ -31,6 +30,10 @@ class OrdersController < ApplicationController
         notice: 'Your cart is currently empty' }
         format.json { head :no_content }
     end
+  end
+
+  def cart
+    @order = Order.find(params[:id])
   end
 
   def checkout
