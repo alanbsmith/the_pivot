@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       if session[:order_id]
         redirect_to review_path
       else
-        redirect_to items_path
+        redirect_to home_path, notice: "Welcome #{current_user.first_name}!"
       end
     else
       flash.now[:error] = 'Invalid email/password combination'
