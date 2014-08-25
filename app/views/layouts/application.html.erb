@@ -50,7 +50,7 @@
               <li><%= link_to "Contact", contact_path  %></li>
               <li><%= link_to "Menu", items_path  %></li>
               <% if @order %>
-                <li><%= link_to "Cart", order_path(@order)  %></li>
+                <li><%= link_to "Cart", cart_path(@order)  %></li>
               <% end %>
             </ul>
               <div class="navbar pull-right">

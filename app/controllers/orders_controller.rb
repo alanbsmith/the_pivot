@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   include CurrentOrder
   include SessionsHelper
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :checkout, :create]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :cart, :checkout, :create]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
 
