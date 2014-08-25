@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    # @order = Order.find(params[:id], user_id: current_user.id)
   end
 
   def new
@@ -14,7 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order.destroy if @order.id == session[:order_id]
+    Order.find(session[:order_id]).destroy
     session[:order_id] = nil
     respond_to do |format|
       format.html { redirect_to items_url,
@@ -29,14 +30,14 @@ class OrdersController < ApplicationController
     else
 
       if signed_in?
-        @order.update(status: 'open')
+        @order.update(status: 'open', user_id: current_user.id)
 
         respond_to do |format|
           format.html { redirect_to review_path }
           format.json { head :no_content }
         end
       else
-        flash.notice = "You need to sign in to order delicious icecream!"
+        # flash.notice = "You need to sign in to order delicious icecream!"
         redirect_to signin_path
       end
 
@@ -44,6 +45,12 @@ class OrdersController < ApplicationController
   end
 
   def review
+  end
+
+  def complete
+    @order.update(status: 'complete')
+    session[:order_id] = nil
+    redirect_to home_path
   end
 
   private

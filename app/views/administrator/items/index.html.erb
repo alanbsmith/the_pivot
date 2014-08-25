@@ -1,15 +1,16 @@
-<h1>Administrator Menu View</h1>
+<h1>Manage Items</h1>
 
 <hr/>
 
-<p style="float:left;width:33.33333333%">
-  <%= link_to 'Create New Item', new_administrator_item_path %></p>
-<p style="float:left;width:33.33333333%">
-  <%= link_to 'Categories Dashboard', administrator_categories_path %></p>
-<p style="float:left;width:33.33333333%">
-  <%= link_to 'Orders Dashboard', administrator_orders_path %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Admin Home', administrator_admins_path, class: 'btn' %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Manage Categories', administrator_categories_path, class: 'btn' %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Manage Orders', administrator_orders_path, class: 'btn' %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Manage Users', administrator_users_path, class: 'btn' %></p>
 
-<hr/>
 <table class='table'>
   <% @items.each do |item| %>
   <tr>
@@ -23,8 +24,11 @@
     	<%= category.title %>
     	<% end %></td>
 
-    <td><%= link_to 'Edit', edit_administrator_item_path(item) %></td>
-    <td><%= link_to 'Delete', administrator_item_path(item), method: :delete, data:{ confirm: "Are you sure you want to delete the item: '#{item.title}'" } %></td>
+    <td><%= link_to 'Edit', edit_administrator_item_path(item), class: 'btn' %></td>
+    <td><%= link_to 'Delete', administrator_item_path(item), class: 'btn', method: :delete, data:{ confirm: "Are you sure you want to delete the item: '#{item.title}'" } %></td>
   </tr>
 <% end %>
 </table>
+
+<p style="float:right">
+  <%= link_to 'Create New Item', new_administrator_item_path, class: 'btn' %></p>

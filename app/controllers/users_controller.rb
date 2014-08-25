@@ -9,12 +9,14 @@ class UsersController < ApplicationController
     redirect_to register_path, notice: "Registration Successful!"
   end
 
-
-
   def user_params
     params.require(:user).permit(:email,
                                  :first_name,
                                  :last_name,
+                                 :street,
+                                 :city,
+                                 :state,
+                                 :zipcode,
                                  :password,
                                  :password_confirmation
                                  )
