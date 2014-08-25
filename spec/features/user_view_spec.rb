@@ -7,9 +7,6 @@ describe 'the User view', type: :feature do
         @default_user = User.create(email: "user@example.com", password: "userpassword", password_confirmation: "userpassword",
                           first_name: "user", last_name: "whatever", role: "default")
 
-        @default_user.orders
-
-
       visit home_path
     end
 
@@ -39,7 +36,6 @@ describe 'the User view', type: :feature do
 
     it 'can log in as default user' do
       default_login
-      binding.pry
       expect(current_path).to eq(items_path)
     end
 

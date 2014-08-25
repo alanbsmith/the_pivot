@@ -68,7 +68,7 @@
                   <ul class="dropdown-menu">
                     <% if current_user && current_user.role == "default" %>
                     <li><%= link_to "Profile", user_path(current_user) %></li>
-                    <li><%= link_to "View Orders", orders_path(current_user) %></li>
+                    <li><%= link_to "View Orders", orders_path %></li>
                     <% end %>
                     <% if current_user.role == "admin" %>
                       <%= link_to "Dashboard", administrator_admins_path %>
