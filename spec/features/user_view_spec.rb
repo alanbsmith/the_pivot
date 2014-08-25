@@ -1,9 +1,12 @@
 require 'feature_helper'
 
-RSpec.describe 'the User view', type: :feature do
+describe 'the User view', type: :feature do
 
   describe 'the register view' do
-    before(:each) do
+      before(:each) do
+        @default_user = User.create(email: "user@example.com", password: "userpassword", password_confirmation: "userpassword",
+                          first_name: "user", last_name: "whatever", role: "default")
+
       visit home_path
     end
 
@@ -45,6 +48,40 @@ RSpec.describe 'the User view', type: :feature do
     it 'default user cannot access dashboard link' do
       default_login
       expect(page).to_not have_link("Dashboard")
+    end
+
+    it 'default user has a profile link' do
+      default_login
+      expect(page).to have_link('Profile')
+    end
+
+    it 'default user can visit profile page' do
+      default_login
+      click_link('Profile')
+      expect(current_path).to eq(user_path(@default_user))
+    end
+
+    it 'profile page displays information about user' do
+      visit user_path(@default_user)
+      expect(page).to have_content(@default_user.first_name)
+      expect(page).to have_content(@default_user.last_name)
+    end
+
+    it 'default user has a view orders link' do
+      default_login
+      expect(page).to have_link('View Orders')
+    end
+
+    it 'view orders page should have all associated orders with user' do
+      @default_user.orders.create
+      @default_user.orders.create
+      user_orders = @default_user.orders
+      default_login
+      click_link("View Orders")
+      expect(current_path).to eq(orders_path)
+      user_orders.each do |order|
+        expect(page).to have_content(order.created_at)
+      end
     end
   end
 

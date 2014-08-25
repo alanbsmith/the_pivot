@@ -1,8 +1,13 @@
 class OrdersController < ApplicationController
   include CurrentOrder
   include SessionsHelper
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :checkout]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :checkout, :create]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
+
+
+  def index
+    @orders = current_user.orders
+  end
 
   def show
     @order = Order.find(params[:id])
@@ -12,6 +17,10 @@ class OrdersController < ApplicationController
   def new
     @order ||= Order.new(order_params)
     @order.order_items.create(item_id: params[:id], order_id: current_order.id)
+  end
+
+  def create
+    @order = Order.create(order_params)
   end
 
   def destroy

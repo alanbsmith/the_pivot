@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :orders
 
+
   before_save { self.email = email.downcase }
 
   before_create :create_remember_token
@@ -19,6 +20,11 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+
+
+  def self.default_status
+    self.status ||= "default"
+  end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

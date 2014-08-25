@@ -4,9 +4,13 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def create
     @user = User.create(user_params)
-    redirect_to register_path, notice: "Registration Successful!"
+    redirect_to home_path, notice: "Registration Successful!"
   end
 
   private

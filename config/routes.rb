@@ -21,8 +21,9 @@ Rails.application.routes.draw do
   match "/complete_order",   to: "orders#complete",    via: "post"
 
 
-  namespace :user do
+  namespace :users do
     resources :orders
+    resources :addresses
   end
 
   namespace :administrator do
