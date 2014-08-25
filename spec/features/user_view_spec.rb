@@ -78,7 +78,7 @@ describe 'the User view', type: :feature do
       user_orders = @default_user.orders
       default_login
       click_link("View Orders")
-      expect(current_path).to eq(orders_path(@default_user))
+      expect(current_path).to eq(orders_path)
       user_orders.each do |order|
         expect(page).to have_content(order.created_at)
       end
