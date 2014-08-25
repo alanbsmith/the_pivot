@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
     end
     current_item
   end
-
+  
 
   def total_price
     order_items.to_a.sum { |order_item| order_item.total_price }

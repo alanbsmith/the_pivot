@@ -7,6 +7,9 @@ describe 'the User view', type: :feature do
         @default_user = User.create(email: "user@example.com", password: "userpassword", password_confirmation: "userpassword",
                           first_name: "user", last_name: "whatever", role: "default")
 
+        @another_user = User.create(first_name: "another", last_name: 'person',
+                                    password: "ilikecake", password_confirmation: "ilikecake",
+                                    email: "anotheruser@example.com", role: "default")
       visit home_path
     end
 
@@ -72,7 +75,7 @@ describe 'the User view', type: :feature do
       expect(page).to have_link('View Orders')
     end
 
-    it 'view orders page should have all associated orders with user' do
+    it 'view orders page should have all associated orders with current user' do
       @default_user.orders.create
       @default_user.orders.create
       user_orders = @default_user.orders
@@ -82,6 +85,15 @@ describe 'the User view', type: :feature do
       user_orders.each do |order|
         expect(page).to have_content(order.created_at)
       end
+    end
+
+    it 'current user should not be able to access other orders' do
+      pending
+      order = @default_user.orders.create
+      order2 = @another_user.orders.create
+      default_login
+      visit order_path(order2)
+      expect(current_path).to eq(items_path)
     end
   end
 

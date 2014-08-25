@@ -1,17 +1,25 @@
 class OrdersController < ApplicationController
   include CurrentOrder
   include SessionsHelper
+
   before_action :set_order, only: [:show, :edit, :update, :destroy, :checkout, :create]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
 
   def index
-    @orders = current_user.orders
+    if current_user && signed_in?
+      @orders = current_user.orders
+    else
+      redirect_to items_path
+    end
   end
 
   def show
-    @order = Order.find(params[:id])
-    # @order = Order.find(params[:id], user_id: current_user.id)
+    if current_user && signed_in
+      @order = Order.find(params[:id])
+    else
+      redirect_to items_path
+    end
   end
 
   def new
@@ -64,6 +72,7 @@ class OrdersController < ApplicationController
 
   private
 
+
   def order_params
     require(:order).permits(:status, :total, :receiving)
   end
@@ -72,4 +81,5 @@ class OrdersController < ApplicationController
     logger.error "Attempt to access invalid cart #{params[:id]}"
     redirect_to items_url, notice: 'Invalid cart'
   end
+
 end
