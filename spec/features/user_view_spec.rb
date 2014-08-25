@@ -7,6 +7,7 @@ describe 'the User view', type: :feature do
         @default_user = User.create(email: "user@example.com", password: "userpassword", password_confirmation: "userpassword",
                           first_name: "user", last_name: "whatever", role: "default")
 
+        @default_user.orders
 
 
       visit home_path
@@ -75,11 +76,15 @@ describe 'the User view', type: :feature do
     end
 
     it 'view orders page should have all associated orders with user' do
+      @default_user.orders.create
+      @default_user.orders.create
       user_orders = @default_user.orders
-      binding.pry
       default_login
       click_link("View Orders")
-      expect(page).to have_content(user_orders)
+      expect(current_path).to eq(orders_path(@default_user))
+      user_orders.each do |order|
+        expect(page).to have_content(order.created_at)
+      end
     end
   end
 

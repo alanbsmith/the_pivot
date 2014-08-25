@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :addresses
-    resources :orders
+    # resources :orders
   end
 
   namespace :administrator do

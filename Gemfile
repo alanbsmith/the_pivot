@@ -41,7 +41,7 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl_rails', '4.2.0'
   gem 'better_errors'
-
+  gem "binding_of_caller"
 end
 
 group :production do
