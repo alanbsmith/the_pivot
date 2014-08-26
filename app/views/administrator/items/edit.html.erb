@@ -35,8 +35,8 @@
   
   <div style='float:left;width:33.33333333%'>
     <div class='field' id='itemcategories'>
-      <%= f.label :categorizations %><br/>
-      <%= f.select(:categorizations, Category.all.collect {|c| [c.title] }, {}, {multiple: true, size: Category.all.count}) %>
+      <%= f.label :categories_list %><br/>
+      <%= f.select(:categories_list, options_for_select { Category.all.collect {|c| [c.title] }, {}, {multiple: true, size: Category.all.count } ) } %>
     </div>
   </div>
 

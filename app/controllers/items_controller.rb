@@ -13,6 +13,11 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+
+    params[:categories_list][:id].each do |category|
+      @item.categorizations.build(category_id: category)
+    end
+
     @item.save
 
     if @item.save

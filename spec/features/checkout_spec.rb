@@ -5,8 +5,8 @@ describe 'checking out' do
 
     context 'the cart is empty' do
       it 'redirects to items' do
-        order = Order.create()
-        visit order_path(order)
+        cart = Cart.create
+        visit cart_path(cart)
 
         click_on("Checkout")
 
@@ -39,7 +39,7 @@ describe 'checking out' do
 
         expect(page).to have_content("Monkey")
 
-        expect(current_path).to eq(review_path)
+        expect(page).to have_button("Complete Order")
       end
     end
   end
@@ -47,8 +47,8 @@ describe 'checking out' do
   context 'the user is signed in' do
     context 'the cart is empty' do
       it 'redirects to items' do
-        order = Order.create()
-        visit order_path(order)
+        cart = Cart.create()
+        visit cart_path(cart)
 
         click_on("Checkout")
 
@@ -79,7 +79,8 @@ describe 'checking out' do
 
         click_on("Checkout")
 
-        expect(current_path).to eq(review_path)
+        expect(page).to have_button("Complete Order")
+        
       end
     end
   end

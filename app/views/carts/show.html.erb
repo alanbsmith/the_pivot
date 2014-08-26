@@ -1,0 +1,36 @@
+<%- model_class = Item -%>
+<div class="page-header">
+  <h1> Your Cart </h1>
+  <% if notice %>
+  <p id="notice"><%= notice %></p>
+  <% end %>
+</div>
+
+<table class="table table-striped cart-items ">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:image) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:quantity) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @cart.cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= image_tag cart_item.item.image.url(:user_thumb) %></td>
+      <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
+      <td><%= number_to_currency(cart_item.item.price) %></td>
+      <td><%= cart_item.quantity %></td>
+      <td><%= button_to 'Remove From Cart', cart_item ,method: :delete %></td>
+    <% end %>
+
+    <tr class="total_line">
+      <td> Total </td>
+      <td><%= number_to_currency(@cart.total_price) %></td>
+    </tr>
+  </tbody>
+</table>
+<%= button_to 'Empty Cart', @cart, method: :delete %>
+<%= link_to 'Checkout', new_order_path %>

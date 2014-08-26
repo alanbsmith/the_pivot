@@ -21,6 +21,11 @@ class Administrator::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+
+    params[:categories_list][:id].each do |category|
+      @item.categorizations.build(category_id: category)
+    end
+
     @item.save
 
     flash.notice = "A new item: '#{@item.title}' was successfully created"
@@ -32,16 +37,15 @@ class Administrator::ItemsController < ApplicationController
 
   def update
     @item.update(item_params)
+
+    # params[:categories_list][:id].each do |category|
+    #   @item.categorizations.build(category_id: category)
+    # end
+
     redirect_to administrator_items_path
   end
 
   def destroy
-    # add a transaction method so that an active item cannot be destroyed
-    # write a test to support this use, once you have the basic use working!
-        # @item.transaction do
-        #   @item.retired
-        #   @item.destroy
-        # end
     @item.destroy
 
     respond_to do |format|

@@ -3,23 +3,23 @@ Rails.application.routes.draw do
   root to: "static_pages#home"
 
   resources :items
+
   resources :categories
+
+  resources :carts
+  resources :cart_items
   resources :orders
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :order_items
 
   match "/home",    to: "static_pages#home",    via: "get"
   match "/about",   to: "static_pages#about",   via: "get"
   match "/contact", to: "static_pages#contact", via: "get"
 
-  match "/register",         to: "users#new",          via: "get"
-  match "/signin",           to: "sessions#new",       via: "get"
-  match "/signout",          to: "sessions#destroy",   via: "delete"
-  match "/checkout",         to: "orders#checkout",    via: "post"
-  match "/review",           to: "orders#review",      via: "get"
-  match "/complete_order",   to: "orders#complete",    via: "post"
-
+  match "/register", to: "users#new",          via: "get"
+  match "/signin",   to: "sessions#new",       via: "get"
+  match "/signout",  to: "sessions#destroy",   via: "delete"
 
   namespace :users do
     resources :orders

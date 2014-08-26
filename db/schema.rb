@@ -11,17 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822220104) do
+ActiveRecord::Schema.define(version: 20140826165500) do
 
-  create_table "addresses", force: true do |t|
-    t.integer  "user_id"
-    t.string   "street"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zipcode"
+  create_table "cart_items", force: true do |t|
+    t.integer  "item_id"
+    t.integer  "cart_id"
+    t.integer  "quantity",   default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_id"
   end
+
+  add_index "cart_items", ["cart_id"], name: "index_cart_items_on_cart_id"
+  add_index "cart_items", ["item_id", "cart_id"], name: "index_cart_items_on_item_id_and_cart_id", unique: true
+  add_index "cart_items", ["item_id"], name: "index_cart_items_on_item_id"
+  add_index "cart_items", ["order_id"], name: "index_cart_items_on_order_id"
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -36,8 +40,8 @@ ActiveRecord::Schema.define(version: 20140822220104) do
   end
 
   create_table "categorizations", force: true do |t|
-    t.integer  "item_id"
     t.integer  "category_id"
+    t.integer  "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,20 +59,9 @@ ActiveRecord::Schema.define(version: 20140822220104) do
     t.datetime "updated_at"
   end
 
-  create_table "order_items", force: true do |t|
-    t.integer  "item_id"
-    t.integer  "order_id"
-    t.integer  "quantity",   default: 1
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id"
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
-
   create_table "orders", force: true do |t|
     t.integer  "user_id"
-    t.string   "status"
+    t.string   "status",     default: "open"
     t.integer  "total"
     t.datetime "created_at"
     t.datetime "updated_at"
