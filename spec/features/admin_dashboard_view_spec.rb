@@ -1,11 +1,15 @@
 require 'feature_helper'
-
+require 'pry'
 describe 'the admin dashboard' do
 
   before(:each) do
-      @default_user = User.create(email: "user@example.com", password: "userpassword", password_confirmation: "userpassword",
-                        first_name: "user", last_name: "whatever", role: "default"
-    )
+    @admin_user = User.create(email: "admin@example.com", password: "adminpassword", password_confirmation: "adminpassword",
+                        first_name: "admin", last_name: "whatever", role: "admin")
+
+
+  
+
+
     visit home_path
   end
 
@@ -13,7 +17,7 @@ describe 'the admin dashboard' do
     it 'can log in as admin' do
       pending
       admin_login
-      expect(current_path).to content("Welcome Admin!")
+      expect(current_path).to eq(administrator_admins_path)
     end
 
     it 'displays a dashboard link after log in' do
@@ -46,24 +50,6 @@ describe 'the admin dashboard' do
     end
   end
 
-  context 'default user' do
-    it 'can log in as default user' do
-      default_login
-      expect(current_path).to eq(items_path)
-    end
-
-    it 'cannot access the administrator items page' do
-      default_login
-      visit administrator_items_path
-      expect(current_path).to_not eq(administrator_items_path)
-    end
-
-    it 'default user cannot access dashboard link' do
-      default_login
-      expect(page).to_not have_link("Dashboard")
-    end
-  end
-
   context 'guest user' do
     it 'can log in as default user' do
       expect(current_path).to eq(home_path)
@@ -80,13 +66,6 @@ describe 'the admin dashboard' do
   end
 
 
-  def default_login
-    click_link('Sign In')
-    expect(current_path).to eq(signin_path)
-    fill_in("Email", with: "user@example.com")
-    fill_in("Password", with: "userpassword")
-    click_button('Signin')
-  end
 
   def admin_login
     click_link('Sign In')

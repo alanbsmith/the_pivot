@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   root to: "static_pages#home"
-  resources :items
 
+  resources :items
   resources :categories
   resources :orders
   resources :users
@@ -13,18 +13,26 @@ Rails.application.routes.draw do
   match "/about",   to: "static_pages#about",   via: "get"
   match "/contact", to: "static_pages#contact", via: "get"
 
-  match "/register", to: "users#new",        via: "get"
-  match "/signin",   to: "sessions#new",     via: "get"
-  match "/signout",  to: "sessions#destroy", via: "delete"
-  match "/checkout", to: "orders#checkout",  via: "post"
-  match "/review",   to: "orders#review",    via: "get"
+  match "/register",         to: "users#new",          via: "get"
+  match "/signin",           to: "sessions#new",       via: "get"
+  match "/signout",          to: "sessions#destroy",   via: "delete"
+  match "/checkout",         to: "orders#checkout",    via: "post"
+  match "/review",           to: "orders#review",      via: "get"
+  match "/complete_order",   to: "orders#complete",    via: "post"
 
+
+  namespace :users do
+    resources :orders
+    resources :addresses
+  end
 
   namespace :administrator do
     resources :admins
     resources :items
     resources :categories
     resources :orders
+    resources :users
+    resources :addresses, through: :users
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+``<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -66,11 +66,16 @@
                     </a>
 
                   <ul class="dropdown-menu">
+                    <% if current_user && current_user.role == "default" %>
                     <li><%= link_to "Profile", user_path(current_user) %></li>
-                    <li class="divider"></li>
-                    <li><%= link_to "Order History", "#" %></li>
+                    <li><%= link_to "View Orders", orders_path %></li>
+                    <% end %>
                     <% if current_user.role == "admin" %>
                       <%= link_to "Dashboard", administrator_admins_path %>
+                      <%= link_to "Manage Items", administrator_items_path %>
+                      <%= link_to "Manage Categories", administrator_categories_path %>
+                      <%= link_to "Manage Orders", administrator_orders_path %>
+
                     <% end %>
                 <% else %>
                   <li><%= link_to "Sign In", "/signin"  %></li>
@@ -87,9 +92,6 @@
         <div class="row">
           <div class="span10">
             <%= yield %>
-            <br />
-            <br />
-            <%= debug(params) if Rails.env.development? %>
           </div>
           </div>
           <!-- <div class="span2">
@@ -101,10 +103,16 @@
             </div><!--/.well -->
           <!-- </div><!--/span-->
         <!-- </div><!--/row-->
+        <hr>
 
-      <footer>
-        <p>&copy; Scream n' Cream 2014</p>
-      </footer>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Scream n' Cream &copy; 2014</p>
+                </div>
+            </div>
+        </footer>
 
     </div> <!-- /container -->
 
@@ -112,5 +120,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
+    <script src="../assets/js/docs.min.js"></script>
 
   </body>

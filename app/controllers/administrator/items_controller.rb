@@ -15,7 +15,6 @@ class Administrator::ItemsController < ApplicationController
   def show
   end
 
-
   def categories
     @categories = Item.categories
   end
@@ -65,7 +64,7 @@ class Administrator::ItemsController < ApplicationController
       @item = Item.find(params[:id])
     end
 
-  def authorize?
+    def authorize?
       redirect_to("http://bringvictory.com/") unless current_user && current_user.role == "admin"
-  end
+    end
 end

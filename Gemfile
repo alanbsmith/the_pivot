@@ -29,7 +29,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 gem 'carrierwave'
-gem 'rmagick', '~>2.13.3'
+gem 'rmagick', '~>2.13.3', :require=> false
 gem 'mini_magick', '~>3.8.0'
 
 group :development, :test do
@@ -40,6 +40,8 @@ group :development, :test do
   gem 'rails_layout'
   gem 'launchy'
   gem 'factory_girl_rails', '4.2.0'
+  gem 'better_errors'
+  gem "binding_of_caller"
 end
 
 group :production do

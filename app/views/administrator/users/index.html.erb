@@ -1,0 +1,40 @@
+<h1>Manage Users</h1>
+
+<hr/>
+
+<p style="float:left;width:25%">
+  <%= link_to 'Admin Home', administrator_admins_path, class: 'btn' %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Manage Categories', administrator_categories_path, class: 'btn' %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Manage Items', administrator_items_path, class: 'btn' %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Manage Orders', administrator_orders_path, class: 'btn' %></p>
+
+<table class='table'>
+  <tr>
+    <th>User ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Profile</th>
+    <th></th>
+    <th>Set role</th>
+  </tr>
+
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.role %></td>
+    <td><%= link_to 'Profile', administrator_address_path(user.id), class: 'btn' %></td>
+    <td><%= link_to 'Delete', administrator_user_path(user), class: 'btn', 
+            method: :delete, data:{ confirm: "Are you sure you want to delete this: '#{user.id}'" } %></td>
+    <td><%= select_tag(:role, options_for_select([['Customer', 1],['Admin', 2]], 1 ), onchange: "this.form.submit();") %></td>
+
+  </tr>
+<% end %>
+</table>
