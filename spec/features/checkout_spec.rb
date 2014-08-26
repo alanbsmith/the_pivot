@@ -80,11 +80,7 @@ describe 'checking out' do
         click_on("Checkout")
 
         expect(page).to have_button("Complete Order")
-
-        click_on("Complete Order")
-
         
-
       end
     end
   end

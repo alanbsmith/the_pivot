@@ -9,7 +9,7 @@ class CartsController < ApplicationController
   end
 
   def new
-    current_cart ||= Cart.new(cart_params)
+    current_cart ||= Cart.new(params[:id])
     raise "Boom"
     current_cart.cart_items.create(item_id: params[:id], cart_id: current_cart.id)
   end
@@ -25,10 +25,6 @@ class CartsController < ApplicationController
   end
 
   private
-
-  def cart_params
-    require(:cart).permits(:status, :total, :receiving)
-  end
 
   def invalid_cart
     logger.error "Attempt to access invalid cart #{params[:id]}"

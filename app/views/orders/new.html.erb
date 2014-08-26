@@ -1,9 +1,29 @@
-<%= form_for @order, url: orders_path, method: :post, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.hidden_field :id, :value => params %>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.hidden_field :total, :value => @cart.total_price %>
-  <%= f.label 'Delivery Method'.to_sym, :class => 'control-label' %>
-  <%= f.select :receiving, [['Pickup'], ['Delivery']] %>
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explantaion">
+      <h2><%= pluralize(@order.errors.count, "error") %>
+        prohibited this order from being saved:</h2>
+        <ul>
+          <% @order.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
 
-  <%= f.submit %>
+  <div class="field">
+    <%= f.hidden_field :total, :value => @cart.total_price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :receiving, :class => 'control-label' %>
+    <%= f.select :receiving, [['Pickup'], ['Delivery']] %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Complete Order' %>
+  </div>
 <% end %>

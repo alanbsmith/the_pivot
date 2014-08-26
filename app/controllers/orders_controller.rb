@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   include SessionsHelper
 
   before_action :set_cart,  only: [:new, :create]
-  before_action :set_order, only: [:show, :edit, :update, :destroy,:create]
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
     if current_user && signed_in?
@@ -27,35 +27,30 @@ class OrdersController < ApplicationController
       return
     end
 
-    if current_user
-      @order = Order.new
-      # @order ||= Order.create(user_id: current_user.id, total: @cart.total_price )
-      # @order.cart_items.create(item_id: params[:id], cart_id: @cart.id, order_id: @order.id)
-      # binding.pry
-      # redirect_to order_path(@order)
-    else
+    if !current_user
       redirect_to signin_path
     end
+    @order = Order.new
   end
 
   def create
-    binding.pry
-    @order = Order.create(params[:order])
-    # @order = Order.new(user_id: current_user.id, receiving: params[:receiving], total: @cart.total_price)
+    @order = Order.new(order_params)
     @order.add_cart_items_from_cart(@cart)
 
-    if @order.save
-      Cart.destroy(session[:cart_id])
-      session[:cart_id] = nil
+    respond_to do |format|
+      if @order.save
+        Cart.destroy(session[:cart_id])
+        session[:cart_id] = nil
 
-      format.html { redirect_to home_url,
-        notice: 'Thank you for ordering some of our Scream Cream' }
-      format.json { render action: 'show', status: :created,
-        location: @order }
-    else
-      format.html { render action: 'new' }
-      format.json { render json: @order.errors,
-        status: :unprocessable_entity }
+        format.html { redirect_to home_url,
+          notice: 'Thank you for ordering some of our Scream Cream' }
+        format.json { render action: 'show', status: :created,
+          location: @order }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @order.errors,
+          status: :unprocessable_entity }
+      end
     end
   end
 
@@ -73,7 +68,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    require(:order).permits(:status, :total, :receiving)
+    params.require(:order).permit(:status, :total, :receiving, :user_id)
   end
 
   def set_order
