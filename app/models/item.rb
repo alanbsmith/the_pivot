@@ -17,16 +17,7 @@ class Item < ActiveRecord::Base
     else item.status == 2
       item.status = 'retired'
     end
-
-  private
-    def ensure_not_referenced_by_any_cart_item
-      if cart_items.empty?
-        return true
-      else
-        errors.add(:base, 'These Items are in a cart')
-        return false
-      end
-    end
+  end
 
   def categories_list
     self.categories.collect do |category|
@@ -36,7 +27,18 @@ class Item < ActiveRecord::Base
 
   def categories_list=(categories_string)
     category_names = categories_string.split(",").collect { |c| c.strip.downcase }.uniq
-    new_or_found_categories = category_names.collect { |name| Category.find_or_create_by(name: name) }
+    new_or_found_categories = category_names.collect { |title| Category.find_or_create_by(title: title) }
     self.categories = new_or_found_categories
+  end
+
+  private
+
+  def ensure_not_referenced_by_any_cart_item
+    if cart_items.empty?
+      return true
+    else
+      errors.add(:base, 'These Items are in a cart')
+      return false
+    end
   end
 end
