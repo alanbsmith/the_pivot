@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:create]
-  # before_action :set_cart_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart_item, only: [:show, :edit, :update, :destroy]
 
   def create
     item = Item.find(params[:item_id])
@@ -34,5 +34,9 @@ class CartItemsController < ApplicationController
   private
     def cart_items_params
       params.require(:cart_item).permit(:item_id)
+    end
+
+    def set_cart_item
+      @cart_item = CartItem.find(params[:id])
     end
 end

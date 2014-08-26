@@ -7,7 +7,7 @@ class Cart < ActiveRecord::Base
     if current_item
       current_item.quantity += 1
     else
-      current_item = cart_items.build(item_id: item_id)
+      current_item = cart_items.create(item_id: item_id)
     end
     current_item
   end

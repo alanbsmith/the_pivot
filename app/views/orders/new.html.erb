@@ -1,0 +1,9 @@
+<%= form_for @order, url: orders_path, method: :post, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.hidden_field :id, :value => params %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :total, :value => @cart.total_price %>
+  <%= f.label 'Delivery Method'.to_sym, :class => 'control-label' %>
+  <%= f.select :receiving, [['Pickup'], ['Delivery']] %>
+
+  <%= f.submit %>
+<% end %>

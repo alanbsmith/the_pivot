@@ -1,6 +1,6 @@
 puts "============= Seeding Data Start ============="
 
-item1 = Item.create(id: 1,
+item1 = Item.create(
                     title: "Vanillisimo",
                     description: "The secret to the richer and creamier vanilla
                     flavor is the French custard base in this ice cream.",
@@ -129,7 +129,7 @@ item20 = Item.create(title:      "Lemon Custard",
                     price:       2.49,
                     status:      1)
 
-category1 = Category.create(id: 1,
+category1 = Category.create(
                             title:       "Rockanillas",
                             description: "Yellow is the new black")
 

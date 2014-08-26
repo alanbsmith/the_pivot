@@ -2,9 +2,8 @@ class OrdersController < ApplicationController
   include CurrentCart
   include SessionsHelper
 
+  before_action :set_cart,  only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy,:create]
-  rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
-
 
   def index
     if current_user && signed_in?
@@ -15,7 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_user && signed_in
+    if current_user && signed_in?
       @order = Order.find(params[:id])
     else
       redirect_to items_path
@@ -23,21 +22,33 @@ class OrdersController < ApplicationController
   end
 
   def new
-    ## fix me
-    @order ||= Order.new(order_params)
-    @order.order_items.create(item_id: params[:id], order_id: current_order.id)
+    if @cart.cart_items.empty?
+      redirect_to items_url, notice: "Your cart is empty"
+      return
+    end
+
+    if current_user
+      @order = Order.new
+      # @order ||= Order.create(user_id: current_user.id, total: @cart.total_price )
+      # @order.cart_items.create(item_id: params[:id], cart_id: @cart.id, order_id: @order.id)
+      # binding.pry
+      # redirect_to order_path(@order)
+    else
+      redirect_to signin_path
+    end
   end
 
   def create
-    ## fix me
-    @order = Order.new(order_params)
-    @order.add_line_items_from_cart(@cart)
+    binding.pry
+    @order = Order.create(params[:order])
+    # @order = Order.new(user_id: current_user.id, receiving: params[:receiving], total: @cart.total_price)
+    @order.add_cart_items_from_cart(@cart)
 
     if @order.save
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
 
-      format.html { redirect_to items_url,
+      format.html { redirect_to home_url,
         notice: 'Thank you for ordering some of our Scream Cream' }
       format.json { render action: 'show', status: :created,
         location: @order }
@@ -64,10 +75,6 @@ class OrdersController < ApplicationController
   def order_params
     require(:order).permits(:status, :total, :receiving)
   end
-
-  def invalid_order
-    logger.error "Attempt to access invalid cart #{params[:id]}"
-    redirect_to items_url, notice: 'Invalid cart'
 
   def set_order
     @order = Order.find(params[:id])

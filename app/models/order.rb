@@ -3,10 +3,15 @@ class Order < ActiveRecord::Base
   has_many :items, through: :cart_items
   belongs_to :user
 
-  def add_line_items_from_cart(cart)
-    cart.line_items.each do |item|
+  def add_cart_items_from_cart(cart)
+    cart.cart_items.each do |item|
       item.cart_id = nil
-      line_items << item
+      cart_items << item
     end
   end
+
+  def total_price
+    cart_items.to_a.sum { |cart_item| cart_item.total_price }
+  end
+
 end

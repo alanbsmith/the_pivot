@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
   has_many :cart_items
   has_many :carts, through: :cart_items
+
   has_many :categorizations
   has_many :categories, through: :categorizations
 
@@ -45,7 +46,7 @@ class Item < ActiveRecord::Base
       if cart_items.empty?
         return true
       else
-        errors.add(:base, 'Cart Items Present')
+        errors.add(:base, 'These Items are in a cart')
         return false
       end
     end
