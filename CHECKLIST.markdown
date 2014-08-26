@@ -68,9 +68,9 @@ View and edit orders;
 
 Order(Horacio)
 ====================================================
-An order is marked for pickup or delivery
-If marked for delivery, an order is attached to user address
-finish orders controller for admin
+An order is marked for pickup or delivery  
+If marked for delivery, an order is attached to user address  
+finish orders controller for admin  
 
 Item (Tan)
 =================================================
