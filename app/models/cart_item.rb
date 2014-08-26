@@ -1,6 +1,6 @@
-class OrderItem < ActiveRecord::Base
+class CartItem < ActiveRecord::Base
   belongs_to :item
-  belongs_to :order
+  belongs_to :cart
 
   def total_price
     item.price * quantity

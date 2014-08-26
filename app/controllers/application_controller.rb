@@ -3,11 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   include SessionsHelper
-  include CurrentOrder
+  include CurrentCart
 
-  before_action :order
+  before_action :cart
 
-  def order
-    @order ||= Order.find(session[:order_id]) if session[:order_id]
+  def cart
+    @cart ||= Cart.find(session[:cart_id]) if session[:cart_id]
   end
 end

@@ -1,13 +1,12 @@
 class Item < ActiveRecord::Base
-  has_many :order_items
-
-  before_destroy :ensure_not_referenced_by_any_order_item
-
-  has_many :orders, through: :order_items
-  
+  has_many :cart_items
+  has_many :carts, through: :cart_items
   has_many :categorizations
   has_many :categories, through: :categorizations
-  
+
+  before_destroy :ensure_not_referenced_by_any_cart_item
+
+
   mount_uploader :image, ImageUploader
 
   # validates :name,
@@ -42,11 +41,11 @@ class Item < ActiveRecord::Base
       Category.all
     end
 
-    def ensure_not_referenced_by_any_order_item
-      if order_items.empty?
+    def ensure_not_referenced_by_any_cart_item
+      if cart_items.empty?
         return true
       else
-        errors.add(:base, 'Order Items Present')
+        errors.add(:base, 'Cart Items Present')
         return false
       end
     end

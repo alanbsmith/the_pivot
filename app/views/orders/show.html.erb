@@ -39,17 +39,17 @@
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:price) %></th>
       <th><%= model_class.human_attribute_name(:quantity) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%= model_class.human_attribute_name(:subtotal) %></th>
     </tr>
   </thead>
   <tbody>
-  <% @order.order_items.each do |cart_item| %>
+  <% @order.cart_items.each do |cart_item| %>
     <tr>
       <td><%= image_tag cart_item.item.image.url(:user_thumb) %></td>
       <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
       <td><%= number_to_currency(cart_item.item.price) %></td>
       <td><%= cart_item.quantity %></td>
-      <td><%= button_to 'Remove From Cart', cart_item ,method: :delete %></td>
+      <td><%= number_to_currency(cart_item.quantity * cart_item.item.price) %></td>
     <% end %>
 
     <tr class="total_line">
