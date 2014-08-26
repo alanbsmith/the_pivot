@@ -17,6 +17,7 @@ class Item < ActiveRecord::Base
     else item.status == 2
       item.status = 'retired'
     end
+  end
 
   private
     def ensure_not_referenced_by_any_cart_item
