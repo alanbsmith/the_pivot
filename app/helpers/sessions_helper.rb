@@ -16,7 +16,7 @@ module SessionsHelper
                                    User.digest(User.new_remember_token))
     cookies.delete(:remember_token)
     self.current_user = nil
-    session[:order_id] = nil
+    session[:cart_id] = nil
   end
 
   def signed_in?

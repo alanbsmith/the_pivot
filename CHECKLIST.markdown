@@ -5,11 +5,9 @@ Still to do:
 Unauthenticated Users CAN
 =====================================
  browse by category
- increase quantity from cart
 
 Unauthenticated Users CAN'T
 =====================================
-  views others data
 
 Authenticated users CAN
 =====================================
@@ -25,7 +23,6 @@ they cannot add it to a new cart
 
 Authenticated users CAN'T
 =====================================
-view another user’s private data (such as current order, etc.)
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -43,7 +40,9 @@ filter orders to display by status type (for statuses "ordered", "paid", "cancel
   --> If can/comp then no delete button
 
 link to transition to a different status: (Hilary)
-=========================================================================
+======================================
+
+===================================
 link to "cancel" individual orders which are currently "ordered" or "paid"
 link to "mark as paid" orders which are "ordered"
 link to "mark as completed" individual orders which are currently "paid"

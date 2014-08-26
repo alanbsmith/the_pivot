@@ -22,8 +22,17 @@
       <td><%= image_tag cart_item.item.image.url(:user_thumb) %></td>
       <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
       <td><%= number_to_currency(cart_item.item.price) %></td>
-      <td><%= cart_item.quantity %></td>
+      <td>
+        <%= form_for cart_item, :url => cart_item_path(id: cart_item), method: :patch do |f| %>
+          <div class="field">
+            <%= f.number_field :quantity,  :value => cart_item.quantity %>
+            <%= submit_tag "save" %>
+          </div>
+        <% end %>
+      </td>
       <td><%= button_to 'Remove From Cart', cart_item ,method: :delete %></td>
+
+
     <% end %>
 
     <tr class="total_line">

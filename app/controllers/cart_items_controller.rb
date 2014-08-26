@@ -21,6 +21,15 @@ class CartItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @cart_item.quantity = params[:cart_item][:quantity]
+    @cart_item.save
+    redirect_to cart_path(@cart)
+  end
+
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
