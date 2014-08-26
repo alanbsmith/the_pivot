@@ -2,7 +2,7 @@ class Item < ActiveRecord::Base
   has_many :cart_items
   has_many :carts, through: :cart_items
 
-  before_destroy :ensure_not_referenced_by_any_order_item
+  before_destroy :ensure_not_referenced_by_any_cart_item
   mount_uploader :image, ImageUploader
 
   has_many :categorizations
