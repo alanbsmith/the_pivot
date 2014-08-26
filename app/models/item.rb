@@ -2,46 +2,23 @@ class Item < ActiveRecord::Base
   has_many :cart_items
   has_many :carts, through: :cart_items
 
-  has_many :categorizations
-  has_many :categories, through: :categorizations
-
-  before_destroy :ensure_not_referenced_by_any_cart_item
-
-
+  before_destroy :ensure_not_referenced_by_any_order_item
   mount_uploader :image, ImageUploader
 
-  # validates :name,
-  #            presence: true,
-  #            uniqueness: true
-  # validates :description,
-  #            presence: true,
-  #            length: { in: 10..255 }
-  # validates :image,
-  #            presence: true
-  # validates :price,
-  #            presence: true,
-  #            numericality: { greater_than: 0 }
-  # validates :status: true
-
-        # --> Write tests for all of the above validations then uncomment them!
+  has_many :categorizations
+  has_many :categories, through: :categorizations
 
   scope :active,  -> { where(status: 1) }
   scope :retired, -> { where(status: 2) }
 
-
-    def num_to_status
-      if item.status == 1
-        item.status = 'active'
-      else item.status == 2
-        item.status = 'retired'
-      end
+  def num_to_status
+    if item.status == 1
+      item.status = 'active'
+    else item.status == 2
+      item.status = 'retired'
     end
 
   private
-    def categories_list
-      Category.all
-    end
-
     def ensure_not_referenced_by_any_cart_item
       if cart_items.empty?
         return true
@@ -50,4 +27,16 @@ class Item < ActiveRecord::Base
         return false
       end
     end
+
+  def categories_list
+    self.categories.collect do |category|
+      category.title
+    end.join(", ")
+  end
+
+  def categories_list=(categories_string)
+    category_names = categories_string.split(",").collect { |c| c.strip.downcase }.uniq
+    new_or_found_categories = category_names.collect { |name| Category.find_or_create_by(name: name) }
+    self.categories = new_or_found_categories
+  end
 end
