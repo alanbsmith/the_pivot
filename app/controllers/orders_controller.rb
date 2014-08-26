@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   include CurrentOrder
   include SessionsHelper
 
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :checkout, :create]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :cart, :checkout, :create]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
 
@@ -39,6 +39,10 @@ class OrdersController < ApplicationController
         notice: 'Your cart is currently empty' }
         format.json { head :no_content }
     end
+  end
+
+  def cart
+    @order = Order.find(params[:id])
   end
 
   def checkout

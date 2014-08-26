@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   match "/register",         to: "users#new",          via: "get"
   match "/signin",           to: "sessions#new",       via: "get"
   match "/signout",          to: "sessions#destroy",   via: "delete"
+
+  get   "/carts/:id",         to: "orders#cart",         as: "cart"
   match "/checkout",         to: "orders#checkout",    via: "post"
   match "/review",           to: "orders#review",      via: "get"
   match "/complete_order",   to: "orders#complete",    via: "post"

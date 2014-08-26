@@ -6,7 +6,7 @@ describe 'checking out' do
     context 'the cart is empty' do
       it 'redirects to items' do
         order = Order.create()
-        visit order_path(order)
+        visit cart_path(order)
 
         click_on("Checkout")
 
@@ -48,7 +48,7 @@ describe 'checking out' do
     context 'the cart is empty' do
       it 'redirects to items' do
         order = Order.create()
-        visit order_path(order)
+        visit cart_path(order)
 
         click_on("Checkout")
 

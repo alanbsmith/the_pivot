@@ -25,6 +25,7 @@ describe 'manipulating the cart' do
 
     click_on('Cart')
 
+
     click_on("Checkout")
 
     expect(current_path).to eq(signin_path)

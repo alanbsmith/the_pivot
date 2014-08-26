@@ -1,32 +1,6 @@
 <%- model_class = Item -%>
 <div class="page-header">
-  <h1> Your Order </h1>
-  <table class="table">
-    <tr>
-      <th><%= model_class.human_attribute_name(:status) %></th>
-      <th><%= model_class.human_attribute_name(:submitted) %></th>
-      <% if @order.status == 'completed' %>
-        <th><%= model_class.human_attribute_name(:completed) %></th>
-      <% end %>
-      <% if @order.status == 'canceled' %>
-        <th><%= model_class.human_attribute_name(:canceled) %></th>
-      <% end %>
-    </tr>
-    <tbody>
-      <tr>
-        <td><%= @order.status.capitalize %></td>
-        <td><%= @order.created_at %></td>
-        <% if @order.status == 'completed' %>
-          <td><%= @order.updated_at %></td>
-        <% end %>
-        <% if @order.status == 'canceled' %>
-          <td><%= @order.updated_at %></td>
-        <% end %>
-      </tr>
-    </tbody>
-  </thead>
-
-  <table>
+  <h1> Your Cart </h1>
   <% if notice %>
   <p id="notice"><%= notice %></p>
   <% end %>
@@ -58,3 +32,5 @@
     </tr>
   </tbody>
 </table>
+<%= button_to 'Empty Cart', order_path(@order), method: :delete %>
+<%= button_to 'Checkout', checkout_path %>
