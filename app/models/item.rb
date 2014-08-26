@@ -1,9 +1,9 @@
 class Item < ActiveRecord::Base
+  has_many :cart_items
+  has_many :carts, through: :cart_items
+
   before_destroy :ensure_not_referenced_by_any_order_item
   mount_uploader :image, ImageUploader
-
-  has_many :order_items
-  has_many :orders, through: :order_items
 
   has_many :categorizations
   has_many :categories, through: :categorizations
@@ -17,7 +17,16 @@ class Item < ActiveRecord::Base
     else item.status == 2
       item.status = 'retired'
     end
-  end
+
+  private
+    def ensure_not_referenced_by_any_cart_item
+      if cart_items.empty?
+        return true
+      else
+        errors.add(:base, 'These Items are in a cart')
+        return false
+      end
+    end
 
   def categories_list
     self.categories.collect do |category|
@@ -29,14 +38,5 @@ class Item < ActiveRecord::Base
     category_names = categories_string.split(",").collect { |c| c.strip.downcase }.uniq
     new_or_found_categories = category_names.collect { |name| Category.find_or_create_by(name: name) }
     self.categories = new_or_found_categories
-  end
-
-  def ensure_not_referenced_by_any_order_item
-    if order_items.empty?
-      return true
-    else
-      errors.add(:base, 'Order Items Present')
-      return false
-    end
   end
 end

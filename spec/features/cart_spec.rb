@@ -3,6 +3,7 @@ require 'feature_helper'
 describe 'manipulating the cart' do
   it 'removes items from cart' do
     item = Item.create(title: "Chocolate", price: 3.00, status: 1)
+
     visit items_path
 
     click_on('Add To Cart')
@@ -18,6 +19,7 @@ describe 'manipulating the cart' do
 
   it 'checks out' do
     item = Item.create(title: "Chocolate", price: 3.00, status: 1)
+
     visit items_path
 
     click_on('Add To Cart')
@@ -44,12 +46,12 @@ describe 'manipulating the cart' do
 
         click_on('Cart')
 
-        within('.order-items') do
+        within('.cart-items') do
           expect(page).to have_content('1')
         end
       end
 
-      it 'totals the order' do
+      it 'totals the cart' do
         item = Item.create(title: "Chocolate", price: 3.00, status: 1)
         visit items_path
 
@@ -57,7 +59,7 @@ describe 'manipulating the cart' do
 
         click_on('Cart')
 
-        within('.order-items') do
+        within('.cart-items') do
           expect(page).to have_content('$3.00')
         end
       end
@@ -74,12 +76,12 @@ describe 'manipulating the cart' do
 
         click_on('Cart')
 
-        within('.order-items') do
+        within('.cart-items') do
           expect(page).to have_content('2')
         end
       end
 
-      it 'totals the order' do
+      it 'totals the cart' do
         item = Item.create(title: "Chocolate", price: 3.00, status: 1)
 
         2.times do
@@ -90,7 +92,7 @@ describe 'manipulating the cart' do
 
         click_on('Cart')
 
-        within('.order-items') do
+        within('.cart-items') do
           expect(page).to have_content('$6.00')
         end
       end
@@ -101,39 +103,39 @@ describe 'manipulating the cart' do
     context 'when there are items in the cart' do
       it 'removes one item from the cart' do
         item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-        order = Order.create(status: 'cart')
-        orderitem = OrderItem.create(order: order, item: item)
-        visit order_path(orderitem.order)
+        cart = Cart.create()
+        cartitem = CartItem.create(cart: cart, item: item)
+        visit cart_path(cartitem.cart)
 
-        within('.order-items') do
+        within('.cart-items') do
           expect(page).to have_content('Chocolate')
         end
 
         click_on('Remove From Cart')
 
-        within('.order-items') do
+        within('.cart-items') do
           expect(page).to_not have_content('Chocolate')
         end
       end
 
-      it 'changes the total of the order' do
+      it 'changes the total of the cart' do
         item_1 = Item.create(title: "Chocolate", price: 3.00, status: 1)
         item_2 = Item.create(title: "Vanilla", price: 2.50, status: 1)
-        order = Order.create(status: 'cart')
-        orderitem = OrderItem.create(order: order, item: item_1, quantity: 2)
-        orderitem = OrderItem.create(order: order, item: item_2, quantity: 1)
+        cart = Cart.create()
+        cartitem = CartItem.create(cart: cart, item: item_1, quantity: 2)
+        cartitem = CartItem.create(cart: cart, item: item_2, quantity: 1)
 
-        visit order_path(orderitem.order)
+        visit cart_path(cartitem.cart)
 
-        within('.order-items') do
+        within('.cart-items') do
           expect(page).to have_content('$8.50')
         end
 
-        within('.order-items') do
+        within('.cart-items') do
           first(:button, 'Remove From Cart').click
         end
 
-        within('.order-items') do
+        within('.cart-items') do
           expect(page).to have_content('$2.50')
         end
       end

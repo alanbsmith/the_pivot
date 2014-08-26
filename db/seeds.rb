@@ -1,135 +1,135 @@
 puts "============= Seeding Data Start ============="
 
-item1 = Item.create(id: 1,
+item1 = Item.create(
                     title: "Vanillisimo",
                     description: "The secret to the richer and creamier vanilla
                     flavor is the French custard base in this ice cream.",
-                    price: 299,
+                    price: 2.99,
                     status: 1)
 
 item2 = Item.create(title:       "Fudge Vanilla",
                     description: " Our delicious traditional vanilla ice cream
                     with a chocolate fudge sauce rippled throughout.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item3 = Item.create(title:       "Chocolate",
                     description: "A hit with the kids and one of our Top 10
                     flavors, our rich chocolate is made with real cocoa
                     powder.",
-                    price:       199,
+                    price:       1.99,
                     status:      1)
 
 item4 = Item.create(title:       "Chocolate Almond",
                     description: "Our popular chocolate ice cream with fresh
                     roasted almonds pieces sprinkled throughout.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item5 = Item.create(title:       "Rocky Road",
                     description: "Similar to Chocolate Almond ice cream, Rocky
                     Road also has mini marshmallows mixed in.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item6 = Item.create(title:       "Chocolate Marshmallow",
                     description: "This chocolate based ice cream has a
                     marshmallow sauce gently folded in.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item7 = Item.create(title:       "Chocolate Peanut Butter",
                     description: "One of our Top 10 flavors, this chocolate ice
                     cream features a dense peanut butter ripple throughout.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item8 = Item.create(title:       "Chocolate Chip",
                     description: " A classic flavor, this vanilla ice cream has
                     dark chocolate shavings in it.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item9 = Item.create(title:       "Mint Chocolate Chip",
                     description: "This refreshing light green mint ice cream is
                     one of our Top 10 flavors and has slivers of rich dark
                     chocolate all through it.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item10 = Item.create(title:      "Peppermint Stick",
                     description: "Available year-round, this pink peppermint
                     ice cream has tiny pieces of peppermint candies sprinkled
                     in.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item11 = Item.create(title:      "Buckeye",
                     description: " One of our Top 10 flavors, we take peanut
                     butter ice cream and ripple in chocolate sauce and mini
                     buckeye candies.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item12 = Item.create(title:      "Moose Tracks",
                     description: "Similar to Buckeye and a Top 10 favorite,
                     this vanilla based flavor has a chocolate ripple and mini
                     peanut butter cups in it.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item13 = Item.create(title:      "Cookies 'N' Cream",
                     description: "We add lots of sandwich cookie pieces to our
                     vanilla ice cream to create this classic flavor.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item14 = Item.create(title:      "Peanut Butter",
                     description: "This creamy flavor has lots of peanut butter
                     sauce and our famous crushed nuts in it, to give it a rich
                     peanutty taste.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item15 = Item.create(title:      "Cookie Dough",
                     description: "We start with cookie dough flavored ice cream
                     and mix in bits of chocolate chip cookie dough and mini
                     chocolate morsels.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item16 = Item.create(title:      "Toffee Caramel Crunch",
                     description: "Another one of our Top 10 flavors, this
                     toffee based ice cream has a rich caramel swirl with
                     slivers of almond and chocolate toffee pieces in it.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item17 = Item.create(title:      "Coffee",
                     description: "This one will give you a caffeine kick since
                     it’s flavored with fresh ground coffee.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item18 = Item.create(title:      "Strawberry",
                     description: "With ripe chunks of strawberries blended
                     throughout, this fruity flavor is a big seller year round.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item19 = Item.create(title:      "Strawberry Cheescake",
                     description: "A cheesecake flavored ice cream with our
                     chunky strawberry sauce marbled in.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
 item20 = Item.create(title:      "Lemon Custard",
                     description: "This French custard based ice cream has a
                     tangy lemon flavor.",
-                    price:       249,
+                    price:       2.49,
                     status:      1)
 
-category1 = Category.create(id: 1,
+category1 = Category.create(
                             title:       "Rockanillas",
                             description: "Yellow is the new black")
 
