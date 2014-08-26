@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    redirect_to home_path, notice: "Registration Successful!"
+    redirect_to signin_path, notice: "Registration Successful!"
   end
 
   private

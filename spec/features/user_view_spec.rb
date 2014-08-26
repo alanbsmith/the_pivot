@@ -36,7 +36,7 @@ describe 'the User view', type: :feature do
 
     it 'can log in as default user' do
       default_login
-      expect(current_path).to eq(items_path)
+      expect(current_path).to eq(home_path)
     end
 
     it 'cannot access the administrator items page' do
