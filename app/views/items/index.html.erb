@@ -23,7 +23,7 @@
         <td><%= item.description %></td>
         <td><%= number_to_currency(item.price) %></td>
         <td>
-          <%= button_to "Add To Cart", order_items_path(item_id: item) %>
+          <%= button_to "Add To Cart", cart_items_path(item_id: item) %>
         </td>
       </tr>
     <% end %>
