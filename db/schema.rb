@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140826165500) do
     t.integer  "quantity",   default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "order_type"
     t.integer  "order_id"
   end
 

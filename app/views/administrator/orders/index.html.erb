@@ -11,30 +11,17 @@
 <p style="float:left;width:25%">
   <%= link_to 'Manage Users', administrator_users_path, class: 'btn' %></p>
 
-<%= form_for @order, url: administrator_order_path(@order), method: :find_by do |f| %>
-      <%= f.label :find_orders_by_status %>
-      <%= f.text_field :status %>
-      <%= f.submit "Find Now" %>
-      <% end %>
-
-
 <table>
   <tr>
-    <th>User ID</th>
-    <th>Total</th>
-    <th>Time Created</th>
-    <th>Time Updated</th>
+    <th>Order Number</th>
+    <th>Customer</th>
     <th>Receiving Method</th>
     <th>Status</th>
-    <th>Update Status</th>
   </tr>
-
   <% @orders.each do |order| %>
   <tr>
-    <td><%= order.user_id %> </td>
-    <td><%= order.total %></td>
-    <td><%= order.created_at %></td>
-    <td><%= order.updated_at %></td>
+    <td><%= order.id %> </td>
+    <td><%= order.user.first_name %> <%= order.user.last_name %> </td>
     <td><%= order.receiving %></td>
     <td><%= order.status %></td>
     <td><%= select_tag(:status, options_for_select([['Paid', 1],['Pending', 2],['Cancel', 3]]))%></td>
