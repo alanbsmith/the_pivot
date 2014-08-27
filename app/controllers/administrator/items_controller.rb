@@ -65,5 +65,4 @@ class Administrator::ItemsController < AdminsController
   def lookup_item
     @item = Item.find(params[:id])
   end
-
 end

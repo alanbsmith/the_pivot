@@ -72,7 +72,10 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:status, :total, :receiving, :user_id)
+    params.require(:order).permit(:status, 
+                                  :total, 
+                                  :receiving, 
+                                  :user_id)
   end
 
   def set_order

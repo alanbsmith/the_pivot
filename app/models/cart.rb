@@ -17,5 +17,3 @@ class Cart < ActiveRecord::Base
     cart_items.to_a.sum { |cart_item| cart_item.total_price }
   end
 end
-
-# model level validation on CartItem -> friendly errors
