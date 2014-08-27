@@ -2,6 +2,7 @@ class Item < ActiveRecord::Base
   has_many :cart_items
   has_many :carts, through: :cart_items
 
+  before_save :default_image
   before_destroy :ensure_not_referenced_by_any_cart_item
   mount_uploader :image, ImageUploader
 
@@ -34,6 +35,10 @@ class Item < ActiveRecord::Base
   end
 
   private
+
+  def default_image
+    self.image ||= "/assets/fallback/default_image.png"
+  end
 
   def ensure_not_referenced_by_any_cart_item
     if cart_items.empty?

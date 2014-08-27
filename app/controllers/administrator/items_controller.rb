@@ -23,7 +23,7 @@ class Administrator::ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      @item.categories_list(params[:item][:categories:])
+      @item.categories_list(params[:item][:categories])
       flash.notice = "A new item: '#{@item.title}' was successfully created"
       redirect_to administrator_items_path
     else
@@ -53,20 +53,21 @@ class Administrator::ItemsController < ApplicationController
   end
 
   private
-    def item_params
-      params.require(:item).permit(:title,
-                                   :description,
-                                   :price,
-                                   :image,
-                                   :status,
-                                   :categories_list)
-    end
 
-    def lookup_item
-      @item = Item.find(params[:id])
-    end
+  def item_params
+    params.require(:item).permit(:title,
+                                 :description,
+                                 :price,
+                                 :image,
+                                 :status,
+                                 :categories_list)
+  end
 
-    def authorize?
-      redirect_to("http://bringvictory.com/") unless current_user && current_user.role == "admin"
-    end
+  def lookup_item
+    @item = Item.find(params[:id])
+  end
+
+  def authorize?
+    redirect_to("http://bringvictory.com/") unless current_user && current_user.role == "admin"
+  end
 end
