@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     get "/ordered" => "orders#ordered", as: :ordered
     get "/cancelled" => "orders#cancelled", as: :cancelled
     get "/completed" => "orders#completed", as: :completed
+    get "/cancel/:id" => "orders#cancel", as: :cancel
+    get "/complete/:id" => "orders#complete", as: :complete
     resources :cart_items
     resources :admins
     resources :items
