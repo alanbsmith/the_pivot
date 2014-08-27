@@ -23,4 +23,19 @@ class Administrator::OrdersController < AdminsController
   def cancelled
     @orders = Order.cancelled
   end
+
+  def cancel
+    @order = Order.find(params[:id]).cancelled!
+    redirect_to administrator_paid_path, notice: "Cancel Successful"
+  end
+
+  def complete
+    @order = Order.find(params[:id]).completed!
+    redirect_to administrator_paid_path, notice: "Successfully marked as Completed"
+  end
+
+
+
+  private
+
 end
