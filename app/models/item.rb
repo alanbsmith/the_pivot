@@ -2,12 +2,15 @@ class Item < ActiveRecord::Base
   has_many :cart_items
   has_many :carts, through: :cart_items
 
+  has_many :categorizations
+  has_many :categories, through: :categorizations
+
   before_save :default_image
   before_destroy :ensure_not_referenced_by_any_cart_item
   mount_uploader :image, ImageUploader
 
-  has_many :categorizations
-  has_many :categories, through: :categorizations
+  validates :title, presence: true
+  validates :price, presence: true
 
   scope :active,  -> { where(status: 1) }
   scope :retired, -> { where(status: 2) }
@@ -26,7 +29,7 @@ class Item < ActiveRecord::Base
        cat.empty?
       end
 
-      new_or_found_categories = valid_categories.map do |title| 
+      new_or_found_categories = valid_categories.map do |title|
         Category.find_or_create_by(title: title)
       end
 

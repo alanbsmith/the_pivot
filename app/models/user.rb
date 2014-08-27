@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
 
 
   def self.default_status
+    #why is this neccesary,
+    #why not just set role's default to default where is this status coming from?
     self.status ||= "default"
   end
 
@@ -39,5 +41,4 @@ class User < ActiveRecord::Base
     def create_remember_token
       self.remember_token = User.digest(User.new_remember_token)
     end
-
 end
