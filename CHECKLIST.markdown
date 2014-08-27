@@ -21,13 +21,6 @@ if any item is retired from the menu:
 they can still access the item page
 they cannot add it to a new cart
 
-
-Admin CAN
-====================================
-
-Assign items to categories or remove them from categories.
-Products can belong to more than one category.
-
 See a listing of all orders with: (Tan)
 ========================================
 the total number of orders by status
@@ -67,7 +60,7 @@ An order is marked for pickup or delivery
 If marked for delivery, an order is attached to user address  
 finish orders controller for admin  
 
-Item (Tan)
+Item (Corey) <-- I have more to work on here, but will figure it out tomorrow OR change to paperclip
 =================================================
 The photo is optional. If not present, a stand-in photo is used.
 
