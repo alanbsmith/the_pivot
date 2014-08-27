@@ -24,9 +24,11 @@ Rails.application.routes.draw do
   namespace :users do
     resources :orders
     resources :addresses
+    resources :cart_items
   end
 
   namespace :administrator do
+    resources :cart_items
     resources :admins
     resources :items
     resources :categories

@@ -167,7 +167,6 @@ category5.items << item19
 category5.items << item20
 
 
-
 # Create the users
 #
 # user1 = User.create(first_name:      "Jeff",
@@ -196,20 +195,26 @@ admin_josh = User.create(first_name:     "Josh",
                   password:              "password",
                   password_confirmation: "password",
                   role:                   "admin")
+
 admin_rachel = User.create(first_name:     "Rachel",
                   last_name:             "Warbelow",
                   email:                 "rachel@jumpstartlab.com",
                   password:              "password",
                   password_confirmation: "password",
                   role:                   "default")
-#
-# user1 = User.create(first_name:      "Rachel",
-#                     last_name:       "Warbelow",
-#                     email:           "rachel@jumpstartlab.com"
-#                     username:        "rachel",
-#                     password_digest: "",
-#                     salt:            "",
-#                     address_id:      "",
-#                     role:            "")
+                  # Create the orders
+
+order1 = User.find(2).orders.create(status: "Paid", receiving: "Delivery")
+order2 = User.find(2).orders.create(status: "Paid", receiving: "Delivery")
+order3 = User.find(2).orders.create(status: "Ordered", receiving: "Delivery")
+order4 = User.find(2).orders.create(status: "Completed", receiving: "Delivery")
+order5 = User.find(2).orders.create(status: "Cancelled", receiving: "Delivery")
+order6 = User.find(2).orders.create(status: "Ordered", receiving: "Delivery")
+
+order1.cart_items.create(item_id: 1)
+order1.cart_items.create(item_id: 2)
+order1.cart_items.create(item_id: 4)
+order2.cart_items.create(item_id: 4)
+order2.cart_items.create(item_id: 7)
 
 puts "============= Seeding Data End ============="

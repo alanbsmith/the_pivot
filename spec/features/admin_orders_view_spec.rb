@@ -1,6 +1,6 @@
 require 'feature_helper'
 
-describe "admin_categories", type: :feature do
+describe "admin orders", type: :feature do
   before(:each) do
 
     @admin_user = User.create(email: "admin@example.com", password: "adminpassword", password_confirmation: "adminpassword",
@@ -23,26 +23,24 @@ describe "admin_categories", type: :feature do
     end
   end
 
-  
-
-
-
-  it 'edits a status of an order' do
-    pending
+  it 'the admin can view a single order' do
     admin_login
     visit administrator_orders_path
-
-    order     = @orders.first
-    old_category = order.created_at
-
-    within('//table') do
-      first(:link, 'Edit').click
-    end
-    page.fill_in('Title', with: 'Chocomore')
-    page.click_button('Update this Order')
-
-    expect(current_path).to eq(administrator_orders_path)
-    expect(page).to have_content('Chocomore')
-    expect(page).to_not have_content(old_order)
+    first(:link, 'Order Details').click
+    expect(current_path).to eq(administrator_order_path(@order1))
+    expect(page).to have_content(@order1.user.email)
   end
+
+  it 'the admin can delete a single item from an order' do
+    @item1 = Item.create(title: "Vanilla")
+    @order_item = @order1.cart_items.create(item_id: "1")
+    admin_login
+    visit administrator_order_path(@order1)
+    click_button("Delete")
+    expect(page).to_not have_content(@order_item.item.title)
+  end
+
+
+
+
 end
