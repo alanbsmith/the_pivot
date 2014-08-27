@@ -1,66 +1,65 @@
 puts "============= Seeding Data Start ============="
 
 item1 = Item.create(
-                    title: "Vanillisimo",
-                    description: "The secret to the richer and creamier vanilla
-                    flavor is the French custard base in this ice cream.",
-                    price: 2.99,
-                    status: 1)
+                    title: "Oh'yeah, Sexual Chocolate",
+                    description: "Rich Mexican chocolate fudge icecream suduced by 
+                                  Jose' Cuervo tequilla. It's qualified to satisfy you.",
+                    price:        9.35,
+                    status:       1)
 
-item2 = Item.create(title:       "Fudge Vanilla",
-                    description: " Our delicious traditional vanilla ice cream
-                    with a chocolate fudge sauce rippled throughout.",
-                    price:       2.49,
+item2 = Item.create(title:       "Coffee creamy dreams",
+                    description: "A classic coffee cream, hung with bit of walnut and expresso chips,
+                                  infused with Bailey's Irish Cream. This ones the lover that'll love
+                                  you back.",
+                    price:       9.35,
                     status:      1)
 
-item3 = Item.create(title:       "Chocolate",
-                    description: "A hit with the kids and one of our Top 10
-                    flavors, our rich chocolate is made with real cocoa
-                    powder.",
-                    price:       1.99,
+item3 = Item.create(title:       "Milky chocolate lova'",
+                    description: "Turn down the lights and turn up the love, this favorite blends a classic
+                                    milk chocolate cream with a smooth blend of Presidente' brandy.",
+                    price:       10.75,
                     status:      1)
 
-item4 = Item.create(title:       "Chocolate Almond",
-                    description: "Our popular chocolate ice cream with fresh
-                    roasted almonds pieces sprinkled throughout.",
-                    price:       2.49,
+item4 = Item.create(title:       "Margerita Lima lickin'",
+                    description: "Lemon Lima serbert meets Grand Marnier and Don Julio tequilla. If 
+                                    this don't get your party started, nothing will!",
+                    price:       10.75,
                     status:      1)
 
-item5 = Item.create(title:       "Rocky Road",
-                    description: "Similar to Chocolate Almond ice cream, Rocky
-                    Road also has mini marshmallows mixed in.",
-                    price:       2.49,
+item5 = Item.create(title:       "Strawberry passionate",
+                    description: "Sweet sensual strawberries with a classic creamy feel wrapped up in
+                                    notes of Bicardi dark Rum. Summer, winter, whenever.",
+                    price:       9.35,
                     status:      1)
 
-item6 = Item.create(title:       "Chocolate Marshmallow",
-                    description: "This chocolate based ice cream has a
-                    marshmallow sauce gently folded in.",
-                    price:       2.49,
+item6 = Item.create(title:       "Malbec makeout",
+                    description: "Real Alamos Malbec made with alamos grapes grown in the foothills of the 
+                                    Andes, swirled together with a classic sweet cream. Romance comes to
+                                    life with every single spoonful.",
+                    price:       8.29,
                     status:      1)
 
-item7 = Item.create(title:       "Chocolate Peanut Butter",
-                    description: "One of our Top 10 flavors, this chocolate ice
-                    cream features a dense peanut butter ripple throughout.",
-                    price:       2.49,
+item7 = Item.create(title:       "Minty mythos",
+                    description: "A childhood favorite kicked up for the adult desire. Chocolate chip 
+                                cream blended with the unique flavor of Ska brewing Minthe Stout.",
+                    price:       8.29,
                     status:      1)
 
-item8 = Item.create(title:       "Chocolate Chip",
-                    description: " A classic flavor, this vanilla ice cream has
-                    dark chocolate shavings in it.",
-                    price:       2.49,
+item8 = Item.create(title:       "Cherry cheery cheeks",
+                    description: "Rich dark cherry cream with Ghirardelli chocolate chunks blended with
+                                    the spice of Captain Morgans. Oh yeah baby, you got a lil in you?",
+                    price:       9.35,
                     status:      1)
 
-item9 = Item.create(title:       "Mint Chocolate Chip",
-                    description: "This refreshing light green mint ice cream is
-                    one of our Top 10 flavors and has slivers of rich dark
-                    chocolate all through it.",
-                    price:       2.49,
+item9 = Item.create(title:       "Blackberry night",
+                    description: "Classic blackberry cream, with full fruity blackberrys and deep
+                                    delicius burbon from Breckenridge CO. Your motor will run all night
+                                    long.",
+                    price:       10.75,
                     status:      1)
 
-item10 = Item.create(title:      "Peppermint Stick",
-                    description: "Available year-round, this pink peppermint
-                    ice cream has tiny pieces of peppermint candies sprinkled
-                    in.",
+item10 = Item.create(title:      "Peachy pucker up",
+                    description: "Palisade peaches in peach sherbert with peach liquer. Here comes ",
                     price:       2.49,
                     status:      1)
 
@@ -205,7 +204,7 @@ admin_rachel = User.create(first_name:     "Rachel",
                   street:                 "1510 Blake St",
                   city:                   "Denver",
                   state:                  "CO",
-                  zipcode:                "80202")
+                  zipcode:                "80202",
                   role:                   "default")
 
 order1 = User.find(2).orders.create(status: "paid", receiving: "Delivery")
@@ -224,6 +223,5 @@ order1.cart_items.create(item_id: 2)
 order1.cart_items.create(item_id: 4)
 order2.cart_items.create(item_id: 4)
 order2.cart_items.create(item_id: 7)
->>>>>>> admin-order-dashboard
 
 puts "============= Seeding Data End ============="
