@@ -53,7 +53,7 @@ describe "admin_menu", type: :feature do
       first(:link, 'Edit').click
     end
     page.fill_in('Title', with: 'Chocolate Monkey Madness')
-    page.click_button('Update this Item')
+    page.click_button('Submit')
 
     expect(current_path).to eq(administrator_items_path)
     expect(page).to have_content('Chocolate Monkey Madness')
@@ -76,7 +76,7 @@ describe "admin_menu", type: :feature do
     page.fill_in('Price', with: '450')
     select('Strawberry', :from => 'Categories')
 
-    page.click_button('Create this Item')
+    page.click_button('Submit')
 
     expect(current_path).to eq(administrator_items_path)
     expect(page).to have_content('Bananaramma you full of goodness')
@@ -125,7 +125,7 @@ describe "admin_menu", type: :feature do
       first(:link, 'Edit').click
     end
     select('Retired', from: 'Status')
-    click_button('Update this Item')
+    click_button('Submit')
 
     visit items_path
     expect(page).to_not have_content(deleted_item)

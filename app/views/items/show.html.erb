@@ -14,5 +14,7 @@
 </dl>
 
 <div class="form-actions">
-  <%= button_to "Add To Cart", cart_items_path(item_id: @item) %>
+  <% if @item.status == 1 %>
+    <%= button_to "Add To Cart", cart_items_path(item_id: @item) %>
+  <% end %>
 </div>
