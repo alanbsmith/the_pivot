@@ -11,6 +11,7 @@ describe "admin_menu", type: :feature do
     Category.create(title:"Strawberry", description: "This counts as a fruit right?")
 
     @categories = Category.all
+    @category   = Category.first
 
     Item.create(title:"Chocolate yummy yumm", description: "Chocolate so good you'll wanna slap yo mama", price: 400, image: "icecreamslug.com", status: 1)
     Item.create(title:"Vanilla willya please", description: "Vanilla is the bomb for you mom!", price: 325, image: "icecreamslug.com", status: 1)
@@ -19,7 +20,6 @@ describe "admin_menu", type: :feature do
     @items = Item.all
     @item  = Item.new
     visit home_path
-
   end
 
   it "shows the items to an admin" do
@@ -70,13 +70,17 @@ describe "admin_menu", type: :feature do
     admin_login
     visit administrator_items_path
     page.click_link('Create New Item')
+
     page.fill_in('Title', with: 'Bananaramma you full of goodness')
     page.fill_in('Description', with: "Don't be so dirty! It's just bananas and cream")
     page.fill_in('Price', with: '450')
+    select('Strawberry', :from => 'Categories')
+
     page.click_button('Create this Item')
 
     expect(current_path).to eq(administrator_items_path)
     expect(page).to have_content('Bananaramma you full of goodness')
+    expect(page).to have_content('Strawberry')
   end
 
   it 'has a links to delete the items' do

@@ -7,7 +7,7 @@ Still to do:
 Unauthenticated Users CAN
 =====================================
  browse by category
- increase quantity from cart
+
 
 Authenticated users CAN
 =====================================
@@ -22,8 +22,6 @@ they can still access the item page
 they cannot add it to a new cart
 
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 Admin CAN
 ====================================
 
@@ -37,8 +35,10 @@ links for each individual order
 filter orders to display by status type (for statuses "ordered", "paid", "cancelled", "completed")
   --> If can/comp then no delete button
 
+
 link to transition to a different status: (Tan)
 =========================================================================
+
 link to "cancel" individual orders which are currently "ordered" or "paid"
 link to "mark as paid" orders which are "ordered"
 link to "mark as completed" individual orders which are currently "paid"

@@ -6,9 +6,6 @@ module SessionsHelper
                                  expires: 1.hour.from_now.utc } # may need to change this...
     user.update_attribute(:remember_token, User.digest(remember_token))
     self.current_user = user
-    # if @order
-    #   user.orders << @order
-    # end
   end
 
   def sign_out
@@ -16,7 +13,7 @@ module SessionsHelper
                                    User.digest(User.new_remember_token))
     cookies.delete(:remember_token)
     self.current_user = nil
-    session[:order_id] = nil
+    session[:cart_id] = nil
   end
 
   def signed_in?

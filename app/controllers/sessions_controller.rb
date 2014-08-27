@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       sign_in user
       if session[:cart_id]
-        redirect_to new_order_path
+        if current_user.role == 'admin'
+          redirect_to home_path
+        else
+          redirect_to new_order_path
+        end
       else
         redirect_to home_path, notice: "Welcome #{current_user.first_name}!"
       end
@@ -19,7 +23,6 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    session[:cart_id] == nil
     redirect_to root_url
   end
 end
