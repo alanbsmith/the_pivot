@@ -31,13 +31,11 @@
         <% end %>
       </td>
       <td><%= button_to 'Remove From Cart', cart_item ,method: :delete %></td>
-
-
     <% end %>
 
     <tr class="total_line">
       <td> Total </td>
-      <td><%= number_to_currency(@cart.total_price) %></td>
+      <td><%= number_to_currency(@cart.total_price) %> </td>
     </tr>
   </tbody>
 </table>

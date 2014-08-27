@@ -11,11 +11,15 @@ class Administrator::CategoriesController < AdminsController
   end
 
   def create
-    @category = Category.new(category_params)
-    @category.save
+    @category = Category.create(category_params)
 
-    flash.notice = "A new category: '#{@category.title}' was successfully created"
-    redirect_to administrator_categories_path
+    if @category.save
+      flash.notice = "A new category: '#{@category.title}' was successfully created"
+      redirect_to administrator_categories_path
+    else
+      format.html { render :new, notice: 'Fill in all of the fields before submitting'}
+    end
+
   end
 
   def edit
@@ -24,8 +28,12 @@ class Administrator::CategoriesController < AdminsController
   def update
     @category.update(category_params)
 
-    flash.notice = "Category: '#{@category.title}' has been updated"
-    redirect_to administrator_categories_path
+    if @category.save
+      flash.notice = "Category: '#{@category.title}' has been updated"
+      redirect_to administrator_categories_path
+    else
+      format.html { render :edit, notice: 'Fill in all of the fields before submitting'}
+    end
   end
 
 
