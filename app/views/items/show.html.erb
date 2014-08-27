@@ -4,7 +4,7 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dd><%= image_tag image_or_fallback_show(item) %></dd>
+  <dd><%= image_tag image_or_fallback_show(@item) %></dd>
   <br/>
   <dd><strong><%= @item.title %></strong></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>

@@ -5,13 +5,16 @@ item1 = Item.create(
                     description: "Rich Mexican chocolate fudge icecream suduced by 
                                   Jose' Cuervo tequilla. It's qualified to satisfy you.",
                     price:        9.35,
-                    status:       1)
+                    status:       1,
+                    image:        open("public/uploads/item/image/mexican_choco.jpg")
+                    )
 
 item2 = Item.create(title:       "Coffee creamy dreams",
                     description: "A classic coffee cream, hung with bit of walnut and expresso chips,
                                   infused with Bailey's Irish Cream. This ones the lover that'll love
                                   you back.",
                     price:       9.35,
+                    image:        open("public/uploads/item/image/.jpg")
                     status:      1)
 
 item3 = Item.create(title:       "Milky chocolate lova'",
@@ -28,7 +31,7 @@ item4 = Item.create(title:       "Margerita Lima lickin'",
 
 item5 = Item.create(title:       "Strawberry passionate",
                     description: "Sweet sensual strawberries with a classic creamy feel wrapped up in
-                                    notes of Bicardi dark Rum. Summer, winter, whenever.",
+                                    notes of Captains dark Rum. Summer, winter, whenever.",
                     price:       9.35,
                     status:      1)
 
@@ -59,111 +62,144 @@ item9 = Item.create(title:       "Blackberry night",
                     status:      1)
 
 item10 = Item.create(title:      "Peachy pucker up",
-                    description: "Palisade peaches in peach sherbert with peach liquer. Here comes ",
-                    price:       2.49,
+                    description: "Palisade peaches in peach sherbert with peach liquer. Here comes the 
+                                    smiles...ladies?",
+                    price:       8.29,
                     status:      1)
 
-item11 = Item.create(title:      "Buckeye",
-                    description: " One of our Top 10 flavors, we take peanut
-                    butter ice cream and ripple in chocolate sauce and mini
-                    buckeye candies.",
-                    price:       2.49,
+item11 = Item.create(title:      "Lemon Purrrrang...",
+                    description: "A little tart, a little sweet, a little Jose silver tequilla decadent 
+                                    bites of our house made purrrrang.",
+                    price:       9.35,
                     status:      1)
 
-item12 = Item.create(title:      "Moose Tracks",
-                    description: "Similar to Buckeye and a Top 10 favorite,
-                    this vanilla based flavor has a chocolate ripple and mini
-                    peanut butter cups in it.",
-                    price:       2.49,
+item12 = Item.create(title:      "Tropical fling",
+                    description: "Our homemade tropical sherbert blends the flavors of pineapple and orange
+                                    from real fruit juices, adds a swirl of coconut cream and tops it off with
+                                    Don Juilio tequilla, Kettle one Vodka, and Pussers Rum for a refreshing tropical
+                                    expereince that will leave your toes curled.",
+                    price:       10.75,
                     status:      1)
 
-item13 = Item.create(title:      "Cookies 'N' Cream",
-                    description: "We add lots of sandwich cookie pieces to our
-                    vanilla ice cream to create this classic flavor.",
-                    price:       2.49,
+item13 = Item.create(title:      "Awesome sauce",
+                    description: "Oh you gotta try this on, we start with our house made sweet cream, 
+                                    then we kick it up a notch with a dash of Sirracha. Blend in the fresh
+                                    flavors of orange and lima'. Crank it up even further with Don Julio tequila,
+                                    and mix in real bacon bits. If our awesome sause doesn't get you hot you best
+                                    see a doctor!",
+                    price:       11.49,
                     status:      1)
 
-item14 = Item.create(title:      "Peanut Butter",
-                    description: "This creamy flavor has lots of peanut butter
-                    sauce and our famous crushed nuts in it, to give it a rich
-                    peanutty taste.",
-                    price:       2.49,
+item14 = Item.create(title:      "Butter my baby",
+                    description: "Butter Caramel cream, crispy bites of butter toffee, and Breckenridge
+                                    Burbon. It's a recipe for love.",
+                    price:       9.35,
                     status:      1)
 
-item15 = Item.create(title:      "Cookie Dough",
-                    description: "We start with cookie dough flavored ice cream
-                    and mix in bits of chocolate chip cookie dough and mini
-                    chocolate morsels.",
-                    price:       2.49,
+item15 = Item.create(title:      "Lil' Ginger tart",
+                    description: "She's sassy and sultry all at once. Gingersnap cream, mixed in candied
+                                    ginger bits, swirl in fresh mint cream, then simmer it down with a 
+                                    dose of Buffalo Trace burbon. She'll slap you happy.",
+                    price:       9.35,
                     status:      1)
 
-item16 = Item.create(title:      "Toffee Caramel Crunch",
-                    description: "Another one of our Top 10 flavors, this
-                    toffee based ice cream has a rich caramel swirl with
-                    slivers of almond and chocolate toffee pieces in it.",
-                    price:       2.49,
+item16 = Item.create(title:      "Take me home tonight",
+                    description: "Our homemade cucumber lemon sherbert swirled with real Colorado honey, 
+                                    infused with Buffalo Trace burbon. The perfect nightcap.",
+                    price:       9.35,
                     status:      1)
 
-item17 = Item.create(title:      "Coffee",
-                    description: "This one will give you a caffeine kick since
-                    it’s flavored with fresh ground coffee.",
-                    price:       2.49,
+item17 = Item.create(title:      "Aztec lover",
+                    description: "A romance novel in ever bite. We start with house spicey chai cream,
+                                    add Ghirardelli dark chocolate chips, then blend in Godiva dark chocolate
+                                    liqueur and a splash of Don Julio tequila. Tall dark and misterious anyone?",
+                    price:       9.35,
                     status:      1)
 
-item18 = Item.create(title:      "Strawberry",
-                    description: "With ripe chunks of strawberries blended
-                    throughout, this fruity flavor is a big seller year round.",
-                    price:       2.49,
+item18 = Item.create(title:      "Minty freshness",
+                    description: "White mint sweet cream, mix in crispy candy cane crush, blended with Zwack 
+                                    liqueur and Rumple Minze schnapps. You'll be kissably fresh or your money back!",
+                    price:       9.35,
                     status:      1)
 
-item19 = Item.create(title:      "Strawberry Cheescake",
-                    description: "A cheesecake flavored ice cream with our
-                    chunky strawberry sauce marbled in.",
-                    price:       2.49,
+item19 = Item.create(title:      "The temtress",
+                    description: "We start with a sensual sweet cream base, and blend in our home made
+                                    cinnimon apple pie filling. Next we add chunks of candied ginger, then
+                                    mix in Zwack liqueur and a touch of bitters. This mysterious lady will
+                                    leave you with a flavor to remember her by.",
+                    price:       10.75,
                     status:      1)
 
-item20 = Item.create(title:      "Lemon Custard",
-                    description: "This French custard based ice cream has a
-                    tangy lemon flavor.",
-                    price:       2.49,
+item20 = Item.create(title:      "Irish lass",
+                    description: "We use our classic french vanilla cream, mix it up with fresh raspberries and
+                                    diced mint leaves, then blend it with Maui Brewing CoCoNut porter.",
+                    price:       8.25,
                     status:      1)
 
-category1 = Category.create(
-                            title:       "Rockanillas",
-                            description: "Yellow is the new black")
+item21 = Item.create(title:      "White wine sherbert",
+                    description: "It's straight up, and sometimes just what you need. Our custom made
+                                    white wine sherbet packs a bubbly suprise that will tantilize your
+                                    tounge with each delicate spoonful.",
+                    price:       8.25,
+                    status:      1)
 
-category2 = Category.create(title:       "Chocolate Yumm Yumm",
-                            description: "The flavor of love")
+item22 = Item.create(title:      "Tortuga nights",
+                    description: "We start with a blend of our white wine sherbert, and swirl it with our
+                                    pineapple lima sherbert, add fresh pitted cherries, then blend in Captain
+                                    Morgan Black spiced rum.",
+                    price:       9.35,
+                    status:      1)
 
-category3 = Category.create(title:       "Strawbellisima",
-                            description: "Pink for you")
+item23 = Item.create(title:      "Muff'n crush",
+                    description: "We take our house orange sherbert, add a splash of bitters, fresh 
+                                    candied orange bits, and blend it with Captains original. Guess who's
+                                    gotta new crush?",
+                    price:       9.35,
+                    status:      1)
 
-category4 = Category.create(title:       "Animalism!",
-                            description: "Flavors from the farm")
+category1 = Category.create(title:       "Tequila take me home...",
+                            description: "Senor or senorita, these one of a kind ice'screams infuse the flavors of 
+                            Jose Cuervo' and Don Julio tequilas.")
 
-category5 = Category.create(title:       "Badass",
-                            description: "Just for real rockstars")
+category2 = Category.create(title:       "Whiskey lovers...",
+                            description: "Sentuous and sultry, our wiskey blended screams use the rich flavors of
+                                            Buffalo Trace and Breckenridge burbons.")
+
+category3 = Category.create(title:       "liqueur me up...",
+                            description: "Looking for something refreshing and different, these screams offer surprises 
+                                            you never saw coming, blinding unique liqueurs with unique house made screams 
+                                            and sherberts.")
+
+category4 = Category.create(title:       "Classic and kissable...",
+                            description: "Classic adult favorites, we take the goto flavors of porters, stouts, and wine
+                                            blended with house screams and sherberts to bring you one of a kind sensations.")
+
+category5 = Category.create(title:       "Rummance happens...",
+                            description: "Rummace happens when you take our custom made screamery flavors and mix in Captain's
+                                            spiced rum. Tropical or sensual, don't worry, we wont tell.")
 
 category1.items << item1
-category1.items << item2
-category1.items << item3
 category1.items << item4
-category2.items << item5
-category2.items << item6
-category2.items << item7
-category2.items << item8
-category3.items << item9
+category1.items << item11
+category1.items << item12
+category1.items << item13
+category2.items << item3
+category2.items << item9
+category2.items << item14
+category2.items << item15
+category2.items << item16
+category3.items << item6
+category3.items << item7
 category3.items << item10
-category3.items << item11
-category3.items << item12
-category4.items << item13
-category4.items << item14
-category4.items << item15
-category4.items << item16
-category5.items << item17
-category5.items << item18
-category5.items << item19
-category5.items << item20
+category3.items << item20
+category3.items << item21
+category4.items << item2
+category4.items << item18
+category4.items << item19
+category5.items << item5
+category5.items << item8
+category5.items << item22
+category5.items << item23
 
 
 # Create the users

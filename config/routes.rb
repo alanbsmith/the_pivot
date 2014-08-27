@@ -31,6 +31,9 @@ Rails.application.routes.draw do
 
   namespace :administrator do
     get "/paid" => "orders#paid", as: :paid
+    get "/ordered" => "orders#ordered", as: :ordered
+    get "/cancelled" => "orders#cancelled", as: :cancelled
+    get "/completed" => "orders#completed", as: :completed
     resources :cart_items
     resources :admins
     resources :items
