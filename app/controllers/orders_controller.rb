@@ -54,6 +54,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+    @order.status = 'cancelled'
+  end
+
 
   def destroy
     Order.find(session[:order_id]).destroy

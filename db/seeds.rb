@@ -201,7 +201,11 @@ admin_rachel = User.create(first_name:     "Rachel",
                   email:                 "rachel@jumpstartlab.com",
                   password:              "password",
                   password_confirmation: "password",
-                  role:                   "default")
+                  role:                   "default",
+                  street:                 "1510 Blake St",
+                  city:                   "Denver",
+                  state:                  "CO",
+                  zipcode:                "80202")
 #
 # user1 = User.create(first_name:      "Rachel",
 #                     last_name:       "Warbelow",

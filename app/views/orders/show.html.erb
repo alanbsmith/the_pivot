@@ -11,6 +11,9 @@
       <% if @order.status == 'canceled' %>
         <th><%= model_class.human_attribute_name(:canceled) %></th>
       <% end %>
+      <% if @order.receiving == 'Delivery' %>
+        <th><%= model_class.human_attribute_name(:devlivery_address) %></th>
+      <% end %>
     </tr>
     <tbody>
       <tr>
@@ -21,6 +24,9 @@
         <% end %>
         <% if @order.status == 'canceled' %>
           <td><%= @order.updated_at %></td>
+        <% end %>
+        <% if @order.receiving == 'Delivery' %>
+          <td><%= @order.user.street %> <%= @order.user.city %> <%= @order.user.state %>, <%= @order.user.zipcode %></td>
         <% end %>
       </tr>
     </tbody>
@@ -58,3 +64,4 @@
     </tr>
   </tbody>
 </table>
+<%= button_to 'Cancel', order_path(@order), method: :patch %>

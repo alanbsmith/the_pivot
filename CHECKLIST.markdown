@@ -20,9 +20,6 @@ if any item is retired from the menu:
 Admin CAN
 ====================================
 
-Assign items to categories or remove them from categories.
-Products can belong to more than one category.
-
 See a listing of all orders with: (Tan)
 ========================================
 the total number of orders by status
@@ -58,9 +55,7 @@ View and edit orders;
 
 Order(Horacio)
 ====================================================
-An order is marked for pickup or delivery  
 If marked for delivery, an order is attached to user address  
-finish orders controller for admin  
 
 Item (Tan)
 =================================================
