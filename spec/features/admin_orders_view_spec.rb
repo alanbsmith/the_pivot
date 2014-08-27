@@ -11,9 +11,11 @@ describe "admin orders", type: :feature do
     @order1 = @default_user.orders.create(status: "paid", receiving: "Delivery")
     @order2 = @default_user.orders.create(status: "paid", receiving: "Delivery")
     @order3 = @default_user.orders.create(status: "ordered", receiving: "Delivery")
-    @order4 = @default_user.orders.create(status: "cancelled", receiving: "Delivery")
+    @order4 = @default_user.orders.create(status: "ordered", receiving: "Delivery")
     @order5 = @default_user.orders.create(status: "completed", receiving: "Delivery")
-    @order6 = @default_user.orders.create(status: "crdered", receiving: "Delivery")
+    @order6 = @default_user.orders.create(status: "completed", receiving: "Delivery")
+    @order7 = @default_user.orders.create(status: "cancelled", receiving: "Delivery")
+    @order8 = @default_user.orders.create(status: "cancelled", receiving: "Delivery")
     @orders = Order.all
     visit home_path
 
@@ -55,14 +57,35 @@ describe "admin orders", type: :feature do
   end
 
   it "admin can view all paid orders" do
-    @item1 = Item.create(title: "Vanilla")
-    @order_item = @order1.cart_items.create(item_id: "1")
-    @order_item = @order3.cart_items.create(item_id: "2")
     admin_login
     visit administrator_orders_path
     click_link_or_button("Paid Orders")
     expect(page).to have_content(@order2.status)
     expect(page).to_not have_content(@order3.status)
+  end
+
+  it "admin can view all ordered orders" do
+    admin_login
+    visit administrator_orders_path
+    click_link_or_button("Ordered Orders")
+    expect(page).to have_content(@order4.status)
+    expect(page).to_not have_content(@order5.status)
+  end
+
+  it "admin can view all completed orders" do
+    admin_login
+    visit administrator_orders_path
+    click_link_or_button("Completed Orders")
+    expect(page).to have_content(@order6.status)
+    expect(page).to_not have_content(@order7.status)
+  end
+
+  it "admin can view all cancelled orders" do
+    admin_login
+    visit administrator_orders_path
+    click_link_or_button("Cancelled Orders")
+    expect(page).to have_content(@order7.status)
+    expect(page).to_not have_content(@order6.status)
   end
 
 end

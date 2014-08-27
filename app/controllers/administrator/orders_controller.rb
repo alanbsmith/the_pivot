@@ -12,6 +12,18 @@ class Administrator::OrdersController < ApplicationController
     @orders = Order.paid
   end
 
+  def completed
+    @orders = Order.completed
+  end
+
+  def ordered
+    @orders = Order.ordered
+  end
+
+  def cancelled
+    @orders = Order.cancelled
+  end
+
   private
 
 
