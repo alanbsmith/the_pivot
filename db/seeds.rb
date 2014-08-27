@@ -223,5 +223,4 @@ order1.cart_items.create(item_id: 2)
 order1.cart_items.create(item_id: 4)
 order2.cart_items.create(item_id: 4)
 order2.cart_items.create(item_id: 7)
-
 puts "============= Seeding Data End ============="

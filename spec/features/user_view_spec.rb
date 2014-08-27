@@ -45,7 +45,7 @@ describe 'the User view', type: :feature do
     it 'cannot access the administrator items page' do
       default_login
       visit administrator_items_path
-      expect(current_path).to_not eq(administrator_items_path)
+      expect(current_path).to_not be(administrator_items_path)
     end
 
     it 'default user cannot access dashboard link' do

@@ -33,6 +33,9 @@ describe "admin_menu", type: :feature do
 
     visit administrator_items_path
 
+    save_and_open_page
+    
+
     @items.each do |item|
 
       expect(current_path).to eq(administrator_items_path)

@@ -1,6 +1,5 @@
-class Administrator::ItemsController < ApplicationController
+class Administrator::ItemsController < AdminsController
   before_action :lookup_item, only: [:show, :edit, :update, :destroy]
-  before_action :authorize?
   respond_to :html, :xml, :json
 
   def index

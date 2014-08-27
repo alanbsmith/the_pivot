@@ -7,7 +7,7 @@ describe 'the admin dashboard' do
                         first_name: "admin", last_name: "whatever", role: "admin")
 
 
-  
+
 
 
     visit home_path
@@ -57,7 +57,7 @@ describe 'the admin dashboard' do
 
     it 'cannot access the administrator items page' do
       visit administrator_items_path
-      expect(current_path).to_not eq(administrator_items_path)
+      expect(current_path).to_not be(administrator_items_path)
     end
 
     it 'guest user cannot access dashboard link' do

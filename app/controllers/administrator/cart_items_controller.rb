@@ -1,4 +1,4 @@
-class Administrator::CartItemsController < ApplicationController
+class Administrator::CartItemsController < AdminsController
 
 
 
