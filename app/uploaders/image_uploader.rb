@@ -47,6 +47,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [450, 500]
   end
 
+  version :feature do
+    process resize_to_fit: [800, 500]
+  end
+  
   def extension_white_list
     %w(jpg jpeg gif png)
   end
