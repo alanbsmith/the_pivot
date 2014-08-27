@@ -1,65 +1,30 @@
 <% content_for :title do %>About Us<% end %>
 <% content_for :description do %>This page will display information about our online ordering site.
-n<% end %>
+<% end %>
 
-<div class="container">
-<div class="jumbotron">
-  <h1>Scream n' Cream</h1>
-  <p>Because everything is better with booze!</p>
-  <p><a class="btn btn-primary btn-lg" href="/items" role="button">Order Now!</a></p>
+<div class="container-fluid" id="selector_1">
+        <div class="container">
+
+            <div class="row">
+                <div id="right_box">
+                    <div id="the_gravatar"><%= gravatar_for @user %></div>
+                    <p id="hello_customer"><%= "Hi #{current_user.first_name}! Welcome back!" %></p>
+                    <p id="hello_companion"> <%= "There are #{ @cart.total_items } booze ice creams waiting for you!" %></p>
+                    <%= link_to cart_path(@cart), class: "btn btn-success full", id: "hello_customer" do  %>
+                      Complete your Order <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <% end %>
+                    <!-- <p id="hello_bar">The Gravatar</p> -->
+                </div>
+
+            </div>
+        </div>
 </div>
-</div>
+
+
+
+
+
+
 <% if notice %>
   <%= notice %>
 <% end %>
-<br />
-<div class="row">
-            <div class="span12">
-                <h3>Latest Features</h3>
-
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Page Features -->
-        <div class="row text-center">
-
-            <div class="span4 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="span4 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="span4 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>

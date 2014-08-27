@@ -1,0 +1,36 @@
+#selector_1 {
+  background-image: url(home_back_02.jpg);
+  background-size: cover;
+  min-height: 800px;
+  margin-top: -35px
+}
+#right_box {
+  float:right;
+  width:33.333333%;
+  margin-top: 80px
+}
+
+#the_gravatar {
+  float:left;
+  margin-right: 15px
+}
+
+#hello_customer {
+  color: white;
+  font-size: large;
+  font-weight: 500;
+}
+#hello_companion {
+  color: white;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+#hello_bar {
+  background: white;
+  margin: 25px 0px 0px 0px;
+}
+
+.full {
+  width: 100%;
+  margin-top:10px
+}
