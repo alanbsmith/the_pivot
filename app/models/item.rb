@@ -16,10 +16,10 @@ class Item < ActiveRecord::Base
   scope :retired, -> { where(status: 2) }
 
   def num_to_status
-    if item.status == 1
-      item.status = 'active'
-    else item.status == 2
-      item.status = 'retired'
+    if status == 1
+      status = 'active'
+    else status == 2
+      status = 'retired'
     end
   end
 

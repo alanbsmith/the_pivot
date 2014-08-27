@@ -33,8 +33,6 @@ describe "admin_menu", type: :feature do
 
     visit administrator_items_path
 
-    save_and_open_page
-    
 
     @items.each do |item|
 
@@ -42,7 +40,6 @@ describe "admin_menu", type: :feature do
       expect(page).to have_content(item.title)
       expect(page).to have_content(item.description)
       expect(page).to have_content(item.price)
-      # expect(page).to have_image(item.image) come back to this...
     end
   end
 

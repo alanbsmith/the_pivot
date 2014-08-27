@@ -21,13 +21,6 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-
-  def self.default_status
-    #why is this neccesary,
-    #why not just set role's default to default where is this status coming from?
-    self.status ||= "default"
-  end
-
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
