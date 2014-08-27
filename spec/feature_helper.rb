@@ -11,8 +11,6 @@ require 'capybara/rspec'
     click_button('Signin')
   end
 
-
-
   def default_login
     click_link('Sign In')
     expect(current_path).to eq(signin_path)

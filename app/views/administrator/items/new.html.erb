@@ -1,7 +1,7 @@
 <h1>Add a new menu item</h1>
 
-<%= form_for @item, html: {multipart: true} do |f| %>
-  
+<%= form_for @item, url: {controller: "items"}, html: {multipart: true} do |f| %>
+
   <div class='row'>
   <div style="float:left;width:33.33333333%">
     <div class='field' id='itemtitle'>
@@ -32,11 +32,11 @@
       <%= f.text_area :description, size: "30x12" %>
     </div>
   </div>
-  
+
   <div style='float:left;width:33.33333333%'>
     <div class='field' id='itemcategories'>
       <%= f.label :categories %><br/>
-      <%= f.select(:categories, Category.all.collect { |c| [c.title] }, {}, {multiple: true, size: Category.all.count}) %>
+      <%= f.select(:categories, Category.all.collect { |c| [c.title] }, {:include_blank => false}, {multiple: true, size: Category.all.count}) %>
     </div>
   </div>
 

@@ -22,8 +22,11 @@ class Administrator::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
 
-    params[:categories_list][:id].each do |category|
-      @item.categorizations.build(category_id: category)
+    categories = params[:item][:categories].reject { |c| c.empty? }
+
+    categories.each do |category|
+      category = Category.find_by(title: category)
+      @item.categorizations.build(category_id: category.id)
     end
 
     @item.save
