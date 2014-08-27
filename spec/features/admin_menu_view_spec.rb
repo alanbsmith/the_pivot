@@ -6,19 +6,25 @@ describe "admin_menu", type: :feature do
     @admin_user = User.create(email: "admin@example.com", password: "adminpassword", password_confirmation: "adminpassword",
                         first_name: "admin", last_name: "whatever", role: "admin")
 
-    Category.create(title:"Chocolate", description:"Who doesn't like chocolate? Hilter that's who.")
-    Category.create(title:"Vanilla", description: "It's not as boring as white people")
-    Category.create(title:"Strawberry", description: "This counts as a fruit right?")
+    category1 = Category.create(title:"Chocolate", description:"Who doesn't like chocolate? Hilter that's who.")
+    category2 = Category.create(title:"Vanilla", description: "It's not as boring as white people")
+    category3 = Category.create(title:"Strawberry", description: "This counts as a fruit right?")
 
     @categories = Category.all
     @category   = Category.first
 
-    Item.create(title:"Chocolate yummy yumm", description: "Chocolate so good you'll wanna slap yo mama", price: 400, image: "icecreamslug.com", status: 1)
-    Item.create(title:"Vanilla willya please", description: "Vanilla is the bomb for you mom!", price: 325, image: "icecreamslug.com", status: 1)
-    Item.create(title:"Strawberry berry tasty", description: "Strawbeeeeeerrrry! Is good for me!", price: 450, image: "icecreamslug.com", status: 1)
+    item1 =Item.create(title:"Chocolate yummy yumm", description: "Chocolate so good you'll wanna slap yo mama", price: 400, image: "icecreamslug.com", status: 1)
+    item1 =Item.create(title:"Vanilla willya please", description: "Vanilla is the bomb for you mom!", price: 325, image: "icecreamslug.com", status: 1)
+    item1 =Item.create(title:"Strawberry berry tasty", description: "Strawbeeeeeerrrry! Is good for me!", price: 450, image: "icecreamslug.com", status: 1)
 
     @items = Item.all
     @item  = Item.new
+
+    category1.items << item1
+    category2.items << item2
+    category3.items << item3
+
+
     visit home_path
   end
 

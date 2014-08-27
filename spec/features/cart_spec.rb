@@ -2,7 +2,9 @@ require 'feature_helper'
 
 describe 'manipulating the cart' do
   it 'removes items from cart' do
+    category = Category.create(title: "Chocolate", description: "Yum")
     item = Item.create(title: "Chocolate", price: 3.00, status: 1)
+    category.items << item
 
     visit items_path
 
@@ -18,9 +20,12 @@ describe 'manipulating the cart' do
   end
 
   it 'checks out' do
+    category = Category.create(title: "Chocolate", description: "Yum")
     item = Item.create(title: "Chocolate", price: 3.00, status: 1)
+    category.items << item
 
     visit items_path
+
 
     click_on('Add To Cart')
 
@@ -37,7 +42,10 @@ describe 'manipulating the cart' do
     context 'when there are no items in the cart' do
 
       it 'adds one item to the cart' do
+        category = Category.create(title: "Chocolate", description: "Yum")
         item = Item.create(title: "Chocolate", price: 3.00, status: 1)
+        category.items << item
+
         visit items_path
 
         click_on('Add To Cart')
@@ -50,7 +58,10 @@ describe 'manipulating the cart' do
       end
 
       it 'totals the cart' do
+        category = Category.create(title: "Chocolate", description: "Yum")
         item = Item.create(title: "Chocolate", price: 3.00, status: 1)
+        category.items << item
+
         visit items_path
 
         click_on('Add To Cart')
@@ -65,7 +76,10 @@ describe 'manipulating the cart' do
 
     context 'when there are items in the cart' do
       it 'adds one item to the cart' do
+        category = Category.create(title: "Chocolate", description: "Yum")
         item = Item.create(title: "Chocolate", price: 3.00, status: 1)
+        category.items << item
+
         visit items_path
 
         2.times do
@@ -78,7 +92,9 @@ describe 'manipulating the cart' do
       end
 
       it 'totals the cart' do
+        category = Category.create(title: "Chocolate", description: "Yum")
         item = Item.create(title: "Chocolate", price: 3.00, status: 1)
+        category.items << item
 
         2.times do
           visit items_path

@@ -167,7 +167,6 @@ category5.items << item19
 category5.items << item20
 
 
-
 # Create the users
 #
 # user1 = User.create(first_name:      "Jeff",
@@ -196,6 +195,7 @@ admin_josh = User.create(first_name:     "Josh",
                   password:              "password",
                   password_confirmation: "password",
                   role:                   "admin")
+
 admin_rachel = User.create(first_name:     "Rachel",
                   last_name:             "Warbelow",
                   email:                 "rachel@jumpstartlab.com",
@@ -206,14 +206,24 @@ admin_rachel = User.create(first_name:     "Rachel",
                   city:                   "Denver",
                   state:                  "CO",
                   zipcode:                "80202")
-#
-# user1 = User.create(first_name:      "Rachel",
-#                     last_name:       "Warbelow",
-#                     email:           "rachel@jumpstartlab.com"
-#                     username:        "rachel",
-#                     password_digest: "",
-#                     salt:            "",
-#                     address_id:      "",
-#                     role:            "")
+                  role:                   "default")
+
+order1 = User.find(2).orders.create(status: "paid", receiving: "Delivery")
+order2 = User.find(2).orders.create(status: "paid", receiving: "Delivery")
+order3 = User.find(2).orders.create(status: "ordered", receiving: "Delivery")
+order4 = User.find(2).orders.create(status: "completed", receiving: "Delivery")
+order5 = User.find(2).orders.create(status: "completed", receiving: "Delivery")
+order6 = User.find(2).orders.create(status: "cancelled", receiving: "Delivery")
+order7 = User.find(2).orders.create(status: "cancelled", receiving: "Delivery")
+order7 = User.find(2).orders.create(status: "ordered", receiving: "Delivery")
+
+
+order1.cart_items.create(item_id: 1)
+order1.cart_items.create(item_id: 1)
+order1.cart_items.create(item_id: 2)
+order1.cart_items.create(item_id: 4)
+order2.cart_items.create(item_id: 4)
+order2.cart_items.create(item_id: 7)
+>>>>>>> admin-order-dashboard
 
 puts "============= Seeding Data End ============="

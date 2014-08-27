@@ -18,7 +18,10 @@ describe 'checking out' do
       let(:user) { FactoryGirl.create(:user) }
 
       it 'creates a new order' do
+        category = Category.create(title: "Chocolate", description: "Yum")
         item = Item.create(title: "Chocolate", price: 3.00, status: 1)
+        category.items << item
+
         visit items_path
 
         click_on('Add To Cart')
@@ -68,7 +71,10 @@ describe 'checking out' do
       end
 
       it 'creates a new order' do
+        category = Category.create(title: "Chocolate", description: "Yum")
         item = Item.create(title: "Chocolate", price: 3.00, status: 1)
+        category.items << item
+
         visit items_path
 
         click_on('Add To Cart')
@@ -80,7 +86,7 @@ describe 'checking out' do
         click_on("Checkout")
 
         expect(page).to have_button("Complete Order")
-        
+
       end
     end
   end

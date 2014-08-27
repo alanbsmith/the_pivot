@@ -5,9 +5,5 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include CurrentCart
 
-  before_action :cart
-
-  def cart
-    @cart ||= Cart.find(session[:cart_id]) if session[:cart_id]
-  end
+  before_action :set_cart
 end
