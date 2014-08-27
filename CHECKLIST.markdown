@@ -25,11 +25,11 @@ View and edit orders;
 
 Order(Horacio)
 ====================================================
-If marked for delivery, an order is attached to user address  
+  If marked for delivery, an order is attached to user address  
 
 Item (Corey) <-- I have more to work on here, but will figure it out tomorrow OR change to paperclip
 =================================================
-The photo is optional. If not present, a stand-in photo is used.
+  The photo is optional. If not present, a stand-in photo is used.
 
 Update seed
 ===================================================

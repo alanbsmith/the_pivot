@@ -37,10 +37,18 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def current_status
+    if self.status == 1
+      "active"
+    else self.status == 2
+      "retired"
+    end
+  end
+
   private
 
   def default_image
-    self.image ||= "/assets/fallback/default_image.png"
+    self.image ||= "/app/assets/images/fallback/default_image.png"
   end
 
   def ensure_not_referenced_by_any_cart_item

@@ -12,7 +12,7 @@
       </tr>
       <% category.items.active.each do |item| %>
       <tr>
-        <td><%= image_tag item.image.url(:user_thumb) %></td>
+        <td><%= image_tag image_or_fallback_user(item) %></td>
         <td><%= link_to item.title, item_path(item) %></td>
         <td><%= item.description %></td>
         <td><%= number_to_currency(item.price) %></td>
