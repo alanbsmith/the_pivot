@@ -8,6 +8,10 @@ class Administrator::OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def paid
+    @order = Order.paid
+  end
+
   private
 
 

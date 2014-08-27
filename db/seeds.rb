@@ -204,13 +204,17 @@ admin_rachel = User.create(first_name:     "Rachel",
                   role:                   "default")
                   # Create the orders
 
-order1 = User.find(2).orders.create(status: "Paid", receiving: "Delivery")
-order2 = User.find(2).orders.create(status: "Paid", receiving: "Delivery")
-order3 = User.find(2).orders.create(status: "Ordered", receiving: "Delivery")
-order4 = User.find(2).orders.create(status: "Completed", receiving: "Delivery")
-order5 = User.find(2).orders.create(status: "Cancelled", receiving: "Delivery")
-order6 = User.find(2).orders.create(status: "Ordered", receiving: "Delivery")
+order1 = User.find(2).orders.create(status: "paid", receiving: "Delivery")
+order2 = User.find(2).orders.create(status: "paid", receiving: "Delivery")
+order3 = User.find(2).orders.create(status: "ordered", receiving: "Delivery")
+order4 = User.find(2).orders.create(status: "completed", receiving: "Delivery")
+order5 = User.find(2).orders.create(status: "completed", receiving: "Delivery")
+order6 = User.find(2).orders.create(status: "cancelled", receiving: "Delivery")
+order7 = User.find(2).orders.create(status: "cancelled", receiving: "Delivery")
+order7 = User.find(2).orders.create(status: "ordered", receiving: "Delivery")
 
+
+order1.cart_items.create(item_id: 1)
 order1.cart_items.create(item_id: 1)
 order1.cart_items.create(item_id: 2)
 order1.cart_items.create(item_id: 4)

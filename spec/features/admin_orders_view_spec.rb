@@ -8,8 +8,12 @@ describe "admin orders", type: :feature do
 
     @default_user = User.create(email: "user@example.com", password: "userpassword", password_confirmation: "userpassword",
                       first_name: "user", last_name: "whatever", role: "default")
-    @order1 = @default_user.orders.create(status: "Paid", receiving: "Delivery")
-    @order2 = @default_user.orders.create(status: "Paid", receiving: "Delivery")
+    @order1 = @default_user.orders.create(status: "paid", receiving: "Delivery")
+    @order2 = @default_user.orders.create(status: "paid", receiving: "Delivery")
+    @order3 = @default_user.orders.create(status: "ordered", receiving: "Delivery")
+    @order4 = @default_user.orders.create(status: "cancelled", receiving: "Delivery")
+    @order5 = @default_user.orders.create(status: "completed", receiving: "Delivery")
+    @order6 = @default_user.orders.create(status: "crdered", receiving: "Delivery")
     @orders = Order.all
     visit home_path
 
@@ -40,7 +44,25 @@ describe "admin orders", type: :feature do
     expect(page).to_not have_content(@order_item.item.title)
   end
 
+  it 'the admin can add a quantity to an order' do
+    pending
+    @item1 = Item.create(title: "Vanilla", price: "100")
+    @order_item = @order1.cart_items.create(item_id: "1")
+    admin_login
+    visit administrator_order_path(@order1)
+    click_link_or_button("+")
+    expect(@order_item.quantity).to eq(2)
+  end
 
-
+  it "admin can view all paid orders" do
+    @item1 = Item.create(title: "Vanilla")
+    @order_item = @order1.cart_items.create(item_id: "1")
+    @order_item = @order3.cart_items.create(item_id: "2")
+    admin_login
+    visit administrator_orders_path
+    click_link_or_button("Paid Orders")
+    expect(page).to have_content(@order2.status)
+    expect(page).to_not have_content(@order3.status)
+  end
 
 end

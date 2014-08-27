@@ -5,7 +5,7 @@
   <p id="notice"><%= notice %></p>
   <% end %>
 </div>
-<p>Customer: <%= @order.user.first_name %>, <%= @order.user.email %> 
+<p>Customer: <%= @order.user.first_name %>, <%= @order.user.email %>
 <table class="table table-striped order-items ">
   <thead>
     <tr>
@@ -22,7 +22,7 @@
       <td><%= image_tag cart_item.item.image.url(:user_thumb) %></td>
       <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
       <td><%= number_to_currency(cart_item.item.price) %></td>
-      <td><%= cart_item.quantity %></td>
+      <td><%= button_to "-", "# " %><%= cart_item.quantity %><%= button_to "+", "#" %></td>
       <td><%= button_to 'Delete', administrator_cart_item_path(cart_item), method: :delete %></td>
     <% end %>
 
