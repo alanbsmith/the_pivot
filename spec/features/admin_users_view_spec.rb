@@ -3,26 +3,31 @@ require 'feature_helper'
 describe "admin_user_dashboard", type: :feature do
   before(:each) do
 
-    User.create(email: "duck@example.com", password: "userpassword", 
-                password_confirmation: "userpassword", first_name: "Duck", 
+    User.create(email: "duck@example.com", password: "userpassword",
+                password_confirmation: "userpassword", first_name: "Duck",
                 last_name: "Dogers", role: "default", street: "1510 Blake st.",
                 city: "Denver", state: "CO", zipcode: "80123")
-    User.create(email: "roger@example.com", password: "userpassword", 
-                password_confirmation: "userpassword", first_name: "Roger", 
+    User.create(email: "roger@example.com", password: "userpassword",
+                password_confirmation: "userpassword", first_name: "Roger",
                 last_name: "Doger", role: "default", street: "1511 Blake st.",
                 city: "Denver", state: "CO", zipcode: "80123")
-    User.create(email: "admin@example.com", password: "admin123", 
-                password_confirmation: "admin123", first_name: "Big", 
+    User.create(email: "admin@example.com", password: "admin123",
+                password_confirmation: "admin123", first_name: "Big",
                 last_name: "Boss", role: "admin", street: "1512 Blake st.",
                 city: "Denver", state: "CO", zipcode: "80123")
-    
+
     @users = User.all
     @user  = User.first
 
-    visit administrator_users_path
+    @admin_user = User.create(email: "admin@example.com", password: "adminpassword", password_confirmation: "adminpassword",
+                        first_name: "admin", last_name: "whatever", role: "admin")
+
+    visit home_path
   end
 
   it 'shows the view to an admin' do
+    admin_login
+    visit administrator_users_path
     expect(current_path).to eq(administrator_users_path)
 
     @users.each do |user|
@@ -36,6 +41,8 @@ describe "admin_user_dashboard", type: :feature do
   end
 
   it 'has links to other dashboards' do
+    admin_login
+    visit administrator_admins_path
     expect(page).to have_link('Admin Home',       href: administrator_admins_path)
     expect(page).to have_link('Manage Items', href: administrator_items_path)
     expect(page).to have_link('Manage Categories', href: administrator_categories_path)
@@ -43,6 +50,7 @@ describe "admin_user_dashboard", type: :feature do
   end
 
   it 'can find a users address' do
+    admin_login
     within('//table') do
       first(:link, 'Profile').click
     end

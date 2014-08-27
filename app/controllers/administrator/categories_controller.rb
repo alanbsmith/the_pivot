@@ -1,6 +1,5 @@
-class Administrator::CategoriesController < ApplicationController
+class Administrator::CategoriesController < AdminsController
   before_action :lookup_category, only: [:show, :edit, :update, :destroy]
-  before_action :authorize?
   respond_to :html, :xml, :json
 
   def index
@@ -52,10 +51,6 @@ class Administrator::CategoriesController < ApplicationController
 
   def lookup_category
     @category = Category.find(params[:id])
-  end
-
-  def authorize?
-      redirect_to("http://bringvictory.com/") unless current_user && current_user.role == "admin"
   end
 
 end

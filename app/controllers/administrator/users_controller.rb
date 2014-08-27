@@ -1,4 +1,4 @@
-class Administrator::UsersController < ApplicationController
+class Administrator::UsersController < AdminsController
   before_action :lookup_user, only: [:edit, :update, :destroy]
   respond_to :html, :xml, :json
 

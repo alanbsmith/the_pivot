@@ -1,4 +1,4 @@
-class Administrator::OrdersController < ApplicationController
+class Administrator::OrdersController < AdminsController
 
   def index
     @orders = Order.all
@@ -10,6 +10,18 @@ class Administrator::OrdersController < ApplicationController
 
   def paid
     @orders = Order.paid
+  end
+
+  def completed
+    @orders = Order.completed
+  end
+
+  def ordered
+    @orders = Order.ordered
+  end
+
+  def cancelled
+    @orders = Order.cancelled
   end
 
   private

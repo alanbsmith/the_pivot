@@ -1,6 +1,5 @@
-class Administrator::ItemsController < ApplicationController
+class Administrator::ItemsController < AdminsController
   before_action :lookup_item, only: [:show, :edit, :update, :destroy]
-  before_action :authorize?
   respond_to :html, :xml, :json
 
   def index
@@ -67,7 +66,4 @@ class Administrator::ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def authorize?
-    redirect_to("http://bringvictory.com/") unless current_user && current_user.role == "admin"
-  end
 end
