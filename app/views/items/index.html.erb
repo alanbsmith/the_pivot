@@ -1,9 +1,9 @@
 <%- model_class = Item -%>
 <div class="page-header">
   <h1>Our Menu</h1>
-<% if notice %>
+  <% if notice %>
   <p id="notice"><%= notice %></p>
-<% end %>
+  <% end %>
 </div>
 <table class="table table-striped">
   <thead>
@@ -16,12 +16,12 @@
     </tr>
   </thead>
   <tbody>
-  take each category
-  <% @items.category.each do |item| %>
-  <!-- look for items within -->
-    <% if item has category (like is in the category) %>
-  <!-- then do whats below... -->
-    <% @items.each do |item| %>
+    <% @categories.each do |category| %>
+      <tr>
+        <td colspan="2"><%= category.title %></td>
+        <td colspan="3"><%= category.description %></td>
+      </tr>
+      <% category.items.each do |item| %>
       <tr>
         <td><%= image_tag item.image.url(:user_thumb) %></td>
         <td><%= link_to item.title, item_path(item) %></td>
@@ -31,6 +31,7 @@
           <%= button_to "Add To Cart", cart_items_path(item_id: item) %>
         </td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

@@ -2,8 +2,8 @@ class ItemsController < ApplicationController
   respond_to :html, :xml, :json
 
   def index
-    @items = Item.active
-    @user  = User.find_by(params[:id])
+    @categories = Category.all
+    @user       = User.find_by(params[:id])
   end
 
   def show
