@@ -29,8 +29,13 @@
   background: white;
   margin: 25px 0px 0px 0px;
 }
-
 .full {
   width: 100%;
   margin-top:10px
+}
+.category_box{
+  border-style:solid;
+  border-color:white;
+  border-width:2px;
+  color: white;
 }

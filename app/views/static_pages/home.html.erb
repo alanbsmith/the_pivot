@@ -3,27 +3,41 @@
 <% end %>
 
 <div class="container-fluid" id="selector_1">
-        <div class="container">
+  <div id="map-canvas"></div>
+  <div class="container">
 
-            <div class="row">
-                <div id="right_box">
-                    <div id="the_gravatar"><%= gravatar_for @user %></div>
-                    <p id="hello_customer"><%= "Hi #{current_user.first_name}! Welcome back!" %></p>
-                    <p id="hello_companion"> <%= "There are #{ @cart.total_items } booze ice creams waiting for you!" %></p>
-                    <%= link_to cart_path(@cart), class: "btn btn-success full", id: "hello_customer" do  %>
-                      Complete your Order <span class="glyphicon glyphicon-shopping-cart"></span>
-                    <% end %>
-                    <!-- <p id="hello_bar">The Gravatar</p> -->
-                </div>
+    <div class="row">
+      <div id="right_box">
+        <div id="the_gravatar"><%= gravatar_for @user %></div>
+        <p id="hello_customer"><%= "Hi #{current_user.first_name}! Welcome back!" %></p>
+        <p id="hello_companion"> <%= "There are #{ @cart.total_items } booze ice creams waiting for you!" %></p>
+        <%= link_to cart_path(@cart), class: "btn btn-success full", id: "hello_customer" do  %>
+        Complete your Order <span class="glyphicon glyphicon-shopping-cart"></span>
+        <% end %>
+        <!-- <p id="hello_bar">The Gravatar</p> -->
+      </div>
+    </div>
 
-            </div>
-        </div>
+    <div class="row">
+      <% @categories.each do |category| %>
+      <div class="col-md-3 category_box"><%= category.title %></div>
+      <% end %>
+    </div>
+
+    <% @items.each do |item| %>
+    <tr>
+      <td><%= image_tag item.image.url(:user_thumb) %></td>
+      <td><%= link_to item.title, item_path(item) %></td>
+      <td><%= item.description %></td>
+      <td><%= number_to_currency(item.price) %></td>
+      <td>
+        <%= button_to "Add To Cart", cart_items_path(item_id: item) %>
+      </td>
+    </tr>
+    <% end %>
+
+  </div>
 </div>
-
-
-
-
-
 
 <% if notice %>
   <%= notice %>
