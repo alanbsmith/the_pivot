@@ -46,9 +46,7 @@ describe 'manipulating the cart' do
 
         click_on('Cart')
 
-        within('.cart-items') do
-          expect(page).to have_content('1')
-        end
+        expect(page).to have_selector("input[value = '1']")
       end
 
       it 'totals the cart' do
@@ -76,9 +74,7 @@ describe 'manipulating the cart' do
 
         click_on('Cart')
 
-        within('.cart-items') do
-          expect(page).to have_content('2')
-        end
+        expect(page).to have_selector("input[value = '2']")
       end
 
       it 'totals the cart' do

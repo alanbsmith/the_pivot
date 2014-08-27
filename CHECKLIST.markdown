@@ -11,15 +11,10 @@ Unauthenticated Users CAN
 
 Authenticated users CAN
 =====================================
-(link) view their past orders with links to display each order
 
-  on that order display page there are:
-    line-item subtotals
 
 if any item is retired from the menu:
 =====================================
-they can still access the item page
-they cannot add it to a new cart
 
 See a listing of all orders with: (Tan)
 ========================================
