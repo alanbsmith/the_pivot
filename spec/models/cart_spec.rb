@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Cart, :type => :model do
   describe '#total_price' do
     it 'calculates the total of an cart' do
-      cart = Cart.create()
+      cart = Cart.create
       item_1  = Item.create(title: "Vanilla", price: 3.50)
       item_2  = Item.create(title: "Chocolate", price: 4.00)
 

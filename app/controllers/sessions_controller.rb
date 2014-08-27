@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
   end
 
@@ -6,12 +7,8 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      if session[:cart_id]
-        if current_user.role == 'admin'
-          redirect_to home_path
-        else
-          redirect_to new_order_path
-        end
+      if current_cart.cart_items.any? && current_user.role == 'default'
+        redirect_to new_order_path
       else
         redirect_to home_path, notice: "Welcome #{current_user.first_name}!"
       end

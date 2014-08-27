@@ -1,5 +1,8 @@
 <h1>Manage Categories</h1>
 <hr/>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 
 <p style="float:left;width:25%">
   <%= link_to 'Admin Home', administrator_admins_path, class: 'btn' %></p>
@@ -27,4 +30,3 @@
 </table>
 <p style="float:right">
   <%= link_to 'Create New Category', new_administrator_category_path, class: 'btn' %>
-

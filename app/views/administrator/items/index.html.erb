@@ -1,5 +1,4 @@
 <h1>Manage Items</h1>
-
 <p style="float:left;width:25%">
   <%= link_to 'Admin Home', administrator_admins_path, class: 'btn' %></p>
 <p style="float:left;width:25%">
@@ -10,15 +9,24 @@
   <%= link_to 'Manage Users', administrator_users_path, class: 'btn' %></p>
 
 <table class='table'>
+  <tr>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Status</th>
+    <th>Categories</th>
+    <th>Actions</th>
+  </tr>
+
   <% @items.each do |item| %>
     <tr>
-      <td><%= image_tag item.image.url(:admin_thumb) %> </td>
+      <td><%= image_tag image_or_fallback_admin(item) %> </td>
       <td><%= item.title %></td>
-      <td><%= item.description %></td>
+      <td width="30%"><%= item.description %></td>
       <td><%= number_to_currency(item.price) %></td>
-      <td><strong>Current Status:</strong> <%= item.status %></td>
-      <td><strong>Assigned Categories:</strong>
-        <% item.categories.each do |category| %>
+      <td align="center"><%= item.current_status %></td>
+      <td><% item.categories.each do |category| %>
          <%= category.title %>
         <% end %>
       </td>

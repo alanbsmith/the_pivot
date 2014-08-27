@@ -13,10 +13,6 @@ class CartItemsController < ApplicationController
           notice: "#{item.title} has been added to your cart."}
         format.json { render action: 'show',
           status: :created, location: @cart_item }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @cart_item.errors,
-          status: :unprocessable_entity }
       end
     end
   end
@@ -27,7 +23,7 @@ class CartItemsController < ApplicationController
   def update
     @cart_item.quantity = params[:cart_item][:quantity]
     @cart_item.save
-    redirect_to cart_path(@cart)
+    redirect_to cart_path(current_cart)
   end
 
   def destroy
@@ -41,11 +37,12 @@ class CartItemsController < ApplicationController
   end
 
   private
-    def cart_items_params
-      params.require(:cart_item).permit(:item_id)
-    end
 
-    def set_cart_item
-      @cart_item = CartItem.find(params[:id])
-    end
+  def cart_items_params
+    params.require(:cart_item).permit(:item_id)
+  end
+
+  def set_cart_item
+    @cart_item = CartItem.find(params[:id])
+  end
 end

@@ -5,6 +5,11 @@
   <p id="notice"><%= notice %></p>
   <% end %>
 </div>
+
+<div>
+  <p><h5>All prices online are per pint. Ice'Screams are only sold by the scoop in store...</h5></p>
+</div>
+
 <table class="table table-striped">
     <% @categories.each do |category| %>
       <tr>
@@ -12,7 +17,7 @@
       </tr>
       <% category.items.active.each do |item| %>
       <tr>
-        <td><%= image_tag item.image.url(:user_thumb) %></td>
+        <td><%= image_tag image_or_fallback_user(item) %></td>
         <td><%= link_to item.title, item_path(item) %></td>
         <td><%= item.description %></td>
         <td><%= number_to_currency(item.price) %></td>

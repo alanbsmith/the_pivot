@@ -23,9 +23,4 @@ class Administrator::OrdersController < AdminsController
   def cancelled
     @orders = Order.cancelled
   end
-
-  private
-
-
-
 end

@@ -39,13 +39,22 @@ describe 'the User view', type: :feature do
 
     it 'can log in as default user' do
       default_login
-      expect(current_path).to eq(items_path)
+      expect(current_path).to eq(home_path)
+      within("p#hello_customer") do
+        expect(page).to have_content('Welcome')
+      end
+    end
+
+    it 'can log out as default user' do
+      default_login
+      click_link('Signout')
+      expect(current_path).to eq(root_path)
     end
 
     it 'cannot access the administrator items page' do
       default_login
       visit administrator_items_path
-      expect(current_path).to_not eq(administrator_items_path)
+      expect(current_path).to_not be(administrator_items_path)
     end
 
     it 'default user cannot access dashboard link' do

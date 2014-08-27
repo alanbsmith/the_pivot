@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-
   def self.default_status
     self.status ||= "default"
   end
@@ -36,8 +35,8 @@ class User < ActiveRecord::Base
 
   private
 
-    def create_remember_token
-      self.remember_token = User.digest(User.new_remember_token)
-    end
 
+  def create_remember_token
+    self.remember_token = User.digest(User.new_remember_token)
+  end
 end

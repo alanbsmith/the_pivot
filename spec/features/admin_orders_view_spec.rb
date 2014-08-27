@@ -38,18 +38,19 @@ describe "admin orders", type: :feature do
   end
 
   it 'the admin can delete a single item from an order' do
-    @item1 = Item.create(title: "Vanilla")
-    @order_item = @order1.cart_items.create(item_id: "1")
+    @item1 = Item.create(title: "Vanilla", price: 2.00)
+    @order_item = @order1.cart_items.create(item_id: 1)
     admin_login
     visit administrator_order_path(@order1)
+
     click_button("Delete")
     expect(page).to_not have_content(@order_item.item.title)
   end
 
   it 'the admin can add a quantity to an order' do
     pending
-    @item1 = Item.create(title: "Vanilla", price: "100")
-    @order_item = @order1.cart_items.create(item_id: "1")
+    @item1 = Item.create(title: "Vanilla", price: 3.00)
+    @order_item = @order1.cart_items.create(item_id: 1)
     admin_login
     visit administrator_order_path(@order1)
     click_link_or_button("+")

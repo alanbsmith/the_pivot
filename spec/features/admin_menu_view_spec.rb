@@ -30,14 +30,16 @@ describe "admin_menu", type: :feature do
 
   it "shows the items to an admin" do
     admin_login
+
+    visit administrator_items_path
+
+
     @items.each do |item|
-      visit administrator_items_path
 
       expect(current_path).to eq(administrator_items_path)
       expect(page).to have_content(item.title)
       expect(page).to have_content(item.description)
       expect(page).to have_content(item.price)
-      # expect(page).to have_image(item.image) come back to this...
     end
   end
 
@@ -66,6 +68,22 @@ describe "admin_menu", type: :feature do
     expect(page).to_not have_content(old_item)
   end
 
+  it 'does not edit incomplete items' do
+    admin_login
+    visit administrator_items_path
+    item     = @items.first
+    old_item = item.title
+
+    within('//table') do
+      first(:link, 'Edit').click
+    end
+
+    page.fill_in('Title', with: '')
+    page.click_button('Submit')
+
+    expect(page).to have_content('Fill in all of the fields before submitting')
+  end
+
   it 'has a link to add an item' do
     admin_login
     visit administrator_items_path
@@ -88,6 +106,22 @@ describe "admin_menu", type: :feature do
     expect(page).to have_content('Bananaramma you full of goodness')
     expect(page).to have_content('Strawberry')
   end
+
+  it 'does not create incomplete items' do
+    admin_login
+    visit administrator_items_path
+    page.click_link('Create New Item')
+
+    page.fill_in('Title', with: '')
+    page.fill_in('Description', with: "Don't be so dirty! It's just bananas and cream")
+    page.fill_in('Price', with: '450')
+    select('Strawberry', :from => 'Categories')
+
+    page.click_button('Submit')
+
+    expect(page).to have_content('Fill in all of the fields before submitting')
+  end
+
 
   it 'has a links to delete the items' do
     admin_login
@@ -136,4 +170,5 @@ describe "admin_menu", type: :feature do
     visit items_path
     expect(page).to_not have_content(retired_item)
   end
+
 end

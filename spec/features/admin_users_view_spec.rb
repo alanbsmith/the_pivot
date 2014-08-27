@@ -23,6 +23,7 @@ describe "admin_user_dashboard", type: :feature do
 
   it 'shows the view to an admin' do
     admin_login
+    expect(current_path).to eq(home_path)
     visit administrator_users_path
     expect(current_path).to eq(administrator_users_path)
 
