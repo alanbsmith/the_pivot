@@ -16,6 +16,11 @@
     </tr>
   </thead>
   <tbody>
+  take each category
+  <% @items.category.each do |item| %>
+  <!-- look for items within -->
+    <% if item has category (like is in the category) %>
+  <!-- then do whats below... -->
     <% @items.each do |item| %>
       <tr>
         <td><%= image_tag item.image.url(:user_thumb) %></td>

@@ -21,11 +21,11 @@ class Item < ActiveRecord::Base
 
   def categories_list(category_list)
     if category_list
-      valid_cats = category_list.reject do |cat|
+      valid_categories = category_list.reject do |cat|
        cat.empty?
       end
 
-      new_or_found_categories = valid_cats.map do |title| 
+      new_or_found_categories = valid_categories.map do |title| 
         Category.find_or_create_by(title: title)
       end
 
