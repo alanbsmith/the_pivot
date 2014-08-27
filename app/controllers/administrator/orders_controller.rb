@@ -9,7 +9,7 @@ class Administrator::OrdersController < ApplicationController
   end
 
   def paid
-    @order = Order.paid
+    @orders = Order.paid
   end
 
   private

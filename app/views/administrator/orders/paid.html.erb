@@ -1,0 +1,31 @@
+<h1>Paid Orders</h1>
+
+<hr/>
+
+<p style="float:left;width:25%">
+  <%= link_to 'Admin Home', administrator_admins_path, class: 'btn' %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Manage Categories', administrator_categories_path, class: 'btn' %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Manage Items', administrator_items_path, class: 'btn' %></p>
+<p style="float:left;width:25%">
+  <%= link_to 'Manage Users', administrator_users_path, class: 'btn' %></p>
+
+
+<table>
+  <tr>
+    <th>Order Number</th>
+    <th>Customer</th>
+    <th>Receiving Method</th>
+    <th>Status</th>
+  </tr>
+    <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.id %> </td>
+      <td><%= order.user.first_name %> <%= order.user.last_name %> </td>
+      <td><%= order.receiving %></td>
+      <td><%= order.status %></td>
+      <td><%= link_to "Order Details", administrator_order_path(order), class: 'btn' %></td>
+    </tr>
+    <% end %>
+</table>
