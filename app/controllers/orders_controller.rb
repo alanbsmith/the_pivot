@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    if current_user && signed_in?
+    if signed_in?
       @orders = current_user.orders
     else
       redirect_to items_path
@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_user && signed_in?
+    if signed_in?
       @order = Order.find(params[:id])
     else
       redirect_to items_path
