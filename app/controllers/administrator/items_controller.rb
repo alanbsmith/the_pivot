@@ -23,7 +23,7 @@ class Administrator::ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      @item.categories_list(params[:item][:categories:])
+      @item.categories_list(params[:item][:categories])
       flash.notice = "A new item: '#{@item.title}' was successfully created"
       redirect_to administrator_items_path
     else
