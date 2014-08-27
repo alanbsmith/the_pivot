@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   include CurrentCart
 
   before_action :set_cart
+
+  def current_cart
+    Cart.find(session[:cart_id])
+  end
 end

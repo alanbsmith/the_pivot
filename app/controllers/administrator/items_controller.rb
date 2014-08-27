@@ -14,10 +14,6 @@ class Administrator::ItemsController < AdminsController
   def show
   end
 
-  def categories
-    @categories = Item.categories
-  end
-
   def create
     @item = Item.new(item_params)
 
@@ -26,7 +22,7 @@ class Administrator::ItemsController < AdminsController
       flash.notice = "A new item: '#{@item.title}' was successfully created"
       redirect_to administrator_items_path
     else
-      render :new
+      format.html { render :new, notice: 'Fill in all of the fields before submitting'}
     end
   end
 
@@ -38,7 +34,7 @@ class Administrator::ItemsController < AdminsController
       @item.categories_list(params[:item][:categories])
       redirect_to administrator_items_path
     else
-      render :edit
+      format.html { render :edit, notice: 'Fill in all of the fields before submitting'}
     end
   end
 
@@ -66,4 +62,11 @@ class Administrator::ItemsController < AdminsController
     @item = Item.find(params[:id])
   end
 
+  def authorize?
+    redirect_to("http://bringvictory.com/") unless current_user && current_user.role == "admin"
+  end
+
+  def categories
+    @categories = Item.categories
+  end
 end

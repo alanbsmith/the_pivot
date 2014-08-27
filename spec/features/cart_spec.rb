@@ -1,7 +1,26 @@
 require 'feature_helper'
 
 describe 'manipulating the cart' do
-  it 'removes items from cart' do
+  it 'creates a cart' do
+    category = Category.create(title: "Chocolate", description: "Yum")
+    item = Item.create(title: "Chocolate", price: 3.00, status: 1)
+    category.items << item
+
+    visit items_path
+
+    click_on('Add To Cart')
+
+    expect(page).to have_content('Cart')
+  end
+
+  it 'can not be access unless it exists' do
+    visit '/carts/wibble'
+
+    expect(current_path).to eq(items_path)
+    expect(page).to have_content('Invalid cart')
+  end
+
+  it 'removes all items from cart' do
     category = Category.create(title: "Chocolate", description: "Yum")
     item = Item.create(title: "Chocolate", price: 3.00, status: 1)
     category.items << item
@@ -18,6 +37,7 @@ describe 'manipulating the cart' do
 
     expect(current_path).to eq(items_path)
   end
+
 
   it 'checks out' do
     category = Category.create(title: "Chocolate", description: "Yum")
@@ -108,6 +128,30 @@ describe 'manipulating the cart' do
           expect(page).to have_content('$6.00')
         end
       end
+
+      it 'edits the quantity in the cart' do
+        category = Category.create(title: "Chocolate", description: "Yum")
+        item = Item.create(title: "Chocolate", price: 3.00, status: 1)
+        category.items << item
+
+        visit items_path
+
+        click_on('Add To Cart')
+
+        expect(current_path).to eq(items_path)
+
+        click_on('Cart')
+
+        within('div.field') do
+          fill_in('cart_item_quantity', :with => 5)
+          click_on('save')
+        end
+
+        within('tr.total_line') do
+          expect(page).to have_content('$15.00')
+        end
+      end
+
     end
   end
 
