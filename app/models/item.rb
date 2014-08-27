@@ -19,16 +19,18 @@ class Item < ActiveRecord::Base
     end
   end
 
-  def categories_list
-    self.categories.collect do |category|
-      category.title
-    end.join(", ")
-  end
+  def categories_list(category_list)
+    if category_list
+      valid_cats = category_list.reject do |cat|
+       cat.empty?
+      end
 
-  def categories_list=(categories_string)
-    category_names = categories_string.split(",").collect { |c| c.strip.downcase }.uniq
-    new_or_found_categories = category_names.collect { |title| Category.find_or_create_by(title: title) }
-    self.categories = new_or_found_categories
+      new_or_found_categories = valid_cats.map do |title| 
+        Category.find_or_create_by(title: title)
+      end
+
+      self.categories = new_or_found_categories
+    end
   end
 
   private

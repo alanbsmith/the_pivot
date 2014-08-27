@@ -22,27 +22,25 @@ class Administrator::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
 
-    params[:categories_list][:id].each do |category|
-      @item.categorizations.build(category_id: category)
+    if @item.save
+      @item.categories_list(params["item"]["categories"])
+      flash.notice = "A new item: '#{@item.title}' was successfully created"
+      redirect_to administrator_items_path
+    else
+      render :new
     end
-
-    @item.save
-
-    flash.notice = "A new item: '#{@item.title}' was successfully created"
-    redirect_to administrator_items_path
   end
 
   def edit
   end
 
   def update
-    @item.update(item_params)
-
-    # params[:categories_list][:id].each do |category|
-    #   @item.categorizations.build(category_id: category)
-    # end
-
-    redirect_to administrator_items_path
+    if @item.update(item_params)
+      @item.categories_list(params["item"]["categories"])
+      redirect_to administrator_items_path
+    else
+      render :edit
+    end
   end
 
   def destroy
