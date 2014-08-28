@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827204345) do
+ActiveRecord::Schema.define(version: 20140828165422) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "cart_items", force: true do |t|
     t.integer  "item_id"
@@ -22,10 +25,10 @@ ActiveRecord::Schema.define(version: 20140827204345) do
     t.integer  "order_id"
   end
 
-  add_index "cart_items", ["cart_id"], name: "index_cart_items_on_cart_id"
-  add_index "cart_items", ["item_id", "cart_id"], name: "index_cart_items_on_item_id_and_cart_id", unique: true
-  add_index "cart_items", ["item_id"], name: "index_cart_items_on_item_id"
-  add_index "cart_items", ["order_id"], name: "index_cart_items_on_order_id"
+  add_index "cart_items", ["cart_id"], name: "index_cart_items_on_cart_id", using: :btree
+  add_index "cart_items", ["item_id", "cart_id"], name: "index_cart_items_on_item_id_and_cart_id", unique: true, using: :btree
+  add_index "cart_items", ["item_id"], name: "index_cart_items_on_item_id", using: :btree
+  add_index "cart_items", ["order_id"], name: "index_cart_items_on_order_id", using: :btree
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -33,10 +36,10 @@ ActiveRecord::Schema.define(version: 20140827204345) do
   end
 
   create_table "categories", force: true do |t|
-    t.string   "title"
+    t.text     "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
+    t.text     "description"
     t.string   "image"
   end
 
@@ -47,14 +50,14 @@ ActiveRecord::Schema.define(version: 20140827204345) do
     t.datetime "updated_at"
   end
 
-  add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id"
-  add_index "categorizations", ["item_id"], name: "index_categorizations_on_item_id"
+  add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id", using: :btree
+  add_index "categorizations", ["item_id"], name: "index_categorizations_on_item_id", using: :btree
 
   create_table "items", force: true do |t|
-    t.string   "title"
-    t.string   "description"
+    t.text     "title"
+    t.text     "description"
     t.decimal  "price",       precision: 10, scale: 2
-    t.string   "image"
+    t.text     "image"
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -88,7 +91,7 @@ ActiveRecord::Schema.define(version: 20140827204345) do
     t.string   "zipcode"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
