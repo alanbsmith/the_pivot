@@ -12,10 +12,9 @@ RSpec.describe "the order view", type: :feature do
     end
 
     it 'creates an order' do
-      category = Category.create(title: "Chocolate", description: "Yum")
-      item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-      category.items << item
-
+      category = FactoryGirl.create(:category)
+      item     = FactoryGirl.create(:item)
+      
       default_login
 
       visit items_path

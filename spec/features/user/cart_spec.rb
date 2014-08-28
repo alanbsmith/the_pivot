@@ -1,11 +1,12 @@
 require 'feature_helper'
 
 describe 'manipulating the cart' do
-  it 'creates a cart' do
-    category = Category.create(title: "Chocolate", description: "Yum")
-    item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-    category.items << item
+  before(:each) do
+    category = FactoryGirl.create(:category)
+    item     = FactoryGirl.create(:item)
+  end
 
+  it 'creates a cart' do
     visit items_path
 
     click_on('Add To Cart')
@@ -21,10 +22,6 @@ describe 'manipulating the cart' do
   end
 
   it 'removes all items from cart' do
-    category = Category.create(title: "Chocolate", description: "Yum")
-    item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-    category.items << item
-
     visit items_path
 
     click_on('Add To Cart')
@@ -40,12 +37,7 @@ describe 'manipulating the cart' do
 
 
   it 'checks out' do
-    category = Category.create(title: "Chocolate", description: "Yum")
-    item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-    category.items << item
-
     visit items_path
-
 
     click_on('Add To Cart')
 
@@ -62,10 +54,6 @@ describe 'manipulating the cart' do
     context 'when there are no items in the cart' do
 
       it 'adds one item to the cart' do
-        category = Category.create(title: "Chocolate", description: "Yum")
-        item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-        category.items << item
-
         visit items_path
 
         click_on('Add To Cart')
@@ -78,10 +66,6 @@ describe 'manipulating the cart' do
       end
 
       it 'totals the cart' do
-        category = Category.create(title: "Chocolate", description: "Yum")
-        item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-        category.items << item
-
         visit items_path
 
         click_on('Add To Cart')
@@ -89,17 +73,13 @@ describe 'manipulating the cart' do
         click_on('Cart')
 
         within('.cart-items') do
-          expect(page).to have_content('$3.00')
+          expect(page).to have_content('$6.50')
         end
       end
     end
 
     context 'when there are items in the cart' do
       it 'adds one item to the cart' do
-        category = Category.create(title: "Chocolate", description: "Yum")
-        item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-        category.items << item
-
         visit items_path
 
         2.times do
@@ -112,10 +92,6 @@ describe 'manipulating the cart' do
       end
 
       it 'totals the cart' do
-        category = Category.create(title: "Chocolate", description: "Yum")
-        item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-        category.items << item
-
         2.times do
           visit items_path
 
@@ -125,15 +101,11 @@ describe 'manipulating the cart' do
         click_on('Cart')
 
         within('.cart-items') do
-          expect(page).to have_content('$6.00')
+          expect(page).to have_content('$13.00')
         end
       end
 
       it 'edits the quantity in the cart' do
-        category = Category.create(title: "Chocolate", description: "Yum")
-        item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-        category.items << item
-
         visit items_path
 
         click_on('Add To Cart')
@@ -148,20 +120,22 @@ describe 'manipulating the cart' do
         end
 
         within('tr.total_line') do
-          expect(page).to have_content('$15.00')
+          expect(page).to have_content('$32.50')
         end
       end
-
     end
   end
-
+  #
   describe 'removing items from cart', type: :feature do
+    let(:cart) { FactoryGirl.create(:cart) }
+
+    before(:each) do
+      @cart_item = FactoryGirl.create(:cart_item)
+    end
+
     context 'when there are items in the cart' do
       it 'removes one item from the cart' do
-        item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-        cart = Cart.create()
-        cartitem = CartItem.create(cart: cart, item: item)
-        visit cart_path(cartitem.cart)
+        visit cart_path(@cart_item.cart)
 
         within('.cart-items') do
           expect(page).to have_content('Chocolate')
@@ -175,16 +149,10 @@ describe 'manipulating the cart' do
       end
 
       it 'changes the total of the cart' do
-        item_1 = Item.create(title: "Chocolate", price: 3.00, status: 1)
-        item_2 = Item.create(title: "Vanilla", price: 2.50, status: 1)
-        cart = Cart.create()
-        cartitem = CartItem.create(cart: cart, item: item_1, quantity: 2)
-        cartitem = CartItem.create(cart: cart, item: item_2, quantity: 1)
-
-        visit cart_path(cartitem.cart)
+        visit cart_path(@cart_item.cart)
 
         within('.cart-items') do
-          expect(page).to have_content('$8.50')
+          expect(page).to have_content('$6.50')
         end
 
         within('.cart-items') do
@@ -192,7 +160,7 @@ describe 'manipulating the cart' do
         end
 
         within('.cart-items') do
-          expect(page).to have_content('$2.50')
+          expect(page).to have_content('$0.00')
         end
       end
     end

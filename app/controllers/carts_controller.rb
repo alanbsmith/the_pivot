@@ -10,17 +10,17 @@ class CartsController < ApplicationController
 
   def new
     current_cart ||= Cart.new(params[:id])
-    raise "Boom"
     current_cart.cart_items.create(item_id: params[:id], cart_id: current_cart.id)
   end
 
   def destroy
     @cart.destroy if @cart.id == session[:cart_id]
     session[:cart_id] = nil
+
     respond_to do |format|
       format.html { redirect_to items_url,
         notice: 'Your cart is currently empty' }
-        format.json { head :no_content }
+      format.json { head :no_content }
     end
   end
 

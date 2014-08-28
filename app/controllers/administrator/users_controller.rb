@@ -6,6 +6,10 @@ class Administrator::UsersController < AdminsController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def destroy
     @user.destroy
 

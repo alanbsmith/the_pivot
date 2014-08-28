@@ -24,7 +24,6 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :orders
-    resources :addresses
     resources :cart_items
   end
 
@@ -41,7 +40,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :orders
     resources :users
-    resources :addresses, through: :users
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

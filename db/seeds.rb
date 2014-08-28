@@ -4,7 +4,7 @@ puts "============= Building Items ================="
 
 item1 = Item.create(
                     title: "Oh'yeah, Sexual Chocolate",
-                    description: "Rich Mexican chocolate fudge ice'scream suduced by 
+                    description: "Rich Mexican chocolate fudge ice'scream suduced by
                                   Jose' Cuervo tequila. It's qualified to satisfy you.",
                     price:        9.35,
                     status:       1,
@@ -29,7 +29,7 @@ item3 = Item.create(title:       "Milky chocolate lova'",
                     )
 
 item4 = Item.create(title:       "Margerita Lima lickin'",
-                    description: "Lemon Lima sherbert meets Grand Marnier and Don Julio tequila. If 
+                    description: "Lemon Lima sherbert meets Grand Marnier and Don Julio tequila. If
                                     this don't get your party started, nothing will!",
                     price:       10.75,
                     status:      1,
@@ -45,7 +45,7 @@ item5 = Item.create(title:       "Strawberry passionate",
                     )
 
 item6 = Item.create(title:       "Malbec makeout",
-                    description: "Real Alamos Malbec made with alamos grapes grown in the foothills of the 
+                    description: "Real Alamos Malbec made with alamos grapes grown in the foothills of the
                                     Andes, swirled together with a classic sweet scream. Romance comes to
                                     life with every single spoonful.",
                     price:       8.29,
@@ -54,7 +54,7 @@ item6 = Item.create(title:       "Malbec makeout",
                     )
 
 item7 = Item.create(title:       "Minty mythos",
-                    description: "A childhood favorite kicked up for the adult desire. Mint chocolate chip 
+                    description: "A childhood favorite kicked up for the adult desire. Mint chocolate chip
                                     scream blended with the unique flavor of Ska brewing Minthe Stout.",
                     price:       8.29,
                     status:      1,
@@ -79,7 +79,7 @@ item9 = Item.create(title:       "Blackberry night",
                     )
 
 item10 = Item.create(title:      "Peachy pucker up",
-                    description: "Palisade peaches in peach sherbert with peach liqueur. Here comes the 
+                    description: "Palisade peaches in peach sherbert with peach liqueur. Here comes the
                                     smiles...ladies?",
                     price:       8.29,
                     status:      1,
@@ -87,7 +87,7 @@ item10 = Item.create(title:      "Peachy pucker up",
                     )
 
 item11 = Item.create(title:      "Lemon Purrrrang...",
-                    description: "A little tart, a little sweet, a little Jose silver tequila and decadent 
+                    description: "A little tart, a little sweet, a little Jose silver tequila and decadent
                                     bites of our house made purrrrang.",
                     price:       9.35,
                     status:      1,
@@ -105,7 +105,7 @@ item12 = Item.create(title:      "Tropical fling",
                     )
 
 item13 = Item.create(title:      "Awesome sauce",
-                    description: "Oh you gotta try this one; we start with our house made sweet scream, 
+                    description: "Oh you gotta try this one; we start with our house made sweet scream,
                                     then we kick it up a notch with a dash of Siriracha. Blend in the fresh
                                     flavors of orange and lima'. Crank it up even further with Don Julio tequila,
                                     and mix in real bacon bits. If our awesome sause doesn't get you hot you best
@@ -125,7 +125,7 @@ item14 = Item.create(title:      "Butter my baby",
 
 item15 = Item.create(title:      "Lil' Ginger tart",
                     description: "She's sassy and sultry all at once. Gingersnap scream, mixed in candied
-                                    ginger bits, swirl in fresh mint scream, then simmer it down with a 
+                                    ginger bits, swirl in fresh mint scream, then simmer it down with a
                                     dose of Buffalo Trace bourbon. She'll slap you happy.",
                     price:       9.35,
                     status:      1,
@@ -133,7 +133,7 @@ item15 = Item.create(title:      "Lil' Ginger tart",
                     )
 
 item16 = Item.create(title:      "Take me home tonight",
-                    description: "Our homemade cucumber lemon sherbert swirled with real Colorado honey, 
+                    description: "Our homemade cucumber lemon sherbert swirled with real Colorado honey,
                                     infused with Buffalo Trace bourbon. The perfect nightcap.",
                     price:       9.35,
                     status:      1,
@@ -150,7 +150,7 @@ item17 = Item.create(title:      "Aztec lover",
                     )
 
 item18 = Item.create(title:      "Minty freshness",
-                    description: "White mint sweet scream, mix in crispy candy cane crush, blended with Zwack 
+                    description: "White mint sweet scream, mix in crispy candy cane crush, blended with Zwack
                                     liqueur and Rumple Minze schnapps. You'll be kissably fresh or your money back!",
                     price:       9.35,
                     status:      1,
@@ -185,7 +185,7 @@ item21 = Item.create(title:      "White wine sherbert",
                     )
 
 item22 = Item.create(title:      "Tortuga nights",
-                    description: "We start with a blend of our white wine sherbert, and swirl it with our
+                    description: "We begin with a blend of our white wine sherbert, and swirl it with our
                                     pineapple lima sherbert, add fresh pitted cherries, then blend in Captain
                                     Morgan Black spiced rum.",
                     price:       9.35,
@@ -194,7 +194,7 @@ item22 = Item.create(title:      "Tortuga nights",
                     )
 
 item23 = Item.create(title:      "Muff'n crush",
-                    description: "We take our house orange sherbert, add a splash of bitters, fresh 
+                    description: "We take our house orange sherbert, add a splash of bitters, fresh
                                     candied orange bits, and blend it with Captain's original. Guess who's
                                     gotta new crush?",
                     price:       9.35,
@@ -205,7 +205,7 @@ item23 = Item.create(title:      "Muff'n crush",
 puts "============= Building Categories ================="
 
 category1 = Category.create(title:       "Tequila take me home...",
-                            description: "Senor or senorita, these one of a kind ice'screams infuse the flavors of 
+                            description: "Senor or senorita, these one of a kind ice'screams infuse the flavors of
                             Jose Cuervo' and Don Julio tequilas.")
 
 category2 = Category.create(title:       "Whiskey lovers...",
@@ -213,8 +213,8 @@ category2 = Category.create(title:       "Whiskey lovers...",
                                             Buffalo Trace and Breckenridge burbons.")
 
 category3 = Category.create(title:       "liqueur me up...",
-                            description: "Looking for something refreshing and different, these screams offer surprises 
-                                            you never saw coming, blinding unique liqueurs with unique house made screams 
+                            description: "Looking for something refreshing and different, these screams offer surprises
+                                            you never saw coming, blinding unique liqueurs with unique house made screams
                                             and sherberts.")
 
 category4 = Category.create(title:       "Classic and kissable...",
@@ -269,8 +269,16 @@ user1 = User.create(first_name:            "Jeff",
                     password_confirmation: "password",
                     role:                  "default")
 
+user2 = User.create(first_name:            "Jeff",
+                    last_name:             "Casimir",
+                    email:                 "jeff@jumpstartlab.com",
+                    username:              "j3",
+                    password:              "password",
+                    password_confirmation: "password",
+                    role:                  "default")
 
-user2 = User.create(first_name:             "Jorge",
+
+user3 = User.create(first_name:             "Jorge",
                     last_name:              "Tellez",
                     email:                  "demo+jorge@jumpstartlab.com",
                     username:               "novohispano",
@@ -278,9 +286,29 @@ user2 = User.create(first_name:             "Jorge",
                     password_confirmation:  "password",
                     role:                   "default")
 
-user3 = User.create(first_name:            "Rachel",
+user4 = User.create(first_name:             "Jorge",
+                    last_name:              "Tellez",
+                    email:                  "jorge@jumpstartlab.com",
+                    username:               "novohispano",
+                    password:               "password",
+                    password_confirmation:  "password",
+                    role:                   "default")
+
+user5 = User.create(first_name:            "Rachel",
                     last_name:             "Warbelow",
                     email:                 "demo+rachel@jumpstartlab.com",
+                    password:              "password",
+                    password_confirmation: "password",
+                    role:                   "default",
+                    street:                 "1510 Blake St",
+                    city:                   "Denver",
+                    state:                  "CO",
+                    zipcode:                "80202",
+                    role:                   "default")
+
+user6 = User.create(first_name:            "Rachel",
+                    last_name:             "Warbelow",
+                    email:                 "rachel@jumpstartlab.com",
                     password:              "password",
                     password_confirmation: "password",
                     role:                   "default",
