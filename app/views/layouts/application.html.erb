@@ -194,7 +194,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
             <ul class="nav">
               <li><%= link_to "Contact", contact_path  %></li>
               <li><%= link_to "Menu", items_path  %></li>
-              <% if @cart.cart_items.any? %>
+              <% if set_cart.cart_items.any? %>
                 <li><%= link_to "Cart", cart_path(@cart)  %></li>
               <% end %>
             </ul>
