@@ -48,13 +48,17 @@ describe "admin orders", type: :feature do
   end
 
   it 'the admin can add a quantity to an order' do
-    pending
     @item1 = Item.create(title: "Vanilla", price: 3.00)
     @order_item = @order1.cart_items.create(item_id: 1)
     admin_login
     visit administrator_order_path(@order1)
-    click_link_or_button("+")
-    expect(@order_item.quantity).to eq(2)
+    within('div.field') do
+      fill_in('cart_item_quantity', :with => 5)
+      click_on('save')
+    end
+    within('tr.total_line') do
+      expect(page).to have_content('$15.00')
+    end
   end
 
   it "admin can view all paid orders" do

@@ -23,7 +23,12 @@ class CartItemsController < ApplicationController
   def update
     @cart_item.quantity = params[:cart_item][:quantity]
     @cart_item.save
-    redirect_to cart_path(current_cart)
+
+    if current_user && current_user.role == 'admin'
+      redirect_to administrator_order_path(@cart_item.order)
+    else
+      redirect_to cart_path(current_cart)
+    end
   end
 
   def destroy

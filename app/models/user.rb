@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_many :orders
 
-
   before_save { self.email = email.downcase }
 
   before_create :create_remember_token
@@ -34,7 +33,6 @@ class User < ActiveRecord::Base
   end
 
   private
-
 
   def create_remember_token
     self.remember_token = User.digest(User.new_remember_token)

@@ -33,7 +33,7 @@ describe "admin_user_dashboard", type: :feature do
       expect(page).to have_content(user.last_name)
       expect(page).to have_content(user.email)
       expect(page).to have_content(user.role)
-      expect(page).to have_link('Profile', href: administrator_address_path(user))
+      expect(page).to have_link('Profile', href: administrator_user_path(user))
     end
   end
 
@@ -51,7 +51,7 @@ describe "admin_user_dashboard", type: :feature do
     within('//table') do
       first(:link, 'Profile').click
     end
-    expect(current_path).to eq(administrator_address_path(@user))
+    expect(current_path).to eq(administrator_user_path(@user))
 
     expect(page).to have_content(@user.first_name)
     expect(page).to have_content(@user.last_name)

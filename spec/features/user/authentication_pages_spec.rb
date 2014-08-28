@@ -1,11 +1,13 @@
-require 'spec_helper'
+require 'feature_helper'
 
 describe "Authentication" do
 
   subject { page }
 
   describe "signin page" do
-    before { visit signin_path }
+    before(:each) do
+      visit signin_path
+    end
 
     it { should have_content('Signin') }
     it { should have_title('Signin') }
@@ -38,7 +40,7 @@ describe "Authentication" do
 
       describe "followed by signout" do
         before { click_link "Signout" }
-        it { should_not have_link('Signin', href: signin_path) }
+        it {should_not have_link('Signin', href: signin_path)}
       end
     end
   end
