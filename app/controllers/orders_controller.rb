@@ -57,6 +57,9 @@ class OrdersController < ApplicationController
 
   def update
     @order.status = 'cancelled'
+
+    @order.save
+    redirect_to orders_path
   end
 
 
@@ -73,9 +76,9 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:status, 
-                                  :total, 
-                                  :receiving, 
+    params.require(:order).permit(:status,
+                                  :total,
+                                  :receiving,
                                   :user_id)
   end
 
