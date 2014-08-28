@@ -6,19 +6,10 @@ describe 'the admin dashboard' do
     @admin_user = User.create(email: "admin@example.com", password: "adminpassword", password_confirmation: "adminpassword",
                         first_name: "admin", last_name: "whatever", role: "admin")
 
-
-
-
-
     visit home_path
   end
 
   context 'admin user' do
-    it 'can log in as admin' do
-      pending
-      admin_login
-      expect(current_path).to eq(administrator_admins_path)
-    end
 
     it 'displays a dashboard link after log in' do
       admin_login

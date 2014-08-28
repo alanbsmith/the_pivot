@@ -66,4 +66,17 @@ describe "admin_user_dashboard", type: :feature do
     expect(page).to have_link('Categories Dashboard', href: administrator_categories_path)
     expect(page).to have_link('Orders Dashboard',     href: administrator_orders_path)
   end
+
+  it 'can delete a user' do
+    
+    admin_login
+    visit administrator_users_path
+    within('//table') do
+      first(:link, 'Delete').click
+    end
+
+    expect(current_path).to eq(administrator_users_path)
+
+    expect(page).to_not have_content(@user.first_name)
+  end
 end
