@@ -11,29 +11,13 @@ RSpec.describe "StaticPagesSpecs", :type => :request do
       end
 
       it "should have the right title 'Home'" do
-        skip
         visit root_path
-        expect(page).to have_title("Scream n' Cream | Home")
+        expect(page).to have_title("Scream n' Cream")
       end
 
       it "should not have a custom page title" do
         visit root_path
         expect(page).not_to have_title("| Home")
-      end
-
-    end
-
-    describe "About page" do
-
-      it "should have content About Us" do
-        visit about_path
-        expect(page).to have_content("About Us")
-      end
-
-      it "should have the right title 'About Us'" do
-        skip
-        visit about_path
-        expect(page).to have_title("Scream n' Cream | About Us")
       end
 
     end
@@ -45,10 +29,9 @@ RSpec.describe "StaticPagesSpecs", :type => :request do
         expect(page).to have_content("Contact Us")
       end
 
-      it "should have the right title 'Contact'Us" do
-        pending
+      it "should have the right title 'Contact Us" do
         visit contact_path
-        expect(page).to have_title("Scream n' Cream | Contact Us")
+        expect(page).to have_title("Contact Us")
       end
 
     end

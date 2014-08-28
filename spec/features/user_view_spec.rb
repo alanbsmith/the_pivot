@@ -95,15 +95,5 @@ describe 'the User view', type: :feature do
         expect(page).to have_content(order.created_at)
       end
     end
-
-    it 'current user should not be able to access other orders' do
-      pending
-      order = @default_user.orders.create
-      order2 = @another_user.orders.create
-      default_login
-      visit order_path(order2)
-      expect(current_path).to eq(items_path)
-    end
   end
-
 end
