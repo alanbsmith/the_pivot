@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
 
   before_action :set_cart,  only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
   def index
     if current_user && signed_in?
@@ -59,15 +60,15 @@ class OrdersController < ApplicationController
   end
 
 
-  def destroy
-    Order.find(session[:order_id]).destroy
-    session[:order_id] = nil
-    respond_to do |format|
-      format.html { redirect_to items_url,
-        notice: 'Your cart is currently empty' }
-        format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   Order.find(session[:order_id]).destroy
+  #   session[:order_id] = nil
+  #   respond_to do |format|
+  #     format.html { redirect_to items_url,
+  #       notice: 'Your cart is currently empty' }
+  #       format.json { head :no_content }
+  #   end
+  # end
 
   private
 
@@ -77,5 +78,10 @@ class OrdersController < ApplicationController
 
   def set_order
     @order = Order.find(params[:id])
+  end
+
+  def invalid_order
+    logger.error "Attempt to access invalid order #{params[:id]}"
+    redirect_to items_url, notice: 'Invalid order'
   end
 end
