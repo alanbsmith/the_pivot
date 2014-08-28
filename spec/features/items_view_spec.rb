@@ -35,10 +35,8 @@ describe "menu", type: :feature do
   end
 
   it 'has an add to cart button' do
-    within("//table") do
-      @items.each do |item|
-        expect(page).to have_button('Add To Cart')
-      end
+    @items.each do |item|
+      expect(page).to have_button('Add To Cart')
     end
   end
 
