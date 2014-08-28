@@ -149,7 +149,6 @@ describe "admin orders", type: :feature do
     end
 
     visit administrator_ordered_path
-    save_and_open_page
     expect(page).to have_content("Ordered Order")
     expect(page).to_not have_css("#order-id", text: @order3.id)
     expect(page).to have_css("#order-id", text: @order4.id)
