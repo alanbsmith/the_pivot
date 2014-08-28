@@ -33,9 +33,4 @@ class Administrator::OrdersController < AdminsController
     @order = Order.find(params[:id]).completed!
     redirect_to administrator_orders_path, notice: "Successfully marked as Completed"
   end
-
-
-
-  private
-
 end

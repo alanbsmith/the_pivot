@@ -2,22 +2,13 @@ require 'rails_helper'
 
 RSpec.describe CartItem, :type => :model do
   describe 'total price' do
-   it 'calculates the total price of an item ' do
-     price = 5.00
-     item = Item.create(title: "Vanilla", price: price)
-
-     cart_item = CartItem.create(cart_id: 1, item: item)
-
-     expect(cart_item.total_price).to eq(price)
-   end
-
-   it 'calculates the total price of mulitple items' do
-     price = 5.00
-     item = Item.create(title: 'Vanilla', price: price)
-
-     cart_item = CartItem.create(cart_id: 1, item: item, quantity: 2)
-
-     expect(cart_item.total_price).to eq(price * 2)
+    before(:each) do
+      item = FactoryGirl.create(:item)
+      # there are 3 items
+      @cart_item = FactoryGirl.create(:cart_item)
+    end
+   it 'calculates the total price of items ' do
+     expect(@cart_item.total_price).to eq(19.50)
    end
  end
 end
