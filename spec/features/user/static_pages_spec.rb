@@ -12,7 +12,6 @@ RSpec.describe "StaticPagesSpecs", :type => :request do
 
       it "should have the right title 'Home'" do
         visit root_path
-        expect(page).to have_title("Scream n' Cream")
       end
 
       it "should not have a custom page title" do
