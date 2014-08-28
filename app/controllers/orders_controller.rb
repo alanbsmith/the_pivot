@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
   def index
-    if current_user && signed_in?
+    if signed_in?
       @orders = current_user.orders
     else
       redirect_to items_path
@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_user && signed_in?
+    if signed_in?
       @order = Order.find(params[:id])
     else
       redirect_to items_path
@@ -73,7 +73,10 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:status, :total, :receiving, :user_id)
+    params.require(:order).permit(:status, 
+                                  :total, 
+                                  :receiving, 
+                                  :user_id)
   end
 
   def set_order

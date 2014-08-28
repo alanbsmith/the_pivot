@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   match "/signin",   to: "sessions#new",       via: "get"
   match "/signout",  to: "sessions#destroy",   via: "delete"
 
-  # match "/paid", to: "administrator/orders#paid", via: "get"
 
   namespace :users do
     resources :orders
@@ -34,6 +33,8 @@ Rails.application.routes.draw do
     get "/ordered" => "orders#ordered", as: :ordered
     get "/cancelled" => "orders#cancelled", as: :cancelled
     get "/completed" => "orders#completed", as: :completed
+    get "/cancel/:id" => "orders#cancel", as: :cancel
+    get "/complete/:id" => "orders#complete", as: :complete
     resources :cart_items
     resources :admins
     resources :items

@@ -13,16 +13,16 @@ class ItemsController < ApplicationController
 
   private
 
-    def item_params
-      params.require(:item).permit(:title,
-                                   :description,
-                                   :price,
-                                   :image,
-                                   :status,
-                                   :categories_list)
-    end
+  def item_params
+    params.require(:item).permit(:title,
+                                 :description,
+                                 :price,
+                                 :image,
+                                 :status,
+                                 :categories_list)
+  end
 
-    def lookup_item
-      @item = Item.find(params[:id])
-    end
+  def lookup_item
+    @item = Item.find(params[:id])
+  end
 end

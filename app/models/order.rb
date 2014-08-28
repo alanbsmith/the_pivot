@@ -39,5 +39,4 @@ class Order < ActiveRecord::Base
       transitions :from => :paid, :to => :completed
     end
   end
-
 end

@@ -10,9 +10,6 @@ class Administrator::CategoriesController < AdminsController
     @category = Category.new
   end
 
-  def show
-  end
-
   def create
     @category = Category.create(category_params)
 
@@ -54,7 +51,7 @@ class Administrator::CategoriesController < AdminsController
 
   def category_params
     params.require(:category).permit(:title,
-                                 :description)
+                                     :description)
   end
 
   def lookup_category

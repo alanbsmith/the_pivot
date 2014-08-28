@@ -17,6 +17,7 @@ class Administrator::UsersController < AdminsController
 
 
   private
+
     def user_params
     params.require(:user).permit(:email,
                                  :first_name,
@@ -24,8 +25,7 @@ class Administrator::UsersController < AdminsController
                                  :street,
                                  :city,
                                  :state,
-                                 :zipcode
-                                 )
+                                 :zipcode)
     end
 
     def lookup_user

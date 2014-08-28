@@ -1,3 +1,6 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 <h1>Paid Orders</h1>
 
 <hr/>
@@ -12,7 +15,7 @@
   <%= link_to 'Completed Orders', administrator_completed_path, class: 'btn' %></p>
 
 
-<table>
+<div id="table"><table>
   <tr>
     <th>Order Number</th>
     <th>Customer</th>
@@ -20,15 +23,18 @@
     <th>Status</th>
   </tr>
     <% @orders.each do |order| %>
-    <tr>
-      <td><%= order.id %> </td>
+    <div id="#{}"<tr>
+      <div id="order-id"><td><%= order.id %> </td></div>
       <td><%= order.user.first_name %> <%= order.user.last_name %> </td>
       <td><%= order.receiving %></td>
       <td><%= order.status %></td>
       <td><%= link_to "Order Details", administrator_order_path(order), class: 'btn' %></td>
+      <td><%= link_to "Cancel", administrator_cancel_path(order), class: 'btn'%></td>
+      <td><%= link_to "Completed", administrator_complete_path(order), class: 'btn'%></td>
     </tr>
     <% end %>
 </table>
+</div>
 
 <p style="float:left;width:25%">
   <%= link_to 'Admin Home', administrator_admins_path, class: 'btn' %></p>
