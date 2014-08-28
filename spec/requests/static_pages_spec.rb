@@ -33,8 +33,6 @@ RSpec.describe "StaticPagesSpecs", :type => :request do
         visit contact_path
         expect(page).to have_title("Contact Us")
       end
-
     end
-
   end
 end
