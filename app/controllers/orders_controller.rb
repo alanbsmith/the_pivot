@@ -56,22 +56,11 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @order.status = 'cancelled'
+    @order.cancelled
 
     @order.save
     redirect_to orders_path
   end
-
-
-  # def destroy
-  #   Order.find(session[:order_id]).destroy
-  #   session[:order_id] = nil
-  #   respond_to do |format|
-  #     format.html { redirect_to items_url,
-  #       notice: 'Your cart is currently empty' }
-  #       format.json { head :no_content }
-  #   end
-  # end
 
   private
 
