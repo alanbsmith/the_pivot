@@ -17,8 +17,6 @@ describe "menu", type: :feature do
   end
 
   it 'has an add to cart button' do
-    within("//table") do
-      expect(page).to have_button('Add To Cart')
-    end
+    expect(page).to have_button('Add To Cart')
   end
 end
