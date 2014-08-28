@@ -1,11 +1,18 @@
 require 'feature_helper'
 
 describe 'checking out' do
+  let(:user) { FactoryGirl.create(:user) }
+  let(:cart) { FactoryGirl.create(:cart) }
+
+  before(:each) do
+    category = FactoryGirl.create(:category)
+    @item = FactoryGirl.create(:item)
+  end
+
   context 'the user is not signed in' do
 
     context 'the cart is empty' do
       it 'redirects to items' do
-        cart = Cart.create
         visit cart_path(cart)
 
         click_on("Checkout")
@@ -15,13 +22,7 @@ describe 'checking out' do
     end
 
     context 'the cart is not empty' do
-      let(:user) { FactoryGirl.create(:user) }
-
       it 'creates a new cart' do
-        category = Category.create(title: "Chocolate", description: "Yum")
-        item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-        category.items << item
-
         visit items_path
 
         click_on('Add To Cart')
@@ -30,7 +31,7 @@ describe 'checking out' do
 
         click_on('Cart')
 
-        expect(page).to have_content(item.title)
+        expect(page).to have_content(@item.title)
 
         click_on("Checkout")
 
@@ -50,7 +51,6 @@ describe 'checking out' do
   context 'the user is signed in' do
     context 'the cart is empty' do
       it 'redirects to items' do
-        cart = Cart.create()
         visit cart_path(cart)
 
         click_on("Checkout")
@@ -60,21 +60,14 @@ describe 'checking out' do
     end
 
     context 'the cart is not empty' do
-      let(:user) { FactoryGirl.create(:user) }
-
       before do
         visit signin_path
         fill_in "Email",    with: user.email.upcase
         fill_in "Password", with: user.password
         click_button "Signin"
-
       end
 
       it 'creates a new cart' do
-        category = Category.create(title: "Chocolate", description: "Yum")
-        item = Item.create(title: "Chocolate", price: 3.00, status: 1)
-        category.items << item
-
         visit items_path
 
         click_on('Add To Cart')
