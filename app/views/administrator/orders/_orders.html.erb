@@ -19,11 +19,15 @@
   </tr>
     <% @orders.each do |order| %>
     <tr>
-      <td><%= order.id %> </td>
+      <td id=order-id><%= order.id %> </td>
       <td><%= order.user.first_name %> <%= order.user.last_name %> </td>
       <td><%= order.receiving %></td>
       <td><%= order.status %></td>
       <td><%= link_to "Order Details", administrator_order_path(order), class: 'btn' %></td>
+      <% if order.status == 'paid' || 'ordered'%>
+        <td><%= link_to "Cancel", administrator_cancel_path(order), class: 'btn'%></td>
+        <td><%= link_to "Complete", administrator_complete_path(order), class: 'btn'%></td>
+      <% end %>
     </tr>
     <% end %>
 </table>

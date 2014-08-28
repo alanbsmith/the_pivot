@@ -10,7 +10,6 @@ class CartsController < ApplicationController
 
   def new
     current_cart ||= Cart.new(params[:id])
-    raise "Boom"
     current_cart.cart_items.create(item_id: params[:id], cart_id: current_cart.id)
   end
 
