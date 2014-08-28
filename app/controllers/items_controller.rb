@@ -25,4 +25,9 @@ class ItemsController < ApplicationController
   def lookup_item
     @item = Item.find(params[:id])
   end
+
+  def randomized_category_image
+    images = ["assets/images/people_001.jpg"]
+    images[rand(images.count)]
+  end
 end

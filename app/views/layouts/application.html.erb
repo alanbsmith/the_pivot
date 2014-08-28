@@ -60,6 +60,7 @@
         font-size: 13px;
         font-weight: 300;
       }
+
 }
 
     </style>
@@ -202,11 +203,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
                 <% if signed_in? %>
                   <li><%= link_to "Signout", signout_path, method: "delete" %></li>
                   <li id="fat-menu" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="#" >
                       <% if current_user %>
                         <%= "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}" %>
                       <% end %>
-                        <b class="caret"></b>
+
                     </a>
 
                     <% if current_user.role == "admin" %>

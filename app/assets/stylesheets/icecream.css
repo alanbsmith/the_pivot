@@ -121,3 +121,19 @@
   padding-right:30px;
   padding-left: 30px;
 }
+.items_category_title {
+  font-size:70px;
+  font-weight:600;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.4);
+  color:white;
+  line-height:100%;
+  padding:100px 0px 100px 0px;
+  background:url(items_category_01.jpg);
+  background-size:cover;
+}
+.push_down {
+  padding-bottom:50px;
+}
+.push_down_category {
+  margin-bottom:50px;
+}

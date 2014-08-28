@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   def set_cart
     @cart = Cart.find(session[:cart_id])
   rescue ActiveRecord::RecordNotFound
@@ -17,5 +17,10 @@ module ApplicationHelper
 
   def image_or_fallback_show(item)
     item.image.present? ? item.image.url(:big_image) : 'fallback/default_image.png'
+  end
+
+  def randomized_background_image
+    "people_001.jpg"
+
   end
 end
