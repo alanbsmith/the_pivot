@@ -40,9 +40,6 @@ describe 'the User view', type: :feature do
     it 'can log in as default user' do
       default_login
       expect(current_path).to eq(home_path)
-      within("p#hello_customer") do
-        expect(page).to have_content('Welcome')
-      end
     end
 
     it 'can log out as default user' do
