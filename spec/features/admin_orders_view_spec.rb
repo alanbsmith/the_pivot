@@ -98,6 +98,7 @@ describe "admin orders", type: :feature do
       first(:link, "Cancel").click
     end
 
+    visit administrator_paid_path
     expect(page).to have_content("Cancel Successful")
     expect(page).to_not have_css("#order-id", text: @order1.id)
     expect(page).to have_css("#order-id", text: @order2.id)
@@ -114,8 +115,43 @@ describe "admin orders", type: :feature do
       first(:link, "Complete" ).click
     end
 
+    visit administrator_paid_path
+
     expect(page).to have_content("Successfully marked as Completed")
     expect(page).to_not have_css("#order-id", text: @order1.id)
     expect(page).to have_css("#order-id", text: @order2.id)
+  end
+
+  it "admin can cancel an ordered order" do
+    admin_login
+    visit administrator_orders_path
+    click_link_or_button("Ordered Orders")
+
+    within("//table") do
+      first(:link, "Cancel").click
+    end
+
+    visit administrator_ordered_path
+
+    expect(page).to_not have_css("#order-id", text: @order3.id)
+    expect(page).to have_css("#order-id", text: @order4.id)
+
+
+  end
+
+  it 'admin can complete an ordered order' do
+    admin_login
+    visit administrator_orders_path
+    click_link_or_button("Ordered Orders")
+
+    within("//table") do
+      first(:link, "Complete" ).click
+    end
+
+    visit administrator_ordered_path
+    save_and_open_page
+    expect(page).to have_content("Ordered Order")
+    expect(page).to_not have_css("#order-id", text: @order3.id)
+    expect(page).to have_css("#order-id", text: @order4.id)
   end
 end

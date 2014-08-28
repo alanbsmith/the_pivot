@@ -36,7 +36,7 @@ class Order < ActiveRecord::Base
     end
 
     event :completed do
-      transitions :from => :paid, :to => :completed
+      transitions :from => [:paid, :ordered], :to => :completed
     end
   end
 end
