@@ -20,6 +20,33 @@
     </div>
   </div>
 
+<hr/>
+
+  <div class="control-group">
+    <%= f.label :username, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :username, :class => 'password_field' %>
+  </div>
+    </div>
+  
+  <div class="control-group">
+    <%= f.label :password, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password, :class => 'password_field' %>
+  </div>
+    </div>
+
+  <div class="control-group">
+    <%= f.label :Confirm, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password_confirmation, :class => 'password_field' %>
+  </div>
+
+  <br/>
+  <hr/>
+
+  <div>Address fields are optional (but you will need them for delivery!)</div>
+  
     <div class="control-group">
     <%= f.label :street, :class => 'control-label' %>
     <div class="controls">
@@ -46,19 +73,6 @@
     <div class="controls">
       <%= f.text_field :zipcode, :class => 'text_field' %>
     </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :password, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password, :class => 'password_field' %>
-  </div>
-    </div>
-
-  <div class="control-group">
-    <%= f.label :password_confirmation, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password_confirmation, :class => 'password_field' %>
   </div>
 
     <div class="form-actions">
