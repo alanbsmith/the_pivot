@@ -31,7 +31,6 @@ gem 'spring',        group: :development
 gem 'carrierwave'
 gem 'rmagick', '~>2.13.3', :require=> false
 gem 'mini_magick', '~>3.8.0'
-
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
@@ -43,6 +42,7 @@ group :development, :test do
   gem 'better_errors'
   gem "binding_of_caller"
   gem "simplecov", :require => false
+  gem "nyan-cat-formatter"
 end
 
 group :production do
