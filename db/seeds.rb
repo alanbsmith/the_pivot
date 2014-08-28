@@ -8,7 +8,7 @@ item1 = Item.create(
                                   Jose' Cuervo tequila. It's qualified to satisfy you.",
                     price:        9.35,
                     status:       1,
-                    image:        open("public/uploads/item/image/1.jpg")
+                    image:        open("lib/seed_images/image/1.jpg")
                     )
 
 item2 = Item.create(title:       "Coffee creamy dreams",
@@ -17,7 +17,7 @@ item2 = Item.create(title:       "Coffee creamy dreams",
                                   you back.",
                     price:       9.35,
                     status:      1,
-                    image:       open("public/uploads/item/image/2.jpg")
+                    image:       open("lib/seed_images/image/2.jpg")
                     )
 
 item3 = Item.create(title:       "Milky chocolate lova'",
@@ -25,7 +25,7 @@ item3 = Item.create(title:       "Milky chocolate lova'",
                                     milk chocolate scream with a smooth infusion of Presidente' brandy.",
                     price:       10.75,
                     status:      1,
-                    image:       open("public/uploads/item/image/3.jpg")
+                    image:       open("lib/seed_images/image/3.jpg")
                     )
 
 item4 = Item.create(title:       "Margerita Lima lickin'",
@@ -33,7 +33,7 @@ item4 = Item.create(title:       "Margerita Lima lickin'",
                                     this don't get your party started, nothing will!",
                     price:       10.75,
                     status:      1,
-                    image:        open("public/uploads/item/image/4.jpg")
+                    image:        open("lib/seed_images/image/4.jpg")
                     )
 
 item5 = Item.create(title:       "Strawberry passionate",
@@ -41,7 +41,7 @@ item5 = Item.create(title:       "Strawberry passionate",
                                     notes of Captain's dark Rum. Summer, winter, whenever.",
                     price:       9.35,
                     status:      1,
-                    image:        open("public/uploads/item/image/5.jpg")
+                    image:        open("lib/seed_images/image/5.jpg")
                     )
 
 item6 = Item.create(title:       "Malbec makeout",
@@ -50,7 +50,7 @@ item6 = Item.create(title:       "Malbec makeout",
                                     life with every single spoonful.",
                     price:       8.29,
                     status:      1,
-                    image:        open("public/uploads/item/image/6.png")
+                    image:        open("lib/seed_images/image/6.png")
                     )
 
 item7 = Item.create(title:       "Minty mythos",
@@ -58,7 +58,7 @@ item7 = Item.create(title:       "Minty mythos",
                                     scream blended with the unique flavor of Ska brewing Minthe Stout.",
                     price:       8.29,
                     status:      1,
-                    image:        open("public/uploads/item/image/7.jpg")
+                    image:        open("lib/seed_images/image/7.jpg")
                     )
 
 item8 = Item.create(title:       "Cherry cheery cheeks",
@@ -66,7 +66,7 @@ item8 = Item.create(title:       "Cherry cheery cheeks",
                                     the spice of Captain Morgan's. Oh yeah baby, you got a lil in you?",
                     price:       9.35,
                     status:      1,
-                    image:        open("public/uploads/item/image/8.jpg")
+                    image:        open("lib/seed_images/image/8.jpg")
                     )
 
 item9 = Item.create(title:       "Blackberry night",
@@ -75,7 +75,7 @@ item9 = Item.create(title:       "Blackberry night",
                                     long.",
                     price:       10.75,
                     status:      1,
-                    image:        open("public/uploads/item/image/9.jpg")
+                    image:        open("lib/seed_images/image/9.jpg")
                     )
 
 item10 = Item.create(title:      "Peachy pucker up",
@@ -83,7 +83,7 @@ item10 = Item.create(title:      "Peachy pucker up",
                                     smiles...ladies?",
                     price:       8.29,
                     status:      1,
-                    image:        open("public/uploads/item/image/10.jpg")
+                    image:        open("lib/seed_images/image/10.jpg")
                     )
 
 item11 = Item.create(title:      "Lemon Purrrrang...",
@@ -91,7 +91,7 @@ item11 = Item.create(title:      "Lemon Purrrrang...",
                                     bites of our house made purrrrang.",
                     price:       9.35,
                     status:      1,
-                    image:        open("public/uploads/item/image/11.jpg")
+                    image:        open("lib/seed_images/image/11.jpg")
                     )
 
 item12 = Item.create(title:      "Tropical fling",
@@ -101,7 +101,7 @@ item12 = Item.create(title:      "Tropical fling",
                                     expereince that will leave your toes curled.",
                     price:       10.75,
                     status:      1,
-                    image:        open("public/uploads/item/image/12.jpg")
+                    image:        open("lib/seed_images/image/12.jpg")
                     )
 
 item13 = Item.create(title:      "Awesome sauce",
@@ -112,7 +112,7 @@ item13 = Item.create(title:      "Awesome sauce",
                                     see a doctor!",
                     price:       11.49,
                     status:      1,
-                    image:        open("public/uploads/item/image/13.jpg")
+                    image:        open("lib/seed_images/image/13.jpg")
                     )
 
 item14 = Item.create(title:      "Butter my baby",
@@ -120,7 +120,7 @@ item14 = Item.create(title:      "Butter my baby",
                                     Bourbon. It's a recipe for love.",
                     price:       9.35,
                     status:      1,
-                    image:        open("public/uploads/item/image/14.jpg")
+                    image:        open("lib/seed_images/image/14.jpg")
                     )
 
 item15 = Item.create(title:      "Lil' Ginger tart",
@@ -129,7 +129,7 @@ item15 = Item.create(title:      "Lil' Ginger tart",
                                     dose of Buffalo Trace bourbon. She'll slap you happy.",
                     price:       9.35,
                     status:      1,
-                    image:        open("public/uploads/item/image/15.jpg")
+                    image:        open("lib/seed_images/image/15.jpg")
                     )
 
 item16 = Item.create(title:      "Take me home tonight",
@@ -137,7 +137,7 @@ item16 = Item.create(title:      "Take me home tonight",
                                     infused with Buffalo Trace bourbon. The perfect nightcap.",
                     price:       9.35,
                     status:      1,
-                    image:        open("public/uploads/item/image/16.jpg")
+                    image:        open("lib/seed_images/image/16.jpg")
                     )
 
 item17 = Item.create(title:      "Aztec lover",
@@ -146,7 +146,7 @@ item17 = Item.create(title:      "Aztec lover",
                                     liqueur and a splash of Don Julio tequila. Tall dark and misterious anyone?",
                     price:       9.35,
                     status:      1,
-                    image:        open("public/uploads/item/image/17.jpg")
+                    image:        open("lib/seed_images/image/17.jpg")
                     )
 
 item18 = Item.create(title:      "Minty freshness",
@@ -154,7 +154,7 @@ item18 = Item.create(title:      "Minty freshness",
                                     liqueur and Rumple Minze schnapps. You'll be kissably fresh or your money back!",
                     price:       9.35,
                     status:      1,
-                    image:        open("public/uploads/item/image/18.jpg")
+                    image:        open("lib/seed_images/image/18.jpg")
                     )
 
 item19 = Item.create(title:      "The temtress",
@@ -164,7 +164,7 @@ item19 = Item.create(title:      "The temtress",
                                     leave you with a flavor to remember her by.",
                     price:       10.75,
                     status:      1,
-                    image:        open("public/uploads/item/image/19.jpg")
+                    image:        open("lib/seed_images/image/19.jpg")
                     )
 
 item20 = Item.create(title:      "Irish lass",
@@ -172,7 +172,7 @@ item20 = Item.create(title:      "Irish lass",
                                     diced mint leaves, then blend it with Maui Brewing CoCoNut porter.",
                     price:       8.25,
                     status:      1,
-                    image:        open("public/uploads/item/image/20.jpg")
+                    image:        open("lib/seed_images/image/20.jpg")
                     )
 
 item21 = Item.create(title:      "White wine sherbert",
@@ -181,7 +181,7 @@ item21 = Item.create(title:      "White wine sherbert",
                                     tounge with each delicate spoonful.",
                     price:       8.25,
                     status:      1,
-                    image:        open("public/uploads/item/image/21.jpg")
+                    image:        open("lib/seed_images/image/21.jpg")
                     )
 
 item22 = Item.create(title:      "Tortuga nights",
@@ -190,7 +190,7 @@ item22 = Item.create(title:      "Tortuga nights",
                                     Morgan Black spiced rum.",
                     price:       9.35,
                     status:      1,
-                    image:        open("public/uploads/item/image/22.jpg")
+                    image:        open("lib/seed_images/image/22.jpg")
                     )
 
 item23 = Item.create(title:      "Muff'n crush",
@@ -199,7 +199,7 @@ item23 = Item.create(title:      "Muff'n crush",
                                     gotta new crush?",
                     price:       9.35,
                     status:      1,
-                    image:        open("public/uploads/item/image/23.jpg")
+                    image:        open("lib/seed_images/image/23.jpg")
                     )
 
 puts "============= Building Categories ================="
