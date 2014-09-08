@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/coreyd303/the_pivot.png?label=ready&title=Ready)](https://waffle.io/coreyd303/the_pivot)
 # DinnerDash  
 ##### A Turing School Project.
 
