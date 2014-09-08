@@ -1,4 +1,5 @@
 class ReworkSchemaForPostgres < ActiveRecord::Migration
+
   def change
     create_table "cart_items", force: true do |t|
       t.integer  "item_id"
@@ -37,12 +38,16 @@ class ReworkSchemaForPostgres < ActiveRecord::Migration
     add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id", using: :btree
     add_index "categorizations", ["item_id"], name: "index_categorizations_on_item_id", using: :btree
 
-    create_table "items", force: true do |t|
+    create_table "jobs", force: true do |t|
+      t.integer  "business_id"
       t.text     "title"
       t.text     "description"
-      t.decimal  "price",       precision: 10, scale: 2
-      t.text     "image"
-      t.integer  "status"
+      t.text     "category"
+      t.text     "job_type"
+      t.text     "pay_type"
+      t.integer  "pay_rate",       precision: 10, scale: 2
+      t.integer  "positions",    precision: 10, scale: 2
+      t.datetime "closing_date"
       t.datetime "created_at"
       t.datetime "updated_at"
     end
@@ -60,19 +65,12 @@ class ReworkSchemaForPostgres < ActiveRecord::Migration
       t.string   "first_name"
       t.string   "last_name"
       t.string   "email"
-      t.string   "username"
       t.string   "password_digest"
       t.string   "salt"
-      t.integer  "address_id"
+      t.string   "remember_token"
+      t.string   "role"
       t.datetime "created_at"
       t.datetime "updated_at"
-      t.string   "type"
-      t.string   "remember_token"
-      t.string   "role",            default: "default"
-      t.string   "street"
-      t.string   "city"
-      t.string   "state"
-      t.string   "zipcode"
     end
 
     add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
