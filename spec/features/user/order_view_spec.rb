@@ -18,7 +18,7 @@ RSpec.describe "the order view", type: :feature do
       default_login
 
       visit items_path
-
+      
       click_on('Add To Cart')
 
       click_on('Cart')
