@@ -1,8 +1,6 @@
 class SchemaSetupForEmplyMe < ActiveRecord::Migration
   def change
 
-    drop_table "cart_items"
-
     create_table "listings", force: true do |t|
       t.text     "title"
       t.text     "description"
