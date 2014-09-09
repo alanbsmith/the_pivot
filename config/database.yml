@@ -6,11 +6,13 @@
 #
 
 development:
+  encoding: unicode
   adapter: postgresql
   pool: 5
   timeout: 5000
-  host: localhost
-  database: dinner_dash_development
+  database: pivot_database
+  username:
+  password:
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -20,4 +22,4 @@ test:
   pool: 5
   timeout: 5000
   host: localhost
-  database: dinner_dash_test
+  database: pivot_test_database

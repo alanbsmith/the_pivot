@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 gem 'rails', '4.1.4'
-
+gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'twitter-bootstrap-rails'
@@ -18,8 +18,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'aasm'
-gem 'carrierwave'
-gem 'rmagick', '~>2.13.3', :require=> false
 gem 'mini_magick', '~>3.8.0'
 
 group :development, :test do
@@ -29,18 +27,22 @@ group :development, :test do
   gem 'capybara'
   gem 'rails_layout'
   gem 'launchy'
-  gem 'factory_girl_rails', '4.2.0'
+  gem 'factory_girl_rails', '4.4.1'
   gem 'better_errors'
   gem "binding_of_caller"
   gem "simplecov", :require => false
   gem "nyan-cat-formatter"
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 2.7.0'
+  gem 'database_cleaner', '~> 1.3.0'
+end
+
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
-group :development do
-  gem 'spring'
+group :development do    #access at rails/routes
+  gem 'spring', '~> 1.1.3'
 end
