@@ -1,42 +1,23 @@
-<h1>Manage Items</h1>
-<p style="float:left;width:25%">
-  <%= link_to 'Admin Home', administrator_admins_path, class: 'btn' %></p>
-<p style="float:left;width:25%">
-  <%= link_to 'Manage Categories', administrator_categories_path, class: 'btn' %></p>
-<p style="float:left;width:25%">
-  <%= link_to 'Manage Orders', administrator_orders_path, class: 'btn' %></p>
-<p style="float:left;width:25%">
-  <%= link_to 'Manage Users', administrator_users_path, class: 'btn' %></p>
 
-<table class='table'>
-  <tr>
-    <th>Image</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Status</th>
-    <th>Categories</th>
-    <th>Actions</th>
-  </tr>
+  Home', administrator_admins_path, class: 'btn' %>
+  nk_to 'Manage Categories', administrator_categories_path, class: 'btn' %>
+  <%= link_to 'Manage Orders', administrator_orders_path, class: 'btn' %>
+  <%= link_to 'Manage Users', administrator_users_path, class: 'btn' %>
 
   <% @items.each do |item| %>
     <tr>
-      <td><%= image_tag image_or_fallback_admin(item) %> </td>
-      <td><%= item.title %></td>
-      <td width="30%"><%= item.description %></td>
-      <td><%= number_to_currency(item.price) %></td>
-      <td align="center"><%= item.current_status %></td>
-      <td><% item.categories.each do |category| %>
+      <%= image_tag image_or_fallback_admin(item) %>
+      <%= item.title %>
+      <%= item.description %>
+      <%= number_to_currency(item.price) %>
+      <%= item.current_status %>
+      <% item.categories.each do |category| %>
          <%= category.title %>
-        <% end %>
-      </td>
-      <td><%= link_to 'Edit', edit_administrator_item_path(item), class: 'btn' %></td>
-      <td id="delete"><%= link_to 'Delete', administrator_item_path(item), class: 'btn', method: :delete, data:{
-        confirm: "Are you sure you want to delete the item: '#{item.title}'" } %></td>
-    </tr>
+      <% end %>
+
+      <%= link_to 'Edit', edit_administrator_item_path(item) %>
+      <%= link_to 'Delete', administrator_item_path(item), method: :delete, data:{
+        confirm: "Are you sure you want to delete the item: '#{item.title}'" } %>
   <% end %>
 
-</table>
-
-<p style="float:right">
-  <%= link_to 'Create New Item', new_administrator_item_path, class: 'btn' %></p>
+  <%= link_to 'Create New Item', new_administrator_item_path %>
