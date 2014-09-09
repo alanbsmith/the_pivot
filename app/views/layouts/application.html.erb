@@ -15,11 +15,10 @@
 
         <% if current_user && current_user.role == "default" %>
         <li><%= link_to "Profile", user_path(current_user) %></li>
-
+        <% end %>
     <% else %>
-      <li><%= link_to "Sign In", "/signin"  %></li>
+      <li><%= link_to "Sign In", signin_path  %></li>
       <li><%= link_to "Register", register_path  %></li>
     <% end %>
-<% end %>
   <%= yield %>
 </body>
