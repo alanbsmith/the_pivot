@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   resources :categories
 
+  resources :business_users
+  resources :customer_users
   resources :users
+  
   
   resources :sessions, only: [:new, :create, :destroy]
 

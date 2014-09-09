@@ -13,6 +13,7 @@ class SchemaSetupForEmplyMe < ActiveRecord::Migration
     end
 
     create_table "users", force: true do |t|
+      t.string   "company_name"
       t.string   "first_name"
       t.string   "last_name"
       t.string   "email"
