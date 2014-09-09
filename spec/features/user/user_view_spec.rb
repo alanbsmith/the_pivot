@@ -4,15 +4,18 @@ describe 'the user view', type: :feature do
 
   describe 'the home view' do
 
+    context 'business users' do
+
     it 'has link to register user' do
       visit home_path
       expect(page).to have_link('Register Your Business')
     end
 
-    # it 'displays the registration page' do
-    #   click_link('Register')
-    #   expect(current_path).to eq(register_path)
-    # end
+    it 'displays the business registration page' do
+      visit home_path
+      click_link('Register Your Business')
+      expect(current_path).to eq(new_business_user_path)
+    end
 
     # it 'can register a user' do
     #   User.delete_all
@@ -85,4 +88,6 @@ describe 'the user view', type: :feature do
     #   end
     # end
   end
+  end
 end
+
