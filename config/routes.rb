@@ -2,15 +2,10 @@ Rails.application.routes.draw do
 
   root to: "static_pages#home"
 
-  resources :items
-
   resources :categories
 
-  resources :carts
-  resources :cart_items
-  resources :orders
-
   resources :users
+  
   resources :sessions, only: [:new, :create, :destroy]
 
   match "/home",    to: "static_pages#home",    via: "get"

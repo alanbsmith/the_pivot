@@ -192,11 +192,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
           <a class="brand" href="/home">Scream n' Cream</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Contact", contact_path  %></li>
-              <li><%= link_to "Menu", items_path  %></li>
-              <% if set_cart.cart_items.any? %>
-                <li><%= link_to "Cart", cart_path(@cart)  %></li>
-              <% end %>
+              <li><%= link_to "Contact" %></li>
+              <li><%= link_to "Menu" %></li>
+              
             </ul>
               <div class="navbar pull-right">
                 <ul class="nav">
