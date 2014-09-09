@@ -1,67 +1,27 @@
-<%- model_class = Item -%>
-<div class="page-header">
-  <h1> Your Order </h1>
-  <table class="table">
-    <tr>
-      <th><%= model_class.human_attribute_name(:status) %></th>
-      <th><%= model_class.human_attribute_name(:submitted) %></th>
-      <% if @order.status == 'completed' %>
-        <th><%= model_class.human_attribute_name(:completed) %></th>
-      <% end %>
-      <% if @order.status == 'canceled' %>
-        <th><%= model_class.human_attribute_name(:canceled) %></th>
-      <% end %>
-      <% if @order.receiving == 'Delivery' %>
-        <th><%= model_class.human_attribute_name(:devlivery_address) %></th>
-      <% end %>
-    </tr>
-    <tbody>
-      <tr>
-        <td><%= @order.status.capitalize %></td>
-        <td><%= @order.created_at %></td>
-        <% if @order.status == 'completed' %>
-          <td><%= @order.updated_at %></td>
-        <% end %>
-        <% if @order.status == 'canceled' %>
-          <td><%= @order.updated_at %></td>
-        <% end %>
-        <% if @order.receiving == 'Delivery' %>
-          <td><%= @order.user.street %> <%= @order.user.city %> <%= @order.user.state %>, <%= @order.user.zipcode %></td>
-        <% end %>
-      </tr>
-    </tbody>
-  </thead>
-
-  <table>
-  <% if notice %>
-  <p id="notice"><%= notice %></p>
+<%= @order.status.capitalize %>
+  <%= @order.created_at %>
+  <% if @order.status == 'completed' %>
+    <%= @order.updated_at %>
   <% end %>
-</div>
+  <% if @order.status == 'canceled' %>
+    <%= @order.updated_at %>
+  <% end %>
+  <% if @order.receiving == 'Delivery' %>
+    <%= @order.user.street %> <%= @order.user.city %> <%= @order.user.state %>, <%= @order.user.zipcode %>
+  <% end %>
 
-<table class="table table-striped order-items ">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:image) %></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:price) %></th>
-      <th><%= model_class.human_attribute_name(:quantity) %></th>
-      <th><%= model_class.human_attribute_name(:subtotal) %></th>
-    </tr>
-  </thead>
-  <tbody>
+  <% if notice %>
+    <%= notice %>
+  <% end %>
+
   <% @order.cart_items.each do |cart_item| %>
-    <tr>
-      <td><%= image_tag cart_item.item.image.url(:user_thumb) %></td>
-      <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
-      <td><%= number_to_currency(cart_item.item.price) %></td>
-      <td><%= cart_item.quantity %></td>
-      <td><%= number_to_currency(cart_item.quantity * cart_item.item.price) %></td>
-    <% end %>
+    <%= image_tag cart_item.item.image.url(:user_thumb) %>
+    <%= link_to cart_item.item.title, item_path(cart_item.item) %>
+    <%= number_to_currency(cart_item.item.price) %>
+    <%= cart_item.quantity %>
+    <%= number_to_currency(cart_item.quantity * cart_item.item.price) %>
+  <% end %>
 
-    <tr class="total_line">
-      <td> Total </td>
-      <td><%= number_to_currency(@order.total_price) %></td>
-    </tr>
-  </tbody>
-</table>
+  <%= number_to_currency(@order.total_price) %>
+
 <%= button_to 'Cancel', order_path(@order), method: :patch %>

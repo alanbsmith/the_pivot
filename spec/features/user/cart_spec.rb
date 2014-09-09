@@ -29,7 +29,6 @@ describe 'manipulating the cart' do
     expect(current_path).to eq(items_path)
 
     click_on('Cart')
-
     click_on('Empty Cart')
 
     expect(current_path).to eq(items_path)

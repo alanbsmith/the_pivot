@@ -1,10 +1,7 @@
-<h1> Past orders </h1>
-<ol>
-  <% @orders.each do |order| %>
-    <li><%= order.receiving %>
-        <%= link_to 'Order', order_path(order) %> placed on:
-        <%= order.created_at %>
-        <%= order.status %>
-    </li>
-  <% end %>
-</ol>
+<% @orders.each do |order| %>
+  <li><%= order.receiving %>
+      <%= link_to 'Order', order_path(order) %> placed on:
+      <%= order.created_at %>
+      <%= order.status %>
+  </li>
+<% end %>

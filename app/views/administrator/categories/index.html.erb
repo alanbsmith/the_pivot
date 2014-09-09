@@ -1,32 +1,21 @@
-<h1>Manage Categories</h1>
-<hr/>
 <% if notice %>
-  <p id="notice"><%= notice %></p>
+  <%= notice %>
 <% end %>
 
-<p style="float:left;width:25%">
-  <%= link_to 'Admin Home', administrator_admins_path, class: 'btn' %></p>
-<p style="float:left;width:25%">
-  <%= link_to 'Manage Orders', administrator_orders_path, class: 'btn' %></p>
-<p style="float:left;width:25%">
-  <%= link_to 'Manage Items', administrator_items_path, class: 'btn' %></p>
-<p style="float:left;width:25%">
-  <%= link_to 'Manage Users', administrator_users_path, class: 'btn' %></p>
+<%= link_to 'Admin Home', administrator_admins_path, class: 'btn' %></p>
+<%= link_to 'Manage Orders', administrator_orders_path, class: 'btn' %></p>
+<%= link_to 'Manage Items', administrator_items_path, class: 'btn' %></p>
+<%= link_to 'Manage Users', administrator_users_path, class: 'btn' %></p>
 
-<table class="table">
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Actions</th>
-  </tr>
-  <% @categories.each do |category| %>
-  <tr>
-    <td align="left"><%= category.title %></td>
-    <td align="left"><%= category.description %></td>
-    <td><%= link_to 'Edit', edit_administrator_category_path(category), class: 'btn' %></td>
-    <td><%= link_to 'Delete', administrator_category_path(category), class: 'btn', confirm: 'Are you sure?', :method => :DELETE %></td>
-  </tr>
+Title
+Description
+Actions
+
+<% @categories.each do |category| %>
+  <%= category.title %>
+  <%= category.description %>
+  <%= link_to 'Edit', edit_administrator_category_path(category), class: 'btn' %></td>
+  <%= link_to 'Delete', administrator_category_path(category), class: 'btn', confirm: 'Are you sure?', :method => :DELETE %></td>
 <% end %>
-</table>
-<p style="float:right">
-  <%= link_to 'Create New Category', new_administrator_category_path, class: 'btn' %>
+
+<%= link_to 'Create New Category', new_administrator_category_path, class: 'btn' %>

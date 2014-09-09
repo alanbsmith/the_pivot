@@ -1,85 +1,35 @@
-<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
-    </div>
-  </div>
+<%= form_for @user do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
 
-  <div class="control-group">
-    <%= f.label :first_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :first_name, :class => 'text_field' %>
-    </div>
-  </div>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
 
-  <div class="control-group">
-    <%= f.label :last_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :last_name, :class => 'text_field' %>
-    </div>
-  </div>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
 
-<hr/>
+  <%= f.label :username %>
+  <%= f.password_field :username, :class => 'password_field' %>
 
-  <div class="control-group">
-    <%= f.label :username, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :username, :class => 'password_field' %>
-  </div>
-    </div>
-  
-  <div class="control-group">
-    <%= f.label :password, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password, :class => 'password_field' %>
-  </div>
-    </div>
+  <%= f.label :password %>
+  <%= f.password_field :password, :class => 'password_field' %>
 
-  <div class="control-group">
-    <%= f.label :password_confirmation, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password_confirmation, :class => 'password_field' %>
-  </div>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, :class => 'password_field' %>
 
-  <br/>
-  <hr/>
+  <%= f.label :street %>
+  <%= f.text_field :street %>
 
-  <div>Address fields are optional (but you will need them for delivery!)</div>
-  
-    <div class="control-group">
-    <%= f.label :street, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :street, :class => 'text_field' %>
-    </div>
-  </div>
+  <%= f.label :city %>
+  <%= f.text_field :city %>
 
-    <div class="control-group">
-    <%= f.label :city, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :city, :class => 'text_field' %>
-    </div>
-  </div>
+  <%= f.label :state %>
+  <%= f.text_field :state %>
 
-    <div class="control-group">
-    <%= f.label :state, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :state, :class => 'text_field' %>
-    </div>
-  </div>
+  <%= f.label :zipcode %>
+  <%= f.text_field :zipcode %>
 
-    <div class="control-group">
-    <%= f.label :zipcode, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :zipcode, :class => 'text_field' %>
-    </div>
-  </div>
-
-    <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  home_path, :class => 'btn' %>
-    </div>
-
+  <%= f.submit nil %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), home_path %>
 
 <% end %>

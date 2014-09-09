@@ -1,41 +1,22 @@
-<%- model_class = Item -%>
-<div class="page-header">
-  <h1> Order Number <%= @order.id %></h1>
-  <% if notice %>
-  <p id="notice"><%= notice %></p>
-  <% end %>
-</div>
-<p>Customer: <%= @order.user.first_name %>, <%= @order.user.email %>
-<table class="table table-striped order-items ">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:image) %></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:price) %></th>
-      <th><%= model_class.human_attribute_name(:quantity) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
+<%= @order.id %>
+<% if notice %>
+  <%= notice %>
+<% end %>
+
+<%= @order.user.first_name %>, <%= @order.user.email %>
+  <%=t '.actions', :default => t("helpers.actions") %>
+
   <% @order.cart_items.each do |cart_item| %>
-    <tr>
-      <td><%= image_tag cart_item.item.image.url(:user_thumb) %></td>
-      <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
+    <%= image_tag cart_item.item.image.url(:user_thumb) %>
+    <%= link_to cart_item.item.title, item_path(cart_item.item) %>
 
-      <td><%= number_to_currency(cart_item.item.price) %></td>
-      <td>
-        <%= form_for cart_item, :url => cart_item_path(id: cart_item), method: :patch do |f| %>
-          <div class="field">
-            <%= f.number_field :quantity,  :value => cart_item.quantity %></br>
-            <%= submit_tag "save" %>
-          </div>
-        <% end %>
-      </td>
-      <td><%= button_to 'Delete', administrator_cart_item_path(cart_item), method: :delete %></td>
-    <% end %>
+    <%= number_to_currency(cart_item.item.price) %>
 
-    <tr class="total_line">
-      <td> Total </td>
-      <td><%= number_to_currency(@order.total_price) %></td>
-    </tr>
-  </tbody>
+      <%= form_for cart_item, :url => cart_item_path(id: cart_item), method: :patch do |f| %>
+          <%= f.number_field :quantity,  :value => cart_item.quantity %></br>
+          <%= submit_tag "save" %>
+      <% end %>
+
+    <%= button_to 'Delete', administrator_cart_item_path(cart_item), method: :delete %>
+  <% end %>
+    <%= number_to_currency(@order.total_price) %>
