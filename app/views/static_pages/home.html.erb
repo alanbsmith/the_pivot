@@ -1,3 +1,29 @@
 <h1> EmployMe </h1>
 
 <%= link_to "Register Your Business", new_business_user_path %>
+
+
+<% content_for :title do %>EmployMe<% end %>
+<% content_for :description do %>EmployMe<% end %>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="http://lorempixel.com/output/business-q-c-1170-400-6.jpg">
+      <div class="carousel-caption text-center">
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://lorempixel.com/output/business-q-c-1170-400-5.jpg">
+      <div class="carousel-caption text-center">
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://lorempixel.com/output/city-q-c-1170-400-5.jpg">
+      <div class="carousel-caption text-center">
+      </div>
+    </div>

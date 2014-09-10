@@ -18,20 +18,19 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'aasm'
-gem 'mini_magick', '~>3.8.0'
+gem 'mini_magick', '~> 3.8.0'
+gem 'simple_form', '~> 3.0.2'
 
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'sqlite3'
   gem 'capybara'
-  gem 'rails_layout'
   gem 'launchy'
   gem 'factory_girl_rails', '4.4.1'
   gem 'better_errors'
   gem "binding_of_caller"
   gem "simplecov", :require => false
-  gem "nyan-cat-formatter"
 end
 
 group :test do
@@ -45,4 +44,5 @@ end
 
 group :development do    #access at rails/routes
   gem 'spring', '~> 1.1.3'
+  gem 'rails_layout'
 end

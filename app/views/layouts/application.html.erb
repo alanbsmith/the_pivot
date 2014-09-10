@@ -1,24 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <% if signed_in? %>
-      <%= link_to "Signout", signout_path %>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "EmployMe" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "EmployMe" %>">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-        <a href="#" >
-          <% if current_user %>
-            <%= "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}" %>
-          <% end %>
-        </a>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+        </div>
+      </div>
+    </main>
 
-        <% if current_user.role == "admin" %>
-          <%= link_to "Dashboard", administrator_admins_path %>
+    <footer class="container">
+      <div class="row">
+        <section class="col-sm-4">Copyright 2014</section>
+        <section class="col-sm-8">All rights reserved.</section>
+      </div>
+    </footer>
+
+  </body>
+</html>
+
+
+      <% if signed_in? %>
+          <%= link_to "Signout", signout_path %>
+
+            <a href="#" >
+              <% if current_user %>
+                <%= "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}" %>
+              <% end %>
+            </a>
+
+            <% if current_user.role == "admin" %>
+              <%= link_to "Dashboard", administrator_admins_path %>
+            <% end %>
+
+            <% if current_user && current_user.role == "default" %>
+            <li><%= link_to "Profile", user_path(current_user) %></li>
+            <% end %>
+        <% else %>
+          <li><%= link_to "Sign In", signin_path  %></li>
+          <li><%= link_to "Register", register_path  %></li>
         <% end %>
-
-        <% if current_user && current_user.role == "default" %>
-        <li><%= link_to "Profile", user_path(current_user) %></li>
-        <% end %>
-    <% else %>
-      <li><%= link_to "Sign In", signin_path  %></li>
-      <li><%= link_to "Register", register_path  %></li>
-    <% end %>
-  <%= yield %>
-</body>
