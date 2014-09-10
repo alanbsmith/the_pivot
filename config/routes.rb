@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :business_users
   resources :customer_users
   resources :users
-  
-  
+
+
   resources :sessions, only: [:new, :create, :destroy]
 
   match "/home",    to: "static_pages#home",    via: "get"
@@ -17,8 +17,8 @@ Rails.application.routes.draw do
 
   match "/register", to: "users#new",          via: "get"
   match "/signin",   to: "sessions#new",       via: "get"
-  match "/signout",  to: "sessions#destroy",   via: "delete"
-
+  match "/signout",  to: "sessions#destroy",   via: "get"
+  match "/dashboard", to: "user#show", via:"get"
 
   namespace :users do
     resources :orders

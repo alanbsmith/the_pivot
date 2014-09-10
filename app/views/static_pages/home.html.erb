@@ -1,3 +1,6 @@
 <h1> EmployMe </h1>
+<% if notice %>
+  <%= notice %>
+<% end %>
 
-<%= link_to "Register Your Business", new_business_user_path %>
+<%= link_to "Register Your Business", new_user_path %>

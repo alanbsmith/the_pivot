@@ -10,13 +10,19 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    redirect_to business_users_path, notice: "Registration Successful!"
+    sign_in @user
+    redirect_to @user, notice: "Users controller"
+  end
+
+  def index
+
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email,
+    params.require(:user).permit(:company_name,
+                                :email,
                                  :first_name,
                                  :last_name,
                                  :password,
