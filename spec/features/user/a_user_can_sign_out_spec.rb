@@ -13,13 +13,18 @@ user = User.new
 
 describe 'user', type: :feature do
 
-  it 'logs in to their account' do
+  before do
     visit '/signin'
-
     fill_in "Email", with: "jd@example.com"
     fill_in "Password", with: "password"
     click_on "Signin"
+  end
 
-    expect(current_path).to eq(home_path)
+  it 'signs out of their account' do
+    click_on "Signout"
+
+    expect(page).to have_link("Sign In")
+    expect(page).to_not have_content("Signout")
+    expect(current_path).to eq(root_path)
   end
 end

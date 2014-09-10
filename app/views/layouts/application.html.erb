@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <% if signed_in? %>
-      <%= link_to "Signout", signout_path, method: "delete" %>
+      <%= link_to "Signout", signout_path %>
 
         <a href="#" >
           <% if current_user %>
