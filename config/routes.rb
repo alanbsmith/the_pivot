@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :business_users
   resources :customer_users
   resources :users
+  resources :listings
+  namespace :business_users do
+    resources :listings
+  end
 
 
   resources :sessions, only: [:new, :create, :destroy]
