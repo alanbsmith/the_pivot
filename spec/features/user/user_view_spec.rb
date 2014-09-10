@@ -6,35 +6,35 @@ describe 'the user view', type: :feature do
 
     context 'business users' do
 
-    it 'has link to register user' do
-      visit home_path
-      expect(page).to have_link('Register Your Business')
-    end
+        it 'has link to register user' do
+          visit home_path
+          expect(page).to have_link('Register Your Business')
+        end
 
-    it 'displays the business registration page' do
-      visit home_path
-      click_link('Register Your Business')
-      expect(current_path).to eq(new_business_user_path)
-    end
+        it 'displays the business registration page' do
+          visit home_path
+          click_link('Register Your Business')
+          expect(current_path).to eq(new_business_user_path)
+        end
 
-    it 'can register a business user' do
-      visit home_path
-      click_link('Register Your Business')
-      expect(current_path).to eq(new_business_user_path)
-      fill_in("email", with: "user@example.com")
-      fill_in("First name", with: "Bob")
-      fill_in("Last name", with: "Gu")
-      fill_in("Password", with: "password")
-      fill_in("Password confirmation", with: "password")
-      click_button("Create User")
-      registered_user = User.last
-      expect(registered_user.email).to eq("user@example.com")
-    end
+        it 'can register a business user' do
+          visit home_path
+          click_link('Register Your Business')
+          expect(current_path).to eq(new_business_user_path)
+          fill_in("email", with: "user@example.com")
+          fill_in("First name", with: "Bob")
+          fill_in("Last name", with: "Gu")
+          fill_in("Password", with: "password")
+          fill_in("Password confirmation", with: "password")
+          click_button("Create User")
+          registered_user = User.last
+          expect(registered_user.email).to eq("user@example.com")
+        end
 
-    # it 'can log in as default user' do
-    #   default_login
-    #   expect(current_path).to eq(home_path)
-    # end
+        it 'can log in as business user' do
+          default_login
+          expect(current_path).to eq(home_path)
+        end
 
     # it 'can log out as default user' do
     #   default_login
