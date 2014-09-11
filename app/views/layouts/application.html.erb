@@ -32,9 +32,9 @@
                   <% end %>
                 </a></li>
                 <li><%= link_to "Dashboard", current_user %></li>
-                <li><a href="signout">Sign Out</a></li>
+                <li><%= link_to "Sign Out", signout_path %></li>
                   <% else %>
-                    <li><a href="signin">Sign In</a></li>
+                    <li><%= link_to "Sign In", signin_path %></li>
                     <!-- <li><%= link_to "Register", register_path  %></li> -->
                   <% end %>
               </ul>
