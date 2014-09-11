@@ -25,10 +25,17 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    @listing = Listing.find(params[:id])
   end
 
   def update
-    @listing.update(listing_params)
+    @listing = Listing.find(params[:id])
+    if @listing.update(listing_params)
+      redirect_to listings_path
+    else
+      format.html {render :edit }
+    end
+
   end
 
   def destroy

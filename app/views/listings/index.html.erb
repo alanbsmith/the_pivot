@@ -16,6 +16,7 @@
         <span>Full-time/Part-time : <%= listing.job_type %></span>
         <span>Job Closing Date : <%= listing.closing.strftime('%b %d, %Y, %I:%M') %></span>
         <%= link_to 'Delete', listing_path(listing), method: :delete %>
+        <%= link_to 'Edit', edit_listing_path(listing) %> 
       </li>
     <% end %>
   <ul>
