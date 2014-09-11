@@ -5,9 +5,7 @@ gem 'rails', '4.1.4'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.2.0'
-gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
-gem 'less-rails'
 gem 'autoprefixer-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -18,8 +16,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'aasm'
-gem 'carrierwave'
-gem 'rmagick', '~>2.13.3', :require=> false
 gem 'mini_magick', '~>3.8.0'
 
 group :development, :test do
@@ -34,6 +30,7 @@ group :development, :test do
   gem "binding_of_caller"
   gem "simplecov", :require => false
   gem "nyan-cat-formatter"
+  gem "unicorn"
 end
 
 group :test do

@@ -1,0 +1,87 @@
+.down_image {
+  background-image: url("line_people.jpg");
+  background-size: cover;
+  height: 600px;
+}
+.people_happy {
+  background-image: url("people_happy_web2.jpg");
+  background-size: cover;
+  height: 600px;
+}
+.back_color {
+  margin-top: -20px;
+  background: #e8e8e8
+}
+.form_title {
+  font-size: 50px;
+  font-weight: 400;
+  margin-top: 70px;
+  margin-bottom: -0px;
+}
+.special_font {
+  font-size: 25px;
+  font-weight: 100;
+}
+.special_font_sq {
+  font-size: 20px;
+  font-weight: 200;
+}
+.the_form {
+  margin-top:10px;
+  margin-bottom:80px;
+}
+.form_label {
+  margin-bottom:5px;
+  margin-top:30px;
+  float:left;
+  margin-right: 20px;
+}
+.form_label_name {
+  margin-bottom:5px;
+  margin-top:30px;
+  margin-right: 10px;
+}
+.form_label_last_name {
+  margin-bottom:5px;
+  margin-top:30px;
+  margin-right: 10px;
+  margin-left:20px;
+}
+.rigth_input_company {
+  float: right;
+  max-width: 55%;
+  min-width: 40%;
+  margin-right:10%;
+  margin-top:25px;
+}
+.rigth_input_name{
+  float: right;
+  max-width: 15%;
+  min-width: 10%;
+  margin-right:10%;
+  margin-top:25px;
+}
+.full_width{
+  width:100%;
+  float: left;
+}
+.note_sq {
+  border: solid;
+  border-width: 2px;
+  border-color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-top:120px;
+  padding:25px 15px;
+}
+.push_down {
+  margin-top:50px;
+}
+.door {
+  background-image: url("door.png");
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+  margin:20px auto;
+}

@@ -2,15 +2,17 @@ Rails.application.routes.draw do
 
   root to: "static_pages#home"
 
-  resources :items
-
   resources :categories
 
-  resources :carts
-  resources :cart_items
-  resources :orders
-
+  resources :business_users
+  resources :customer_users
   resources :users
+  resources :listings
+  namespace :business_users do
+  resources :listings
+  end
+
+
   resources :sessions, only: [:new, :create, :destroy]
 
   match "/home",    to: "static_pages#home",    via: "get"
@@ -19,8 +21,8 @@ Rails.application.routes.draw do
 
   match "/register", to: "users#new",          via: "get"
   match "/signin",   to: "sessions#new",       via: "get"
-  match "/signout",  to: "sessions#destroy",   via: "delete"
-
+  match "/signout",  to: "sessions#destroy",   via: "get"
+  match "/dashboard", to: "user#show", via:"get"
 
   namespace :users do
     resources :orders

@@ -1,9 +1,6 @@
 class OrdersController < ApplicationController
-  include CurrentCart
   include SessionsHelper
 
-  before_action :set_cart,  only: [:new, :create]
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
   def index

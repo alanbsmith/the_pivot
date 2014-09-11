@@ -1,6 +1,25 @@
-<h1>Registration</h1>
-<% if notice %>
-  <%= notice %>
-<% end %>
+<div class="back_color">
 
-<%= render :partial => 'form' %>
+  <div class="container">
+  <% if notice %>
+    <%= notice %>
+  <% end %>
+    <p class="form_title text-center">Open your door to the right people.</p>
+    <p class="lead text-center">Stop searching. Show yourself and let them come.</p>
+
+      <div class="text-center door"></div>
+   </div>
+   <div class="container">
+
+    <div class="col-md-8 col-md-offset-2 the_form">
+      <%= render :partial => 'form' %>
+    </div>
+
+    <p class=" text-center special_font_sq note_sq col-md-2">
+      To start receving applications, just register your company and publish your job opportunities
+    </p>
+
+  </div>
+
+</div>
+<div class="down_image"></div>

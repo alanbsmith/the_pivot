@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
-  include CurrentCart
+
   include SessionsHelper
-  before_action :set_cart, only: [:show, :edit, :update, :destroy, :checkout]
+
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   def show

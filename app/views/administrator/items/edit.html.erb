@@ -1,8 +1,5 @@
-<%- model_class = Item -%>
-<div class="page-header">
-  <h1>Edit <%= @item.title %></h1>
+<%= @item.title %>
   <% if @notice %>
-    <p id="notice"><%= notice %></p>
+    <%= notice %></p>
   <% end %>
-</div>
 <%= render :partial => 'form' %>
