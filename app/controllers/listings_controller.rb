@@ -22,6 +22,20 @@ class ListingsController < ApplicationController
 		end
   end
 
+  def edit
+  end
+
+  def update
+    @listing.update(listing_params)
+  end
+
+  def destroy
+    @listing.destroy
+    respond_to do |format|
+      format.html { redirect_to business_users_listings_url, notice: 'Item was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
   private
 

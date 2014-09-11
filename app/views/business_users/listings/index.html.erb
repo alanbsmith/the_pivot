@@ -1,6 +1,5 @@
-
-  Home', administrator_admins_path, class: 'btn' %>
-  nk_to 'Manage Categories', administrator_categories_path, class: 'btn' %>
+  <%= link_to 'Home', administrator_admins_path, class: 'btn' %>
+  <%= link_to 'Manage Categories', administrator_categories_path, class: 'btn' %>
   <%= link_to 'Manage Orders', administrator_orders_path, class: 'btn' %>
   <%= link_to 'Manage Users', administrator_users_path, class: 'btn' %>
 
@@ -15,8 +14,8 @@
          <%= category.title %>
       <% end %>
 
-      <%= link_to 'Edit', edit_administrator_item_path(item) %>
-      <%= link_to 'Delete', administrator_item_path(item), method: :delete, data:{
+      <%= link_to 'Edit', edit_business_users_listing_path(item) %>
+      <%= link_to 'Delete', business_users_listing_path(item), method: :delete, data:{
         confirm: "Are you sure you want to delete the item: '#{item.title}'" } %>
   <% end %>
 
