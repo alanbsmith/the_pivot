@@ -41,11 +41,11 @@ class ListingsController < ApplicationController
 
   def listing_params
     	params.require(:listing).permit(:title,
-																	 :description,
-																	 :pay_rate,
-                                   :job_type,
-                                   :positions,
-                                   :closing
-																	 )
+																	    :description,
+																	    :pay_rate,
+                                      :job_type,
+                                      :positions,
+                                      :closing
+																	     )
   end
 end
