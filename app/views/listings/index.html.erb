@@ -1,3 +1,8 @@
+<style>
+  span {
+    padding-left: 20px;
+  }
+</style>
 <% if notice %>
   <%= notice %>
 <% end %>
@@ -5,10 +10,11 @@
   <ul>
     <% @listings.each do |listing| %>
       <li>
-        <%= listing.title %>
-        <%= listing.description %>
-        <%= listing.pay_rate %>
-        <%= listing.job_type %>
+        <span>Title : <%= listing.title %></span>
+        <span>Description : <%= listing.description %></span>
+        <span>Salary/Hourly : <%= listing.pay_rate %></span>
+        <span>Full-time/Part-time : <%= listing.job_type %></span>
+        <span>Job Closing Date : <%= listing.closing.strftime('%b %d, %Y, %I:%M') %></span>
       </li>
     <% end %>
   <ul>

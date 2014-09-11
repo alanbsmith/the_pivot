@@ -30,6 +30,7 @@ group :development, :test do
   gem "binding_of_caller"
   gem "simplecov", :require => false
   gem "nyan-cat-formatter"
+  gem "unicorn"
 end
 
 group :test do
