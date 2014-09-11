@@ -30,6 +30,7 @@ class ListingsController < ApplicationController
   end
 
   def destroy
+    @listing = Listing.find_by(params[:id])
     @listing.destroy
     respond_to do |format|
       format.html { redirect_to business_users_listings_url, notice: 'Listing was successfully destroyed.' }
