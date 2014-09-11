@@ -46,4 +46,5 @@ Rails.application.configure do
     password:             'PasswordTuring',
     enable_starttls_auto: true  }
 
+
 end
