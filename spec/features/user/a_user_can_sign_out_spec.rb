@@ -21,10 +21,10 @@ describe 'user', type: :feature do
   end
 
   it 'signs out of their account' do
-    click_on "Signout"
+    click_on "Sign Out"
 
     expect(page).to have_link("Sign In")
-    expect(page).to_not have_content("Signout")
+    expect(page).to_not have_content("Sign Out")
     expect(current_path).to eq(root_path)
   end
 end
