@@ -26,12 +26,12 @@
           </ul>
             <ul class="nav navbar-nav pull-right">
               <% if signed_in? %>
-                <!-- <li><a href="current_user(user_id)">Dashboard</a></li> -->
                 <li><a href="/" >
                   <% if current_user %>
                     <%= " Welcome, #{current_user.first_name.capitalize}!" %>
                   <% end %>
                 </a></li>
+                <li><%= link_to "Dashboard", current_user %></li>
                 <li><a href="signout">Sign Out</a></li>
                   <% else %>
                     <li><a href="signin">Sign In</a></li>
@@ -41,5 +41,7 @@
             </div>
           </div>
         </div>
-        <%= yield %>
+        <div class="container">
+          <%= yield %>
+        </div>
       </body>
