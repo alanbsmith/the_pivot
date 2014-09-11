@@ -9,6 +9,8 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @listings = Listing.all
+    @user = current_user
   end
 
   def create
@@ -30,10 +32,10 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-    @listing = Listing.find_by(params[:id])
+    @listing = Listing.find(params[:id])
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to business_users_listings_url, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to listings_path, notice: 'Listing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
