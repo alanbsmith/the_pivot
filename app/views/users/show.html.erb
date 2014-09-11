@@ -1,14 +1,20 @@
 <% if notice %>
 	<%= notice %>
 <% end %>
+<div class="back_color">
+	<div class="container">
+		<h1 class="text-center">Your Company is growing!</h1>
 
-<h1>Welcome to the Business User Dashboard</h1>
+		<p>From here you can add, edit, and update your job postings</p>
+		<p>You can also access current applicants and their information</p>
+		<p> <%= "#{10} Job listings"  %> </p>
+		<p> <%= "#{100} Current applicants"  %> </p>
 
-<p>From here you can add, edit, and update your job postings</p>
-<p>You can also access current applicants and their information</p>
+		<%= link_to "Add a new Job Listing", new_listing_path, :class => "btn btn-success" %>
+		<%= link_to "View current Job Listings", listings_path %>
+		<%= link_to "View current Applicants" %>
 
-<%= link_to "Add a new Job Listing", new_listing_path %>
-<%= link_to "View current Job Listings", listings_path %>
-<%= link_to "View current Applicants" %>
-
-<%= link_to "Home", home_path %>
+		<%= link_to "Home", home_path %>
+	</div>
+</div>
+<div class="people_happy"></div>
