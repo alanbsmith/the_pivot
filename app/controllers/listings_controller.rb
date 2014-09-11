@@ -5,6 +5,10 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
+    @user = current_user
+  end
+
+  def show
   end
 
   def create

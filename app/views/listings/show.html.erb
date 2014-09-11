@@ -1,9 +1,10 @@
-<%= @item.title %>
-<%= image_tag image_or_fallback_show(@item) %>
-<%= model_class.human_attribute_name(:description) %>:
-<%= @item.description %>
-<%= model_class.human_attribute_name(:price) %>:
-<%= @item.price %>
-<% if @item.status == 1 %>
-  <%= button_to "Add To Cart", cart_items_path(item_id: @item) %>
-<% end %>
+<div>
+  <% @listings.each do |listing| %>
+    <%= listing.title %>
+    <%= listing.description %>
+    <%= listing.pay_rate %>
+    <%= listing.job_type %>
+  <% end %>
+</div>
+
+<%= link_to "Back to your Dashboard", @user %>
