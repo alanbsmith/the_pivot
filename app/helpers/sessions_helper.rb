@@ -9,9 +9,7 @@ module SessionsHelper
   end
 
   def sign_out
-    current_user.update_attribute(:remember_token,
-                                   User.digest(User.new_remember_token))
-    current_user.cookies.delete(:remember_token)
+    cookies.delete(:remember_token)
     self.current_user = nil
     session[:cart_id] = nil
   end
