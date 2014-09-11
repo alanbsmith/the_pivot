@@ -1,0 +1,10 @@
+<% if notice %>
+  <%= notice %>
+<% end %>
+
+<% @listings.each do |listing| %>
+  <%= listing.title %>
+  <%= listing.description %>
+  <%= listing.pay_rate %>
+  <%= listing.job_type %>
+<% end %>
