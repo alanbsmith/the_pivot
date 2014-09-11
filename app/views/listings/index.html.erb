@@ -6,18 +6,24 @@
 <% if notice %>
   <%= notice %>
 <% end %>
-
+<div class="back_color" style="height:1000px; padding-top:100px">
+<div class="container">
+  <h1 class=" text-center" style="margin-top:-50px"> These are your Job Postings </h1>
+  <p class="lead text-center"> Time to make <%= "#{@user.company_name}" %> even greater!</p>
+  <br>
   <ul>
     <% @listings.each do |listing| %>
-      <li>
-        <span>Title : <%= listing.title %></span>
-        <span>Description : <%= listing.description %></span>
-        <span>Salary/Hourly : <%= listing.pay_rate %></span>
-        <span>Full-time/Part-time : <%= listing.job_type %></span>
-        <span>Job Closing Date : <%= listing.closing.strftime('%b %d, %Y, %I:%M') %></span>
-        <%= link_to 'Delete', listing_path(listing), method: :delete %>
-      </li>
+      <div style="font-weight:400">
+        <span style="color:orange">Title:</span><span> <%= listing.title %></span>
+        <span style="color:orange">Description:</span><span> <%= listing.description %></span>
+        <span style="color:orange">Salary/Hourly:</span><span> <%= listing.pay_rate %></span>
+        <span style="color:orange">Full-time/Part-time:</span><span> <%= listing.job_type %></span>
+        <span style="color:orange">Job Closing Date:</span><span> <%= listing.closing.strftime('%b %d, %Y, %I:%M') %></span>
+        <%= link_to 'Delete', listing_path(listing), method: :delete, :class => "btn btn-danger btn-sm" %>
+      </div>
     <% end %>
   <ul>
-
-<%= link_to "Back to your Dashboard", @user %>
+<br>
+<%= link_to "Back to your Dashboard", @user, :class => "btn btn-warning"%>
+</div>
+</div>
