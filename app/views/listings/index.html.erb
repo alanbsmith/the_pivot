@@ -2,13 +2,15 @@
   <%= notice %>
 <% end %>
 
-<div>
-  <% @listings.each do |listing| %>
-    <%= listing.title %>
-    <%= listing.description %>
-    <%= listing.pay_rate %>
-    <%= listing.job_type %>
-  <% end %>
-</div>
+  <ul>
+    <% @listings.each do |listing| %>
+      <li>
+        <%= listing.title %>
+        <%= listing.description %>
+        <%= listing.pay_rate %>
+        <%= listing.job_type %>
+      </li>
+    <% end %>
+  <ul>
 
 <%= link_to "Back to your Dashboard", @user %>
