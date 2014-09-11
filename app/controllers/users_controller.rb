@@ -9,21 +9,24 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    UserMailer.welcome_email(@user).deliver
-    sign_in @user
-    redirect_to @user
+    @user = User.new(user_params)
+    if @user.save
+      UserMailer.welcome_email(@user).deliver
+      sign_in @user
+      redirect_to @user
+    else
+      render :new
+    end
   end
 
   def index
-
   end
 
   private
 
   def user_params
     params.require(:user).permit(:company_name,
-                                :email,
+                                 :email,
                                  :first_name,
                                  :last_name,
                                  :password,
