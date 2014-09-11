@@ -3,4 +3,6 @@
   <%= notice %>
 <% end %>
 
-<%= link_to "Register Your Business", new_user_path %>
+<% unless sign_in current_user %>
+  <%= link_to "Register Your Business", new_user_path %>
+<% end %>
