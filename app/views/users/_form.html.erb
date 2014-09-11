@@ -1,23 +1,32 @@
 <%= form_for @user do |f| %>
-<%= f.label :company_name %>
-<%= f.text_field :company_name %>
+<div class="full_width">
+  <%= f.label :company_name, "Your Company name is:", :class => "lead form_label" %>
+  <%= f.text_field :company_name, :class => "form-control rigth_input_company" %>
+  <hr>
+  <p class="lead form_label">Who is going to be the main contact for your company? </p>
+</div>
+<div class="full_width">
+  <div class="form-inline">
+    <%= f.label :first_name, "First Name:", :class => "lead form_label_name" %>
+    <%= f.text_field :first_name, :class => "form-control " %>
+    <%= f.label :last_name, "Last Name:", :class => "lead form_label_last_name" %>
+    <%= f.text_field :last_name, :class => "form-control " %>
 <br>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+    <%= f.label :email, "Your email:", :class => "lead form_label_name" %>
+    <%= f.text_field :email, :class => "form-control  " %>
 <br>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+  <%= f.label :password, "Password:", :class => "lead form_label_name" %>
+  <%= f.password_field :password, :class => "form-control  "  %>
 <br>
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+  <%= f.label :password_confirmation, "Password confirmation:", :class => "lead form_label_name" %>
+  <%= f.password_field :password_confirmation, :class => 'password_field form-control ' %>
 <br>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+<div class="push_down">
+  <%= f.submit "Register Now", :class => "btn btn-warning btn-block" %>
+  <!-- <%= link_to t('.cancel', :default => t("helpers.links.cancel")), home_path %> -->
+</div>
+  </div>
+</div>
 <br>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, :class => 'password_field' %>
-<br>
-  <%= f.submit nil %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), home_path %>
 
 <% end %>
