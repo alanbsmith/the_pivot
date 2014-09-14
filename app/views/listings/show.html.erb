@@ -1,10 +1,51 @@
-<div>
-  <% @listings.each do |listing| %>
-    <%= listing.title %>
-    <%= listing.description %>
-    <%= listing.pay_rate %>
-    <%= listing.job_type %>
-  <% end %>
-</div>
 
-<%= link_to "Back to your Dashboard", @user %>
+<div class="container">
+    <h1><%= @listing.title %></h1>
+    <div class="row">
+      <div class= 'col-lg-2'>
+        <%= link_to "Edit", edit_listing_path(@listing), :class => "btn btn-warning btn-block" %>
+      </div>
+      <div class= 'col-lg-2'>
+        <%= link_to "Delete", listing_path(@listing), method: :delete, :class => "btn btn-danger btn-block" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2">
+        <p>Description<p>
+      </div>
+        <div class="col-lg-9">
+        <%= @listing.description %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2">
+        <p>Wage/Salary</p>
+      </div>
+      <div class="col-lg-9">
+        <%= @listing.pay_rate %>
+        <%= @listing.job_type %>
+      </div>
+    </div>
+    <div class="row">
+      <div class='col-lg-2'>
+        <p>Positions Available</p>
+      </div>
+      <div class="col-lg-9">
+        <%= @listing.positions %>
+      </div>
+    </div>
+    <div class="row">
+      <div class='col-lg-2'>
+        <p>Closing Date</p>
+      </div>
+      <div class="col-lg-9">
+        <%= @listing.closing.strftime('%b %d, %Y, %I:%M %p')%>
+      </div>
+    </div>
+    <div class="text-center">
+
+      <%= link_to "Edit", edit_listing_path(@listing), :class => "text-center" %> |
+      <%= link_to "Delete", listing_path(@listing), method: :delete %> |
+      <%= link_to "Back to your Dashboard", current_user %>
+    </div>
+</div>
