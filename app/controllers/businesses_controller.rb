@@ -19,6 +19,10 @@ class BusinessesController< ApplicationController
     end
   end
 
+  def show
+    @business = Business.where(params[:id])
+  end
+
   def edit
   end
 
