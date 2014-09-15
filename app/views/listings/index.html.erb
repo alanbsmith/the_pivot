@@ -1,32 +1,40 @@
-<% if notice %>
-  <%= notice %>
-<% end %>
-<div class="back_color" style="height:1000px; padding-top:100px">
 <div class="container">
-  <h1 class=" text-center" style="margin-top:-50px"> These are your Job Postings </h1>
-  <h3 class="text-center"><%= "for #{current_user.company_name}" %></h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Closing Date</th>
-        <th>Applicants</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @listings.each do |listing| %>
-      <div style="font-weight:400">
-        <tr>
-          <td><%= link_to listing.title, listing_path(listing) %></td>
-          <td><%= listing.closing.strftime('%b %d, %Y, %I:%M') %></td>
-          <!-- links to the applicant index page -->
-          <td><%= link_to "Current Applicants (5)", "#"%></td>
-        </tr>
-      </div>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="hero-unit text-center">
+    <h1>Search all available jobs</h1>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-2">
+      <input type="text" class="form-control">
+    </div>
+  <div class="col-lg-4">
+    <div class="input-group">
+      <input type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-warning" type="button">Search</button>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h2>Job Categories</h2>
 
-<%= link_to "Back to your Dashboard", @user, :class => "btn btn-warning"%>
-</div>
-</div>
+  <% @listings.each_with_index do |category, i| %>
+
+      <div class="accordion panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#<%= i %>">
+            <h4><%= category.title %></h4>
+          </div>
+          <div class="panel-body collapse" id="<%= i %>">
+            <div class="panel-body">
+                  <h4><%= link_to category.title, listing_path(category) %></h4>
+                  <h5>Job Description</h5>
+                  <p><%= truncate(category.description, :length => 1000) %> Read more...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
