@@ -1,4 +1,4 @@
-class User::OrdersController < ApplicationController
+\class User::OrdersController < ApplicationController
 
   def index
     @user = User.find(params[:id])
