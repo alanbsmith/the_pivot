@@ -1,19 +1,19 @@
-class UsersController < ApplicationController
+class ApplicantController < ApplicationController
 
   def new
-    @user = User.new
+    @applicant = Applicant.new
   end
 
   def show
-    @user = User.find(params[:id])
+    @applicant = Applicant.find(params[:id])
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save!
-      UserMailer.welcome_email(@user).deliver
-      sign_in @user
-      redirect_to @user
+    @applicant = Applicant.new(user_params)
+    if @applicant.save!
+      ApplicantMailer.welcome_email(@applicant).deliver
+      sign_in @applicant
+      redirect_to @applicant
     else
       render :new
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:company_name,
+    params.require(:applicant).permit(
                                  :email,
                                  :first_name,
                                  :last_name,
