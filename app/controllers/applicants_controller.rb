@@ -1,4 +1,4 @@
-class ApplicantController < ApplicationController
+class ApplicantsController < ApplicationController
 
   def new
     @applicant = Applicant.new
@@ -9,9 +9,9 @@ class ApplicantController < ApplicationController
   end
 
   def create
-    @applicant = Applicant.new(user_params)
+    @applicant = Applicant.new(applicant_params)
     if @applicant.save!
-      ApplicantMailer.welcome_email(@applicant).deliver
+      Mailer.welcome_applicant_email(@applicant).deliver
       sign_in @applicant
       redirect_to @applicant
     else
@@ -24,11 +24,11 @@ class ApplicantController < ApplicationController
 
   private
 
-  def user_params
+  def applicant_params
     params.require(:applicant).permit(
-                                 :email,
                                  :first_name,
                                  :last_name,
+                                 :email,
                                  :password,
                                  :password_confirmation)
   end
