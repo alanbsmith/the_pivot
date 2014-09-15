@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :applicants
+  resources :users
   resources :listings
 
 
