@@ -97,7 +97,7 @@ class UpdateSchemaForPivot < ActiveRecord::Migration
     add_index "applicants", ["email"], name: "index_applicants_on_email", unique: true, using: :btree
     add_index "applicants", ["remember_token"], name: "index_applicants_on_remember_token", using: :btree
     add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
-    add_index "adminss", ["remember_token"], name: "index_admins_on_remember_token", using: :btree
+    add_index "admins", ["remember_token"], name: "index_admins_on_remember_token", using: :btree
   end
 end
 
