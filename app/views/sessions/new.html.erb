@@ -1,16 +1,14 @@
-
-<div class="container">
 <% provide(:title, "Signin") %>
-
-<%= form_for :session, url: sessions_path do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit "Signin" %>
-<% end %>
-
-<%= link_to "Not a member? Join today!", register_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+      <h1 class="form-signin-heading">Sign In</h1>
+      <%= form_for(:session, url: sessions_path, class: 'form-signin') do |f| %>
+        <%= f.text_field :email, class: "form-control", placeholder: "john@example.com" %></br>
+        <%= f.password_field :password, class: "form-control", placeholder: "your password" %></br>
+        <%= f.submit "Sign In", class: "btn btn-warning  btn-block" %>
+      <% end %>
+      <%= link_to "Not a member? Join today!", register_path %>
+    </div>
+  </div>
 </div>
