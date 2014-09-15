@@ -1,4 +1,4 @@
-class BusinessController< ApplicationController
+class BusinessesController< ApplicationController
   
   def index
     @business = current_business(params[:id])
@@ -19,6 +19,10 @@ class BusinessController< ApplicationController
     end
   end
 
+  def show
+    @business = Business.where(params[:id])
+  end
+
   def edit
   end
 
@@ -34,7 +38,7 @@ class BusinessController< ApplicationController
     params.require(:business).permit(:company_name,
                                      :first_name,
                                      :last_name,
-                                     :email,
+                                     :email
                                      )
   end
 end
