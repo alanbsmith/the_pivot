@@ -57,47 +57,23 @@ class UpdateSchemaForPivot < ActiveRecord::Migration
       t.string   "receiving"
     end
 
-    create_table "businesses", force: true do |t|
-      t.string "company_name"
-      t.string "first_name"
-      t.string "last_name"
-      t.string "email"
-      t.string "password_digest"
-      t.string "salt"
+    create_table "users", force: true do |t|
+      t.string   "first_name"
+      t.string   "last_name"
+      t.string   "company_name"
+      t.string   "email"
+      t.string   "password_digest"
+      t.string   "salt"
       t.datetime "created_at"
       t.datetime "updated_at"
       t.string   "remember_token"
     end
 
-    create_table "applicants", force: true do |t|
-      t.string "first_name"
-      t.string "last_name"
-      t.string "email"
-      t.string "password_digest"
-      t.string "salt"
-      t.datetime "created_at"
-      t.datetime "updated_at"
-      t.string   "remember_token"
-    end
+    add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+    add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+    add_index "users", ["company_name"], name: "index_users_on_company_name", using: :btree
 
-    create_table "admins", force: true do |t|
-      t.string "first_name"
-      t.string "last_name"
-      t.string "email"
-      t.string "password_digest"
-      t.string "salt"
-      t.datetime "created_at"
-      t.datetime "updated_at"
-      t.string   "remember_token"
-    end
-
-
-    add_index "businesses", ["email"], name: "index_businesses_on_email", unique: true, using: :btree
-    add_index "businesses", ["remember_token"], name: "index_businesses_on_remember_token", using: :btree
-    add_index "applicants", ["email"], name: "index_applicants_on_email", unique: true, using: :btree
-    add_index "applicants", ["remember_token"], name: "index_applicants_on_remember_token", using: :btree
-    add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
-    add_index "admins", ["remember_token"], name: "index_admins_on_remember_token", using: :btree
   end
+
 end
 
