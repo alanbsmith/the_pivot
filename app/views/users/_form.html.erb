@@ -3,11 +3,13 @@
 <% end %>
 
 <%= form_for @user do |f| %>
-<div class="full_width">
-  <%= f.label :company_name, "Your Company name is:", :class => "lead form_label" %>
-  <%= f.text_field :company_name, :class => "form-control rigth_input_company" %>
-  <hr>
-  <p class="lead form_label">Who is going to be the main contact for your company? </p>
+<div class="business_registration">
+  <div class="full_width">
+    <%= f.label :company_name, "Your Company name is:", :class => "lead form_label" %>
+    <%= f.text_field :company_name, :class => "form-control rigth_input_company" %>
+    <hr>
+    <p class="lead form_label">Who is going to be the main contact for your company? </p>
+  </div>
 </div>
 <div class="full_width">
   <div class="form-inline">
