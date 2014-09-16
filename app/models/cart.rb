@@ -1,22 +1,18 @@
 class Cart < ActiveRecord::Base
-  has_many :cart_items, dependent: :destroy
-  has_many :items, through: :cart_items
+  has_many :cart_listings, dependent: :destroy
+  has_many :listings, through: :cart_listings
 
-  def add_item(item_id)
-    current_item = cart_items.find_by(item_id: item_id)
-    if current_item
-      current_item.quantity += 1
+  def add_listing(listing_id)
+    current_listing = cart_listing.find_by(listing_id: listing_id)
+    if current_listing
+      current_listing.quantity += 1
     else
-      current_item = cart_items.create(item_id: item_id)
+      current_listing = cart_listings.create(listing_id: listing_id)
     end
-    current_item
+    current_listing
   end
 
-  def total_price
-    cart_items.to_a.sum { |cart_item| cart_item.total_price }
-  end
-
-  def total_items
-    cart_items.sum(:quantity)
+  def total_listings
+    cart_listings.sum(:quantity)
   end
 end
