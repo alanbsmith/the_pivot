@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :listings
   end
 
-
   resources :sessions, only: [:new, :create, :destroy]
 
   match "/home",    to: "static_pages#home",    via: "get"
