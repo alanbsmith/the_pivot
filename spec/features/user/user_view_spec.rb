@@ -2,7 +2,7 @@ require 'feature_helper'
 
 describe 'the user view', type: :feature do
 
-  describe 'the home view' do
+  describe 'home view' do
 
     context 'business users' do
 
@@ -42,21 +42,34 @@ describe 'the user view', type: :feature do
           user.save
 
           visit signin_path
-          fill_in("Email", with: user.email)
-          fill_in("Password", with: "password")
-          click_button("Signin")
+          expect(current_path).to eq(signin_path)
+            within('//form') do
+              fill_in("session_email", with: user.email)
+              fill_in("session_password", with: "password")
+              click_button("Sign In")
+            end
           expect(current_path).to eq user_path(user)
         end
       end
 
     context 'the applicant user' do
 
-      listing = Listing.new
-        listing.title = 'Joby job job'
-        listing.description = 'We will work your ass off'
-        listing.pay_rate
+      before(:each) do
+        listing1 = Listing.create(title: 'Joby job job', 
+                                  description: 'We will work your ass off',
+                                  pay_rate: 100, 
+                                  pay_type: 'hr', 
+                                  employment_type: 'hourly',
+                                  number_of_positions: 3,
+                                  closing_date: Time.now + 1000
+                                 )
 
-      before.each do 
+        category1 = Category.create(title: "Great Jobs", description: "Jobs that don't suck")
+        
+        @listing  = Listing.first
+
+        category1.listings << listing1
+
         visit home_path
       end
 
@@ -64,19 +77,37 @@ describe 'the user view', type: :feature do
         expect(page).to have_link('Browse current job listings')
       end
 
-      it 'can browse current job listings as an unauthenticated applicant user' do |variable|
+      it 'can browse current job listings as an unauthenticated applicant user' do
         click_link('Browse current job listings')
         expect(current_path).to eq(listings_path)
-        expect(page).to have_content('Joby job job')
-        expect(page).to have_content('Another joby job')
+
+        expect(page).to have_content(@listing.title)
+        expect(page).to have_content(@listing.description)
       end
 
-
-
-      it 'has a link to register a new applicant' do
-        expect(page).to have_link('Register as an Applicant')
+      it 'can view the details of a job listing as an unauthenticated applicant user' do
+        visit listings_path
+        expect(current_path).to eq(listings_path)
+        
+        click_link('Joby job job')
+        expect(current_path).to eq(listing_path(@listing))
+        
+        expect(page).to have_content(@listing.title)
+        expect(page).to have_content(@listing.description)
+        expect(page).to have_content(@listing.pay_rate)
+        expect(page).to have_content(@listing.employment_type)
+        expect(page).to have_content(@listing.number_of_positions)
       end
 
+      it 'has links to apply for a job' do
+        visit listing_path(@listing)
+        expect(page).to have_link('Apply for this job')
+        expect(page).to have_link('Back to browsing')
+      end
 
+      # it 'has a link to register a new applicant' do
+      #   expect(page).to have_link('Register as an Applicant')
+      # end
     end
   end
+end

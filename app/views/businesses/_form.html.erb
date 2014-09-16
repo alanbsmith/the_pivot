@@ -19,11 +19,11 @@
 
 
   <%= f.label :part_time, :class => 'control_label' %>
-  <%= f.radio_button(:job_type, "part-time", :id => 'part-time',
-  :checked => (:pay_type == 'part-time')? true:false) %>
+  <%= f.radio_button(:employment_type, "part-time", :id => 'part-time',
+  :checked => (:employment_type == 'part-time')? true:false) %>
   <%= f.label :full_time, :class => 'control_label' %>
-  <%= f.radio_button(:job_type, "full-time", :id => 'full-time',
-  :checked => (:pay_type == 'full-time')? true:false) %>
+  <%= f.radio_button(:employment_type, "full-time", :id => 'full-time',
+  :checked => (:employment_type == 'full-time')? true:false) %>
 
   <%= f.label :closing, :id => 'closing' %>
   <%= f.datetime_select :closing, :ampm => true, :minute_step => 15%>

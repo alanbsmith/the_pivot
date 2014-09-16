@@ -5,7 +5,10 @@
 <div class="jumbotron">
   <h1> EmployMe </h1>
   <h3 class="text-muted">find your next great opportunity</h3>
-  <% unless signed_in? %>
-    <a class="btn btn-primary"<%= link_to "Register Your Business", new_user_path %></a>
+    <a class="btn btn-primary"<%= link_to "Browse current job listings", listings_path %></a>
+    <% unless signed_in? %>
+    <a align="right" class="btn btn-primary"<%= link_to "Register Your Business", new_user_path %></a>
+    <a class="btn btn-primary"<%= link_to "Register to Apply for Jobs" %></a>
   <% end %>
+
 </div>

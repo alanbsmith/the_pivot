@@ -4,13 +4,8 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :business_users
-  resources :customer_users
   resources :users
   resources :listings
-  namespace :business_users do
-  resources :listings
-  end
 
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -28,19 +23,19 @@ Rails.application.routes.draw do
     resources :cart_items
   end
 
-  namespace :administrator do
+  namespace :business do
     get "/paid" => "orders#paid", as: :paid
     get "/ordered" => "orders#ordered", as: :ordered
     get "/cancelled" => "orders#cancelled", as: :cancelled
     get "/completed" => "orders#completed", as: :completed
     get "/cancel/:id" => "orders#cancel", as: :cancel
     get "/complete/:id" => "orders#complete", as: :complete
+
     resources :cart_items
     resources :admins
-    resources :items
     resources :categories
+    resources :listings
     resources :orders
-    resources :users
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
