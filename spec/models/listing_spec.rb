@@ -7,9 +7,8 @@ RSpec.describe Listing, :type => :model do
       description: 'Grinding dem beans',
       pay_rate: '8.00/hr',
       employment_type: 'part-time',
-      positions: 1,
-      closing: Time.new(2014, 9, 24, 12, 0, 0),
-      user_id: 1
+      number_of_positions: 1,
+      closing_date: Time.new(2014, 9, 24, 12, 0, 0),
     )
   end
 
