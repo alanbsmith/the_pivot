@@ -12,4 +12,6 @@
 <% end %>
 
 <%= button_to 'Empty Cart', @cart, method: :delete %>
-<%= link_to 'Checkout', "#" %>
+<% if signed_in? %>
+  <%= link_to 'Checkout', "#" %>
+<% end %>
