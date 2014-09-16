@@ -10,7 +10,7 @@ class CartsController < ApplicationController
 
   def new
     current_cart ||= Cart.new(params[:id])
-    current_cart.cart_items.create(item_id: params[:id], cart_id: current_cart.id)
+    current_cart.cart_listings.create(listing_id: params[:id], cart_id: current_cart.id)
   end
 
   def destroy

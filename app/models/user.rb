@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
-
   before_save { self.email = email.downcase }
 
   before_create :create_remember_token
 
   has_secure_password
+  has_many :orders
 
   validates :password,              presence: true, length: { minimum: 8 }
   validates :password_confirmation, presence: true
