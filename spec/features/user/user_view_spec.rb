@@ -6,7 +6,7 @@ describe 'the user view', type: :feature do
 
     context 'business users' do
 
-        it 'has link to register user' do
+        it 'has link to register a business' do
           visit home_path
           expect(page).to have_link('Register Your Business')
         end
@@ -48,5 +48,35 @@ describe 'the user view', type: :feature do
           expect(current_path).to eq user_path(user)
         end
       end
+
+    context 'the applicant user' do
+
+      listing = Listing.new
+        listing.title = 'Joby job job'
+        listing.description = 'We will work your ass off'
+        listing.pay_rate
+
+      before.each do 
+        visit home_path
+      end
+
+      it 'has a link to browse current job listings' do
+        expect(page).to have_link('Browse current job listings')
+      end
+
+      it 'can browse current job listings as an unauthenticated applicant user' do |variable|
+        click_link('Browse current job listings')
+        expect(current_path).to eq(listings_path)
+        expect(page).to have_content('Joby job job')
+        expect(page).to have_content('Another joby job')
+      end
+
+
+
+      it 'has a link to register a new applicant' do
+        expect(page).to have_link('Register as an Applicant')
+      end
+
+
     end
   end
