@@ -1,6 +1,9 @@
-<% if notice %>
-	<%= notice %>
+<% if flash[:alert] %>
+	<div class="alert alert-success">
+		<%= flash[:alert] %>
+	</div>
 <% end %>
+
 
 <div class="back_color">
 	<div class="container">

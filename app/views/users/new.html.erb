@@ -1,9 +1,14 @@
-<div class="back_color">
+
 
   <div class="container">
-  <% if notice %>
-    <%= notice %>
-  <% end %>
+    <% if flash[:alert] %>
+       <div class="alert alert-danger">
+         <% flash[:alert].each do |error| %>
+           <%= error %>  |
+         <% end %>
+       </div>
+    <% end %>
+ <div class="back_color">
     <p class="form_title text-center">Open your door to the right people.</p>
     <p class="lead text-center">Stop searching. Show yourself and let them come.</p>
 
