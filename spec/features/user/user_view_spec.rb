@@ -58,7 +58,6 @@ describe 'the user view', type: :feature do
         listing1 = Listing.create(title: 'Joby job job', 
                                   description: 'We will work your ass off',
                                   pay_rate: 100, 
-                                  pay_type: 'hr', 
                                   employment_type: 'hourly',
                                   number_of_positions: 3,
                                   closing_date: Time.now + 1000
