@@ -18,8 +18,8 @@
 <div class="container">
   <h2>Job Categories</h2>
 
-  <% @listings.each_with_index do |category, i| %>
-
+  <% @categories.each_with_index do |category, i| %>
+      <% unless category.listings.empty? %>
       <div class="accordion panel-group" id="accordion">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -28,13 +28,17 @@
           </div>
           <div class="panel-body collapse" id="<%= i %>">
             <div class="panel-body">
-                  <h4><%= link_to category.title, listing_path(category) %></h4>
-                  <h5>Job Description</h5>
-                  <p><%= truncate(category.description, :length => 1000) %> Read more...</p>
-                </div>
-              </div>
+            <% category.listings.each do |listing| %>
+              <h4><%= link_to listing.title, listing_path(listing) %></h4>
+              <h5>Job Description</h5>
+              <p><%= truncate(listing.description, :length => 1000) %> Read more...</p>
+              <%= button_to "#{"Add To Cart"}", "#", {class: 'btn btn-warning '} %>
+            <% end %>
             </div>
           </div>
+        </div>
+      </div>
       <% end %>
-    </div>
+      <% end %>
   </div>
+</div>

@@ -14,19 +14,22 @@
   <%= f.label :description, :class => 'control_label' %>
   <%= f.text_field :description, :class => 'text_field' %>
 
+  <%= f.label :categories %>
+  <%= f.select(:categories, options_from_collection_for_select(Category.all, 'title', 'title', @listing.categories.pluck(:title)), {}, {multiple: true, size: Category.all.count}) %>
+
   <%= f.label :pay_rate, :class => 'control_label' %>
   <%= f.text_field :pay_rate,:class => 'text_field' %>
-
 
   <%= f.label :part_time, :class => 'control_label' %>
   <%= f.radio_button(:employment_type, "part-time", :id => 'part-time',
   :checked => (:employment_type == 'part-time')? true:false) %>
+
   <%= f.label :full_time, :class => 'control_label' %>
   <%= f.radio_button(:employment_type, "full-time", :id => 'full-time',
   :checked => (:employment_type == 'full-time')? true:false) %>
 
-  <%= f.label :closing, :id => 'closing' %>
-  <%= f.datetime_select :closing, :ampm => true, :minute_step => 15%>
+  <%= f.label :closing_date, :id => 'closing_date' %>
+  <%= f.datetime_select :closing_date, :ampm => true, :minute_step => 15%>
 
   <%= f.submit %>
 

@@ -39,8 +39,7 @@ class UpdateSchemaForPivot < ActiveRecord::Migration
     create_table "listings", force: true do |t|
       t.text     "title"
       t.text     "description"
-      t.integer  "pay_rate"
-      t.text     "pay_type"
+      t.text     "pay_rate"
       t.text     "employment_type"
       t.integer  "number_of_positions"
       t.integer  "business_id"

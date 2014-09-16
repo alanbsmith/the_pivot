@@ -1,10 +1,12 @@
 class ListingsController < ApplicationController
   def new
-    @listing = Listing.new
+    @listing    = Listing.new
+    @categories = Category.all
   end
 
   def index
-    @listings = Listing.all
+    @listings   = Listing.all
+    @categories = Category.all
   end
 
   def show
@@ -14,8 +16,9 @@ class ListingsController < ApplicationController
   def create
 		@listing = Listing.new(listing_params)
     respond_to do |format|
-			if @listing.save
-				format.html { redirect_to listings_path}
+			if @listing.save!
+        @listing.categories_list(params[:listing][:categories])
+				format.html { redirect_to listings_path }
 			else
 				format.html {render :new }
 			end
@@ -29,6 +32,7 @@ class ListingsController < ApplicationController
   def update
     @listing = Listing.find(params[:id])
     if @listing.update(listing_params)
+      @listing.categories_list(params[:listing][:categories])
       redirect_to listings_path
     else
       format.html {render :edit }
@@ -51,9 +55,14 @@ class ListingsController < ApplicationController
     	params.require(:listing).permit(:title,
 																	    :description,
 																	    :pay_rate,
-                                      :job_type,
-                                      :positions,
-                                      :closing
-																	     )
+                                      :employment_type,
+                                      :number_of_positions,
+                                      :business_id,
+                                      :closing_date,
+                                      :categories_list)
+  end
+
+  def categories
+    @categories = Listing.categories
   end
 end
