@@ -1,4 +1,22 @@
+  <script>
+    $(document).ready(function() {
+      $('.applicant_registration').hide();
+    });
 
+    $(document).ready(function() {
+      $('#applicant_button').click( function(){
+        $('.applicant_registration').show();
+        $('.business_registration').hide();
+      });
+    });
+
+    $(document).ready(function() {
+      $('#business_button').click( function(){
+        $('.applicant_registration').hide();
+        $('.business_registration').show();
+      });
+    });
+  </script>
 
   <div class="container">
     <% if flash[:alert] %>
@@ -8,19 +26,26 @@
          <% end %>
        </div>
     <% end %>
- <div class="back_color">
-    <p class="form_title text-center">Open your door to the right people.</p>
-    <p class="lead text-center">Stop searching. Show yourself and let them come.</p>
 
-      <div class="text-center door"></div>
-   </div>
+     <div class="back_color">
+        <p class="form_title text-center business_registration">Open your door to the right people.</p>
+        <p class="lead text-center business_registration">Stop searching. Show yourself and let them come.</p>
+        <p class="form_title text-center applicant_registration">Opportunity Knocks</p>
+        <p class="lead text-center applicant_registration">Get your dream job</p>
+          <div class="text-center door"></div>
+     </div>
+
+     <div id='business_or_applicant'>
+       <button id='business_button' class='btn btn-primary applicant_registration'>Business Registration</button>
+       <button id='applicant_button' class='btn btn-primary business_registration'>Applicant Registration</button>
+     </div>
    <div class="container">
 
     <div class="col-md-8 col-md-offset-2 the_form">
       <%= render :partial => 'form' %>
     </div>
 
-    <p class=" text-center special_font_sq note_sq col-md-2">
+    <p class=" text-center special_font_sq note_sq col-md-2 business_registration">
       To start receving applications, just register your company and publish your job opportunities
     </p>
 
