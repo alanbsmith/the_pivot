@@ -64,6 +64,20 @@ describe 'the user view', type: :feature do
           click_button("Register Now")
           expect(current_path).to eq user_path(User.last)
         end
+
+        it 'gets an error when entering invalid info as an applicant' do
+          visit home_path
+          click_link('Register Now')
+          click_button('Applicant Registration')
+          expect(current_path).to eq(new_user_path)
+          fill_in("email", with: "u")
+          fill_in("First Name", with: "Bob")
+          fill_in("Last Name", with: "Gu")
+          fill_in("Password", with: "password")
+          fill_in("Confirmation", with: "password")
+          click_button("Register Now")
+          expect(page).to have_content('Email is invalid')
+        end
       end
 
       it 'can log in as applicant' do
