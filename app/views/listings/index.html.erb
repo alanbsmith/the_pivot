@@ -43,7 +43,7 @@
               <p><%= truncate(listing.description, :length => 1000) %>
                  <%= link_to "Read more...", listing_path(listing) %>
               </p>
-              <%= button_to "Add To Cart", cart_listings_path(listing_id: listing),{ class: 'btn btn-warning' } %>
+              <%= button_to "Add Job To Cart", cart_listings_path(listing_id: listing),{ class: 'btn btn-warning' } %>
             <% end %>
             </div>
           </div>
