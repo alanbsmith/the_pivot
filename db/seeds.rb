@@ -1,3 +1,4 @@
+require 'faker'
 class Seed
   def initialize
     generate_users
