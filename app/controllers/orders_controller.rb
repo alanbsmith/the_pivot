@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
         session[:cart_id] = nil
 
         format.html { redirect_to home_url,
-          notice: 'Your application(s) have been submitted' }
+          notice: 'Thanks for your submission! You can view previous applications in your dashboard!' }
         format.json { render action: 'show', status: :created,
           location: @order }
       else
