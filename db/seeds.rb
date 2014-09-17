@@ -39,8 +39,8 @@ class Seed
   end
 
   def generate_categories
-    categories = %w(Technology, Marketing, Communications, Education, Food Services,
-    Medical, Business, Science)
+    categories = %w(Technology Marketing Communications Education Food Services
+    Medical Business Science)
     8.times do |i|
       category = Category.create!(
         title: categories[i],
@@ -57,8 +57,9 @@ class Seed
         description: Faker::Lorem.paragraph(3),
         pay_rate: random_pay_rate,
         employment_type: random_employment_type,
-        business_id: rand(50),
-        closing_date: random_closing_date
+        business_id: random_business_id,
+        closing_date: random_closing_date,
+        category_ids: random_category_id
       )
       puts "Listing #{i}: #{listing.title} - #{listing.closing_date}"
     end
@@ -79,6 +80,14 @@ class Seed
 
   def random_closing_date
     Time.now + (25000..1000000).to_a.sample
+  end
+
+  def random_business_id
+    (1..10).to_a.sample
+  end
+
+  def random_category_id
+    Category.all.sample.id
   end
 
 
