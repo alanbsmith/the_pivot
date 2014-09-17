@@ -6,10 +6,9 @@ RSpec.describe Listing, :type => :model do
       title: 'Barista',
       description: 'Grinding dem beans',
       pay_rate: '8.00/hr',
-      job_type: 'part-time',
-      positions: 1,
-      closing: Time.new(2014, 9, 24, 12, 0, 0),
-      user_id: 1
+      employment_type: 'part-time',
+      number_of_positions: 1,
+      closing_date: Time.new(2014, 9, 24, 12, 0, 0),
     )
   end
 
@@ -28,7 +27,7 @@ RSpec.describe Listing, :type => :model do
   end
 
   it 'is invalid without a job_type' do
-    listing.job_type = nil
+    listing.employment_type = nil
     expect(listing).not_to be_valid
   end
 

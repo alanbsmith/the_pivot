@@ -10,11 +10,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save!
+    if @user.save
       UserMailer.welcome_email(@user).deliver
       sign_in @user
+      flash[:alert] = 'Account was sucsessfully created!'
       redirect_to @user
     else
+      errors = []
+      flash[:alert] = @user.errors.full_messages
       render :new
     end
   end

@@ -1,4 +1,4 @@
-class AdminsController < ApplicationController
+class BusinessController < ApplicationController
   before_action :authorize?
 
   private

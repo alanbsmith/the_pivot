@@ -25,6 +25,7 @@
             <!-- <li><a href="#contact">Contact</a></li> -->
           </ul>
             <ul class="nav navbar-nav pull-right">
+              <li><%= link_to "Your Cart", cart_path(@cart) %></li>
               <% if signed_in? %>
                 <li><a href="/" >
                   <% if current_user %>

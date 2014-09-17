@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     if signed_in?
       @orders = current_user.orders
     else
-      redirect_to items_path
+      redirect_to listings_path
     end
   end
 
@@ -20,20 +20,20 @@ class OrdersController < ApplicationController
   end
 
   def new
-    if @cart.cart_items.empty?
-      redirect_to items_url, notice: "Your cart is empty"
-      return
+    if @cart.cart_listings.empty?
+      redirect_to @cart, notice: "You'll need to add a job listing to your cart to continue."
     end
 
     if !current_user
       redirect_to signin_path
     end
     @order = Order.new
+
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.add_cart_items_from_cart(@cart)
+    @order = Order.new(user_id: current_user.id)
+    @order.add_cart_listings_from_cart(@cart)
 
     respond_to do |format|
       if @order.save
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
         session[:cart_id] = nil
 
         format.html { redirect_to home_url,
-          notice: 'Thank you for ordering some of our Scream Cream' }
+          notice: 'Your application(s) have been submitted' }
         format.json { render action: 'show', status: :created,
           location: @order }
       else
@@ -62,10 +62,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:status,
-                                  :total,
-                                  :receiving,
-                                  :user_id)
+    params.require(:order).permit(:user_id)
   end
 
   def set_order

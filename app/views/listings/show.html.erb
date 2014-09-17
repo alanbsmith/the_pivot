@@ -1,68 +1,41 @@
-<style>
-  .listing_button_spacing {
-    margin-top: 30px;
-  }
+<% if notice %>
+  <%= notice %>
+<% end %>
 
-  .listing_attribute {
-    margin-top: 40px;
-    font-size: 16px;
-  }
+<div class="back_color">
+  <div class="container">
+    <h1 class="text-center"><%= "#{@listing.title}" %></h1>
+    <p  class=" lead text-center">Publish your Job Opportunities and Select the best people.</p>
 
-  .listing_attribute p {
-    font-size: 24px;
-  }
+    <div class="col-md-6 col-md-offset-3 text-center">
+      <%= link_to "Apply for this job!", :class => "btn btn-success" %>
+      <%= link_to "Back to browsing", listings_path,  :class => "btn btn-success"  %>
+    </div>
 
-  .col-lg-9 {
-    margin-top: 8px;
-  }
+    <div class="row-fluid">
+      <div class="span4"><h3>Job Description</h3></div>
+      <div class="span8"><%= "#{@listing.description}" %>
+    </div>
 
-</style>
-<div class="container">
-    <h1><%= @listing.title %></h1>
-    <div class="row listing_button_spacing">
-      <div class= 'col-lg-2'>
-        <%= link_to "Edit", edit_listing_path(@listing), :class => "btn btn-warning btn-block" %>
-      </div>
-      <div class= 'col-lg-2'>
-        <%= link_to "Delete", listing_path(@listing), method: :delete, :class => "btn btn-danger btn-block" %>
-      </div>
+    <div class="row-fluid">
+      <div class="span4"><h3>Wage / Salary</h3><div>
+      <div class="span3"><%= "#{@listing.pay_rate}" %></div>
     </div>
-    <div class="row listing_attribute">
-      <div class="col-lg-2 ">
-        <p>Description<p>
-      </div>
-        <div class="col-lg-9">
-        <%= @listing.description %>
-      </div>
+
+    <div class="row-fluid">
+      <div class="span4"><h3>Position Type</h3></div>
+      <div class="span4"><%= "#{@listing.employment_type}" %></div>
     </div>
-    <div class="row listing_attribute">
-      <div class="col-lg-2 ">
-        <p>Wage/Salary</p>
-      </div>
-      <div class="col-lg-9">
-        <%= @listing.pay_rate %>
-        <%= @listing.job_type %>
-      </div>
+
+    <div class="row-fluid">
+      <div class="span4"><h3>Number of Positions</h3></div>
+      <div class="span1"><%= "#{@listing.number_of_positions}" %></div>
     </div>
-    <div class="row listing_attribute">
-      <div class='col-lg-2 '>
-        <p>Positions Available</p>
-      </div>
-      <div class="col-lg-9">
-        <%= @listing.positions %>
-      </div>
+
+    <div class="row-fluid">
+      <div class="span4"><h3>Closing Date</h3></div>
+      <div class="span4"><%= "#{@listing.closing_date}" %></div>
     </div>
-    <div class="row listing_attribute">
-      <div class='col-lg-2 '>
-        <p>Closing Date</p>
-      </div>
-      <div class="col-lg-9">
-        <%= @listing.closing.strftime('%b %d, %Y, %I:%M %p')%>
-      </div>
-    </div>
-    <div class="text-center">
-      <%= link_to "Edit", edit_listing_path(@listing), :class => "text-center" %> |
-      <%= link_to "Delete", listing_path(@listing), method: :delete %> |
-      <%= link_to "Back to your Dashboard", current_user %>
-    </div>
+
+  </div>
 </div>

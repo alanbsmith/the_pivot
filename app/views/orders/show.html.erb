@@ -14,14 +14,13 @@
     <%= notice %>
   <% end %>
 
-  <% @order.cart_items.each do |cart_item| %>
+  <% @order.cart_listings.each do |cart_item| %>
     <%= image_tag cart_item.item.image.url(:user_thumb) %>
     <%= link_to cart_item.item.title, item_path(cart_item.item) %>
     <%= number_to_currency(cart_item.item.price) %>
     <%= cart_item.quantity %>
-    <%= number_to_currency(cart_item.quantity * cart_item.item.price) %>
+
   <% end %>
 
-  <%= number_to_currency(@order.total_price) %>
 
 <%= button_to 'Cancel', order_path(@order), method: :patch %>

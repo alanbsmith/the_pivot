@@ -1,20 +1,49 @@
-<% if notice %>
-  <%= notice %>
-<% end %>
-
-<% @cart.cart_items.each do |cart_item| %>
-  <%= image_tag cart_item.item.image.url(:user_thumb) %>
-  <%= link_to cart_item.item.title, item_path(cart_item.item) %>
-  <%= number_to_currency(cart_item.item.price) %>
-
-  <%= form_for cart_item, :url => cart_item_path(id: cart_item), method: :patch do |f| %>
-    <%= f.number_field :quantity,  :value => cart_item.quantity %></br>
-    <%= submit_tag "save" %>
+<div class="container">
+  <%= link_to 'Back to Job Listings', listings_path, class: "btn btn-warning" %>
+  <h1>Your Job Listings</h1>
+  <% if notice %>
+    <%= notice %>
   <% end %>
 
-  <%= button_to 'Remove From Cart', cart_item ,method: :delete %>
-<% end %>
+  <% if signed_in? %>
+    <%= link_to 'Apply', new_order_path, class: "btn btn-warning pull-right" %>
+  <% end %>
 
-<%= number_to_currency(@cart.total_price) %>
-<%= button_to 'Empty Cart', @cart, method: :delete %>
-<%= link_to 'Checkout', new_order_path %>
+  <% if @cart.cart_listings.empty? %>
+    <h3>There are currently no jobs in your cart!</h3>
+  <% else %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @cart.cart_listings.each do |cart_listing| %>
+        <tr>
+          <td><%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %></td>
+          <td><%= truncate(cart_listing.listing.description, :length => 100) %></td>
+          <td><%= link_to 'Remove From Cart', cart_listing ,method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="row">
+      <%= link_to 'Empty Cart', cart_path, method: :delete, class: "btn btn-danger" %>
+  <% end %>
+  <% if signed_in? %>
+      <%= link_to "Upload Your Application", "#", class: "btn btn-info" %>
+      <%= link_to 'Apply', new_order_path, class: "btn btn-warning pull-right" %>
+    </div>
+  <% else %>
+    <div class="row">
+      <h4>Feel free to keep saving jobs to your cart.</h4>
+      <h4> But you'll need to sign in or create an account to finish your application.</h4>
+      <%= link_to 'Sign In', signin_path %> or
+      <%= link_to 'Join Today!', register_path %>
+    </div>
+  <% end %>
+</div>

@@ -1,32 +1,56 @@
-<% if notice %>
-  <%= notice %>
+<% if flash[:alert] %>
+  <div class="alert alert-success">
+    <%= flash[:alert] %>
+  </div>
 <% end %>
-<div class="back_color" style="height:1000px; padding-top:100px">
 <div class="container">
-  <h1 class=" text-center" style="margin-top:-50px"> These are your Job Postings </h1>
-  <h3 class="text-center"><%= "for #{current_user.company_name}" %></h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Closing Date</th>
-        <th>Applicants</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @listings.each do |listing| %>
-      <div style="font-weight:400">
-        <tr>
-          <td><%= link_to listing.title, listing_path(listing) %></td>
-          <td><%= listing.closing.strftime('%b %d, %Y, %I:%M') %></td>
-          <!-- links to the applicant index page -->
-          <td><%= link_to "Current Applicants (5)", "#"%></td>
-        </tr>
+  <div class="hero-unit text-center">
+    <h1>Search all available jobs</h1>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-2">
+      <input type="text" class="form-control">
+    </div>
+  <div class="col-lg-4">
+    <div class="input-group">
+      <input type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-warning" type="button">Search</button>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <% if notice %>
+    <%= notice %>
+  <% end %>
+
+  <h2>Job Categories</h2>
+
+  <% @categories.each_with_index do |category, i| %>
+      <% unless category.listings.empty? %>
+      <div class="accordion panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a class="accordion-toggle category-title" data-toggle="collapse" data-parent="#accordion" href="#<%= i %>">
+            <h4><%= category.title %></h4>
+          </div>
+          <div class="panel-body collapse" id="<%= i %>">
+            <div class="panel-body">
+            <% category.listings.each do |listing| %>
+              <h4><%= link_to listing.title, listing_path(listing) %></h4>
+              <h5>Job Description</h5>
+              <p><%= truncate(listing.description, :length => 1000) %>
+                 <%= link_to "Read more...", listing_path(listing) %>
+              </p>
+              <%= button_to "Add Job To Cart", cart_listings_path(listing_id: listing),{ class: 'btn btn-warning' } %>
+            <% end %>
+            </div>
+          </div>
+        </div>
       </div>
       <% end %>
-    </tbody>
-  </table>
-
-<%= link_to "Back to your Dashboard", @user, :class => "btn btn-warning"%>
-</div>
+    <% end %>
+    <%= link_to "View your Cart", @cart, class: "btn btn-warning pull-right" %>
+  </div>
 </div>

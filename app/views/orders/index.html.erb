@@ -1,7 +1,21 @@
-<% @orders.each do |order| %>
-  <li><%= order.receiving %>
-      <%= link_to 'Order', order_path(order) %> placed on:
-      <%= order.created_at %>
-      <%= order.status %>
-  </li>
-<% end %>
+<div class="container">
+  <h1>Your Previous Applications</h1>
+  <table class="table table-hover">
+    <thead>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Closing Date</th>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <% order.listings.each do |listing| %>
+          <tr>
+            <td><%= link_to listing.title, listing_path(listing) %></td>
+            <td><%= truncate(listing.description, :length => 250) %></td>
+            <td><%= listing.closing_date.strftime('%b %d, %Y, %I:%M %p') %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

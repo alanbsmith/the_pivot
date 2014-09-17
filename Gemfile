@@ -31,6 +31,7 @@ group :development, :test do
   gem "simplecov", :require => false
   gem "nyan-cat-formatter"
   gem "unicorn"
+  gem "faker"
 end
 
 group :test do
