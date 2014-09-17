@@ -66,7 +66,7 @@ class Seed
   end
 
   def random_pay_rate
-    random_rate = ["hr", "yr"]
+    random_rate = [" / hr", " / yr"]
     if random_rate.sample == "yr"
       (30000..450000).to_a.sample.to_s + "yr"
     else
