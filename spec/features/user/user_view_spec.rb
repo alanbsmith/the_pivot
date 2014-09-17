@@ -51,7 +51,7 @@ describe 'the user view', type: :feature do
           expect(current_path).to eq user_path(user)
           expect(page).to have_content('Sucsessfully Logged In!')
         end
-
+      end
         it 'can register a applicant' do
           visit home_path
           click_link('Register Now')
@@ -79,7 +79,6 @@ describe 'the user view', type: :feature do
           click_button("Register Now")
           expect(page).to have_content('Email is invalid')
         end
-      end
 
       it 'can log in as applicant' do
         user = User.new

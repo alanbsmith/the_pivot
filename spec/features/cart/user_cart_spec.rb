@@ -74,4 +74,6 @@ describe 'cart', type: :feature do
 
       expect(page).to_not have_content("Pastry Chef")
     end
+     
+
 end

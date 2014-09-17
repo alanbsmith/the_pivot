@@ -1,23 +1,29 @@
+<div class="container">
+  <h1>Does everything look alright?</h1>
+  <p>
+    This page should be all about displaying the info, so the user can confirm the order.
+  </p>
+
+<!-- <% if @order.errors.any? %>
+  <%= pluralize(@order.errors.count, "error") %>
+  prohibited this order from being saved:
+
+  <ul>
+    <% @order.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+  </ul>
+<% end %> -->
+
+
+
 <%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
-    <%= pluralize(@order.errors.count, "error") %>
-    prohibited this order from being saved:
 
-    <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <%= msg %>
-      <% end %>
-    </ul>
-  <% end %>
 
-  <%= f.hidden_field :status, :value => 'ordered' %>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
 
-  <%= f.hidden_field :total, :value => @cart.total_price %>
 
-  <%= f.label :receiving %>
-  <%= f.select :receiving, [['Pickup'], ['Delivery']] %>
 
-  <%= f.submit 'Complete Order' %>
+  <%= f.submit 'Complete Order', class: "btn btn-warning"%>
 
 <% end %>
+</div>

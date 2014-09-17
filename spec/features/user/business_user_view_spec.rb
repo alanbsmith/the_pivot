@@ -49,7 +49,4 @@ describe 'the business user view', type: :feature do
           expect(current_path).to eq user_path(user)
         end
       end
-
-
     end
-  end

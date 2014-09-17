@@ -64,12 +64,9 @@ ActiveRecord::Schema.define(version: 20140914221853) do
   end
 
   create_table "orders", force: true do |t|
-    t.integer  "applicant_id"
-    t.string   "status",       default: "open"
-    t.integer  "total"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "receiving"
   end
 
   create_table "users", force: true do |t|
