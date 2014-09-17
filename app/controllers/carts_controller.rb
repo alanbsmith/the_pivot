@@ -2,7 +2,7 @@ class CartsController < ApplicationController
 
   include SessionsHelper
 
-  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
+  rescue_from ActiveRecord::RecordNotFound, with: :empty_cart
 
   def show
     @cart = Cart.find(params[:id])
@@ -18,7 +18,7 @@ class CartsController < ApplicationController
     session[:cart_id] = nil
 
     respond_to do |format|
-      format.html { redirect_to items_url,
+      format.html { redirect_to cart_path,
         notice: 'Your cart is currently empty' }
       format.json { head :no_content }
     end
@@ -26,8 +26,7 @@ class CartsController < ApplicationController
 
   private
 
-  def invalid_cart
-    logger.error "Attempt to access invalid cart #{params[:id]}"
-    redirect_to items_url, notice: 'Invalid cart'
+  def empty_cart
+    redirect_to listings_path, notice: 'Your cart is now empty.'
   end
 end

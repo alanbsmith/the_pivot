@@ -33,8 +33,45 @@ describe 'cart', type: :feature do
     visit listings_path
     click_button("Add To Cart")
     expect(page).to have_content("Pastry Chef has been added to your cart")
+    click_link("Your Cart")
 
+    expect(page).to have_content("Pastry Chef")
+
+    visit listings_path
     click_button("Add To Cart")
     expect(page).to have_content("This job is already in your cart")
   end
+
+  it 'can remove items from their cart' do
+
+    visit listings_path
+    click_button("Add To Cart")
+    expect(page).to have_content("Pastry Chef has been added to your cart")
+    click_link("Your Cart")
+
+    expect(page).to have_content("Pastry Chef")
+
+    click_link("Remove From Cart")
+    expect(page).to have_content("Listing was successfully removed form cart.")
+    expect(page).to_not have_content("Pastry Chef")
+
+  end
+
+    it 'can empty their cart' do
+      visit listings_path
+      click_button("Add To Cart")
+      expect(page).to have_content("Pastry Chef has been added to your cart")
+      click_link("Your Cart")
+
+      expect(page).to have_content("Pastry Chef")
+
+      click_link("Empty Cart")
+
+      expect(current_path).to eq(listings_path)
+      expect(page).to have_content("Your cart is now empty.")
+
+      click_link("Your Cart")
+
+      expect(page).to_not have_content("Pastry Chef")
+    end
 end

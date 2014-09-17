@@ -36,7 +36,7 @@
               <h4><%= link_to listing.title, listing_path(listing) %></h4>
               <h5>Job Description</h5>
               <p><%= truncate(listing.description, :length => 1000) %> Read more...</p>
-              <%= button_to "#{"Add To Cart"}", cart_listings_path(listing_id: listing), {class: 'btn btn-warning'} %>
+              <%= button_to "Add To Cart", cart_listings_path(listing_id: listing),{ class: 'btn btn-warning' } %>
             <% end %>
             </div>
           </div>

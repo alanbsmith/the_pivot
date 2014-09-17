@@ -1,17 +1,21 @@
-<% if notice %>
-  <%= notice %>
-<% end %>
-
-<% @cart.cart_listings.each do |cart_listing| %>
-  <%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %>
-  <%= form_for cart_listing, :url => cart_listing_path(id: cart_listing), method: :patch do |f| %>
-    <%= submit_tag "save" %>
+<div class="container">
+  <h1>Your Cart</h1>
+  <% if notice %>
+    <%= notice %>
   <% end %>
 
-  <%= button_to 'Remove From Cart', cart_listing ,method: :delete %>
-<% end %>
+  <% if @cart.cart_listings.empty? %>
+    <h3>There are currently no jobs in your cart!</h3>
+  <% else %>
+    <% @cart.cart_listings.each do |cart_listing| %>
+      <%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %>
+      <%= link_to 'Remove From Cart', cart_listing ,method: :delete, class: "btn btn-danger" %>
+      <%= link_to 'Empty Cart', cart_path, method: :delete, class: "btn btn-danger" %>
+    <% end %>
+  <% end %>
 
-<%= button_to 'Empty Cart', @cart, method: :delete %>
-<% if signed_in? %>
-  <%= link_to 'Checkout', "#" %>
-<% end %>
+  <%= link_to 'Back to Job Listings', listings_path, class: "btn btn-warning" %>
+  <% if signed_in? %>
+    <%= link_to 'Checkout', "#" %>
+  <% end %>
+</div>
