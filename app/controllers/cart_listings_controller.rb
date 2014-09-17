@@ -1,21 +1,18 @@
 class CartListingsController < ApplicationController
   include CurrentCart
+
   before_action :set_cart, only: [:create]
   before_action :set_cart_listing, only: [:show, :edit, :update, :destroy]
 
   def create
     listing = Listing.find(params[:listing_id])
-    unless @cart.listings.include?(listing)
+    if @cart.listings.include?(listing)
+      redirect_to listings_path, notice: "This job is already in your cart."
+    else
       @cart_listing = @cart.add_listing(listing.id)
-      respond_to do |format|
       @cart_listing.save
-        format.html { redirect_to listings_path,
-          notice: "#{listing.title} has been added to your cart."}
-        format.json { render action: 'show',
-          status: :created, location: @cart_listing }
-      end
+      redirect_to listings_path, notice: "#{listing.title} has been added to your cart."
     end
-    redirect_to listings_path, notice: "This job is already in your cart."
   end
 
   def update

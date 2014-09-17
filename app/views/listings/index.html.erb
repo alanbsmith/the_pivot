@@ -27,7 +27,7 @@
       <div class="accordion panel-group" id="accordion">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#<%= i %>">
+            <a class="accordion-toggle category-title" data-toggle="collapse" data-parent="#accordion" href="#<%= i %>">
             <h4><%= category.title %></h4>
           </div>
           <div class="panel-body collapse" id="<%= i %>">
@@ -36,13 +36,13 @@
               <h4><%= link_to listing.title, listing_path(listing) %></h4>
               <h5>Job Description</h5>
               <p><%= truncate(listing.description, :length => 1000) %> Read more...</p>
-              <%= button_to "#{"Add To Cart"}", cart_listings_path(listing_id: listing), {class: 'btn btn-warning '} %>
+              <%= button_to "#{"Add To Cart"}", cart_listings_path(listing_id: listing), {class: 'btn btn-warning'} %>
             <% end %>
             </div>
           </div>
         </div>
       </div>
       <% end %>
-      <% end %>
+    <% end %>
   </div>
 </div>
