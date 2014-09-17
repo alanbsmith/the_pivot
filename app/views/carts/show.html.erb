@@ -5,10 +5,6 @@
     <%= notice %>
   <% end %>
 
-  <% if signed_in? %>
-    <%= link_to 'Apply', new_order_path, class: "btn btn-warning pull-right" %>
-  <% end %>
-
   <% if @cart.cart_listings.empty? %>
     <h3>There are currently no jobs in your cart!</h3>
   <% else %>
@@ -26,18 +22,21 @@
         <tr>
           <td><%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %></td>
           <td><%= truncate(cart_listing.listing.description, :length => 100) %></td>
+          <td><%= link_to "Upload Your Application", "#", class: "btn btn-info" %></td>
           <td><%= link_to 'Remove From Cart', cart_listing ,method: :delete, class: "btn btn-danger" %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
-    <div class="row">
-      <%= link_to 'Empty Cart', cart_path, method: :delete, class: "btn btn-danger" %>
+
   <% end %>
-  <% if signed_in? %>
-      <%= link_to "Upload Your Application", "#", class: "btn btn-info" %>
-      <%= link_to 'Apply', new_order_path, class: "btn btn-warning pull-right" %>
-    </div>
+  <div class="row-fluid push_buttons_down">
+    <%= link_to 'Empty Cart', cart_path, method: :delete, class: "btn btn-danger" %>
+    <% if signed_in? %>
+        <% if @cart.cart_listings.count > 0 %>
+          <%= link_to 'Apply', new_order_path, class: "btn btn-warning pull-right" %>
+        <% end %>
+  </div>
   <% else %>
     <div class="row">
       <h4>Feel free to keep saving jobs to your cart.</h4>
