@@ -49,6 +49,7 @@ describe 'the user view', type: :feature do
               click_button("Sign In")
             end
           expect(current_path).to eq user_path(user)
+          expect(page).to have_content('Sucsessfully Logged In!')
         end
 
         it 'can register a applicant' do
