@@ -6,18 +6,18 @@ describe 'the business user view', type: :feature do
 
         it 'has link to register a business' do
           visit home_path
-          expect(page).to have_link('Register Your Business')
+          expect(page).to have_link('Register Now')
         end
 
         it 'displays the business registration page' do
           visit home_path
-          click_link('Register Your Business')
+          click_link('Register Now')
           expect(current_path).to eq(new_user_path)
         end
 
         it 'can register a business' do
           visit home_path
-          click_link('Register Your Business')
+          click_link('Register Now')
           expect(current_path).to eq(new_user_path)
           fill_in("Company name", with: "FedEx")
           fill_in("email", with: "user@example.com")
