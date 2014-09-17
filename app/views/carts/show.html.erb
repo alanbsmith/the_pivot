@@ -34,10 +34,20 @@
     <div class="row">
       <%= link_to 'Empty Cart', cart_path, method: :delete, class: "btn btn-danger" %>
   <% end %>
+
   <% if signed_in? %>
-      <%= link_to "Upload Your Application", "#", class: "btn btn-info" %>
+    <% if @user.image.exists? %>
+      <%= @user.image_file_name %><br/>
+    <% end %>
+
+      <%= form_for(@user, html: {multipart: true} ) do |f| %>
+        <%= f.label :image, "Upload your Resume" %><br/>
+        <%= f.file_field :image %>
+      <% end %>
+
       <%= link_to 'Apply', new_order_path, class: "btn btn-warning pull-right" %>
     </div>
+
   <% else %>
     <div class="row">
       <h4>Feel free to keep saving jobs to your cart.</h4>
