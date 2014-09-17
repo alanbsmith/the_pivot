@@ -17,5 +17,10 @@
   <%= link_to 'Back to Job Listings', listings_path, class: "btn btn-warning" %>
   <% if signed_in? %>
     <%= link_to 'Checkout', "#", class: "btn btn-warning" %>
+  <% else %>
+    <h4>Feel free to keep saving jobs to your cart.</h4>
+    <h4> But you'll need to sign in or create an account to finish your application.</h4>
+    <%= link_to 'Sign In', signin_path %> or
+    <%= link_to 'Join Today!', register_path %>
   <% end %>
 </div>
