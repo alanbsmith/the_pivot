@@ -57,7 +57,7 @@ class UpdateSchemaForPivot < ActiveRecord::Migration
     create_table "users", force: true do |t|
       t.string   "first_name"
       t.string   "last_name"
-      t.string   "company_name"
+      t.string   "company_name", default: nil
       t.string   "email"
       t.string   "password_digest"
       t.string   "salt"
@@ -73,4 +73,3 @@ class UpdateSchemaForPivot < ActiveRecord::Migration
   end
 
 end
-

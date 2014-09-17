@@ -12,10 +12,10 @@
 		<!-- <p> <%= "#{10} Job listings"  %> </p>
 		<p> <%= "#{100} Current applicants"  %> </p> -->
 		<div class="col-md-6 col-md-offset-3 text-center">
-			<% if current_user.company_name.empty? %>
+			<% if current_user.company_name == nil %>
 				<%= link_to "View Current Job Listings", listings_path, :class => "btn btn-success" %>
 				<%= link_to "View Your Cart", @cart, :class => "btn btn-success" %>
-				<%= link_to "Previous Applications", orders_path %>
+				<%= link_to "Previous Applications", orders_path, :class => "btn btn-success" %>
 			<% else %>
 				<%= link_to "Add a New Job Listing", new_listing_path, :class => "btn btn-success" %>
 				<%= link_to "View Current Job Listings", business_listings_path,  :class => "btn btn-success"  %>

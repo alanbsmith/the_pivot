@@ -25,7 +25,7 @@
         <% @cart.cart_listings.each do |cart_listing| %>
         <tr>
           <td><%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %></td>
-          <td><%= link_to cart_listing.listing.description, listing_path(cart_listing.listing) %></td>
+          <td><%= truncate(cart_listing.listing.description, :length => 100) %></td>
           <td><%= link_to 'Remove From Cart', cart_listing ,method: :delete, class: "btn btn-danger" %></td>
         </tr>
         <% end %>
