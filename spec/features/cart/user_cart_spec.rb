@@ -4,7 +4,7 @@ require 'capybara/rspec'
 
 describe 'cart', type: :feature do
 
-  before (:each) do
+  before do
     listing = Listing.new
     listing.title                = "Pastry Chef"
     listing.description          = "Kneads the Dough"

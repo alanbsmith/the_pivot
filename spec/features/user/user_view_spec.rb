@@ -112,7 +112,7 @@ describe 'the user view', type: :feature do
 
         category1 = Category.create(title: "Great Jobs", description: "Jobs that don't suck")
 
-        @listing  = Listing.first
+        @listing  = Listing.last
 
         category1.listings << listing1
 
@@ -127,6 +127,7 @@ describe 'the user view', type: :feature do
         click_link('Browse current job listings')
         expect(current_path).to eq(listings_path)
 
+
         expect(page).to have_content(@listing.title)
         expect(page).to have_content(@listing.description)
       end
@@ -137,7 +138,6 @@ describe 'the user view', type: :feature do
 
         click_link('Joby job job')
         expect(current_path).to eq(listing_path(@listing))
-
         expect(page).to have_content(@listing.title)
         expect(page).to have_content(@listing.description)
         expect(page).to have_content(@listing.pay_rate)
