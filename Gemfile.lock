@@ -243,7 +243,7 @@ DEPENDENCIES
   mini_magick (~> 3.8.0)
   nyan-cat-formatter
   paperclip (~> 4.2.0)
-  paperclip-dropbox (>= 1.1.7)
+  paperclip-dropbox (>= 1.2.2)
   pg
   pry
   rails (= 4.1.4)

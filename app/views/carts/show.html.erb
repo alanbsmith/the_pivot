@@ -36,9 +36,7 @@
 
   <% if signed_in? %>
     <div class="row">
-      <% if @resume.document.exists? %>
-        <h1><%= @resume.document_file_name %></h1>
-      <% end %>
+    
     </div>
     <div class="row">
       <%= form_for(@resume, html: {multipart: true} ) do |f| %>
