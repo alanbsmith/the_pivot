@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Your Applications</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Applicant Name</th>
+        <th>Resume</th>
+        <th>Date Submitted</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @resumes.each do |resume| %>
+      <tr>
+        <td><%= resume.cart_listing_id %></td>
+        <td><%= resume.user_id %></td>
+        <td><%= resume.document_file_name %></td>
+        <td><%= resume.document_updated_at.strftime('%b %d, %Y, %I:%M') %></td>
+      </tr>
+    <% end %>
+   </tbody>
+  </table>
+  </ul>
+</div>

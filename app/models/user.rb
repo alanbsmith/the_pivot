@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :orders
 
-  has_attached_file :image
-  validates_attachment_content_type :image, :content_type => ["image/pdf"]
+  # has_attached_file :pdf
+  # validates_attachment_content_type :pdf, :content_type => ["application/pdf"]
 
   validates :password,              presence: true, length: { minimum: 8 }
   validates :password_confirmation, presence: true

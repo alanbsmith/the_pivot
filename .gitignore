@@ -21,3 +21,5 @@ coverage/**/*
 /.bundle/
 /vendor/bundle
 /public/uploads
+
+/.config/dropbox.yml
