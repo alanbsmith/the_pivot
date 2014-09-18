@@ -23,23 +23,20 @@ describe "User Authentication", type: :feature do
     expect(current_path).to eq(sessions_path)
   end
 
-  it "can sigin with valid information" do
-    @user = User.create(email: "duck@example.com", 
+  it "can sign in with valid information" do
+    @user = User.create(email: "duck@example.com",
                         password: "userpassword",
-                        password_confirmation: "userpassword", 
+                        password_confirmation: "userpassword",
                         first_name: "Duck",
                         last_name: "Dogers")
-    
+
 
       fill_in "session_email",    with: @user.email
       fill_in "session_password", with: @user.password
 
       click_button "Sign In"
-
-    expect(page).to have_link("Add a New Job Listing",  href: new_listing_path)
-    expect(page).to have_link("View Current Job Listings",  href: business_listings_path) 
-    expect(page).to have_link("Sign Out",    href: signout_path) 
-    expect(page).to_not have_link("Sign In", href: signin_path) 
+    expect(page).to have_link("View Current Job Listings",  href: listings_path)
+    expect(page).to have_link("Sign Out",    href: signout_path)
 
     click_link("Sign Out")
       expect(current_path).to eq("/")
