@@ -4,7 +4,7 @@ class Resume < ActiveRecord::Base
 
   has_attached_file :document
     # :storage => :dropbox,
-    # :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+     # :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
     # :dropbox_visibility => 'public',
     # :dropbox_options => {environment: ENV["RACK_ENV"]}
 
