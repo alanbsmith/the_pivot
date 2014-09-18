@@ -24,7 +24,8 @@ describe "User Authentication", type: :feature do
   end
 
   it "can sigin with valid information" do
-    @user = User.create(email: "duck@example.com", 
+    @user = User.create(email: "duck@example.com",
+                        company_name: "Turing", 
                         password: "userpassword",
                         password_confirmation: "userpassword", 
                         first_name: "Duck",

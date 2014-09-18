@@ -24,6 +24,8 @@ describe 'user', type: :feature do
       user.password_confirmation = "password"
       user.save
 
+    @user = user.id
+
     page.visit '/signin'
     page.fill_in "session_email", with: "jd@example.com"
     page.fill_in "session_password", with: "password"
@@ -32,15 +34,15 @@ describe 'user', type: :feature do
 
   it 'expects to see a job in their dashboard after applying' do
     visit listings_path
-    click_button("Add To Cart")
-    expect(page).to have_content("Pastry Chef has been added to your cart")
+    click_button("Add Job To Cart")
+    expect(page).to have_content("Pastry Chef has been added to your cart.")
 
     click_link("Your Cart")
     # When I click on the button apply
     page.click_link('Apply')
     # and I visit my dashboard page
-    page.visit users_path(User.last)
+    page.visit cart_path(@user)
     # I expect to see that job in my dashboard
-    expect(page).to have_content("Pastry Chef")
+    expect(page).to have_link("Pastry Chef")
   end
 end

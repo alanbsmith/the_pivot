@@ -22,6 +22,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    current_user.update(user_params)
+    flash[:alert] = 'Your resume was successfully uploaded'
+    redirect_to cart_path(current_user.id)
+  end
+
   def index
   end
 
@@ -32,7 +41,7 @@ class UsersController < ApplicationController
                                  :email,
                                  :first_name,
                                  :last_name,
-                                 :image,
+                                 # :image,
                                  :password,
                                  :password_confirmation)
   end
