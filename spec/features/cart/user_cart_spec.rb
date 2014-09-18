@@ -20,7 +20,7 @@ describe 'cart', type: :feature do
   it 'can add listings to their cart' do
 
     visit listings_path
-    click_button("Add To Cart")
+    click_button("Add Job To Cart")
     expect(page).to have_content("Pastry Chef has been added to your cart")
 
     click_link("Your Cart")
@@ -31,21 +31,21 @@ describe 'cart', type: :feature do
   it 'cannot add multiples of the same listing to their cart' do
 
     visit listings_path
-    click_button("Add To Cart")
+    click_button("Add Job To Cart")
     expect(page).to have_content("Pastry Chef has been added to your cart")
     click_link("Your Cart")
 
     expect(page).to have_content("Pastry Chef")
 
     visit listings_path
-    click_button("Add To Cart")
+    click_button("Add Job To Cart")
     expect(page).to have_content("This job is already in your cart")
   end
 
   it 'can remove items from their cart' do
 
     visit listings_path
-    click_button("Add To Cart")
+    click_button("Add Job To Cart")
     expect(page).to have_content("Pastry Chef has been added to your cart")
     click_link("Your Cart")
 
@@ -59,7 +59,7 @@ describe 'cart', type: :feature do
 
     it 'can empty their cart' do
       visit listings_path
-      click_button("Add To Cart")
+      click_button("Add Job To Cart")
       expect(page).to have_content("Pastry Chef has been added to your cart")
       click_link("Your Cart")
 
