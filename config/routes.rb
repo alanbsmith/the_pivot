@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
 
-  root to: "static_pages#home"
-
   resources :categories
   resources :cart_listings
   resources :users
   resources :listings
   resources :carts
   resources :orders
-
   resources :sessions, only: [:new, :create, :destroy]
 
   match "/home",    to: "static_pages#home",    via: "get"
@@ -19,6 +16,11 @@ Rails.application.routes.draw do
   match "/signin",   to: "sessions#new",       via: "get"
   match "/signout",  to: "sessions#destroy",   via: "get"
   match "/dashboard", to: "user#show", via:"get"
+
+  match '', to: "static_pages#show", constraints: {subdomain: /.+/}, via: "get"
+  # match '', to: 'static_pages#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/my_listings", to: "listings#index", via: "get"
+  root to: "static_pages#home"
 
   namespace :users do
     resources :orders

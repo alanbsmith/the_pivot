@@ -30,6 +30,7 @@ class UsersController < ApplicationController
                                  :first_name,
                                  :last_name,
                                  :password,
-                                 :password_confirmation)
+                                 :password_confirmation,
+                                 :subdomain)
   end
 end

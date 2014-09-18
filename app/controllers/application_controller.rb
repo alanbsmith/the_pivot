@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
   def current_cart
     Cart.find(session[:cart_id])
   end
+
+  def current_subdomain
+    User.find_by subdomain: current_user.subdomain
+  end
+  helper_method :current_subdomain
 end
