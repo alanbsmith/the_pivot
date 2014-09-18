@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :listings
   resources :carts
   resources :orders
+  resources :resumes
 
   resources :sessions, only: [:new, :create, :destroy]
 

@@ -28,25 +28,30 @@
         <% end %>
       </tbody>
     </table>
-
   <% end %>
 
-  <% if signed_in? %>
-    <% if @user.image.exists? %>
-      <%= @user.image_file_name %><br/>
-    <% end %>
+  <div class="row">
+    <%= link_to 'Empty Cart', cart_path, method: :delete, class: "btn btn-danger" %>
+  </div>
 
-      <%= form_for(@user, html: {multipart: true} ) do |f| %>
-        <%= f.label :image, "Upload your Resume" %><br/>
-        <%= f.file_field :image %>
+  <% if signed_in? %>
+    <div class="row">
+      <% if @resume.document.exists? %>
+        <h1><%= @resume.document_file_name %></h1>
       <% end %>
+    </div>
+    <div class="row">
+      <%= form_for(@resume, html: {multipart: true} ) do |f| %>
+        <%= f.label :document, "Upload your Resume" %><br/>
+        <%= f.file_field :document %>
+        <%= f.submit "Upload Resume", :class => "btn btn-warning" %>
+    <% end %>
   <% end %>
 
   <div class="row-fluid push_buttons_down">
-    <%= link_to 'Empty Cart', cart_path, method: :delete, class: "btn btn-danger" %>
     <% if signed_in? %>
         <% if @cart.cart_listings.count > 0 %>
-          <%= link_to 'Apply', new_order_path, class: "btn btn-warning pull-right" %>
+          <%= link_to 'Apply', new_order_path, class: "btn btn-warning" %>
         <% end %>
   </div>
   <% else %>
@@ -58,4 +63,3 @@
     </div>
   <% end %>
 </div>
-  

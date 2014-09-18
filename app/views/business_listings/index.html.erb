@@ -18,7 +18,7 @@
       <div style="font-weight:400">
         <tr>
           <td><%= link_to listing.title, listing_path(listing) %></td>
-          <td><%= listing.closing.strftime('%b %d, %Y, %I:%M') %></td>
+          <td><%= listing.closing_date.strftime('%b %d, %Y, %I:%M') %></td>
           <!-- links to the applicant index page -->
           <td><%= link_to "Current Applicants (5)", "#"%></td>
         </tr>
