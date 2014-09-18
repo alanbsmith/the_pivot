@@ -90,10 +90,10 @@ ActiveRecord::Schema.define(version: 20140918112728) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
-    t.string   "pdf_name"
-    t.string   "pdf_type"
-    t.integer  "pdf_size"
-    t.datetime "pdf_update_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "users", ["company_name"], name: "index_users_on_company_name", using: :btree
