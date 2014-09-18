@@ -5,7 +5,8 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listings   = Listing.all
+    @search = Listing.search(params[:q])
+    @listings   = @search.result
     @categories = Category.all
   end
 
