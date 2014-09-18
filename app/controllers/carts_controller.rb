@@ -7,6 +7,7 @@ class CartsController < ApplicationController
   def show
     @cart = Cart.find(params[:id])
     @user = current_user
+    @resume = Resume.new
   end
 
   def new

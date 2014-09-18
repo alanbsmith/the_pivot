@@ -28,14 +28,31 @@
         <% end %>
       </tbody>
     </table>
-
   <% end %>
 
-  <div class="row-fluid push_buttons_down">
+<<<<<<< HEAD
+=======
+  <div class="row">
     <%= link_to 'Empty Cart', cart_path, method: :delete, class: "btn btn-danger" %>
+  </div>
+
+  <% if signed_in? %>
+    <div class="row">
+    
+    </div>
+    <div class="row">
+      <%= form_for(@resume, html: {multipart: true} ) do |f| %>
+        <%= f.label :document, "Upload your Resume" %><br/>
+        <%= f.file_field :document %>
+        <%= f.submit "Upload Resume", :class => "btn btn-warning" %>
+    <% end %>
+  <% end %>
+
+>>>>>>> 3221ab044c9c0702cfea80013242202f4f44a549
+  <div class="row-fluid push_buttons_down">
     <% if signed_in? %>
         <% if @cart.cart_listings.count > 0 %>
-          <%= link_to 'Apply', new_order_path, class: "btn btn-warning pull-right" %>
+          <%= link_to 'Apply', new_order_path, class: "btn btn-warning" %>
         <% end %>
   </div>
   <% else %>
@@ -47,4 +64,3 @@
     </div>
   <% end %>
 </div>
-  
