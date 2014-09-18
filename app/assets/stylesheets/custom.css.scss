@@ -3,6 +3,7 @@
   background-size: cover;
   height: 600px;
 }
+
 .people_happy {
   background-image: url("people_happy_web2.jpg");
   background-size: cover;
@@ -127,6 +128,19 @@
 
 #text_left {
   text-align: left;
+}
+
+#new_listing_form .radio_button_padding {
+  padding-left: 45px;
+}
+
+#new_listing_form .select_special_padding {
+  padding-right: 20px;
+  font-size: 18px;
+}
+
+#new_listing_form .field_examples {
+  color: #989898;
 }
 
 .multiple_select_padding {

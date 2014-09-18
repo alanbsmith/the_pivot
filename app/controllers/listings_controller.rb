@@ -16,10 +16,13 @@ class ListingsController < ApplicationController
   def create
 		@listing = Listing.new(listing_params)
     respond_to do |format|
-			if @listing.save!
+			if @listing.save
         @listing.categories_list(params[:listing][:categories])
-				format.html { redirect_to listings_path }
+        flash[:alert] = "#{@listing.title} was created"
+				format.html { redirect_to @listing }
+
 			else
+        flash[:alert] = @listing.errors.full_messages
 				format.html {render :new }
 			end
 		end
