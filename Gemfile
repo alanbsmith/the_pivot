@@ -23,6 +23,7 @@ gem "devise", '~> 3.3.0'
 
 group :development, :test do
   gem 'pry'
+  gem 'pry-rails'
   gem 'rspec-rails'
   gem 'sqlite3'
   gem 'capybara'
