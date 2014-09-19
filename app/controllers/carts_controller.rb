@@ -5,6 +5,9 @@ class CartsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :empty_cart
 
   def show
+    unless current_user.my_cart? params[:id]
+      redirect_to root_path, notice: "That wasn't your cart"
+    end
     @cart = Cart.find(params[:id])
     @user = current_user
     @resume = Resume.new

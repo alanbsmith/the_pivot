@@ -32,6 +32,21 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def my_cart?(cart_id)
+    #Tell me if this is the cart of the current user
+    #Tell me who is the current user
+    
+    cart_listings = []
+    self.orders.each do |order|
+      cart_listings << order.cart_listings
+    end
+    carts = []
+    cart_listings.flatten.each do |cl|
+      carts << cl.cart
+    end
+    carts.include?(cart_id)
+  end
+
   private
 
   def create_remember_token

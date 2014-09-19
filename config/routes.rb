@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   match "/register", to: "users#new",          via: "get"
   match "/signin",   to: "sessions#new",       via: "get"
   match "/signout",  to: "sessions#destroy",   via: "get"
-  match "/dashboard", to: "user#show", via:"get"
+  match "/dashboard", to: "users#show", via:"get"
 
   namespace :users do
     resources :orders
