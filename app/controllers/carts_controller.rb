@@ -2,20 +2,12 @@ class CartsController < ApplicationController
 
   include SessionsHelper
 
-  rescue_from ActiveRecord::RecordNotFound, with: :empty_cart
+  rescue_from ActiveRecord::RecordNotFound, with: :cart_is_empty
 
   def show
-    unless current_user.my_cart? params[:id]
-      redirect_to root_path, notice: "That wasn't your cart"
-    end
-    @cart = Cart.find(params[:id])
-    @user = current_user
+    # @cart is set by ApplicationController before_action of :set_cart
+    @user   = current_user
     @resume = Resume.new
-  end
-
-  def new
-    current_cart ||= Cart.new(params[:id])
-    current_cart.cart_listings.create(listing_id: params[:id], cart_id: current_cart.id)
   end
 
   def destroy
@@ -23,15 +15,14 @@ class CartsController < ApplicationController
     session[:cart_id] = nil
 
     respond_to do |format|
-      format.html { redirect_to cart_path,
-        notice: 'Your cart is currently empty' }
+      format.html { cart_is_empty }
       format.json { head :no_content }
     end
   end
 
   private
 
-  def empty_cart
+  def cart_is_empty
     redirect_to listings_path, notice: 'Your cart is now empty.'
   end
 end

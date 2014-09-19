@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   resources :cart_listings
   resources :users
   resources :listings
-  resources :carts
   resources :orders
   resources :resumes
 
   resources :sessions, only: [:new, :create, :destroy]
+
+  get    '/cart',   to: 'carts#show', as: 'cart'
+  delete '/cart',   to: 'carts#destroy'
 
   match "/home",    to: "static_pages#home",    via: "get"
   match "/about",   to: "static_pages#about",   via: "get"
