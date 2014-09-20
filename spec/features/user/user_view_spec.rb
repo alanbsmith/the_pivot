@@ -147,7 +147,7 @@ describe 'the user view', type: :feature do
 
       it 'has links to apply for a job' do
         visit listing_path(@listing)
-        expect(page).to have_link('Apply for this job')
+        expect(page).to have_button('Apply for this job!')
         expect(page).to have_link('Back to browsing')
       end
 

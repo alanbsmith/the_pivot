@@ -19,9 +19,11 @@ gem 'aasm'
 gem 'mini_magick', '~> 3.8.0'
 gem 'paperclip', '~> 4.2.0'
 gem "paperclip-dropbox", ">= 1.2.2"
+gem "devise", '~> 3.3.0'
 
 group :development, :test do
   gem 'pry'
+  gem 'pry-rails'
   gem 'rspec-rails'
   gem 'sqlite3'
   gem 'capybara'
