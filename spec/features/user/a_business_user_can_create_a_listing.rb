@@ -10,7 +10,6 @@ user = User.new
   user.password_confirmation = "password"
   user.save
 
-
 describe 'user', type: :feature do
 
   before do
@@ -25,8 +24,6 @@ describe 'user', type: :feature do
     # I can click on a create listing button
     page.visit new_listing_path
     # I fill in the appropriate information
-    save_and_open_page
-
     page.fill_in "Title", with: "Barista"
     page.fill_in "Description", with: "Grinding dem beans"
     page.fill_in "Pay rate", with: "8.00/hr"
@@ -36,6 +33,19 @@ describe 'user', type: :feature do
     page.click_on "Create Listing"
     page.visit listings_path
     expect(page).to have_content("Barista")
-
   end
+
+  it "A user can only edit its own listings" do
+    page.visit new_listing_path
+    page.fill_in "Title", with: "Barista"
+    page.fill_in "Description", with: "Grinding dem beans"
+    page.fill_in "Pay rate", with: "8.00/hr"
+    page.choose "part-time"
+    page.click_on "Create Listing"
+    page.visit listings_path
+    expect(page).to have_content("Barista")
+  end
+
+
+
 end
