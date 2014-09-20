@@ -14,9 +14,9 @@ describe 'user', type: :feature do
 
   before do
     page.visit '/signin'
-    page.fill_in "Email", with: "jd@example.com"
-    page.fill_in "Password", with: "password"
-    page.click_on "Signin"
+    page.fill_in "session_email", with: "jd@example.com"
+    page.fill_in "session_password", with: "password"
+    page.click_link "Sign In"
   end
 
   it 'I can create a new listing' do
@@ -30,7 +30,7 @@ describe 'user', type: :feature do
     page.choose "part-time"
     # I click the submit button
     # When i got to my listing page I expect to see that job listing
-    page.click_on "Create Listing"
+    page.click_button "Submit"
     page.visit listings_path
     expect(page).to have_content("Barista")
   end
@@ -41,10 +41,9 @@ describe 'user', type: :feature do
     page.fill_in "Description", with: "Grinding dem beans"
     page.fill_in "Pay rate", with: "8.00/hr"
     page.choose "part-time"
-    page.click_on "Create Listing"
+    page.click_button "Submit"
     page.visit listings_path
     expect(page).to have_content("Barista")
-    page.visit "/listings"
   end
 
 end
