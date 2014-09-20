@@ -21,8 +21,6 @@ describe 'user', type: :feature do
     expect(page).to have_content("real barista")
   end
 
-  
-
   def user_register_a
     page.visit root_path
     page.click_link "Register Now"
