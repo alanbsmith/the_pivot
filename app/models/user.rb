@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
+  has_many :listings, foreign_key: :creator_id
+
   def self.default_status
     self.status ||= "default"
   end
@@ -30,21 +32,6 @@ class User < ActiveRecord::Base
 
   def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
-  end
-
-  def my_cart?(cart_id)
-    #Tell me if this is the cart of the current user
-    #Tell me who is the current user
-    
-    cart_listings = []
-    self.orders.each do |order|
-      cart_listings << order.cart_listings
-    end
-    carts = []
-    cart_listings.flatten.each do |cl|
-      carts << cl.cart
-    end
-    carts.include?(cart_id)
   end
 
   private

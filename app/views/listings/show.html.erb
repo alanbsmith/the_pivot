@@ -8,7 +8,7 @@
     <p  class=" lead text-center">Publish your Job Opportunities and Select the best people.</p>
 
     <div class="col-md-6 col-md-offset-3 text-center">
-      <%= button_to "Add Job To Cart", cart_listings_path(listing_id: @listing), { class: 'btn btn-warning' } %>
+      <%= button_to "Apply for this job!", cart_listings_path(listing_id: @listing), { class: 'btn btn-warning' } %>
       <%= link_to "Back to browsing", listings_path,  :class => "btn btn-success"  %>
     </div>
 
