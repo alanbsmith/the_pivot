@@ -20,7 +20,6 @@ class ListingsController < ApplicationController
         @listing.categories_list(params[:listing][:categories])
         flash[:alert] = "#{@listing.title} was created"
 				format.html { redirect_to @listing }
-
 			else
         flash[:alert] = @listing.errors.full_messages
 				format.html {render :new }
@@ -36,7 +35,7 @@ class ListingsController < ApplicationController
     @listing = current_user.listings.find(params[:id])
     if @listing.update(listing_params)
       @listing.categories_list(params[:listing][:categories])
-      redirect_to listings_path
+      redirect_to current_user.listings.find(params[:id])
     else
       format.html {render :edit }
     end

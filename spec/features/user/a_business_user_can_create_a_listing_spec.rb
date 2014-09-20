@@ -15,7 +15,13 @@ describe 'user', type: :feature do
     user_register_a
     add_listing
     expect(page).to have_content("barista")
+    page.click_link "Edit"
+    page.fill_in "Title", with: "real barista"
+    page.click_button "Submit"
+    expect(page).to have_content("real barista")
   end
+
+  
 
   def user_register_a
     page.visit root_path
