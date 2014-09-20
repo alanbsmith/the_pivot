@@ -35,7 +35,7 @@ describe 'user', type: :feature do
     expect(page).to have_content("Barista")
   end
 
-  it "A user can only edit its own listings" do
+  it "A user can edit its own listings" do
     page.visit new_listing_path
     page.fill_in "Title", with: "Barista"
     page.fill_in "Description", with: "Grinding dem beans"
@@ -44,8 +44,7 @@ describe 'user', type: :feature do
     page.click_on "Create Listing"
     page.visit listings_path
     expect(page).to have_content("Barista")
+    page.visit "/listings"
   end
-
-
 
 end
