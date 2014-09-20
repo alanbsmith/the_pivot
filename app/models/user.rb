@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
+  has_many :listings, foreign_key: :creator_id
+
   def self.default_status
     self.status ||= "default"
   end

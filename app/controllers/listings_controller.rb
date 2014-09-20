@@ -14,7 +14,7 @@ class ListingsController < ApplicationController
   end
 
   def create
-		@listing = Listing.new(listing_params)
+    @listing = Listing.new(listing_params.merge creator_id: current_user.id)
     respond_to do |format|
 			if @listing.save!
         @listing.categories_list(params[:listing][:categories])
@@ -26,18 +26,17 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
   end
 
   def update
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
     if @listing.update(listing_params)
       @listing.categories_list(params[:listing][:categories])
       redirect_to listings_path
     else
       format.html {render :edit }
     end
-
   end
 
   def destroy
