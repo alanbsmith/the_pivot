@@ -29,7 +29,7 @@
   float:right
 }
 .em-home-background {
-  background-image: image-url("home-architect-female.jpg");
+  background-image: image-url("team-architecture.jpg");
   background-size: cover;
   height: 500px;
   width: 100%;
@@ -39,17 +39,19 @@
   background-color: white;
   margin-top: -70px;
   min-height:200px;
-  border-bottom: solid;
-  border-width:1px;
-  border-color:gray;
+  opacity: .97
+
 }
 .em-home-search {
   border: 0;
     outline: 0;
     background: transparent;
-    border-bottom: 2px solid black;
-    width: 100%;
+    border-bottom: 2px solid gray;
+    width: 90%;
+    margin: 0% 5%;
+    padding: 5%;
+    margin-top:20px;
     height: 100px;
-    font-size:xx-large;
+    font-size:5em;
     color:red;
 }
