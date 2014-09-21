@@ -75,10 +75,7 @@ ActiveRecord::Schema.define(version: 20140920014913) do
     t.integer  "cart_listing_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "document_file_name"
-    t.string   "document_content_type"
-    t.integer  "document_file_size"
-    t.datetime "document_updated_at"
+    t.string   "resume"
   end
 
   create_table "tenants", force: true do |t|
@@ -103,7 +100,6 @@ ActiveRecord::Schema.define(version: 20140920014913) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "subdomain"
   end
 
   add_index "users", ["company_name"], name: "index_users_on_company_name", using: :btree
