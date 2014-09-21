@@ -62,8 +62,36 @@ describe 'the business user view', type: :feature do
         end
 
         it 'cannot see the apply for job button when vieiwing a job' do
-          visit listings_path(Listing.last)
-          expect(page).not_to have_content('Apply')
+          visit signin_path
+            within('//form') do
+              fill_in("session_email", with: User.last.email)
+              fill_in("session_password", with: "password")
+              click_button("Sign In")
+            end
+          visit listing_path(Listing.last)
+          expect(page).to_not have_content('Apply')
         end
+
+        it 'cannot see the Your Cart in the menu if they are logged in' do
+          visit signin_path
+            within('//form') do
+              fill_in("session_email", with: User.last.email)
+              fill_in("session_password", with: "password")
+              click_button("Sign In")
+            end
+          expect(page).to_not have_content('Your Jobs')
+        end
+
+        it 'cannot see Apply for Job from the listings page' do
+          visit signin_path
+            within('//form') do
+              fill_in("session_email", with: User.last.email)
+              fill_in("session_password", with: "password")
+              click_button("Sign In")
+            end
+          visit listings_path
+          expect(page).to_not have_content("Apply for this job!")
+        end
+
       end
     end

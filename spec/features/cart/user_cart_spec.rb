@@ -19,24 +19,24 @@ describe 'cart', type: :feature do
 
   it 'can add listings to their cart' do
     visit listings_path
-    click_button("Add Job To Cart")
+    click_button("Apply for this job!")
     expect(page).to have_content("Pastry Chef has been added to your cart")
 
-    click_link("Your Cart")
+    click_link("Your Jobs")
 
     expect(page).to have_content("Pastry Chef")
   end
 
   it 'cannot add multiples of the same listing to their cart' do
     visit listings_path
-    click_button("Add Job To Cart")
+    click_button("Apply for this job!")
     expect(page).to have_content("Pastry Chef has been added to your cart")
-    click_link("Your Cart")
+    click_link("Your Jobs")
 
     expect(page).to have_content("Pastry Chef")
 
     visit listings_path
-    click_button("Add Job To Cart")
+    click_button("Apply for this job!")
     expect(page).to have_content("This job is already in your cart")
   end
 
@@ -46,9 +46,9 @@ describe 'cart', type: :feature do
 
   it 'can remove items from their cart' do
     visit listings_path
-    click_button("Add Job To Cart")
+    click_button("Apply for this job!")
     expect(page).to have_content("Pastry Chef has been added to your cart")
-    click_link("Your Cart")
+    click_link("Your Jobs")
 
     expect(page).to have_content("Pastry Chef")
 
@@ -59,14 +59,14 @@ describe 'cart', type: :feature do
 
   it 'can empty their cart' do
     visit listings_path
-    click_button("Add Job To Cart")
+    click_button("Apply for this job!")
     expect(page).to have_content("Pastry Chef has been added to your cart")
-    click_link("Your Cart")
+    click_link("Your Jobs")
     expect(page).to have_content("Pastry Chef")
     click_link("Empty Cart")
     expect(current_path).to eq(listings_path)
     expect(page).to have_content("Your cart is now empty.")
-    click_link("Your Cart")
+    click_link("Your Jobs")
     expect(page).to_not have_content("Pastry Chef")
   end
 end
