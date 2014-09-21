@@ -21,17 +21,14 @@ describe 'user', type: :feature do
   end
 
   it 'can create a new listing' do
-    
-    # I can click on a create listing button
+
     page.visit new_listing_path
-    # I fill in the appropriate information
 
     page.fill_in "Title", with: "Barista"
     page.fill_in "Description", with: "Grinding dem beans"
     page.fill_in "Pay rate", with: "8.00/hr"
     page.choose "part-time"
-    # I click the submit button
-    # When i got to my listing page I expect to see that job listing
+
     page.click_on "Create Listing"
     page.visit listings_path
     expect(page).to have_content("Barista")

@@ -27,6 +27,7 @@
           </ul>
             <ul class="nav navbar-nav pull-right">
               <li><%= link_to "Your Cart", cart_path %></li>
+              <li><%= link_to "Job Listings", listings_path %></li>
               <% if signed_in? %>
                 <li><a href="/" >
                   <% if current_user %>
@@ -35,7 +36,6 @@
                 </a></li>
                 <li><%= link_to "Dashboard", current_user %></li>
                 <li><%= link_to "Sign Out", signout_path %></li>
-                <li><%= link_to "Job Listings", listings_path %></li>
                   <% else %>
                     <li><%= link_to "Sign In", signin_path %></li>
                     <!-- <li><%= link_to "Register", register_path  %></li> -->

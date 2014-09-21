@@ -41,7 +41,7 @@ describe 'cart', type: :feature do
   end
 
   it 'can upload a resume within the cart' do
-    
+
   end
 
   it 'can remove items from their cart' do
@@ -62,21 +62,11 @@ describe 'cart', type: :feature do
     click_button("Add Job To Cart")
     expect(page).to have_content("Pastry Chef has been added to your cart")
     click_link("Your Cart")
-
     expect(page).to have_content("Pastry Chef")
-
     click_link("Empty Cart")
-
     expect(current_path).to eq(listings_path)
     expect(page).to have_content("Your cart is now empty.")
-
-<<<<<<< HEAD
-      expect(page).to_not have_content("Pastry Chef")
-    end
-=======
     click_link("Your Cart")
-
     expect(page).to_not have_content("Pastry Chef")
   end
->>>>>>> 2dcfdcf16f8b42c3db29fcdca6d0cc1a47e958da
 end

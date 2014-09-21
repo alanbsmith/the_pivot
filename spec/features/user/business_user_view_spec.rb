@@ -3,6 +3,28 @@ require 'feature_helper'
 describe 'the business user view', type: :feature do
 
   describe 'home view' do
+    before do
+        listing = Listing.new
+        listing.title                = "Pastry Chef"
+        listing.description          = "Kneads the Dough"
+        listing.pay_rate             = 35000
+        listing.employment_type      = "Full-time"
+        listing.number_of_positions  = 2
+        listing.closing_date         = Time.now + 1000
+        listing.save
+
+        listing.categories.create(title: 'Bakery')
+
+        user = User.new
+          user.company_name          = "FedEx"
+          user.first_name            = "Fred"
+          user.last_name             = "Rex"
+          user.email                 = "fredrex@fedex.com"
+          user.password              = "password"
+          user.password_confirmation = "password"
+        user.save
+
+    end
 
         it 'has link to register a business' do
           visit home_path
@@ -30,23 +52,18 @@ describe 'the business user view', type: :feature do
         end
 
         it 'can log in as business' do
-          user = User.new
-            user.company_name          = "FedEx"
-            user.first_name            = "Fred"
-            user.last_name             = "Rex"
-            user.email                 = "fredrex@fedex.com"
-            user.password              = "password"
-            user.password_confirmation = "password"
-          user.save
-
           visit signin_path
-          expect(current_path).to eq(signin_path)
             within('//form') do
-              fill_in("session_email", with: user.email)
+              fill_in("session_email", with: User.last.email)
               fill_in("session_password", with: "password")
               click_button("Sign In")
             end
-          expect(current_path).to eq user_path(user)
+          expect(current_path).to eq user_path(User.last)
+        end
+
+        it 'cannot see the apply for job button when vieiwing a job' do
+          visit listings_path(Listing.last)
+          expect(page).not_to have_content('Apply')
         end
       end
     end
