@@ -14,30 +14,31 @@ class ListingsController < ApplicationController
   end
 
   def create
-		@listing = Listing.new(listing_params)
+    @listing = Listing.new(listing_params.merge creator_id: current_user.id)
     respond_to do |format|
-			if @listing.save!
+			if @listing.save
         @listing.categories_list(params[:listing][:categories])
-				format.html { redirect_to listings_path }
+        flash[:alert] = "#{@listing.title} was created"
+				format.html { redirect_to @listing }
 			else
+        flash[:alert] = @listing.errors.full_messages
 				format.html {render :new }
 			end
 		end
   end
 
   def edit
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
   end
 
   def update
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
     if @listing.update(listing_params)
       @listing.categories_list(params[:listing][:categories])
-      redirect_to listings_path
+      redirect_to current_user.listings.find(params[:id])
     else
       format.html {render :edit }
     end
-
   end
 
   def destroy

@@ -7,6 +7,7 @@
  </head>
 
   <body>
+
     <div class="navbar navbar-inverse navbar-static-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -25,7 +26,7 @@
             <!-- <li><a href="#contact">Contact</a></li> -->
           </ul>
             <ul class="nav navbar-nav pull-right">
-              <li><%= link_to "Your Cart", cart_path(@cart) %></li>
+              <li><%= link_to "Your Cart", cart_path %></li>
               <% if signed_in? %>
                 <li><a href="/" >
                   <% if current_user %>
@@ -43,6 +44,8 @@
             </div>
           </div>
         </div>
+        <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
         <!-- <div class="container"> -->
           <%= yield %>
         <!-- </div> -->

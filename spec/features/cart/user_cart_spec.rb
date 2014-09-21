@@ -57,21 +57,26 @@ describe 'cart', type: :feature do
     expect(page).to_not have_content("Pastry Chef")
   end
 
-    it 'can empty their cart' do
-      visit listings_path
-      click_button("Add Job To Cart")
-      expect(page).to have_content("Pastry Chef has been added to your cart")
-      click_link("Your Cart")
+  it 'can empty their cart' do
+    visit listings_path
+    click_button("Add Job To Cart")
+    expect(page).to have_content("Pastry Chef has been added to your cart")
+    click_link("Your Cart")
 
-      expect(page).to have_content("Pastry Chef")
+    expect(page).to have_content("Pastry Chef")
 
-      click_link("Empty Cart")
+    click_link("Empty Cart")
 
-      expect(current_path).to eq(listings_path)
-      expect(page).to have_content("Your cart is now empty.")
+    expect(current_path).to eq(listings_path)
+    expect(page).to have_content("Your cart is now empty.")
 
-      click_link("Your Cart")
-
+<<<<<<< HEAD
       expect(page).to_not have_content("Pastry Chef")
     end
+=======
+    click_link("Your Cart")
+
+    expect(page).to_not have_content("Pastry Chef")
+  end
+>>>>>>> 2dcfdcf16f8b42c3db29fcdca6d0cc1a47e958da
 end
