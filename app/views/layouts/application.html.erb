@@ -27,9 +27,9 @@
           </ul>
             <ul class="nav navbar-nav pull-right">
               <% if !current_user %>
-                <li><%= link_to "Your Jobs", cart_path %></li>
+                <li><%= link_to "Your Jobs(#{@cart.listings.count})", cart_path %></li>
               <% elsif !current_user.company_name %>
-                <li><%= link_to "Your Jobs", cart_path %></li>
+                <li><%= link_to "Your Jobs(#{@cart.listings.count})", cart_path %></li>
               <% end %>
               <li><%= link_to "Job Listings", listings_path %></li>
               <% if signed_in? %>

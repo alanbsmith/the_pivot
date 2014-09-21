@@ -69,4 +69,14 @@ describe 'cart', type: :feature do
     click_link("Your Jobs")
     expect(page).to_not have_content("Pastry Chef")
   end
+
+  it 'lists its number of jobs in the menu' do
+    visit listings_path
+    expect(page).to have_content(0)
+    click_button("Apply for this job!")
+    expect(page).to have_content(1)
+    click_link("Your Jobs")
+    click_link("Remove From Cart")
+    expect(page).to have_content(0)
+  end
 end
