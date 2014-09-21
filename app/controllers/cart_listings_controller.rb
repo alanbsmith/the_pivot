@@ -15,19 +15,19 @@ class CartListingsController < ApplicationController
     end
   end
 
-  def update
-    # if current_cart.include?(@cart_listing)
-    #   render :new, notice: 'This job is already in your cart.'
-    # else
-      @cart_listing.save
-    # end
+  # def update
+  #   # if current_cart.include?(@cart_listing)
+  #   #   render :new, notice: 'This job is already in your cart.'
+  #   # else
+  #     @cart_listing.save
+  #   # end
 
-    if current_user && current_user.role == 'admin'
-      redirect_to administrator_order_path(@cart_listing.order)
-    else
-      redirect_to cart_path(current_cart)
-    end
-  end
+  #   if current_user && current_user.role == 'admin'
+  #     redirect_to administrator_order_path(@cart_listing.order)
+  #   else
+  #     redirect_to cart_path(current_cart)
+  #   end
+  # end
 
   def destroy
     @cart_listing = CartListing.find(params[:id])

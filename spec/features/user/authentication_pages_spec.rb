@@ -38,7 +38,7 @@ describe "User Authentication", type: :feature do
       click_button "Sign In"
 
     expect(page).to have_link("Add a New Job Listing",  href: new_listing_path)
-    expect(page).to have_link("View Current Job Listings",  href: business_listings_path) 
+    expect(page).to have_link("View Current Job Listings",  href: listings_path) 
     expect(page).to have_link("Sign Out",    href: signout_path) 
     expect(page).to_not have_link("Sign In", href: signin_path) 
 

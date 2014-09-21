@@ -150,10 +150,6 @@ describe 'the user view', type: :feature do
         expect(page).to have_link('Apply for this job')
         expect(page).to have_link('Back to browsing')
       end
-
-      # it 'has a link to register a new applicant' do
-      #   expect(page).to have_link('Register as an Applicant')
-      # end
     end
   end
 end

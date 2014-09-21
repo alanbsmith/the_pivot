@@ -20,12 +20,11 @@ describe 'user', type: :feature do
     page.click_on "Signin"
   end
 
-  it 'I can create a new listing' do
-    # as a business after I login
+  it 'can create a new listing' do
+    
     # I can click on a create listing button
     page.visit new_listing_path
     # I fill in the appropriate information
-    save_and_open_page
 
     page.fill_in "Title", with: "Barista"
     page.fill_in "Description", with: "Grinding dem beans"
