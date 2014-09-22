@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20140922005936) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
+  
   create_table "tenants", force: true do |t|
     t.integer  "user_id"
     t.string   "subdomain"
