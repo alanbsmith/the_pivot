@@ -2,9 +2,9 @@
   <% if signed_in? %>
     <p>You are logged in</p>
   <% else %>
-    <div class="col-md-2 col-md-offset-5 em-element">
-      <%= link_to "Log In"  , signin_path,   { class: "em-footer-links em-f em-left", style: "color:white" } %>
-      <%= link_to "Register", register_path, { class: "em-footer-links em-f em-right", style: "color:orange"} %>
+    <div class="container text-right em-element">
+      <%= link_to "Contact"  , signin_path,   { class: "em-footer-links em-f ", style: "color:white" } %>
+      <%= link_to "Terms of Use", register_path, { class: "em-footer-links em-f ", style: "color:orange"} %>
     </div>
   <% end %>
 </div>

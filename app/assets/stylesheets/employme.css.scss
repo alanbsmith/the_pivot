@@ -13,6 +13,12 @@
   color: white;
   font-size: x-large;
 }
+.em-top-brand {
+  color: white;
+  font-size: x-large;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
 .em-top-links link:hover {
   text-decoration: none;
   border: solid;
@@ -23,14 +29,13 @@
   transform: translateY(-50%);
 }
 .em-left {
-  float:left
-}
-.em-right {
-  float:right
+  float:left;
+  padding-right: 10px;
 }
 .em-home-background {
   background-image: image-url("people_working_01.jpg");
   background-size: cover;
+  background-position: center;
   height: 500px;
   width: 100%;
   margin-top:-100px;
@@ -77,17 +82,16 @@
 }
 .em-wrapper {
 	min-height: 100%;
-	margin: 0 auto -40px; /* the bottom margin is the negative value of the footer's height */
+	margin: 0 auto 15px; /* the bottom margin is the negative value of the footer's height */
 }
 .em-footer-bar {
-  height:40px;
+  height:35px;
   width:100%;
-  background: #171717;
+  background: #888888;
   opacity: .95;
+  color: white;
 }
-footer, .push {
-	height: 40px; /* '.push' must be the same height as 'footer' */
-}
+
 html, body {
   height: 100%;
 }
