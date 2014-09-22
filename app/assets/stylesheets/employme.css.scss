@@ -82,16 +82,15 @@
 }
 .em-wrapper {
 	min-height: 100%;
-	margin: 0 auto 15px; /* the bottom margin is the negative value of the footer's height */
+	margin: 0 auto 8px; /* the bottom margin is the negative value of the footer's height */
 }
 .em-footer-bar {
-  height:35px;
+  height:30px;
   width:100%;
   background: #888888;
   opacity: .95;
   color: white;
 }
-
 html, body {
   height: 100%;
 }
