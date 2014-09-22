@@ -1,7 +1,9 @@
 class ResumesController < ApplicationController
   include SessionsHelper
+  include ResumesHelper
 
   def index
+    @orders  = Order.all
     @resumes = Resume.all
   end
 
@@ -10,9 +12,7 @@ class ResumesController < ApplicationController
   end
 
   def create
-    @resume = Resume.new(user_id:  current_user.id,
-                         cart_listing_id: @cart.id)
-    @resume.document = params[:resume][:document]
+    @resume = Resume.new(user_id:  current_user.id)
 
     if @resume.save!
       redirect_to cart_path(@cart), notice: "Your resume has been successfully uploaded!"
@@ -21,18 +21,18 @@ class ResumesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def destroy
+    @resume = Resume.find(params[:id])
+    @resume.destroy
+    redirect_to resumes_path, notice:  "Your resume has been deleted."
   end
 
   private
 
   def resume_params
     params.require(:resume).permit( :user_id,
-                                    :cart_listing_id,
-                                    :document )
+                                    :order_id,
+                                    :attachment )
   end
 
 end

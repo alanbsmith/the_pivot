@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :listings
   resources :orders
-  resources :resumes
+  resources :resumes, only: [:index, :new, :create, :destroy]
 
   resources :sessions, only: [:new, :create, :destroy]
 

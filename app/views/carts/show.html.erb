@@ -41,8 +41,8 @@
 
     <div class="row">
       <%= form_for(@resume, html: {multipart: true} ) do |f| %>
-        <%= f.label :document, "Upload your Resume" %><br/>
-        <%= f.file_field :document %>
+        <%= f.label :attachment, "Upload your Resume" %><br/>
+        <%= f.file_field :attachment %>
         <%= f.submit "Upload Resume", :class => "btn btn-warning" %>
     <% end %>
   <% end %>

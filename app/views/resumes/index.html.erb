@@ -5,18 +5,21 @@
       <tr>
         <th>Position</th>
         <th>Applicant Name</th>
-        <th>Resume</th>
         <th>Date Submitted</th>
+        <th>Resume</th>
       </tr>
     </thead>
     <tbody>
-    <% @resumes.each do |resume| %>
-      <tr>
-        <td><%= resume.cart_listing_id %></td>
-        <td><%= resume.user_id %></td>
-        <td><%= resume.document_file_name %></td>
-        <td><%= resume.document_updated_at.strftime('%b %d, %Y, %I:%M') %></td>
-      </tr>
+    <% @orders.each do |order| %>
+      <% order.listings.each do |listing| %>
+
+        <tr>
+          <td><%= listing.title %></td>
+          <td><%= find_applicant_name(order.user_id) %></td>
+          <td><%= order.created_at.strftime('%b %d, %Y, %I:%M')%></td>
+          <td><%= link_to "Download Resume", (find_order_resume(order.user_id)).attachment_url %></td>
+        </tr>
+      <% end %>
     <% end %>
    </tbody>
   </table>
