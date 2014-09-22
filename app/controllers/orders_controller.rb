@@ -11,24 +11,15 @@ class OrdersController < ApplicationController
     end
   end
 
-  def show
-    if signed_in?
-      @order = Order.find(params[:id])
-    else
-      redirect_to items_path
-    end
-  end
-
   def new
     if @cart.cart_listings.empty?
-      redirect_to @cart, notice: "You'll need to add a job listing to your cart to continue."
+      redirect_to @cart
     end
 
     if !current_user
       redirect_to signin_path
     end
     @order = Order.new
-
   end
 
   def create
@@ -52,12 +43,12 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update
-    @order.cancelled
+  # def update
+  #   @order.cancelled
 
-    @order.save
-    redirect_to orders_path
-  end
+  #   @order.save
+  #   redirect_to orders_path
+  # end
 
   private
 
