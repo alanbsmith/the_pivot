@@ -1,28 +1,32 @@
 require 'feature_helper'
 
 describe 'the business user view', type: :feature do
+  before do
+    business_user = User.new
+      business_user.company_name          = "FedEx"
+      business_user.first_name            = "Fred"
+      business_user.last_name             = "Rex"
+      business_user.email                 = "fredrexfedex.com"
+      business_user.password              = "password"
+      business_user.password_confirmation = "password"
+      business_user.save
+
+      @user = business_user
+  end
 
   describe 'new user can register a business' do
     before do
-        listing = Listing.new
-        listing.title                = "Pastry Chef"
-        listing.description          = "Kneads the Dough"
-        listing.pay_rate             = 35000
-        listing.employment_type      = "Full-time"
-        listing.number_of_positions  = 2
-        listing.closing_date         = Time.now + 1000
-        listing.save
 
-        listing.categories.create(title: 'Bakery')
+      listing = Listing.new
+      listing.title                = "Pastry Chef"
+      listing.description          = "Kneads the Dough"
+      listing.pay_rate             = 35000
+      listing.employment_type      = "Full-time"
+      listing.number_of_positions  = 2
+      listing.closing_date         = Time.now + 1000
+      listing.save
 
-        user = User.new
-          user.company_name          = "FedEx"
-          user.first_name            = "Fred"
-          user.last_name             = "Rex"
-          user.email                 = "fredrex@fedex.com"
-          user.password              = "password"
-          user.password_confirmation = "password"
-        user.save
+      listing.categories.create(title: 'Bakery')
     end
 
     it 'has link to register a business' do
@@ -51,20 +55,11 @@ describe 'the business user view', type: :feature do
     end
 
     it 'can log in as business' do
-      business_user = User.new
-        business_user.company_name          = "FedEx"
-        business_user.first_name            = "Fred"
-        business_user.last_name             = "Rex"
-        business_user.email                 = "fredrexfedex.com"
-        business_user.password              = "password"
-        business_user.password_confirmation = "password"
-        business_user.save
-
       visit signin_path
       expect(current_path).to eq(signin_path)
- 
+
         within('//form') do
-          fill_in("session_email",    with: business_user.email)
+          fill_in("session_email",    with: @user.email)
           fill_in("session_password", with: "password")
           click_button("Sign In")
         end
@@ -73,15 +68,15 @@ describe 'the business user view', type: :feature do
   end
 
   describe 'business user can CRUD a new listing' do
-    
+
     before(:each) do
-      @job = Listing.create( title:("Doer"), 
+      @job = Listing.create( title:("Doer"),
                              description:("Doing things"),
                              pay_rate:("1.00/hr"),
                              employment_type:("part time"),
                              closing_date:(Time.now + 1000))
 
-      @category1 = Category.create( title:("Things"), 
+      @category1 = Category.create( title:("Things"),
                                     description:("Do some stuff"))
 
       @category1.listings << @job
@@ -132,7 +127,6 @@ describe 'the business user view', type: :feature do
       click_link("Edit")
     end
 
-
     it 'can delete a listing' do
       page.visit listing_path(@job)
 
@@ -142,20 +136,10 @@ describe 'the business user view', type: :feature do
       expect(page).not_to have_content("Doer")
     end
 
-    it 'can log in as business' do
-      visit signin_path
-        within('//form') do
-          fill_in("session_email", with: User.last.email)
-          fill_in("session_password", with: "password")
-          click_button("Sign In")
-        end
-      expect(current_path).to eq user_path(User.last)
-    end
-
     it 'cannot see the apply for job button when vieiwing a job' do
       visit signin_path
         within('//form') do
-          fill_in("session_email", with: User.last.email)
+          fill_in("session_email", with: @user.email)
           fill_in("session_password", with: "password")
           click_button("Sign In")
         end
@@ -177,7 +161,7 @@ describe 'the business user view', type: :feature do
     it 'cannot see Apply for Job from the listings page' do
       visit signin_path
         within('//form') do
-          fill_in("session_email", with: User.last.email)
+          fill_in("session_email", with: @user.email)
           fill_in("session_password", with: "password")
           click_button("Sign In")
         end
