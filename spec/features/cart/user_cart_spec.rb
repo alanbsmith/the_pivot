@@ -44,34 +44,49 @@ describe 'cart', type: :feature do
   end
 
   it 'can add listings to their cart' do
+<<<<<<< HEAD
     click_button("Add Job To Cart")
+=======
+    visit listings_path
+    click_button("Apply for this job!")
+>>>>>>> d709217d4b7c3e604cfb1f37993ae0d964626b6b
     expect(page).to have_content("Pastry Chef has been added to your cart")
 
-    click_link("Your Cart")
+    click_link("Your Jobs")
 
     expect(page).to have_content(@listing.title)
   end
 
   it 'cannot add multiples of the same listing to their cart' do
+<<<<<<< HEAD
     click_button("Add Job To Cart")
+=======
+    visit listings_path
+    click_button("Apply for this job!")
+>>>>>>> d709217d4b7c3e604cfb1f37993ae0d964626b6b
     expect(page).to have_content("Pastry Chef has been added to your cart")
-    click_link("Your Cart")
+    click_link("Your Jobs")
 
     expect(page).to have_content(@listing.title)
 
     visit listings_path
-    click_button("Add Job To Cart")
+    click_button("Apply for this job!")
     expect(page).to have_content("This job is already in your cart")
   end
 
   it 'can upload a resume within the cart' do
-    
+
   end
 
   it 'can remove items from their cart' do
+<<<<<<< HEAD
     click_button("Add Job To Cart")
+=======
+    visit listings_path
+    click_button("Apply for this job!")
+>>>>>>> d709217d4b7c3e604cfb1f37993ae0d964626b6b
     expect(page).to have_content("Pastry Chef has been added to your cart")
-    click_link("Your Cart")
+    click_link("Your Jobs")
 
     expect(page).to have_content(@listing.title)
 
@@ -81,15 +96,33 @@ describe 'cart', type: :feature do
   end
 
   it 'can empty their cart' do
+<<<<<<< HEAD
     click_button("Add Job To Cart")
+=======
+    visit listings_path
+    click_button("Apply for this job!")
+>>>>>>> d709217d4b7c3e604cfb1f37993ae0d964626b6b
     expect(page).to have_content("Pastry Chef has been added to your cart")
-    click_link("Your Cart")
-
+    click_link("Your Jobs")
     expect(page).to have_content("Pastry Chef")
-
     click_link("Empty Cart")
-
     expect(current_path).to eq(listings_path)
     expect(page).to have_content("Your cart is now empty.")
+<<<<<<< HEAD
   end
+=======
+    click_link("Your Jobs")
+    expect(page).to_not have_content("Pastry Chef")
+  end
+
+  it 'lists its number of jobs in the menu' do
+    visit listings_path
+    expect(page).to have_content(0)
+    click_button("Apply for this job!")
+    expect(page).to have_content(1)
+    click_link("Your Jobs")
+    click_link("Remove From Cart")
+    expect(page).to have_content(0)
+  end
+>>>>>>> d709217d4b7c3e604cfb1f37993ae0d964626b6b
 end

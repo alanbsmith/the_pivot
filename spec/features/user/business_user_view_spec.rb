@@ -3,6 +3,27 @@ require 'feature_helper'
 describe 'the business user view', type: :feature do
 
   describe 'new user can register a business' do
+    before do
+        listing = Listing.new
+        listing.title                = "Pastry Chef"
+        listing.description          = "Kneads the Dough"
+        listing.pay_rate             = 35000
+        listing.employment_type      = "Full-time"
+        listing.number_of_positions  = 2
+        listing.closing_date         = Time.now + 1000
+        listing.save
+
+        listing.categories.create(title: 'Bakery')
+
+        user = User.new
+          user.company_name          = "FedEx"
+          user.first_name            = "Fred"
+          user.last_name             = "Rex"
+          user.email                 = "fredrex@fedex.com"
+          user.password              = "password"
+          user.password_confirmation = "password"
+        user.save
+    end
 
     it 'has link to register a business' do
       visit home_path
@@ -47,7 +68,6 @@ describe 'the business user view', type: :feature do
           fill_in("session_password", with: "password")
           click_button("Sign In")
         end
-      
       expect(current_path).to eq sessions_path
     end
   end
@@ -110,7 +130,6 @@ describe 'the business user view', type: :feature do
       expect(page).to have_link("Edit")
 
       click_link("Edit")
-      
     end
 
 #doesn't work yet
@@ -122,6 +141,48 @@ describe 'the business user view', type: :feature do
       page.click_on "Delete"
       page.visit listings_path
       expect(page).not_to have_content("Doer")
+    end
+
+    it 'can log in as business' do
+      visit signin_path
+        within('//form') do
+          fill_in("session_email", with: User.last.email)
+          fill_in("session_password", with: "password")
+          click_button("Sign In")
+        end
+      expect(current_path).to eq user_path(User.last)
+    end
+
+    it 'cannot see the apply for job button when vieiwing a job' do
+      visit signin_path
+        within('//form') do
+          fill_in("session_email", with: User.last.email)
+          fill_in("session_password", with: "password")
+          click_button("Sign In")
+        end
+      visit listing_path(Listing.last)
+      expect(page).to_not have_content('Apply')
+    end
+
+    it 'cannot see the Your Cart in the menu if they are logged in' do
+      visit signin_path
+        within('//form') do
+          fill_in("session_email", with: User.last.email)
+          fill_in("session_password", with: "password")
+          click_button("Sign In")
+        end
+      expect(page).to_not have_content('Your Jobs')
+    end
+
+    it 'cannot see Apply for Job from the listings page' do
+      visit signin_path
+        within('//form') do
+          fill_in("session_email", with: User.last.email)
+          fill_in("session_password", with: "password")
+          click_button("Sign In")
+        end
+      visit listings_path
+      expect(page).to_not have_content("Apply for this job!")
     end
   end
 end
