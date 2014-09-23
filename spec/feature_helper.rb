@@ -3,10 +3,11 @@ require 'capybara/rails'
 require 'capybara/rspec'
 
   def default_login
+    user = default_applicant
     click_link('Sign In')
     expect(current_path).to eq(signin_path)
-    fill_in("session_email", with: "user@example.com")
-    fill_in("session_password", with: "userpassword")
+    fill_in("session_email",    with: user.email)
+    fill_in("session_password", with: user.password)
     click_button('Sign In')
   end
 
@@ -61,6 +62,6 @@ require 'capybara/rspec'
     page.fill_in      "listing_location_city",  with: "Waco"
     page.fill_in      "listing_location_state", with: "TX"
     page.choose       "part-time"
-    
+
     page.click_button "Submit"
   end

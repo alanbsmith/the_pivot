@@ -5,13 +5,8 @@ describe "the order view", type: :feature do
   context 'user is signed in' do
 
     before(:each) do
-      @default_user = User.create(email: "user@example.com",
-                                  password: "userpassword",
-                                  password_confirmation: "userpassword",
-                                  first_name: "user",
-                                  last_name: "whatever")
-
-      @order = User.find_by(email: "user@example.com").orders.create(user_id: @default_user.id)
+      @user  = default_applicant
+      @order = User.find_by(email: @user.email).orders.create(user_id: @user.id)
 
       listing  = default_job_listing
       @listing = listing
@@ -54,7 +49,6 @@ describe "the order view", type: :feature do
 
     it 'can view its previous applications' do
       default_login
-
       click_on('Previous Applications')
       expect(current_path).to eq(orders_path)
     end
