@@ -31,7 +31,7 @@ describe 'the user view', type: :feature do
         expect(current_path).to eq user_path(User.last)
       end
 
-      it 'can log in as business' do
+      it 'can sign in as business' do
         user = User.new
           user.company_name          = "FedEx"
           user.first_name            = "Fred"
@@ -39,14 +39,12 @@ describe 'the user view', type: :feature do
           user.email                 = "fredrex@fedex.com"
           user.password              = "password"
           user.password_confirmation = "password"
-        user.save
-
-        visit signin_path
+        user.savSign        visit signin_path
         expect(current_path).to eq(signin_path)
           within('//form') do
             fill_in("session_email", with: user.email)
             fill_in("session_password", with: "password")
-            click_button("Log In")
+            click_button("Sign In")
           end
         expect(current_path).to eq user_path(user)
         expect(page).to have_content('Sucsessfully Logged In!')
@@ -80,7 +78,7 @@ describe 'the user view', type: :feature do
         expect(page).to have_content('Email is invalid')
       end
 
-      it 'can log in as applicant' do
+      it 'can sign in as applicant' do
         user = User.new
           user.first_name            = "John"
           user.last_name             = "Connor"
@@ -94,7 +92,7 @@ describe 'the user view', type: :feature do
           within('//form') do
             fill_in("session_email", with: user.email)
             fill_in("session_password", with: "password")
-            click_button("Log In")
+            click_button("Sign In")
           end
         expect(current_path).to eq user_path(user)
       end

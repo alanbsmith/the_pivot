@@ -40,7 +40,7 @@ describe 'the business user view', type: :feature do
       expect(current_path).to eq user_path(User.last)
     end
 
-    it 'can log in as business' do
+    it 'can sign in as business' do
       visit signin_path
       expect(current_path).to eq(signin_path)
 
@@ -119,23 +119,12 @@ describe 'the business user view', type: :feature do
       expect(page).not_to have_content(@listing.title)
     end
 
-    # let(:user) do
-    #   user = User.create!(
-    #     :company_name          => "FedEx",
-    #     :first_name            => "Fred",
-    #     :last_name             => "Rex",
-    #     :email                 => "fredrex@fedex.com",
-    #     :password              => "password",
-    #     :password_confirmation => "password"
-    #   )
-    # end
-
-    it 'can log in as business' do
+    it 'can sign in as business' do
       visit signin_path
         within('//form') do
           fill_in("session_email",    with: @business.email)
           fill_in("session_password", with: @business.password)
-          click_button("Log In")
+          click_button("Sign In")
         end
       expect(current_path).to eq sessions_path
     end
@@ -145,7 +134,7 @@ describe 'the business user view', type: :feature do
         within('//form') do
           fill_in("session_email",    with: @business_user.email)
           fill_in("session_password", with: @business_user.password)
-          click_button("Log In")
+          click_button("Sign In")
         end
       visit listing_path(@listing)
       expect(page).to_not have_content('Apply')
@@ -156,7 +145,7 @@ describe 'the business user view', type: :feature do
         within('//form') do
           fill_in("session_email",    with: @business_user.email)
           fill_in("session_password", with: @business_user.password)
-          click_button("Log In")
+          click_button("Sign In")
         end
       expect(current_path).to eq user_path(@business_user)
     end
