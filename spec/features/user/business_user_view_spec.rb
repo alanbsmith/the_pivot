@@ -65,18 +65,8 @@ describe 'the business user view', type: :feature do
   describe 'business user can CRUD a new listing' do
 
     before(:each) do
-<<<<<<< HEAD
       @job = default_job_listing
       @category1 = Category.create( title:("Things"), 
-=======
-      @job = Listing.create( title:("Doer"),
-                             description:("Doing things"),
-                             pay_rate:("1.00/hr"),
-                             employment_type:("part time"),
-                             closing_date:(Time.now + 1000))
-
-      @category1 = Category.create( title:("Things"),
->>>>>>> baf664ee83ee1ba337c0a0360d511d635a06d3c1
                                     description:("Do some stuff"))
       @category1.listings << @job
     end
