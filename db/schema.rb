@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922005936) do
+ActiveRecord::Schema.define(version: 20140923184309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,11 +57,12 @@ ActiveRecord::Schema.define(version: 20140922005936) do
     t.text     "pay_rate"
     t.text     "employment_type"
     t.integer  "number_of_positions"
-    t.integer  "business_id"
     t.datetime "closing_date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
+    t.string   "location_city"
+    t.string   "location_state"
   end
 
   create_table "orders", force: true do |t|
@@ -96,6 +97,10 @@ ActiveRecord::Schema.define(version: 20140922005936) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
+    t.string   "pdf_name"
+    t.string   "pdf_type"
+    t.integer  "pdf_size"
+    t.datetime "pdf_update_at"
   end
 
   add_index "users", ["company_name"], name: "index_users_on_company_name", using: :btree
