@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(user_id: current_user.id)
     @order.add_cart_listings_from_cart(@cart)
-<<<<<<< HEAD
+
     if @order.save
       set_resume_order_id(@order)
       Cart.destroy(session[:cart_id])
@@ -34,45 +34,6 @@ class OrdersController < ApplicationController
       redirect_to home_url, notice: 'Thanks for your submission!'
     else
       render :new
-||||||| merged common ancestors
-
-    respond_to do |format|
-      if @order.save
-        Cart.destroy(session[:cart_id])
-        session[:cart_id] = nil
-
-        format.html { redirect_to home_url,
-          notice: 'Thanks for your submission! You can view previous applications in your dashboard!' }
-        format.json { render action: 'show', status: :created,
-          location: @order }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @order.errors,
-          status: :unprocessable_entity }
-      end
-=======
-
-    respond_to do |format|
-      if @order.save
-        Cart.destroy(session[:cart_id])
-        session[:cart_id] = nil
-
-        format.html { redirect_to home_url,
-          notice: 'Thanks for your submission! You can view previous applications in your dashboard!' }
-        format.json { render action: 'show', status: :created,
-          location: @order }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
->>>>>>> master
     end
   end
-
-  # def update
-  #   @order.cancelled
-
-  #   @order.save
-  #   redirect_to orders_path
-  # end
 end
