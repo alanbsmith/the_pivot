@@ -35,10 +35,13 @@ describe 'user', type: :feature do
 
   def add_listing
     page.click_link "add-job-listing"
-    page.fill_in      "Title",       with: "barista"
-    page.fill_in      "Description", with: "Grinding dem beans"
-    page.fill_in      "Pay rate",    with: "8.00/hr"
-    page.choose       "part-time"
+    page.fill_in "Title",                  with: "barista"
+    page.fill_in "Description",            with: "Grinding dem beans"
+    page.fill_in "Pay rate",               with: "8.00/hr"
+    page.fill_in "listing_location_city",  with: "Waco"
+    page.fill_in "listing_location_state", with: "TX"
+    page.choose  "part-time"
+
     page.click_button "Submit"
   end
 
