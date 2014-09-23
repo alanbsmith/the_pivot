@@ -37,7 +37,7 @@ describe 'user', type: :feature do
     click_button("Apply for this job!")
     expect(page).to have_content("Pastry Chef has been added to your cart.")
 
-    click_link("Your Jobs")
+    click_link("your_jobs_link")
     page.click_link('Apply')
     page.visit cart_path(@user)
     expect(page).to have_link("Pastry Chef")
