@@ -12,12 +12,10 @@
     <tbody>
     <% @orders.each do |order| %>
       <% order.listings.each do |listing| %>
-
         <tr>
           <td><%= link_to listing.title, listing_path(listing) %></td>
           <td><%= find_applicant_name(order.user_id) %></td>
           <td><%= order.created_at.strftime('%b %d, %Y, %I:%M')%></td>
-
       <% end %>
           <td><%= link_to "View Resume", find_order_resume(order.id), :target => '_blank' %></td>
         </tr>
