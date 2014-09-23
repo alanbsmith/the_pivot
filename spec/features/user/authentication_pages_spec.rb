@@ -19,7 +19,6 @@ describe "User Authentication", type: :feature do
   end
 
   it "cannot signin with invalid information" do
-    save_and_open_page
     click_button("Sign In")
     expect(current_path).to eq(sessions_path)
   end
