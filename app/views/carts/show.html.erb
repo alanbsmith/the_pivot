@@ -1,10 +1,5 @@
-
 <div class="container">
   <h1>Your Job Listings</h1>
-  <% if notice %>
-    <%= notice %>
-  <% end %>
-
   <% if @cart.cart_listings.empty? %>
     <h3>There are currently no jobs in your cart!</h3>
   <% else %>

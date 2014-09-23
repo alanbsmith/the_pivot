@@ -20,7 +20,7 @@ class ListingsController < ApplicationController
     respond_to do |format|
 			if @listing.save
         @listing.categories_list(params[:listing][:categories])
-        flash[:alert] = "#{@listing.title} was created"
+        flash[:notice] = "#{@listing.title} was created"
 				format.html { redirect_to @listing }
 			else
         flash[:alert] = @listing.errors.full_messages

@@ -18,3 +18,14 @@
  *= require_tree .
  *= require_self
  */
+
+.alert-alert {
+  @extend .alert-danger;
+}
+.alert-notice {
+  @extend .alert-success;
+}
+.em-push {
+  padding-top: 50px;
+  height: 50px;
+}

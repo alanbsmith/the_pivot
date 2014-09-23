@@ -6,8 +6,8 @@ class CartListingsController < ApplicationController
 
   def create
     listing = Listing.find(params[:listing_id])
-    if @cart.listings.include?(listing) 
-      redirect_to listings_path, notice: "This job is already in your cart."
+    if @cart.listings.include?(listing)
+      redirect_to listings_path, alert: "This job is already in your cart."
     else
       @cart_listing = @cart.add_listing(listing.id)
       @cart_listing.save
