@@ -56,7 +56,7 @@ describe 'the business user view', type: :feature do
   describe 'business user can CRUD a new listing' do
 
     before(:each) do
-      lisiting = default_job_listing
+      listing = default_job_listing
       @listing = listing
 
       @category1          = Category.create( title:("Things"), description:("Do some stuff"))
