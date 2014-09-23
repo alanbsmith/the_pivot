@@ -13,7 +13,6 @@ describe 'the business user view', type: :feature do
         listing.closing_date         = Time.now + 1000
         listing.save
 
-<<<<<<< HEAD
         listing.categories.create(title: 'Bakery')
 
         user = User.new
@@ -28,18 +27,18 @@ describe 'the business user view', type: :feature do
 
     it 'has link to register a business' do
       visit home_path
-      expect(page).to have_link('Register Now')
+      expect(page).to have_link('Register')
     end
 
     it 'displays the business registration page' do
       visit home_path
-      click_link('Register Now')
+      click_link('Register')
       expect(current_path).to eq(new_user_path)
     end
 
     it 'can register a business' do
       visit home_path
-      click_link('Register Now')
+      click_link('Register')
       expect(current_path).to eq(new_user_path)
       fill_in("Company name", with: "FedEx")
       fill_in("email", with: "user@example.com")
@@ -47,7 +46,7 @@ describe 'the business user view', type: :feature do
       fill_in("Last Name", with: "Gu")
       fill_in("Password", with: "password")
       fill_in("Confirmation", with: "password")
-      click_button("Register Now")
+      click_button("Register")
       expect(current_path).to eq user_path(User.last)
     end
 
@@ -63,31 +62,26 @@ describe 'the business user view', type: :feature do
 
       visit signin_path
       expect(current_path).to eq(signin_path)
- 
+
         within('//form') do
           fill_in("session_email",    with: business_user.email)
           fill_in("session_password", with: "password")
           click_button("Sign In")
-=======
-        it 'has link to register a business' do
-          visit home_path
-          expect(page).to have_link('Register')
->>>>>>> ux-home-basic
         end
       expect(current_path).to eq sessions_path
     end
   end
 
   describe 'business user can CRUD a new listing' do
-    
+
     before(:each) do
-      @job = Listing.create( title:("Doer"), 
+      @job = Listing.create( title:("Doer"),
                              description:("Doing things"),
                              pay_rate:("1.00/hr"),
                              employment_type:("part time"),
                              closing_date:(Time.now + 1000))
 
-      @category1 = Category.create( title:("Things"), 
+      @category1 = Category.create( title:("Things"),
                                     description:("Do some stuff"))
 
       @category1.listings << @job
@@ -99,7 +93,6 @@ describe 'the business user view', type: :feature do
       expect(page).to have_content("barista")
     end
 
-<<<<<<< HEAD
     it "A user can edit its own listings" do
       user_register_a
       add_listing
@@ -112,7 +105,7 @@ describe 'the business user view', type: :feature do
 
     def user_register_a
       page.visit root_path
-      page.click_link "Register Now"
+      page.click_link "Register"
       page.fill_in "user_company_name", with: "Apple Incorporated"
       page.fill_in "user_first_name", with: "Steve"
       page.fill_in "user_last_name", with: "Jobs"
@@ -155,37 +148,16 @@ describe 'the business user view', type: :feature do
           fill_in("session_email", with: User.last.email)
           fill_in("session_password", with: "password")
           click_button("Sign In")
-=======
-        it 'displays the business registration page' do
-          visit home_path
-          click_link('Register')
-          expect(current_path).to eq(new_user_path)
->>>>>>> ux-home-basic
         end
       expect(current_path).to eq user_path(User.last)
     end
 
-<<<<<<< HEAD
     it 'cannot see the apply for job button when vieiwing a job' do
       visit signin_path
         within('//form') do
           fill_in("session_email", with: User.last.email)
           fill_in("session_password", with: "password")
           click_button("Sign In")
-=======
-        it 'can register a business' do
-          visit home_path
-          click_link('Register')
-          expect(current_path).to eq(new_user_path)
-          fill_in("Company name", with: "FedEx")
-          fill_in("email", with: "user@example.com")
-          fill_in("First Name", with: "Bob")
-          fill_in("Last Name", with: "Gu")
-          fill_in("Password", with: "password")
-          fill_in("Confirmation", with: "password")
-          click_button("Register")
-          expect(current_path).to eq user_path(User.last)
->>>>>>> ux-home-basic
         end
       visit listing_path(Listing.last)
       expect(page).to_not have_content('Apply')

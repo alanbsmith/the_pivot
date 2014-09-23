@@ -17,7 +17,7 @@ describe 'user', type: :feature do
     expect(page).to have_content("barista")
     page.click_link "Edit"
     page.fill_in "Title", with: "real barista"
-    page.click_button "Submit"
+    page.click_button "Create Listing"
     expect(page).to have_content("real barista")
   end
 
@@ -39,7 +39,7 @@ describe 'user', type: :feature do
     page.fill_in      "Description", with: "Grinding dem beans"
     page.fill_in      "Pay rate",    with: "8.00/hr"
     page.choose       "part-time"
-    page.click_button "Submit"
+    page.click_button "Create Listing"
   end
 
 

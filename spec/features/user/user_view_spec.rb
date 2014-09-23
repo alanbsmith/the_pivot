@@ -6,21 +6,20 @@ describe 'the user view', type: :feature do
 
     context 'business users' do
 
-<<<<<<< HEAD
       it 'has link to register a business' do
         visit home_path
-        expect(page).to have_link('Register Now')
+        expect(page).to have_link('Register')
       end
 
       it 'displays the business registration page' do
         visit home_path
-        click_link('Register Now')
+        click_link('Register')
         expect(current_path).to eq(new_user_path)
       end
 
       it 'can register a business' do
         visit home_path
-        click_link('Register Now')
+        click_link('Register')
         expect(current_path).to eq(new_user_path)
         fill_in("Company name", with: "FedEx")
         fill_in("email", with: "user@example.com")
@@ -28,7 +27,7 @@ describe 'the user view', type: :feature do
         fill_in("Last Name", with: "Gu")
         fill_in("Password", with: "password")
         fill_in("Confirmation", with: "password")
-        click_button("Register Now")
+        click_button("Register")
         expect(current_path).to eq user_path(User.last)
       end
 
@@ -55,7 +54,7 @@ describe 'the user view', type: :feature do
 
       it 'can register a applicant' do
         visit home_path
-        click_link('Register Now')
+        click_link('Register')
         click_button('Applicant Registration')
         expect(current_path).to eq(new_user_path)
         fill_in("email", with: "user@example.com")
@@ -63,13 +62,13 @@ describe 'the user view', type: :feature do
         fill_in("Last Name", with: "Gu")
         fill_in("Password", with: "password")
         fill_in("Confirmation", with: "password")
-        click_button("Register Now")
+        click_button("Register")
         expect(current_path).to eq user_path(User.last)
       end
 
       it 'gets an error when entering invalid info as an applicant' do
         visit home_path
-        click_link('Register Now')
+        click_link('Register')
         click_button('Applicant Registration')
         expect(current_path).to eq(new_user_path)
         fill_in("email", with: "u")
@@ -77,84 +76,9 @@ describe 'the user view', type: :feature do
         fill_in("Last Name", with: "Gu")
         fill_in("Password", with: "password")
         fill_in("Confirmation", with: "password")
-        click_button("Register Now")
+        click_button("Register")
         expect(page).to have_content('Email is invalid')
       end
-=======
-        it 'has link to register a business' do
-          visit home_path
-          expect(page).to have_link('Register')
-        end
-
-        it 'displays the business registration page' do
-          visit home_path
-          click_link('Register')
-          expect(current_path).to eq(new_user_path)
-        end
-
-        it 'can register a business' do
-          visit home_path
-          click_link('Register')
-          expect(current_path).to eq(new_user_path)
-          fill_in("Company name", with: "FedEx")
-          fill_in("email", with: "user@example.com")
-          fill_in("First Name", with: "Bob")
-          fill_in("Last Name", with: "Gu")
-          fill_in("Password", with: "password")
-          fill_in("Confirmation", with: "password")
-          click_button("Register")
-          expect(current_path).to eq user_path(User.last)
-        end
-
-        it 'can log in as business' do
-          user = User.new
-            user.company_name          = "FedEx"
-            user.first_name            = "Fred"
-            user.last_name             = "Rex"
-            user.email                 = "fredrex@fedex.com"
-            user.password              = "password"
-            user.password_confirmation = "password"
-          user.save
-
-          visit signin_path
-          expect(current_path).to eq(signin_path)
-            within('//form') do
-              fill_in("session_email", with: user.email)
-              fill_in("session_password", with: "password")
-              click_button("Sign In")
-            end
-          expect(current_path).to eq user_path(user)
-          expect(page).to have_content('Sucsessfully Logged In!')
-        end
-      end
-        it 'can register a applicant' do
-          visit home_path
-          click_link('Register')
-          click_button('Applicant Registration')
-          expect(current_path).to eq(new_user_path)
-          fill_in("email", with: "user@example.com")
-          fill_in("First Name", with: "Bob")
-          fill_in("Last Name", with: "Gu")
-          fill_in("Password", with: "password")
-          fill_in("Confirmation", with: "password")
-          click_button("Register")
-          expect(current_path).to eq user_path(User.last)
-        end
-
-        it 'gets an error when entering invalid info as an applicant' do
-          visit home_path
-          click_link('Register')
-          click_button('Applicant Registration')
-          expect(current_path).to eq(new_user_path)
-          fill_in("email", with: "u")
-          fill_in("First Name", with: "Bob")
-          fill_in("Last Name", with: "Gu")
-          fill_in("Password", with: "password")
-          fill_in("Confirmation", with: "password")
-          click_button("Register")
-          expect(page).to have_content('Email is invalid')
-        end
->>>>>>> ux-home-basic
 
       it 'can log in as applicant' do
         user = User.new

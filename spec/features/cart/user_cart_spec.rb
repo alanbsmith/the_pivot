@@ -29,7 +29,6 @@ describe 'cart', type: :feature do
     expect(page).to have_button('Apply for this job!')
   end
 
-
   it 'can view the details of a job listing' do
     expect(current_path).to eq(listings_path)
     click_link('Bakery')
@@ -64,10 +63,7 @@ describe 'cart', type: :feature do
     end
 
     it 'can upload a resume within the cart' do
-    visit listings_path
-    click_button("Add Job To Cart")
-    expect(page).to have_content("Pastry Chef has been added to your cart")
-    click_link("Your Jobs")
+
     end
 
     it 'can remove items from their cart' do
