@@ -39,8 +39,7 @@ class OrdersController < ApplicationController
           location: @order }
       else
         format.html { render action: 'new' }
-        format.json { render json: @order.errors,
-          status: :unprocessable_entity }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,19 +50,4 @@ class OrdersController < ApplicationController
   #   @order.save
   #   redirect_to orders_path
   # end
-
-  private
-
-  def order_params
-    params.require(:order).permit(:user_id)
-  end
-
-  def set_order
-    @order = Order.find(params[:id])
-  end
-
-  def invalid_order
-    logger.error "Attempt to access invalid order #{params[:id]}"
-    redirect_to items_url, notice: 'Invalid order'
-  end
 end

@@ -103,19 +103,11 @@ describe 'the user view', type: :feature do
     context 'the applicant user' do
 
       before(:each) do
-        listing1 = Listing.create(title: 'Joby job job',
-                                  description: 'We will work your ass off',
-                                  pay_rate: 100,
-                                  employment_type: 'hourly',
-                                  number_of_positions: 3,
-                                  closing_date: Time.now + 1000
-                                 )
+        listing = default_job_listing
+        @listing  = listing
 
         category1 = Category.create(title: "Great Jobs", description: "Jobs that don't suck")
-
-        @listing  = Listing.last
-
-        category1.listings << listing1
+        category1.listings << listing
 
         visit home_path
       end
@@ -137,7 +129,7 @@ describe 'the user view', type: :feature do
         visit listings_path
         expect(current_path).to eq(listings_path)
 
-        click_link('Joby job job')
+        click_link(@listing.title)
         expect(current_path).to eq(listing_path(@listing))
         expect(page).to have_content(@listing.title)
         expect(page).to have_content(@listing.description)
