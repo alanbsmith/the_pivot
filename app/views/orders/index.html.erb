@@ -2,6 +2,7 @@
   <h1>Your Previous Applications</h1>
   <table class="table table-hover">
     <thead>
+      <th>Company</th>
       <th>Title</th>
       <th>Description</th>
       <th>Closing Date</th>
@@ -10,6 +11,7 @@
       <% @orders.each do |order| %>
         <% order.listings.each do |listing| %>
           <tr>
+            <td><%= listing.creator.company_name %></td>
             <td><%= link_to listing.title, listing_path(listing) %></td>
             <td><%= truncate(listing.description, :length => 250) %></td>
             <td><%= listing.closing_date.strftime('%b %d, %Y, %I:%M %p') %></td>
