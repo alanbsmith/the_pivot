@@ -27,8 +27,8 @@
           <td><%= cart_listing.listing.closing_date.strftime('%b %d, %Y, %I:%M %p') %></td>
           <td>
             <%= form_for(@resume, html: {multipart: true} ) do |f| %>
-              <%= f.label :document, "Upload your Resume" %><br/>
-              <%= f.file_field :document %>
+              <%= f.label :attachment, "Upload your Resume" %><br/>
+              <%= f.file_field :attachment %>
               <%= f.submit "Upload Resume", :class => "btn btn-success btn-sm resume_button" %>
             <% end %>
           </td>
@@ -42,8 +42,8 @@
   <% if signed_in? %>
     <div class="row">
       <%= form_for(@resume, html: {multipart: true} ) do |f| %>
-        <%= f.label :document, "Upload your Resume" %><br/>
-        <%= f.file_field :document %>
+        <%= f.label :attachment, "Upload your Resume" %><br/>
+        <%= f.file_field :attachment %>
         <%= f.submit "Upload Resume", :class => "btn btn-warning" %>
     <% end %>
   <% end %>

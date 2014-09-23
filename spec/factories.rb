@@ -21,6 +21,8 @@ FactoryGirl.define do
     pay_rate            "1.00/hr"
     number_of_positions 1
     closing_date        Time.now + 1000
+    location_city       "Denver"
+    location_state      "CO"
   end
 
   factory :category do
