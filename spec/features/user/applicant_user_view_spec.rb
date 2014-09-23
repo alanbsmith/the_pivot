@@ -15,14 +15,14 @@ describe "the applicant user view", type: :feature do
   context "the home view" do
     it "has a link to browse listings on the home page" do
       visit home_path
-      expect(page).to have_link("Register Now")
+      expect(page).to have_link("Register")
     end
   end
 
   context "the registration process" do
     it "can go to the registration page" do
       visit home_path
-      click_link("Register Now")
+      click_link("Register")
       expect(current_path).to eq(new_user_path)
     end
   end

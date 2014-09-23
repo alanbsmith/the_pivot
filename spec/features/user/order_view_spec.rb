@@ -24,7 +24,6 @@ describe "the order view", type: :feature do
       visit cart_path
 
       expect(page).to have_content('There are currently no jobs in your cart!')
-      
       expect(page).to_not have_content(@listing.title)
       expect(page).to_not have_content(@listing.description)
       expect(page).to_not have_button('Remove this job')
@@ -36,10 +35,10 @@ describe "the order view", type: :feature do
 
       visit listing_path(@listing)
       click_on('Apply for this job!')
-      click_on('Your Jobs')
+      click_on('your_jobs_link')
       click_on('Apply')
-      click_on('Complete Order')
-      click_on('Dashboard')
+      click_on('Apply')
+      click_on('dashboard')
       click_on('Previous Applications')
 
       expect(page).to have_content(@listing.title)
@@ -50,7 +49,7 @@ describe "the order view", type: :feature do
 
     it 'can view its previous applications' do
       default_login
-      
+
       click_on('Previous Applications')
       expect(current_path).to eq(orders_path)
     end

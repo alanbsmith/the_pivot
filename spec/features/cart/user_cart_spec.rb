@@ -6,8 +6,9 @@ describe 'cart', type: :feature do
 
   before do
     listing  = default_job_listing
-    listing.categories.create(title: 'Bakery')
     @listing = listing
+
+    listing.categories.create(title: 'Bakery')
     
     default_business_user
 
@@ -18,6 +19,7 @@ describe 'cart', type: :feature do
     expect(page).to have_content('Bakery')
 
     click_link('Bakery')
+    
     expect(page).to have_content(@listing.title)
     expect(page).to have_content(@listing.description)
     expect(page).to have_link('Read more...')
@@ -43,7 +45,7 @@ describe 'cart', type: :feature do
       visit listing_path(@listing)
       click_button("Apply for this job!")
       expect(page).to have_content("Pastry Chef has been added to your cart")
-      click_link("Your Jobs")
+      click_link("your_jobs_link")
     end
 
     it 'can add listings to their cart' do
@@ -70,10 +72,7 @@ describe 'cart', type: :feature do
       expect(page).to have_content("Pastry Chef")
       click_link("Empty Cart")
       expect(current_path).to eq(listings_path)
-      expect(page).to have_content("Your cart is now empty.")
-
-      click_link("Your Jobs")
-      expect(page).to_not have_content("Pastry Chef")
+      expect(page).to_not have_content("You have")
     end
   end
 
@@ -82,8 +81,8 @@ describe 'cart', type: :feature do
     expect(page).to have_content(0)
     click_button("Apply for this job!")
     expect(page).to have_content(1)
-    click_link("Your Jobs")
+    click_link("You have")
     click_link("Remove this job")
-    expect(page).to have_content(0)
+    expect(page).to_not have_content("You have")
   end
 end

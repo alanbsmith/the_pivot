@@ -1,0 +1,63 @@
+<div class="em-top-navbar">
+  <% if signed_in? %>
+    <div class="container em-element">
+      <%= link_to "Log Out",
+          signout_path,
+          {class:"em-top-links em-f col-md-4 text-left",
+           style:"color:white"}
+      %>
+      <%= link_to "EmployMe!",
+          root_path,
+          {class:"em-top-brand em-f col-md-4 text-center",
+           style:"color:orange"}
+      %>
+      <%= link_to "Hello #{current_user.first_name.capitalize}",
+          current_user,
+          {class: "em-top-links em-f col-md-4 text-right",
+           style: "color:white",
+           id: "dashboard"}
+      %>
+    </div>
+    <% if @cart.listings.count > 0 %>
+      <div class="em-sub-top-navbar" style="margin-top:-0px">
+        <p class="text-center em-f">
+          <%= link_to "You have #{@cart.listings.count} job(s) ready to apply",
+              cart_path,
+              {id: "your_jobs_link"}
+          %>
+        </p>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="col-md-4 col-md-offset-4 em-element">
+      <%= link_to "Log In",
+          signin_path,
+          {class:"em-top-links em-f col-md-4 text-left",
+           style:"color:white"}
+      %>
+
+      <%= link_to "EmployMe!",
+          root_path,
+          {class:"em-top-brand em-f col-md-4 text-center",
+           style:"color:orange"}
+      %>
+
+      <%= link_to "Register",
+          new_user_path,
+          {class: "em-top-links em-f col-md-4 text-right",
+           style: "color:white"}
+      %>
+    </div>
+    <% if @cart.listings.count > 0 %>
+      <div class="em-sub-top-navbar">
+        <p class="text-center em-f">
+          <%= link_to "You have #{@cart.listings.count} job(s) ready to apply",
+              cart_path,
+              {id: "your_jobs_link"}
+          %>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
