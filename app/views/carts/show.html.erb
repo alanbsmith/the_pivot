@@ -36,16 +36,14 @@
 
   <% if signed_in? %>
     <div class="row">
-
-    </div>
-
-    <div class="row">
-      <%= form_for(@resume, html: {multipart: true} ) do |f| %>
-        <%= f.label :attachment, "Upload your Resume" %><br/>
+      <%= form_for( @resume, html: { multipart: true } ) do |f| %>
+        <%= f.label :attachment %>
         <%= f.file_field :attachment %>
         <%= f.submit "Upload Resume", :class => "btn btn-warning" %>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
+
 
   <div class="row-fluid push_buttons_down">
     <% if signed_in? %>

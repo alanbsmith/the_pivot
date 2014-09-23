@@ -12,7 +12,8 @@ class ResumesController < ApplicationController
   end
 
   def create
-    @resume = Resume.new(user_id:  current_user.id)
+    @resume = Resume.new(resume_params)
+    @resume.user_id = current_user.id
 
     if @resume.save!
       redirect_to cart_path(@cart), notice: "Your resume has been successfully uploaded!"
