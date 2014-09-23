@@ -5,7 +5,7 @@ require 'capybara/rspec'
 describe 'user', type: :feature do
 
   before do
-    
+
     listing  = default_job_listing
     @listing = listing
     listing.categories.create(title: 'Bakery')
@@ -18,7 +18,7 @@ describe 'user', type: :feature do
     page.visit '/signin'
     page.fill_in "session_email",    with: "jd@example.com"
     page.fill_in "session_password", with: "password"
-    page.click_button "Log In"
+    page.click_button "Sign In"
   end
 
   it 'expects to see a job in their dashboard after applying' do

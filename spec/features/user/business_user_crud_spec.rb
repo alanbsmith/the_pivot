@@ -5,7 +5,7 @@ describe 'business user can CRUD a new listing' do
   before(:each) do
     listing     = default_job_listing
     @listing    = listing
-    
+
     @category1  = Category.create( title:("Things"), description:("Do some stuff"))
     @category1.listings << listing
   end
@@ -61,7 +61,6 @@ describe 'business user can CRUD a new listing' do
   #       fill_in("session_password", with: "password")
   #       click_button("Sign In")
   #     end
-  #     save_and_open_page
   #   expect(page).to_not have_content('Your Jobs')
   # end
 
