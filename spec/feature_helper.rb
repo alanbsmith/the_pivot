@@ -12,11 +12,11 @@ require 'capybara/rspec'
 
   def default_business_user
     business = User.create( company_name:         "Turing",
-                        first_name:           "Jeff",
-                        last_name:            "Casimir",
-                        email:                "jeff@turing.com",
-                        password:             "password",
-                        password_confirmation:"password")
+                            first_name:           "Jeff",
+                            last_name:            "Casimir",
+                            email:                "jeff@turing.com",
+                            password:             "password",
+                            password_confirmation:"password")
   end
 
   def default_applicant
@@ -28,11 +28,34 @@ require 'capybara/rspec'
   end
 
   def default_job_listing
-        listing = Listing.create( title: "Pastry Chef",
+    business  = default_business_user
+    @business = business
+    listing   = Listing.create( title: "Pastry Chef",
                               description: "Kneads the Dough",
                               pay_rate: "35000/yr",
                               employment_type: "Full-time",
                               number_of_positions: 2,
                               closing_date: Time.now + 1000,
-                              creator_id: default_business_user.id)
+                              creator_id: @business.id)
+  end
+
+  def user_register_a
+    page.visit root_path
+    page.click_link "Register Now"
+    page.fill_in "user_company_name", with: "Apple Incorporated"
+    page.fill_in "user_first_name", with: "Steve"
+    page.fill_in "user_last_name", with: "Jobs"
+    page.fill_in "user_email", with: "steve@example.com"
+    page.fill_in "user_password", with: "password"
+    page.fill_in "user_password_confirmation", with: "password"
+    page.click_button "register_now_btn"
+  end
+
+  def add_listing
+    page.click_link "add-job-listing"
+    page.fill_in      "Title",       with: "barista"
+    page.fill_in      "Description", with: "Grinding dem beans"
+    page.fill_in      "Pay rate",    with: "8.00/hr"
+    page.choose       "part-time"
+    page.click_button "Submit"
   end
