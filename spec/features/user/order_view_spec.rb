@@ -35,10 +35,10 @@ describe "the order view", type: :feature do
 
       visit listings_path
       click_on('Apply for this job!')
-      click_on('Your Jobs')
+      click_on('your_jobs_link')
       click_on('Apply')
       click_on('Apply')
-      click_on('Dashboard')
+      click_on('dashboard')
       click_on('Previous Applications')
 
       expect(page).to have_content('Worker')

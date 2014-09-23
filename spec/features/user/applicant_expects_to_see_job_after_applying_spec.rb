@@ -29,7 +29,7 @@ describe 'user', type: :feature do
     page.visit '/signin'
     page.fill_in "session_email", with: "jd@example.com"
     page.fill_in "session_password", with: "password"
-    page.click_button "Sign In"
+    page.click_button "Log In"
   end
 
   it 'expects to see a job in their dashboard after applying' do
@@ -37,7 +37,7 @@ describe 'user', type: :feature do
     click_button("Apply for this job!")
     expect(page).to have_content("Pastry Chef has been added to your cart.")
 
-    click_link("Your Jobs")
+    click_link("your_jobs_link")
     page.click_link('Apply')
     page.visit cart_path(@user)
     expect(page).to have_link("Pastry Chef")
