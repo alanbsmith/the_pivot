@@ -23,6 +23,7 @@ describe 'the business user view', type: :feature do
           user.password              = "password"
           user.password_confirmation = "password"
         user.save
+
     end
 
     it 'has link to register a business' do
