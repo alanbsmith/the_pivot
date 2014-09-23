@@ -34,7 +34,6 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(user_id: current_user.id)
     @order.add_cart_listings_from_cart(@cart)
-
     if @order.save
       set_resume_order_id(@order)
       Cart.destroy(session[:cart_id])
