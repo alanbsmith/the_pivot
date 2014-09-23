@@ -1,20 +1,19 @@
-<div class="em-wrapper">
-  <div class="em-home-background">
+<div class="em-home-basic-background">
     <!-- <p class="em-home-employme text-center em-element">EmployMe!</p> -->
-  </div>
+    <div class="col-md-6 em-element em-dark-side">
+      <div class="em-element  em-f">
+        <p class="text-center em-title">Real Jobs for the best people.</p>
+        <p class="col-md-8 col-md-offset-2 text-center em-notes lead em-white">
+          “The future belongs to those who believe in the beauty of their dreams.”
+          <br>
+          <small>Eleanor Roosevelt</small>
+          <br>
+          <br>
+          <%= link_to "Browse current job listings", listings_path, class:"btn btn-warning btn-lg" %>
 
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2 em-search-box">
-      <input class="em-home-search em-f" placeholder="Search:" autofocus>
-      <p class="text-right em-search-directions">
-        Search by company name or job title.
-      </p>
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="em-full-width">
-    <div class="em-element text-center">
-      <%= link_to "Just show me all the listings", listings_path, { class: "btn btn-default btn-lg"} %>
-      <a href="#" class="btn btn-warning btn-lg">Let's find my job</a>
-    </div>
-  </div>
+
+
 </div>

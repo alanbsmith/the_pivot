@@ -7,7 +7,8 @@
   background: #171717;
   position: fixed;
   margin-top: -10px;
-  opacity: .95;
+  opacity: 1;
+  z-index:1000;
 }
 .em-top-links {
   color: white;
@@ -79,18 +80,38 @@
 }
 .em-full-width {
   width:100%;
+  margin-top:70px;
 }
 .em-wrapper {
 	min-height: 100%;
-	margin: 0 auto 8px; /* the bottom margin is the negative value of the footer's height */
+	margin: 0 auto -70px ; /* the bottom margin is the negative value of the footer's height */
 }
 .em-footer-bar {
   height:30px;
   width:100%;
   background: #888888;
-  opacity: .95;
+  opacity: 1;
   color: white;
+  z-index:1000;
 }
 html, body {
   height: 100%;
+}
+.em-home-basic-background {
+  background-image: image-url("smile-woman.jpg");
+  background-size: cover;
+  background-position: right;
+  height:100%;
+  margin: 0 auto -10px;
+}
+.em-dark-side {
+  background: rgba(0, 0, 0, .5);
+  height: 100%;
+}
+.em-title {
+  color: white;
+  font-size: 2.5em;
+}
+.em-white {
+  color: white;
 }

@@ -23,7 +23,7 @@ describe 'user', type: :feature do
 
   def user_register_a
     page.visit root_path
-    page.click_link "Register Now"
+    page.click_link "Register"
     page.fill_in "user_company_name", with: "Apple Incorporated"
     page.fill_in "user_first_name", with: "Steve"
     page.fill_in "user_last_name", with: "Jobs"
