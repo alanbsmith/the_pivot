@@ -4,26 +4,10 @@ describe 'the business user view', type: :feature do
 
   describe 'new user can register a business' do
     before do
-        listing = Listing.new
-        listing.title                = "Pastry Chef"
-        listing.description          = "Kneads the Dough"
-        listing.pay_rate             = 35000
-        listing.employment_type      = "Full-time"
-        listing.number_of_positions  = 2
-        listing.closing_date         = Time.now + 1000
-        listing.save
+      listing = default_job_listing
+      listing.categories.create(title: 'Bakery')
 
-        listing.categories.create(title: 'Bakery')
-
-        user = User.new
-          user.company_name          = "FedEx"
-          user.first_name            = "Fred"
-          user.last_name             = "Rex"
-          user.email                 = "fredrex@fedex.com"
-          user.password              = "password"
-          user.password_confirmation = "password"
-        user.save
-
+      default_business_user
     end
 
     it 'has link to register a business' do
@@ -76,15 +60,9 @@ describe 'the business user view', type: :feature do
   describe 'business user can CRUD a new listing' do
     
     before(:each) do
-      @job = Listing.create( title:("Doer"), 
-                             description:("Doing things"),
-                             pay_rate:("1.00/hr"),
-                             employment_type:("part time"),
-                             closing_date:(Time.now + 1000))
-
+      @job = default_job_listing
       @category1 = Category.create( title:("Things"), 
                                     description:("Do some stuff"))
-
       @category1.listings << @job
     end
 
@@ -100,7 +78,7 @@ describe 'the business user view', type: :feature do
       expect(page).to have_content("barista")
       page.click_link "Edit"
       page.fill_in "Title", with: "real barista"
-      page.click_button "Create Listing"
+      page.click_button "Submit"
       expect(page).to have_content("real barista")
     end
 
@@ -122,7 +100,7 @@ describe 'the business user view', type: :feature do
       page.fill_in      "Description", with: "Grinding dem beans"
       page.fill_in      "Pay rate",    with: "8.00/hr"
       page.choose       "part-time"
-      page.click_button "Create Listing"
+      page.click_button "Submit"
     end
 
     it 'can edit a listing' do
@@ -137,10 +115,10 @@ describe 'the business user view', type: :feature do
     it 'can delete a listing' do
       page.visit listing_path(@job)
 
-      expect(page).to have_content('Doer')
+      expect(page).to have_content(@job.title)
       page.click_on "Delete this listing"
       page.visit listings_path
-      expect(page).not_to have_content("Doer")
+      expect(page).not_to have_content(@job.title)
     end
 
     it 'can log in as business' do

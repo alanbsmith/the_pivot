@@ -5,16 +5,17 @@ describe "the order view", type: :feature do
   context 'user is signed in' do
 
     before(:each) do
-      @default_user = User.create(email: "user@example.com", password: "userpassword", password_confirmation: "userpassword",
-                        first_name: "user", last_name: "whatever")
+      @default_user = User.create(email: "user@example.com", 
+                                  password: "userpassword", 
+                                  password_confirmation: "userpassword",
+                                  first_name: "user", 
+                                  last_name: "whatever")
 
-      @order  = User.find_by(email: "user@example.com").orders.create(user_id: @default_user.id)
+      @order = User.find_by(email: "user@example.com").orders.create(user_id: @default_user.id)
 
+      listing  = default_job_listing
+      @listing = listing
       category = FactoryGirl.create(:category)
-      listing  = FactoryGirl.create(:listing)
-
-      @job     = listing
-
       visit home_path
     end
 
@@ -24,8 +25,8 @@ describe "the order view", type: :feature do
 
       expect(page).to have_content('There are currently no jobs in your cart!')
       
-      expect(page).to_not have_content(@job.title)
-      expect(page).to_not have_content(@job.description)
+      expect(page).to_not have_content(@listing.title)
+      expect(page).to_not have_content(@listing.description)
       expect(page).to_not have_button('Remove this job')
     end
 
@@ -33,7 +34,7 @@ describe "the order view", type: :feature do
       default_login
       expect(current_path).to eq("/users/#{@default_user.id}")
 
-      visit listings_path
+      visit listing_path(@listing)
       click_on('Apply for this job!')
       click_on('Your Jobs')
       click_on('Apply')
@@ -41,10 +42,10 @@ describe "the order view", type: :feature do
       click_on('Dashboard')
       click_on('Previous Applications')
 
-      expect(page).to have_content('Worker')
-      click_on('Worker')
+      expect(page).to have_content(@listing.title)
+      click_on(@listing.title)
 
-      expect(page).to have_content('Do work son')
+      expect(page).to have_content(@listing.description)
     end
 
     it 'can view its previous applications' do
