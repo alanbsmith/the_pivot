@@ -74,7 +74,7 @@ describe 'cart', type: :feature do
 
     it 'can empty their cart' do
       expect(page).to have_content("Pastry Chef")
-      click_link("Empty Cart")
+      click_link("Clear All Jobs")
       expect(current_path).to eq(listings_path)
       expect(page).to_not have_content("You have")
     end
