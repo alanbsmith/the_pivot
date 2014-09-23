@@ -10,6 +10,7 @@ describe "the order view", type: :feature do
 
       listing  = default_job_listing
       @listing = listing
+
       category = FactoryGirl.create(:category)
       visit home_path
     end
@@ -24,21 +25,19 @@ describe "the order view", type: :feature do
       expect(page).to_not have_button('Remove this job')
     end
 
-    xit 'creates an application' do
-        resume = Resume.new
-          resume.user_id = @default_user.id
-          resume.attachment = "21st_Century_C.pdf"
-        resume.save!
+    it 'creates an application' do
 
       default_login
-      expect(current_path).to eq("/users/#{@default_user.id}")
+      expect(current_path).to eq("/users/#{@user.id}")
 
       visit listing_path(@listing)
       click_on('Apply for this job!')
       click_on('your_jobs_link')
       click_on('Apply')
       click_on('Apply')
-      click_on('dashboard')
+      expect(page).to have_content('Thanks for your submission!')
+
+      visit user_path(@user)
       click_on('Previous Applications')
 
       expect(page).to have_content(@listing.title)

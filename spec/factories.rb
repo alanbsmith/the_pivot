@@ -30,22 +30,4 @@ FactoryGirl.define do
     title       "Things"
     description "Lots of things to do"
   end
-
-  factory :cart do
-  end
-
-  factory :cart_item do
-    cart {FactoryGirl.create(:cart)}
-    item {FactoryGirl.create(:item)}
-
-    quantity 3
-  end
-
-  # factory :order do
-  #   user_id {FactoryGirl.create(:user)}
-  #
-  #   status     "open"
-  #   total      19.50
-  #   receiving  "pickup"
-  # end
 end
