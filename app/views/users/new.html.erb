@@ -1,19 +1,19 @@
   <script>
     $(document).ready(function() {
-      $('.applicant_registration').hide();
-    });
-
-    $(document).ready(function() {
-      $('#applicant_button').click( function(){
-        $('.applicant_registration').show();
-        $('.business_registration').hide();
-      });
+      $('.business_registration').hide();
     });
 
     $(document).ready(function() {
       $('#business_button').click( function(){
-        $('.applicant_registration').hide();
         $('.business_registration').show();
+        $('.applicant_registration').hide();
+      });
+    });
+
+    $(document).ready(function() {
+      $('#applicant_button').click( function(){
+        $('.business_registration').hide();
+        $('.applicant_registration').show();
       });
     });
   </script>

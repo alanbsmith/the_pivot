@@ -27,11 +27,11 @@ describe 'the user view', type: :feature do
         fill_in("Last Name", with: "Gu")
         fill_in("Password", with: "password")
         fill_in("Confirmation", with: "password")
-        click_button("Register Now")
+        click_button("Register")
         expect(current_path).to eq user_path(User.last)
       end
 
-      it 'can log in as business' do
+      it 'can sign in as business' do
         user = User.new
           user.company_name          = "FedEx"
           user.first_name            = "Fred"
@@ -39,9 +39,9 @@ describe 'the user view', type: :feature do
           user.email                 = "fredrex@fedex.com"
           user.password              = "password"
           user.password_confirmation = "password"
-        user.save
-
-        visit signin_path
+          user.save
+          visit signin_path
+          
         expect(current_path).to eq(signin_path)
           within('//form') do
             fill_in("session_email", with: user.email)
@@ -62,7 +62,7 @@ describe 'the user view', type: :feature do
         fill_in("Last Name", with: "Gu")
         fill_in("Password", with: "password")
         fill_in("Confirmation", with: "password")
-        click_button("Register Now")
+        click_button("Register")
         expect(current_path).to eq user_path(User.last)
       end
 
@@ -76,11 +76,11 @@ describe 'the user view', type: :feature do
         fill_in("Last Name", with: "Gu")
         fill_in("Password", with: "password")
         fill_in("Confirmation", with: "password")
-        click_button("Register Now")
+        click_button("Register")
         expect(page).to have_content('Email is invalid')
       end
 
-      it 'can log in as applicant' do
+      it 'can sign in as applicant' do
         user = User.new
           user.first_name            = "John"
           user.last_name             = "Connor"
@@ -103,19 +103,11 @@ describe 'the user view', type: :feature do
     context 'the applicant user' do
 
       before(:each) do
-        listing1 = Listing.create(title: 'Joby job job',
-                                  description: 'We will work your ass off',
-                                  pay_rate: 100,
-                                  employment_type: 'hourly',
-                                  number_of_positions: 3,
-                                  closing_date: Time.now + 1000
-                                 )
+        listing   = default_job_listing
+        @listing  = listing
 
         category1 = Category.create(title: "Great Jobs", description: "Jobs that don't suck")
-
-        @listing  = Listing.last
-
-        category1.listings << listing1
+        category1.listings << listing
 
         visit home_path
       end
@@ -137,7 +129,7 @@ describe 'the user view', type: :feature do
         visit listings_path
         expect(current_path).to eq(listings_path)
 
-        click_link('Joby job job')
+        click_link(@listing.title)
         expect(current_path).to eq(listing_path(@listing))
         expect(page).to have_content(@listing.title)
         expect(page).to have_content(@listing.description)

@@ -13,15 +13,12 @@
             <div class="panel-body">
             <% category.listings.each do |listing| %>
               <h4><%= link_to listing.title, listing_path(listing) %></h4>
+              <h4><%= @business.company_name %></h4>
               <h5>Job Description</h5>
               <p><%= truncate(listing.description, :length => 1000) %>
                  <%= link_to "Read more...", listing_path(listing) %>
               </p>
-              <% if !current_user %>
-                <%= button_to "Apply for this job!", cart_listings_path(listing_id: listing),{ class: 'btn btn-warning' } %>
-              <% elsif !current_user.company_name %>
-                <%= button_to "Apply for this job!", cart_listings_path(listing_id: listing),{ class: 'btn btn-warning' } %>
-              <% end %>
+              <hr/>
             <%end%>
             </div>
           </div>
