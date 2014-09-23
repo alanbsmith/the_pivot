@@ -66,7 +66,7 @@ describe 'the business user view', type: :feature do
         within('//form') do
           fill_in("session_email",    with: business_user.email)
           fill_in("session_password", with: "password")
-          click_button("Sign In")
+          click_button("Log In")
         end
       expect(current_path).to eq sessions_path
     end
@@ -147,7 +147,7 @@ describe 'the business user view', type: :feature do
         within('//form') do
           fill_in("session_email", with: User.last.email)
           fill_in("session_password", with: "password")
-          click_button("Sign In")
+          click_button("Log In")
         end
       expect(current_path).to eq user_path(User.last)
     end
@@ -157,7 +157,7 @@ describe 'the business user view', type: :feature do
         within('//form') do
           fill_in("session_email", with: User.last.email)
           fill_in("session_password", with: "password")
-          click_button("Sign In")
+          click_button("Log In")
         end
       visit listing_path(Listing.last)
       expect(page).to_not have_content('Apply')
@@ -168,7 +168,7 @@ describe 'the business user view', type: :feature do
     #     within('//form') do
     #       fill_in("session_email", with: User.last.email)
     #       fill_in("session_password", with: "password")
-    #       click_button("Sign In")
+    #       click_button("Log In")
     #     end
     #     save_and_open_page
     #   expect(page).to_not have_content('Your Jobs')
@@ -179,7 +179,7 @@ describe 'the business user view', type: :feature do
         within('//form') do
           fill_in("session_email", with: User.last.email)
           fill_in("session_password", with: "password")
-          click_button("Sign In")
+          click_button("Log In")
         end
       visit listings_path
       expect(page).to_not have_content("Apply for this job!")

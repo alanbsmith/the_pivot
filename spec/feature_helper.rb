@@ -3,9 +3,9 @@ require 'capybara/rails'
 require 'capybara/rspec'
 
  def default_login
-    click_link('Sign In')
+    click_link("Log In")
     expect(current_path).to eq(signin_path)
     fill_in("session_email", with: "user@example.com")
     fill_in("session_password", with: "userpassword")
-    click_button('Sign In')
+    click_button("Log In")
   end

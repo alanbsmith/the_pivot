@@ -46,7 +46,7 @@ describe 'the user view', type: :feature do
           within('//form') do
             fill_in("session_email", with: user.email)
             fill_in("session_password", with: "password")
-            click_button("Sign In")
+            click_button("Log In")
           end
         expect(current_path).to eq user_path(user)
         expect(page).to have_content('Sucsessfully Logged In!')
@@ -94,7 +94,7 @@ describe 'the user view', type: :feature do
           within('//form') do
             fill_in("session_email", with: user.email)
             fill_in("session_password", with: "password")
-            click_button("Sign In")
+            click_button("Log In")
           end
         expect(current_path).to eq user_path(user)
       end

@@ -29,7 +29,7 @@ describe 'user', type: :feature do
     page.visit '/signin'
     page.fill_in "session_email", with: "jd@example.com"
     page.fill_in "session_password", with: "password"
-    page.click_button "Sign In"
+    page.click_button "Log In"
   end
 
   it 'expects to see a job in their dashboard after applying' do
