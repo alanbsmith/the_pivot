@@ -27,19 +27,5 @@ Rails.application.routes.draw do
     resources :orders
     resources :cart_listings
   end
-
-  namespace :business do
-    get "/paid" => "orders#paid", as: :paid
-    get "/ordered" => "orders#ordered", as: :ordered
-    get "/cancelled" => "orders#cancelled", as: :cancelled
-    get "/completed" => "orders#completed", as: :completed
-    get "/cancel/:id" => "orders#cancel", as: :cancel
-    get "/complete/:id" => "orders#complete", as: :complete
-
-    resources :cart_listings
-    resources :admins
-    resources :categories
-    resources :listings
-    resources :orders
-  end
+  
 end

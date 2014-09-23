@@ -1,9 +1,3 @@
-<% if flash[:alert] %>
-  <div class="alert alert-success">
-    <%= flash[:alert] %>
-  </div>
-<% end %>
-
 <div class="container">
   <h2>Job Categories</h2>
 
@@ -23,8 +17,12 @@
               <p><%= truncate(listing.description, :length => 1000) %>
                  <%= link_to "Read more...", listing_path(listing) %>
               </p>
-              <%= button_to "Add Job To Cart", cart_listings_path(listing_id: listing),{ class: 'btn btn-warning' } %>
-            <% end %>
+              <% if !current_user %>
+                <%= button_to "Apply for this job!", cart_listings_path(listing_id: listing),{ class: 'btn btn-warning' } %>
+              <% elsif !current_user.company_name %>
+                <%= button_to "Apply for this job!", cart_listings_path(listing_id: listing),{ class: 'btn btn-warning' } %>
+              <% end %>
+            <%end%>
             </div>
           </div>
         </div>

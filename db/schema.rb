@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20140922005936) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-  
+
   create_table "tenants", force: true do |t|
     t.integer  "user_id"
     t.string   "subdomain"
@@ -96,10 +96,6 @@ ActiveRecord::Schema.define(version: 20140922005936) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
 
   add_index "users", ["company_name"], name: "index_users_on_company_name", using: :btree

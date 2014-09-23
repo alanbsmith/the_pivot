@@ -10,7 +10,11 @@
     <p  class=" lead text-center">Publish your Job Opportunities and Select the best people.</p>
 
     <div class="col-md-6 col-md-offset-3 text-center">
-      <%= button_to "Apply for this job!", cart_listings_path(listing_id: @listing), { class: 'btn btn-warning' } %>
+      <% if !current_user %>
+        <%= button_to "Apply for this job!", cart_listings_path(listing_id: @listing), { class: 'btn btn-warning' } %>
+      <% elsif !current_user.company_name %>
+        <%= button_to "Apply for this job!", cart_listings_path(listing_id: @listing), { class: 'btn btn-warning' } %>
+      <% end %>
       <%= link_to "Back to browsing", listings_path,  :class => "btn btn-success"  %>
     </div>
 
@@ -39,6 +43,7 @@
       <div class="span4"><%= "#{@listing.closing_date}" %></div>
     </div>
 
-    <%= link_to "Edit", edit_listing_path, :class => "btn btn-success"  %>
+    <%= link_to "Edit this listing", edit_listing_path, :class => "btn btn-success"  %>
+    <%= link_to "Delete this listing", listing_path(@listing), method: :delete, :class => "btn btn-success"  %> 
   </div>
 </div>

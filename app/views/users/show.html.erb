@@ -1,9 +1,3 @@
-<% if flash[:alert] %>
-	<div class="alert alert-success">
-		<%= flash[:alert] %>
-	</div>
-<% end %>
-
 
 <div class="back_color">
 	<div class="container">
@@ -15,11 +9,11 @@
 				<%= link_to "View Your Cart", @cart, :class => "btn btn-success" %>
 				<%= link_to "Previous Applications", orders_path, :class => "btn btn-success" %>
 			<% else %>
-				<%= link_to "Add a New Job Listing", new_listing_path, :class => "btn btn-success" %>
+				<%= link_to "Add a New Job Listing", new_listing_path, :class => "btn btn-success", :id => "add-job-listing" %>
 				<%= link_to "View Current Job Listings", listings_path,  :class => "btn btn-success"  %>
+				<%= link_to "View Current Applicants", resumes_path, :class => "btn btn-success" %>
 			<% end %>
 		</div>
-
 	</div>
 </div>
 <div class="people_happy"></div>
