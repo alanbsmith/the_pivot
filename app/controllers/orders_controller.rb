@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
 
-        format.html { redirect_to home_url,
+        format.html { redirect_to user_path(current_user),
           notice: 'Thanks for your submission! You can view previous applications in your dashboard!' }
         format.json { render action: 'show', status: :created,
           location: @order }

@@ -1,4 +1,5 @@
 require 'faker'
+
 class Seed
   def initialize
     generate_users
@@ -14,6 +15,7 @@ class Seed
       password: "password",
       password_confirmation: "password"
       )
+
     10.times do |i|
       user = User.create!(
         first_name: Faker::Name.first_name,
@@ -58,7 +60,7 @@ class Seed
         description: Faker::Lorem.paragraph(3),
         pay_rate: random_pay_rate,
         employment_type: random_employment_type,
-        business_id: random_business_id,
+        creator_id: random_creator_id,
         closing_date: random_closing_date,
         category_ids: random_category_id
       )
@@ -83,17 +85,13 @@ class Seed
     Time.now + (25000..1000000).to_a.sample
   end
 
-  def random_business_id
-    (1..10).to_a.sample
+  def random_creator_id
+    (12..20).to_a.sample
   end
 
   def random_category_id
     Category.all.sample.id
   end
-
-
-
-
 end
 
 Seed.new

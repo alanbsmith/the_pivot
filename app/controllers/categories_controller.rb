@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    @business   = User.find_by(id: listing.creator_id)
   end
 
   def show
@@ -20,6 +21,10 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+  def find_business_from_listing
+    User.find_by(id: @current_listing_id)
+  end
 
   def category_params
     params.require(:category).permit(:title,

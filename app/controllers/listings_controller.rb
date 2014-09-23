@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+
   def new
     @listing    = Listing.new
     @categories = Category.all
@@ -7,13 +8,14 @@ class ListingsController < ApplicationController
   def index
     @listings   = Listing.all
     @categories = Category.all
+    @business   = find_business_from_listing
   end
 
   def show
     @listing = Listing.find(params[:id])
   end
 
-  def create
+  def create 
     @listing = Listing.new(listing_params.merge creator_id: current_user.id)
     respond_to do |format|
 			if @listing.save
@@ -52,15 +54,19 @@ class ListingsController < ApplicationController
 
   private
 
+  def find_business_from_listing
+    User.find_by(id: current_listing)
+  end
+
   def listing_params
     	params.require(:listing).permit(:title,
 																	    :description,
 																	    :pay_rate,
                                       :employment_type,
                                       :number_of_positions,
-                                      :business_id,
                                       :closing_date,
-                                      :categories_list)
+                                      :categories_list,
+                                      :creator_id)
   end
 
   def categories

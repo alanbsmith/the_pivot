@@ -5,17 +5,13 @@ require 'capybara/rspec'
 describe 'cart', type: :feature do
 
   before do
-    listing = Listing.new
-    listing.title                = "Pastry Chef"
-    listing.description          = "Kneads the Dough"
-    listing.pay_rate             = 35000
-    listing.employment_type      = "Full-time"
-    listing.number_of_positions  = 2
-    listing.closing_date         = Time.now + 1000
-    listing.save
+    listing  = default_job_listing
+    @listing = listing
 
     listing.categories.create(title: 'Bakery')
-    @listing = listing
+    
+    default_business_user
+
     visit listings_path
   end
 
@@ -23,10 +19,10 @@ describe 'cart', type: :feature do
     expect(page).to have_content('Bakery')
 
     click_link('Bakery')
+    
     expect(page).to have_content(@listing.title)
     expect(page).to have_content(@listing.description)
     expect(page).to have_link('Read more...')
-    expect(page).to have_button('Apply for this job!')
   end
 
   it 'can view the details of a job listing' do
@@ -46,10 +42,10 @@ describe 'cart', type: :feature do
   context 'cart CRUD' do
 
     before(:each)do
-      visit listings_path
+      visit listing_path(@listing)
       click_button("Apply for this job!")
       expect(page).to have_content("Pastry Chef has been added to your cart")
-      click_link("Your Jobs")
+      click_link("your_jobs_link")
     end
 
     it 'can add listings to their cart' do
@@ -57,7 +53,7 @@ describe 'cart', type: :feature do
     end
 
     it 'cannot add multiples of the same listing to their cart' do
-      visit listings_path
+      visit listing_path(@listing)
       click_button("Apply for this job!")
       expect(page).to have_content("This job is already in your cart")
     end
@@ -76,20 +72,17 @@ describe 'cart', type: :feature do
       expect(page).to have_content("Pastry Chef")
       click_link("Empty Cart")
       expect(current_path).to eq(listings_path)
-      expect(page).to have_content("Your cart is now empty.")
-
-      click_link("Your Jobs")
-      expect(page).to_not have_content("Pastry Chef")
+      expect(page).to_not have_content("You have")
     end
   end
 
   it 'lists its number of jobs in the menu' do
-    visit listings_path
+    visit listing_path(@listing)
     expect(page).to have_content(0)
     click_button("Apply for this job!")
     expect(page).to have_content(1)
-    click_link("Your Jobs")
+    click_link("You have")
     click_link("Remove this job")
-    expect(page).to have_content(0)
+    expect(page).to_not have_content("You have")
   end
 end
