@@ -7,12 +7,13 @@
   <% if @cart.cart_listings.empty? %>
     <h3>There are currently no jobs in your cart!</h3>
   <% else %>
-    <table class="table table-hover">
+    <table class="table table-hover cart_table_padding">
       <thead>
         <tr>
           <th>Title</th>
           <th>Description</th>
           <th>Closing Date</th>
+          <th>Resume</th>
           <th></th>
         </tr>
       </thead>
@@ -22,8 +23,15 @@
         <tr>
           <td><%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %></td>
           <td><%= truncate(cart_listing.listing.description, :length => 100) %></td>
-          <tb><%= cart_listing.listing.closing_date %></td>
-          <td><%= link_to 'Remove this job', cart_listing ,method: :delete, class: "btn btn-danger" %></td>
+          <td><%= cart_listing.listing.closing_date.strftime('%b %d, %Y, %I:%M %p') %></td>
+          <td>
+            <%= form_for(@resume, html: {multipart: true} ) do |f| %>
+              <%= f.label :document, "Upload your Resume" %><br/>
+              <%= f.file_field :document %>
+              <%= f.submit "Upload Resume", :class => "btn btn-success btn-sm resume_button" %>
+            <% end %>
+          </td>
+          <td><%= link_to 'Remove this job', cart_listing ,method: :delete, class: "btn btn-danger btn-sm" %></td>
         </tr>
         <% end %>
       </tbody>
@@ -31,34 +39,18 @@
   <% end %>
 
   <div class="row">
-    <%= link_to 'Empty Cart', cart_path, method: :delete, class: "btn btn-danger" %>
+    <%= link_to 'Clear All Jobs', cart_path, method: :delete, class: "btn btn-danger btn-sm clear_jobs" %>
   </div>
-
-  <% if signed_in? %>
-    <div class="row">
-
-    </div>
-
-    <div class="row">
-      <%= form_for(@resume, html: {multipart: true} ) do |f| %>
-        <%= f.label :document, "Upload your Resume" %><br/>
-        <%= f.file_field :document %>
-        <%= f.submit "Upload Resume", :class => "btn btn-warning" %>
-    <% end %>
-  <% end %>
 
   <div class="row-fluid push_buttons_down">
     <% if signed_in? %>
         <% if @cart.cart_listings.count > 0 %>
-          <%= link_to 'Apply', new_order_path, class: "btn btn-warning" %>
+          <%= link_to 'Apply', new_order_path, class: "btn btn-warning btn-lg apply_for_all_jobs" %>
         <% end %>
   </div>
-  <% else %>
+    <% else %>
     <div class="row">
-      <h4>Feel free to keep saving jobs to your cart.</h4>
-      <h4> But you'll need to sign in or create an account to finish your application.</h4>
-      <%= link_to "Log In", signin_path %> or
-      <%= link_to 'Join Today!', register_path %>
+      <h4> You need to <%= link_to "sign in", signin_path %> or <%= link_to "create an account", register_path %> to finish applying for these jobs!</h4>
     </div>
-  <% end %>
+    <% end %>
 </div>
