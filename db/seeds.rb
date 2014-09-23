@@ -62,7 +62,9 @@ class Seed
         employment_type: random_employment_type,
         creator_id: random_creator_id,
         closing_date: random_closing_date,
-        category_ids: random_category_id
+        category_ids: random_category_id,
+        location_city:  Faker::Address.city,
+        location_state: Faker::Address.state_abbr
       )
       puts "Listing #{i}: #{listing.title} - #{listing.closing_date}"
     end
@@ -91,6 +93,10 @@ class Seed
 
   def random_category_id
     Category.all.sample.id
+  end
+
+  def random_location
+
   end
 end
 

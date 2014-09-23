@@ -10,13 +10,15 @@
       </tr>
     </thead>
     <tbody>
-    <% @resumes.each do |resume| %>
-      <tr>
-        <td><%= resume.cart_listing_id %></td>
-        <td><%= resume.user_id %></td>
-        <td><%= resume.document_file_name %></td>
-        <td><%= resume.document_updated_at.strftime('%b %d, %Y, %I:%M') %></td>
-      </tr>
+    <% @orders.each do |order| %>
+      <% order.listings.each do |listing| %>
+        <tr>
+          <td><%= link_to listing.title, listing_path(listing) %></td>
+          <td><%= find_applicant_name(order.user_id) %></td>
+          <td><%= order.created_at.strftime('%b %d, %Y, %I:%M')%></td>
+      <% end %>
+          <td><%= link_to "View Resume", find_order_resume(order.id), :target => '_blank' %></td>
+        </tr>
     <% end %>
    </tbody>
   </table>

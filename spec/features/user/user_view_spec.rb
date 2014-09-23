@@ -8,18 +8,18 @@ describe 'the user view', type: :feature do
 
       it 'has link to register a business' do
         visit home_path
-        expect(page).to have_link('Register')
+        expect(page).to have_link('Register Now')
       end
 
       it 'displays the business registration page' do
         visit home_path
-        click_link('Register')
+        click_link('Register Now')
         expect(current_path).to eq(new_user_path)
       end
 
       it 'can register a business' do
         visit home_path
-        click_link('Register')
+        click_link('Register Now')
         expect(current_path).to eq(new_user_path)
         fill_in("Company name", with: "FedEx")
         fill_in("email", with: "user@example.com")
@@ -31,7 +31,7 @@ describe 'the user view', type: :feature do
         expect(current_path).to eq user_path(User.last)
       end
 
-      it 'can log in as business' do
+      it 'can sign in as business' do
         user = User.new
           user.company_name          = "FedEx"
           user.first_name            = "Fred"
@@ -39,14 +39,14 @@ describe 'the user view', type: :feature do
           user.email                 = "fredrex@fedex.com"
           user.password              = "password"
           user.password_confirmation = "password"
-        user.save
-
-        visit signin_path
+          user.save
+          visit signin_path
+          
         expect(current_path).to eq(signin_path)
           within('//form') do
             fill_in("session_email", with: user.email)
             fill_in("session_password", with: "password")
-            click_button("Log In")
+            click_button("Sign In")
           end
         expect(current_path).to eq user_path(user)
         expect(page).to have_content('Sucsessfully Logged In!')
@@ -54,7 +54,7 @@ describe 'the user view', type: :feature do
 
       it 'can register a applicant' do
         visit home_path
-        click_link('Register')
+        click_link('Register Now')
         click_button('Applicant Registration')
         expect(current_path).to eq(new_user_path)
         fill_in("email", with: "user@example.com")
@@ -68,7 +68,7 @@ describe 'the user view', type: :feature do
 
       it 'gets an error when entering invalid info as an applicant' do
         visit home_path
-        click_link('Register')
+        click_link('Register Now')
         click_button('Applicant Registration')
         expect(current_path).to eq(new_user_path)
         fill_in("email", with: "u")
@@ -80,7 +80,7 @@ describe 'the user view', type: :feature do
         expect(page).to have_content('Email is invalid')
       end
 
-      it 'can log in as applicant' do
+      it 'can sign in as applicant' do
         user = User.new
           user.first_name            = "John"
           user.last_name             = "Connor"
@@ -94,7 +94,7 @@ describe 'the user view', type: :feature do
           within('//form') do
             fill_in("session_email", with: user.email)
             fill_in("session_password", with: "password")
-            click_button("Log In")
+            click_button("Sign In")
           end
         expect(current_path).to eq user_path(user)
       end
@@ -103,7 +103,7 @@ describe 'the user view', type: :feature do
     context 'the applicant user' do
 
       before(:each) do
-        listing = default_job_listing
+        listing   = default_job_listing
         @listing  = listing
 
         category1 = Category.create(title: "Great Jobs", description: "Jobs that don't suck")

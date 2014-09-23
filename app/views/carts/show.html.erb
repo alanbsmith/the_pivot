@@ -1,3 +1,4 @@
+
 <div class="container">
   <h1>Your Job Listings</h1>
   <% if notice %>
@@ -38,15 +39,20 @@
     </table>
   <% end %>
 
-  <div class="row">
-    <%= link_to 'Clear All Jobs', cart_path, method: :delete, class: "btn btn-danger btn-sm clear_jobs" %>
-  </div>
+  <% if signed_in? %>
+    <div class="row">
+      <%= form_for(@resume, html: {multipart: true} ) do |f| %>
+        <%= f.label :document, "Upload your Resume" %><br/>
+        <%= f.file_field :document %>
+        <%= f.submit "Upload Resume", :class => "btn btn-warning" %>
+    <% end %>
+  <% end %>
 
   <div class="row-fluid push_buttons_down">
     <% if signed_in? %>
-        <% if @cart.cart_listings.count > 0 %>
-          <%= link_to 'Apply', new_order_path, class: "btn btn-warning btn-lg apply_for_all_jobs" %>
-        <% end %>
+      <% if @cart.cart_listings.count > 0 %>
+        <%= link_to 'Apply', new_order_path, class: "btn btn-warning btn-lg apply_for_all_jobs" %>
+      <% end %>
   </div>
     <% else %>
     <div class="row">

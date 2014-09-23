@@ -9,8 +9,7 @@ describe 'cart', type: :feature do
     @listing = listing
 
     listing.categories.create(title: 'Bakery')
-    
-    default_business_user
+ default_business_user
 
     visit listings_path
   end
@@ -19,7 +18,7 @@ describe 'cart', type: :feature do
     expect(page).to have_content('Bakery')
 
     click_link('Bakery')
-    
+
     expect(page).to have_content(@listing.title)
     expect(page).to have_content(@listing.description)
     expect(page).to have_link('Read more...')
@@ -66,13 +65,6 @@ describe 'cart', type: :feature do
       click_link("Remove this job")
       expect(page).to have_content("Listing was successfully removed form cart.")
       expect(page).to_not have_content(@listing.title)
-    end
-
-    it 'can empty their cart' do
-      expect(page).to have_content("Pastry Chef")
-      click_link("Clear All Jobs")
-      expect(current_path).to eq(listings_path)
-      expect(page).to_not have_content("You have")
     end
   end
 

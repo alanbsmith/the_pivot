@@ -1,16 +1,8 @@
-<% if flash[:alert] %>
-	<div class="alert alert-success">
-		<%= flash[:alert] %>
-	</div>
-<% end %>
-
 
 <div class="back_color">
 	<div class="container">
 		<h1 class="text-center">Grow Your Posibilities.</h1>
 		<p  class=" lead text-center">Publish your Job Opportunities and Select the best people.</p>
-		<!-- <p> <%= "#{10} Job listings"  %> </p>
-		<p> <%= "#{100} Current applicants"  %> </p> -->
 		<div class="col-md-6 col-md-offset-3 text-center">
 			<% if current_user.company_name == nil %>
 				<%= link_to "View Current Job Listings", listings_path, :class => "btn btn-success" %>

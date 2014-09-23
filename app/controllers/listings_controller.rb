@@ -15,7 +15,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
   end
 
-  def create 
+  def create
     @listing = Listing.new(listing_params.merge creator_id: current_user.id)
     respond_to do |format|
 			if @listing.save
@@ -66,6 +66,8 @@ class ListingsController < ApplicationController
                                       :number_of_positions,
                                       :closing_date,
                                       :categories_list,
+                                      :location_city,
+                                      :location_state,
                                       :creator_id)
   end
 
