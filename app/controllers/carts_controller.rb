@@ -9,4 +9,10 @@ class CartsController < ApplicationController
     @user   = current_user
     @resume = Resume.new
   end
+
+  private
+
+  def cart_is_empty
+    redirect_to listings_path, notice: 'Your cart is now empty.'
+  end
 end
