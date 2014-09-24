@@ -94,7 +94,7 @@ describe 'business user can CRUD a new listing' do
 
   it 'can edit a listing' do
     visit listings_path
-    page.click_link("Read more...")
+    page.click_link(@listing.title)
     expect(page).to have_link("Edit")
     click_link("Edit")
     expect(current_path).to eq(edit_listing_path(@listing))

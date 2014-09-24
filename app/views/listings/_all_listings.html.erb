@@ -1,0 +1,40 @@
+<body data-spy="scroll" data-target="#side-nav">
+
+  <h1>Current Jobs Listings</h1>
+  <div class="row">
+  <div class="col-lg-2 sidebar pull-right" id="side-nav">
+    <div class="list-group">
+      <ul class="nav nav-list affix">
+      <% @categories.each do |category| %>
+        <% unless category.listings.empty? %>
+          <a href="#<%= category.title %>" class="list-group-item"><%= category.title %></a>
+        <% end %>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-10">
+  <% @categories.each do |category| %>
+    <% unless category.listings.empty? %>
+      <div class="panel" id="<%= category.title %>">
+        <h1><%= category.title %></h1>
+      </div>
+      <div class="row">
+        <% category.listings.each do |listing| %>
+            <div class="col-lg-3">
+              <div class="thumbnail">
+                <div class="caption">
+                  <h4><%= link_to listing.title, listing_path(listing) %></h4>
+                  <p><strong><%= listing.creator.company_name %></strong></p>
+                  <p><%= truncate(listing.description, :length => 75) %></p>
+                  <p><strong><%= listing.employment_type.capitalize %></strong></p>
+                  <p><strong><%= "$#{listing.pay_rate}" %></strong></p>
+                </div>
+              </div>
+            </div>
+        <% end %>
+      </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>

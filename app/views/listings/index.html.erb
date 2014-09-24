@@ -1,31 +1,7 @@
-<div class="container">
-  <h2>Job Categories</h2>
-
-  <% @categories.each_with_index do |category, i| %>
-      <% unless category.listings.empty? %>
-      <div class="accordion panel-group" id="accordion">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <a class="accordion-toggle category-title" data-toggle="collapse" data-parent="#accordion" href="#<%= i %>">
-            <h4><%= category.title %></h4>
-          </div>
-          <div class="panel-body collapse" id="<%= i %>">
-            <div class="panel-body">
-            <% category.listings.each do |listing| %>
-              <h4><%= link_to listing.title, listing_path(listing) %></h4>
-              <h4><%= @business.company_name %></h4>
-              <h5>Job Description</h5>
-              <p><%= truncate(listing.description, :length => 1000) %>
-                 <%= link_to "Read more...", listing_path(listing) %>
-              </p>
-              <hr/>
-            <%end%>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    <% end %>
-    <%= link_to "View your Cart", @cart, class: "btn btn-warning pull-right" %>
-  </div>
-</div>
+<body data-spy="scroll" data-target="#side-nav">
+  <% if signed_in_as_business?(current_user) %>
+    <%= render :partial => 'business_listings' %>
+  <% else %>
+    <%= render :partial => 'all_listings' %>
+  <% end %>
+</body>
