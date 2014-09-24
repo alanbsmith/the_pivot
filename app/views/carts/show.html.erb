@@ -1,5 +1,9 @@
   <div class="container em-cart-padding">
-    <h1>These are your selected jobs</h1>
+    <% if @cart.cart_listings.count > 1 %>
+      <h1>These are your selected jobs.</h1>
+    <% else %>
+      <h1>This is your selected job.</h1>
+    <% end %>
     <% if @cart.cart_listings.empty? %>
       <h3>There are currently no jobs in your cart!</h3>
     <% else %>
@@ -18,7 +22,7 @@
           <tr>
             <td><%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %></td>
             <td><%= truncate(cart_listing.listing.description, :length => 500) %></td>
-            <td><%= cart_listing.listing.closing_date.strftime('%b %d, %Y, %I:%M %p') %></td>
+            <td><%= cart_listing.listing.closing_date.strftime('%b %d, %Y') %></td>
             <td><%= link_to '', cart_listing ,method: :delete, class: "glyphicon glyphicon-remove em-glyph-style" %></td>
           </tr>
           <% end %>
@@ -52,7 +56,7 @@
       <% if @cart.cart_listings.count > 0 %>
   <div class="col-md-6">
     <div>
-        <%= link_to 'Go to Confirmation Page', new_order_path, class: "btn btn-success btn-lg apply_for_all_jobs" %>
+        <%= link_to 'Next: Confirm Your Applications', new_order_path, class: "btn btn-success btn-lg apply_for_all_jobs" %>
       <% end %>
     </div>
   </div>

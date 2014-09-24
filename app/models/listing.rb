@@ -11,6 +11,8 @@ class Listing  < ActiveRecord::Base
   validates :pay_rate, presence: true
   # validates :number_of_positions, presence: true, numericality: { only_integer: true }
   validates :closing_date, presence: true
+  validates :location_city, presence: true
+  validates :location_state, presence: true
   belongs_to :creator, class_name: 'User'
 
   def categories_list(category_list)

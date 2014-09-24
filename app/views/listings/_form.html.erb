@@ -35,16 +35,26 @@
     </div>
   </div>
   <div class="form-group">
-    <div class="col-lg-10">
-      <%= f.label "Location", :class => 'control-label' %>
+    <div class='col-lg-2'>
+      <%= f.label "City", :class => 'control-label' %>
       <div class='field_examples'>
         List a city here: e.g. Toronto, London, Denver, etc.
       </div>
+    </div>
+    <div class='col-lg-10'>
       <%= f.text_field :location_city, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class='col-lg-2'>
+      <%= f.label "State", :class => 'control-label' %>
       <div class='field_examples'>
         List a state or province abbreviation here: e.g. CO, DC, TX, AB, etc.
       </div>
-      <%= f.text_field :location_state, :class => 'form-control' %>
+    </div>
+    <div class='col-lg-10 em-push-10'>
+      <%= f.select :location_state, options_for_select(us_states), :class => 'form-control' %>
     </div>
   </div>
   <div class="form-group">
@@ -67,6 +77,11 @@
   </div>
 
   <div class="form-group col-lg-12">
+
+    <div class='col-lg-2'>
+      <%= f.label :hours, class: 'control-label em-gu-padding' %>
+    </div>
+
     <div class='col-lg-2'>
       <%= f.label :part_time, :class => 'control-label', :id=> 'text_left' %>
       <%= f.radio_button(:employment_type, "part-time", :id => 'part-time',
@@ -81,7 +96,7 @@
 
   <div class="form-group col-lg-12">
     <%= f.label :public_until_this_date, :id => 'closing', :class => 'select_special_padding' %>
-    <%= f.datetime_select :closing_date, :ampm => true, :minute_step => 15, :class => 'form-control ' %>
+    <%= f.date_select :closing_date, :class => 'form-control ' %>
   </div>
 
   <div class="form-group col-lg-12">

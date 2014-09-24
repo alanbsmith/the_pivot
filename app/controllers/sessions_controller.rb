@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       sign_in user
-        flash[:notice] = 'Sucsessfully Logged In!'
-        unless request.original_url == sessions_path
+        flash[:notice] = 'Sucsessfully Signed In!'
+        if request.original_url != (root_url + sessions_path.gsub("/", ""))
           redirect_to(:back)
         else
           redirect_to user
@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
+    flash[:notice] = "You have succsessfully signed out"
     redirect_to root_url
   end
 end
