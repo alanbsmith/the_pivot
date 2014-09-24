@@ -19,15 +19,14 @@ describe 'cart', type: :feature do
 
     click_link('Bakery')
 
-    expect(page).to have_content(@listing.title)
+    expect(page).to have_link(@listing.title)
     expect(page).to have_content(@listing.description)
-    expect(page).to have_link('Read more...')
   end
 
   it 'can view the details of a job listing' do
     expect(current_path).to eq(listings_path)
     click_link('Bakery')
-    click_link('Read more...')
+    click_link(@listing.title)
 
     expect(current_path).to eq(listing_path(@listing))
     expect(page).to have_content(@listing.title)
@@ -55,10 +54,6 @@ describe 'cart', type: :feature do
       visit listing_path(@listing)
       click_button("Apply for this job!")
       expect(page).to have_content("This job is already in your cart")
-    end
-
-    it 'can upload a resume within the cart' do
-
     end
 
     it 'can remove items from their cart' do

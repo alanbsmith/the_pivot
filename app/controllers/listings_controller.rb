@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+include ListingsHelper
 
   def new
     @listing    = Listing.new
@@ -6,9 +7,8 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listings   = Listing.all
-    @categories = Category.all
-    @business   = find_business_from_listing
+    @listings         = Listing.all
+    @categories       = Category.all
   end
 
   def show
@@ -53,10 +53,6 @@ class ListingsController < ApplicationController
   end
 
   private
-
-  def find_business_from_listing
-    User.find_by(id: current_listing)
-  end
 
   def listing_params
     	params.require(:listing).permit(:title,

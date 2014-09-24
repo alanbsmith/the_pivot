@@ -8,8 +8,8 @@ describe "the order view", type: :feature do
       @user  = default_applicant
       @order = User.find_by(email: @user.email).orders.create(user_id: @user.id)
 
-      listing  = default_job_listing
-      @listing = listing
+      @listing  = default_job_listing
+      # @listing = listing
 
       category = FactoryGirl.create(:category)
       visit home_path
@@ -29,8 +29,8 @@ describe "the order view", type: :feature do
 
       default_login
       expect(current_path).to eq("/users/#{@user.id}")
-
-      visit listing_path(@listing)
+      visit listings_path
+      click_on(@listing.title)
       click_on('Apply for this job!')
       click_on('your_jobs_link')
       click_on('Apply')

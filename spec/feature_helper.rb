@@ -29,8 +29,7 @@ require 'capybara/rspec'
   end
 
   def default_job_listing
-    business  = default_business_user
-    @business = business
+    @business  = default_business_user
     listing   = Listing.create( title: "Pastry Chef",
                               description: "Kneads the Dough",
                               pay_rate: "35000/yr",

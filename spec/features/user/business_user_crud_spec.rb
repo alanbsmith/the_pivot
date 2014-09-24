@@ -28,7 +28,7 @@ describe 'business user can CRUD a new listing' do
 
   it 'can edit a listing' do
     visit listings_path
-    page.click_link("Read more...")
+    page.click_link(@listing.title)
     expect(page).to have_link("Edit")
 
     click_link("Edit")
@@ -53,16 +53,6 @@ describe 'business user can CRUD a new listing' do
     visit listing_path(Listing.last)
     expect(page).to_not have_content('Apply')
   end
-
-  # it 'cannot see the Your Cart in the menu if they are logged in' do
-  #   visit signin_path
-  #     within('//form') do
-  #       fill_in("session_email", with: User.last.email)
-  #       fill_in("session_password", with: "password")
-  #       click_button("Sign In")
-  #     end
-  #   expect(page).to_not have_content('Your Jobs')
-  # end
 
   it 'cannot see Apply for Job from the listings page' do
     visit signin_path
