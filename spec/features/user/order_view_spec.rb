@@ -31,7 +31,7 @@ describe "the order view", type: :feature do
       expect(current_path).to eq("/users/#{@user.id}")
       visit listings_path
       click_on(@listing.title)
-      click_on('Apply for this job!')
+      click_on('Add this Job')
       click_on('your_jobs_link')
       click_on('Apply')
       click_on('Apply')

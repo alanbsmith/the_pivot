@@ -12,7 +12,7 @@
             <div class="text-center">
               <p>
                 <%= link_to 'View applicants', "#" %> |
-                <%= link_to 'Edit listing', edit_listing_path(listing) %> |
+                <%= link_to 'Edit listing', edit_listing_path(listing), id: "edit-listing" %> |
                 <%= link_to 'Remove listing', listing_path(listing), method: :delete %>
               </p>
             </div>

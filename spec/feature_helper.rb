@@ -59,7 +59,7 @@ require 'capybara/rspec'
     page.fill_in      "Description",            with: "Grinding dem beans"
     page.fill_in      "Pay rate",               with: "8.00/hr"
     page.fill_in      "listing_location_city",  with: "Waco"
-    page.fill_in      "listing_location_state", with: "TX"
+    page.select       "TX"
     page.choose       "part-time"
 
     page.click_button "Submit"

@@ -23,7 +23,7 @@
             <td><%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %></td>
             <td><%= truncate(cart_listing.listing.description, :length => 500) %></td>
             <td><%= cart_listing.listing.closing_date.strftime('%b %d, %Y') %></td>
-            <td><%= link_to '', cart_listing ,method: :delete, class: "glyphicon glyphicon-remove em-glyph-style" %></td>
+            <td><%= link_to '', cart_listing ,method: :delete, class: "glyphicon glyphicon-remove em-glyph-style", id:"delete-x" %></td>
           </tr>
           <% end %>
         </tbody>
