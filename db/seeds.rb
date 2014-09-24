@@ -57,7 +57,7 @@ class Seed
     50.times do |i|
       listing = Listing.create!(
         title: Faker::Name.title,
-        description: Faker::Lorem.paragraph(100),
+        description: description + description,
         pay_rate: random_pay_rate,
         employment_type: random_employment_type,
         creator_id: random_creator_id,
@@ -102,6 +102,38 @@ class Seed
 
   def random_location
 
+  end
+
+  def description
+    "About the Job
+    This job is one of the most important members of the team, essentially building
+    and maintaining the foundation on which the company sits. This is the perfect opportunity for outgoing,
+    tech-savvy individuals looking to have a big impact on a growing business.
+
+    At this job, you will work closely with graphic designers and marketing professionals to build and maintain websites.
+    You will be the glue that bridges the gap between creative design and technical development.
+
+
+    RESPONSIBILITIES
+    Designs, codes, and tests technical solutions
+    Web design including page layouts and web-based graphics
+    Identifies system deficiencies and recommends solutions
+    Assists in physical and logical database design
+    Understands the necessity of and contributes to coding standards
+    Assists in enforcement of development deadlines and schedules
+    Provides support to customer inquiries and requests
+
+    REQUIREMENTS
+    Bachelors or Associates Degree in Web Development or related field. Equivalent combination of education and/or experience may be substituted for degree
+    Portfolio/Examples of previous work
+    Can write effective stored procedures
+    Understanding of and ability to do cross-browser development
+    Familiarity with any or all of the following: HTML, CSS, PHP, MySQL, Javascript, and Flash
+    Understanding of the web design process and how it ties to the functionality of a website
+    Prioritizes multiple tasks effectively
+    Excellent critical thinking and problem solving abilities
+    Strong written and verbal communication skills
+    Positive attitude and driven personality"
   end
 end
 
