@@ -40,7 +40,7 @@
       <% if !current_user %>
          <%= button_to "Add this Job", cart_listings_path(listing_id: @listing), class: "btn btn-success" %>
        <% elsif !current_user.company_name %>
-         <%= button_to "Add this Job!", cart_listings_path(listing_id: @listing) %>
+         <%= button_to "Add this Job!", cart_listings_path(listing_id: @listing), class: "btn btn-success" %>
        <% end %>
        <br>
        <%= link_to "Back to browsing", listings_path  %>
