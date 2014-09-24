@@ -5,7 +5,7 @@
       <th>Company</th>
       <th>Title</th>
       <th>Description</th>
-      <th>Closing Date</th>
+      <th class="col-md-2">Applied On</th>
     </thead>
     <tbody>
       <% @orders.each do |order| %>
@@ -14,7 +14,7 @@
             <td><%= listing.creator.company_name %></td>
             <td><%= link_to listing.title, listing_path(listing) %></td>
             <td><%= truncate(listing.description, :length => 250) %></td>
-            <td><%= listing.closing_date.strftime('%b %d, %Y, %I:%M %p') %></td>
+            <td><%= order.created_at.strftime('%b %d, %Y') %></td>
           </tr>
         <% end %>
       <% end %>

@@ -1,7 +1,10 @@
 .down_image {
-  background-image: url("line_people.jpg");
+  background-image: url("people_working_01.jpg");
   background-size: cover;
-  height: 600px;
+  height: 300px;
+  border-bottom:solid;
+  border-color: gray;
+  border-width: 1px
 }
 
 .people_happy {
@@ -11,7 +14,10 @@
 }
 .back_color {
   margin-top: -20px;
-  background: #e8e8e8
+  background: #e8e8e8;
+}
+.body_back_color {
+  background: #e8e8e8;
 }
 .form_title {
   font-size: 50px;
@@ -171,5 +177,10 @@
 }
 
 .apply_for_all_jobs {
-  margin-left:4px;
+  margin-top:25px;
+}
+
+.alert {
+  font-size: 19px;
+  font-weight: 500;
 }

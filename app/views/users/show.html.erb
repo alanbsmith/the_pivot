@@ -1,17 +1,19 @@
-
 <div class="back_color">
-	<div class="container">
+	<div class="container em-push-top-50">
 		<h1 class="text-center">Grow Your Posibilities.</h1>
 		<p  class=" lead text-center">Publish your Job Opportunities and Select the best people.</p>
 		<div class="col-md-6 col-md-offset-3 text-center">
 			<% if current_user.company_name == nil %>
-				<%= link_to "View Current Job Listings", listings_path, :class => "btn btn-success" %>
-				<%= link_to "View Your Cart", @cart, :class => "btn btn-success" %>
-				<%= link_to "Previous Applications", orders_path, :class => "btn btn-success" %>
+				<% if @cart.listings.count == 0 %>
+				  <%= link_to "You haven't selected any jobs", @cart, :class => "btn btn-lg btn-default disabled" %><br><br>
+				<% else %>
+				  <%= link_to "You have #{@cart.listings.count} job(s) ready to apply", @cart, :class => "btn btn-lg btn-success" %><br><br>
+				<% end %>
+				<%= link_to "Previous Applications", orders_path, :class => "btn btn-warning" %>
 			<% else %>
-				<%= link_to "Add a New Job Listing", new_listing_path, :class => "btn btn-success", :id => "add-job-listing" %>
-				<%= link_to "Your Job Listings", listings_path,  :class => "btn btn-success"  %>
-				<%= link_to "View Current Applicants", resumes_path, :class => "btn btn-success" %>
+				<%= link_to "Add a New Job Listing", new_listing_path, :class => "btn btn-success btn-lg", :id => "add-job-listing" %><br><br>
+				<%= link_to "Your Job Listings", listings_path,  :class => "btn btn-warning"  %><br><br>
+				<%= link_to "View Current Applicants", resumes_path, :class => "btn btn-warning" %>
 			<% end %>
 		</div>
 	</div>

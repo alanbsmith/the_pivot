@@ -20,10 +20,12 @@ include ListingsHelper
     respond_to do |format|
 			if @listing.save
         @listing.categories_list(params[:listing][:categories])
-        flash[:alert] = "#{@listing.title} was created"
+        flash[:notice] = "#{@listing.title} was created"
 				format.html { redirect_to @listing }
 			else
-        flash[:alert] = @listing.errors.full_messages
+        flash[:alert] = flash[:alert] = @listing.errors.full_messages.reduce do |message,accumulator|
+          accumulator += "  •  #{message}"
+        end
 				format.html {render :new }
 			end
 		end
@@ -36,10 +38,14 @@ include ListingsHelper
   def update
     @listing = current_user.listings.find(params[:id])
     if @listing.update(listing_params)
+      flash[:notice] = "#{@listing.title} was updated"
       @listing.categories_list(params[:listing][:categories])
       redirect_to current_user.listings.find(params[:id])
     else
-      format.html {render :edit }
+      flash[:alert] = flash[:alert] = @listing.errors.full_messages.reduce do |message,accumulator|
+        accumulator += "  •  #{message}"
+      end
+      render :edit 
     end
   end
 

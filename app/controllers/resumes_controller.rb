@@ -18,7 +18,7 @@ class ResumesController < ApplicationController
     if @resume.save!
       redirect_to cart_path(@cart), notice: "Your resume has been successfully uploaded!"
     else
-      redirect_to cart_path(@cart), notice: "Whoa there, Looks like there was an issue with your resume"
+      redirect_to cart_path(@cart), alert: "Whoa there, Looks like there was an issue with your resume"
     end
   end
 

@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140923184309) do
     t.text     "pay_rate"
     t.text     "employment_type"
     t.integer  "number_of_positions"
+    t.integer  "business_id"
     t.datetime "closing_date"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -97,10 +98,11 @@ ActiveRecord::Schema.define(version: 20140923184309) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
-    t.string   "pdf_name"
-    t.string   "pdf_type"
-    t.integer  "pdf_size"
-    t.datetime "pdf_update_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "subdomain"
   end
 
   add_index "users", ["company_name"], name: "index_users_on_company_name", using: :btree
