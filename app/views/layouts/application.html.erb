@@ -11,7 +11,10 @@
 <body>
   <%= render partial: "layouts/top_navigation_bar" %>
     <div class="em-push"></div>
-    <div class="container">
+    <% if @cart.listings.count !=0 %>
+      <div class="em-push-20"></div>
+    <% end %>
+    <div class="alert-background text-center">
       <% flash.each do |type, message| %>
         <div class="alert alert-<%= type %>">
           <%= message %>

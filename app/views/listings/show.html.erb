@@ -1,43 +1,25 @@
+<br>
 <div class="back_color">
+
   <div class="container">
-    <h1 class="text-center"><%= "#{@listing.title}" %></h1>
-    <p  class=" lead text-center">Publish your Job Opportunities and Select the best people.</p>
 
-    <div class="col-md-6 col-md-offset-3 text-center">
-      <% if !current_user %>
-        <%= button_to "Apply for this job!", cart_listings_path(listing_id: @listing), { class: 'btn btn-warning' } %>
-      <% elsif !current_user.company_name %>
-        <%= button_to "Apply for this job!", cart_listings_path(listing_id: @listing), { class: 'btn btn-warning' } %>
-      <% end %>
-      <%= link_to "Back to browsing", listings_path,  :class => "btn btn-success"  %>
+    <div class="col-md-3">
+      <%= @listing.location_city %>,
+      <%= @listing.location_state %>
+      <br>
+      <%= @listing.pay_rate %>
+      <br>
+      <%= @listing.employment_type %>
+      <br>
+      <%= @listing.number_of_positions %>
+      <br>
+      <%= @listing.closing_date.strftime('%b %d, %Y, %I:%M %p')  %>
     </div>
 
-    <div class="row-fluid">
-      <div class="span4"><h3>Job Description</h3></div>
-      <div class="span8"><%= "#{@listing.description}" %>
+    <div class="col-md-8 col-md-offset-1">
+      <%= @listing.title %>
+      <%= @listing.
     </div>
 
-    <div class="row-fluid">
-      <div class="span4"><h3>Wage / Salary</h3><div>
-      <div class="span3"><%= "#{@listing.pay_rate}" %></div>
-    </div>
-
-    <div class="row-fluid">
-      <div class="span4"><h3>Position Type</h3></div>
-      <div class="span4"><%= "#{@listing.employment_type}" %></div>
-    </div>
-
-    <div class="row-fluid">
-      <div class="span4"><h3>Number of Positions</h3></div>
-      <div class="span1"><%= "#{@listing.number_of_positions}" %></div>
-    </div>
-
-    <div class="row-fluid">
-      <div class="span4"><h3>Closing Date</h3></div>
-      <div class="span4"><%= "#{@listing.closing_date}" %></div>
-    </div>
-
-    <%= link_to "Edit this listing", edit_listing_path, :class => "btn btn-success"  %>
-    <%= link_to "Delete this listing", listing_path(@listing), method: :delete, :class => "btn btn-success"  %>
   </div>
 </div>

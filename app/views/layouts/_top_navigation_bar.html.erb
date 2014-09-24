@@ -6,6 +6,7 @@
           {class:"em-top-brand em-f",
            style:"color:orange"}
       %>
+
       <div class="em-right col-md-8">
         <%= link_to "Jobs",
           listings_path,
@@ -23,10 +24,11 @@
             {class:"em-top-links em-f col-md-offset-2",
              style:"color:white"}
         %>
+
       </div>
     </div>
     <% if @cart.listings.count > 0 %>
-      <div class="em-sub-top-navbar" style="margin-top:-0px">
+      <div class="em-sub-top-navbar" style="margin-top:10px">
         <p class="text-center em-f">
           <%= link_to "You have #{@cart.listings.count} job(s) ready to apply",
               cart_path,

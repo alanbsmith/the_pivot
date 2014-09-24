@@ -63,11 +63,16 @@ class Seed
         creator_id: random_creator_id,
         closing_date: random_closing_date,
         category_ids: random_category_id,
+        number_of_positions: random_number_of_positions,
         location_city:  Faker::Address.city,
         location_state: Faker::Address.state_abbr
       )
       puts "Listing #{i}: #{listing.title} - #{listing.closing_date}"
     end
+  end
+
+  def random_number_of_positions
+    (1..20).to_a.sample
   end
 
   def random_pay_rate
