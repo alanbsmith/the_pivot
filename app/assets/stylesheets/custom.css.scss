@@ -1,7 +1,10 @@
 .down_image {
-  background-image: url("line_people.jpg");
+  background-image: url("people_working_01.jpg");
   background-size: cover;
-  height: 600px;
+  height: 300px;
+  border-bottom:solid;
+  border-color: gray;
+  border-width: 1px
 }
 
 .people_happy {
