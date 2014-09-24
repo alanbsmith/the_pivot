@@ -178,3 +178,42 @@ html, body {
 .em-push-signin {
   margin-top:10%;
 }
+.em-push-left {
+  float:left;
+}
+
+.em-apply-push {
+  margin-bottom: 50px;
+  font-weight: 500;
+}
+
+.em-ready-apply {
+  font-size: 24px;
+  font-weight: 500;
+}
+.em-push-50 {
+  margin-bottom: 50px;
+}
+
+.em-push-top-50 {
+  margin-top: 50px;
+}
+.em-push-20 {
+  margin-bottom: 15px;
+}
+.em-push-top-20 {
+  margin-top: 15px;
+}
+.em-border-left {
+  border-left: solid;
+  border-weight: 1px;
+  border-color: gray;
+  padding: 15px 10px 15px 10px;
+}
+.em-placeholder-gray {
+  color:orange;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #C9C6BF;
+}
