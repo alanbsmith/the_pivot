@@ -57,7 +57,7 @@ class Seed
     50.times do |i|
       listing = Listing.create!(
         title: Faker::Name.title,
-        description: Faker::Lorem.paragraph(3),
+        description: Faker::Lorem.paragraph(100),
         pay_rate: random_pay_rate,
         employment_type: random_employment_type,
         creator_id: random_creator_id,
@@ -78,9 +78,9 @@ class Seed
   def random_pay_rate
     random_rate = [" / hr", " / yr"]
     if random_rate.sample == "yr"
-      (30000..450000).to_a.sample.to_s + "yr"
+      (30000..450000).to_a.sample.to_s + " / yr"
     else
-      (9..45).to_a.sample.to_s + "hr"
+      (9..45).to_a.sample.to_s + " / hr"
     end
   end
 

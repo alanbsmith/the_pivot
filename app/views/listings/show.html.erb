@@ -2,24 +2,64 @@
 <div class="back_color">
 
   <div class="container">
+    <div class="em-listing-push">
 
-    <div class="col-md-3">
-      <%= @listing.location_city %>,
-      <%= @listing.location_state %>
-      <br>
-      <%= @listing.pay_rate %>
-      <br>
-      <%= @listing.employment_type %>
-      <br>
-      <%= @listing.number_of_positions %>
-      <br>
-      <%= @listing.closing_date.strftime('%b %d, %Y, %I:%M %p')  %>
+    <div class="col-md-3 em-push-sidebar">
+      <div class="em-column-title">
+        <%= @listing.location_city%>,
+        <%= @listing.location_state %>
+      </div>
+      <div class="em-column-subtitle">
+        Location
+      </div>
+      <div class="em-column-title">
+        $ <%= @listing.pay_rate %>
+      </div>
+      <div class="em-column-subtitle">
+        Wage
+      </div>
+      <div class="em-column-title">
+        <%= @listing.employment_type %>
+      </div>
+      <div class="em-column-subtitle">
+        Hours
+      </div>
+      <div class="em-column-title">
+        <%= @listing.number_of_positions %>
+      </div>
+      <div class="em-column-subtitle">
+        Positions Available
+      </div>
+      <div class="em-column-title">
+        <%= @listing.closing_date.strftime('%b %d, %Y, %I:%M %p')  %>
+      </div>
+      <div class="em-column-subtitle">
+        Accepting aplications until
+      </div>
+
+      <% if !current_user %>
+         <%= button_to "Add this Job", cart_listings_path(listing_id: @listing), class: "btn btn-success" %>
+       <% elsif !current_user.company_name %>
+         <%= button_to "Add this Job!", cart_listings_path(listing_id: @listing) %>
+       <% end %>
+       <br>
+       <%= link_to "Back to browsing", listings_path  %>
+
     </div>
 
     <div class="col-md-8 col-md-offset-1">
-      <%= @listing.title %>
-      <%= @listing.
+      <div class="em-listing-job-title">
+        <%= @listing.title %>
+      </div>
+      <div class="em-listing-job-company">
+        <%= @listing.creator.company_name %>
+      </div>
+      <div class="em-listing-description">
+        <%= @listing.description%>
+      </div>
     </div>
 
+
+   </div>
   </div>
 </div>
