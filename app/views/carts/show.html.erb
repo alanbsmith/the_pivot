@@ -1,52 +1,58 @@
-<div class="container">
-  <h1>Your Job Listings</h1>
-  <% if @cart.cart_listings.empty? %>
-    <h3>There are currently no jobs in your cart!</h3>
-  <% else %>
-    <table class="table table-hover cart_table_padding">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Closing Date</th>
-          <th>Resume</th>
-          <th></th>
-        </tr>
-      </thead>
+<div class= "back_color">
+  <div class="container em-cart-padding">
+    <h1>These are your selected jobs</h1>
+    <% if @cart.cart_listings.empty? %>
+      <h3>There are currently no jobs in your cart!</h3>
+    <% else %>
+      <table class="table table-hover cart_table_padding">
+        <thead>
+          <tr>
+            <th class='col-md-2'>Title</th>
+            <th class='col-md-8'>Description</th>
+            <th class='col-md-2'>Closing Date</th>
+            <th></th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <% @cart.cart_listings.each do |cart_listing| %>
-        <tr>
-          <td><%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %></td>
-          <td><%= truncate(cart_listing.listing.description, :length => 100) %></td>
-          <td><%= cart_listing.listing.closing_date.strftime('%b %d, %Y, %I:%M %p') %></td>
-          <td>
-            <%= form_for(@resume, html: {multipart: true} ) do |f| %>
-              <%= f.label :document, "Upload your Resume" %><br/>
-              <%= f.file_field :document %>
-              <%= f.submit "Upload Resume", :class => "btn btn-success btn-sm resume_button" %>
-            <% end %>
-          </td>
-          <td><%= link_to 'Remove this job', cart_listing ,method: :delete, class: "btn btn-danger btn-sm" %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
-
-  <% if signed_in? %>
-    <div class="row">
-      <%= form_for(@resume, html: {multipart: true} ) do |f| %>
-        <%= f.label :document, "Upload your Resume" %><br/>
-        <%= f.file_field :document %>
-        <%= f.submit "Upload Resume", :class => "btn btn-warning" %>
+        <tbody>
+          <% @cart.cart_listings.each do |cart_listing| %>
+          <tr>
+            <td><%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %></td>
+            <td><%= truncate(cart_listing.listing.description, :length => 500) %></td>
+            <td><%= cart_listing.listing.closing_date.strftime('%b %d, %Y, %I:%M %p') %></td>
+            <td><%= link_to '', cart_listing ,method: :delete, class: "glyphicon glyphicon-remove em-glyph-style" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
-  <% end %>
 
-  <div class="row-fluid push_buttons_down">
+
+
+
+
+  </div>
+
+
+<div class="container">
+  <div class="col-md-6">
+    <% if signed_in? %>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-4">
+          <%= form_for(@resume, html: {multipart: true} ) do |f| %>
+            <%= f.label :document, "Upload your Resume" %><br/>
+              <%= f.file_field :document %>
+            <%= f.submit "Upload Resume", :class => "em-upload-btn  btn btn-warning btn-sm" %>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+</div>
+  <div class="col-md-6">
+    <div>
     <% if signed_in? %>
       <% if @cart.cart_listings.count > 0 %>
-        <%= link_to 'Apply', new_order_path, class: "btn btn-warning btn-lg apply_for_all_jobs" %>
+        <%= link_to 'Go to confirmation Page', new_order_path, class: "btn btn-success btn-lg apply_for_all_jobs" %>
       <% end %>
   </div>
     <% else %>
@@ -54,4 +60,8 @@
       <h4> You need to <%= link_to "sign in", signin_path %> or <%= link_to "create an account", register_path %> to finish applying for these jobs!</h4>
     </div>
     <% end %>
+  </div>
+
+
+</div>
 </div>
