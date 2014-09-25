@@ -41,7 +41,7 @@ describe 'the user view', type: :feature do
           user.password_confirmation = "password"
           user.save
           visit signin_path
-          
+
         expect(current_path).to eq(signin_path)
           within('//form') do
             fill_in("session_email", with: user.email)
@@ -49,7 +49,7 @@ describe 'the user view', type: :feature do
             click_button("Sign In")
           end
         expect(current_path).to eq user_path(user)
-        expect(page).to have_content('Sucsessfully Logged In!')
+        expect(page).to have_content('Sucsessfully Signed In!')
       end
 
       it 'can register a applicant' do
@@ -140,7 +140,7 @@ describe 'the user view', type: :feature do
 
       it 'has links to apply for a job' do
         visit listing_path(@listing)
-        expect(page).to have_button('Apply for this job!')
+        expect(page).to have_button('Add this Job')
         expect(page).to have_link('Back to browsing')
       end
     end

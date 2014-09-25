@@ -3,10 +3,11 @@ require 'capybara/rails'
 require 'capybara/rspec'
 
   def default_login
+    user = default_applicant
     click_link('Sign In')
     expect(current_path).to eq(signin_path)
-    fill_in("session_email", with: "user@example.com")
-    fill_in("session_password", with: "userpassword")
+    fill_in("session_email",    with: user.email)
+    fill_in("session_password", with: user.password)
     click_button('Sign In')
   end
 
@@ -28,15 +29,16 @@ require 'capybara/rspec'
   end
 
   def default_job_listing
-    business  = default_business_user
-    @business = business
+    @business  = default_business_user
     listing   = Listing.create( title: "Pastry Chef",
                               description: "Kneads the Dough",
                               pay_rate: "35000/yr",
                               employment_type: "Full-time",
                               number_of_positions: 2,
                               closing_date: Time.now + 1000,
-                              creator_id: @business.id)
+                              creator_id: @business.id,
+                              location_city: "Denver",
+                              location_state: "CO")
   end
 
   def user_register_a
@@ -53,9 +55,12 @@ require 'capybara/rspec'
 
   def add_listing
     page.click_link "add-job-listing"
-    page.fill_in      "Title",       with: "barista"
-    page.fill_in      "Description", with: "Grinding dem beans"
-    page.fill_in      "Pay rate",    with: "8.00/hr"
+    page.fill_in      "Title",                  with: "barista"
+    page.fill_in      "Description",            with: "Grinding dem beans"
+    page.fill_in      "Pay rate",               with: "8.00/hr"
+    page.fill_in      "listing_location_city",  with: "Waco"
+    page.select       "TX"
     page.choose       "part-time"
+
     page.click_button "Submit"
   end

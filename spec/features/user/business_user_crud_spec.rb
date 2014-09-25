@@ -20,6 +20,7 @@ describe 'business user can CRUD a new listing' do
     user_register_a
     add_listing
     expect(page).to have_content("barista")
+    page.visit listings_path
     page.click_link "Edit"
     page.fill_in "Title", with: "real barista"
     page.click_button "Submit"
@@ -27,18 +28,22 @@ describe 'business user can CRUD a new listing' do
   end
 
   it 'can edit a listing' do
+    user_register_a
+    add_listing
     visit listings_path
-    page.click_link("Read more...")
+    page.visit listings_path
     expect(page).to have_link("Edit")
 
     click_link("Edit")
   end
 
   it 'can delete a listing' do
+    user_register_a
+    add_listing
     page.visit listing_path(@listing)
-
     expect(page).to have_content(@listing.title)
-    page.click_on "Delete this listing"
+    visit listings_path
+    page.click_on "Remove listing"
     page.visit listings_path
     expect(page).not_to have_content(@listing.title)
   end
@@ -54,16 +59,6 @@ describe 'business user can CRUD a new listing' do
     expect(page).to_not have_content('Apply')
   end
 
-  # it 'cannot see the Your Cart in the menu if they are logged in' do
-  #   visit signin_path
-  #     within('//form') do
-  #       fill_in("session_email", with: User.last.email)
-  #       fill_in("session_password", with: "password")
-  #       click_button("Sign In")
-  #     end
-  #   expect(page).to_not have_content('Your Jobs')
-  # end
-
   it 'cannot see Apply for Job from the listings page' do
     visit signin_path
       within('//form') do
@@ -72,6 +67,6 @@ describe 'business user can CRUD a new listing' do
         click_button("Sign In")
       end
     visit listings_path
-    expect(page).to_not have_content("Apply for this job!")
+    expect(page).to_not have_content("Add this Job")
   end
 end

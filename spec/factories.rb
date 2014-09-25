@@ -21,6 +21,8 @@ FactoryGirl.define do
     pay_rate            "1.00/hr"
     number_of_positions 1
     closing_date        Time.now + 1000
+    location_city       "Denver"
+    location_state      "CO"
   end
 
   factory :category do
@@ -28,22 +30,4 @@ FactoryGirl.define do
     title       "Things"
     description "Lots of things to do"
   end
-
-  factory :cart do
-  end
-
-  factory :cart_item do
-    cart {FactoryGirl.create(:cart)}
-    item {FactoryGirl.create(:item)}
-
-    quantity 3
-  end
-
-  # factory :order do
-  #   user_id {FactoryGirl.create(:user)}
-  #
-  #   status     "open"
-  #   total      19.50
-  #   receiving  "pickup"
-  # end
 end

@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+include ListingsHelper
 
   def new
     @listing    = Listing.new
@@ -6,24 +7,25 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listings   = Listing.all
-    @categories = Category.all
-    @business   = find_business_from_listing
+    @listings         = Listing.all
+    @categories       = Category.all
   end
 
   def show
     @listing = Listing.find(params[:id])
   end
 
-  def create 
+  def create
     @listing = Listing.new(listing_params.merge creator_id: current_user.id)
     respond_to do |format|
 			if @listing.save
         @listing.categories_list(params[:listing][:categories])
-        flash[:alert] = "#{@listing.title} was created"
+        flash[:notice] = "#{@listing.title} was created"
 				format.html { redirect_to @listing }
 			else
-        flash[:alert] = @listing.errors.full_messages
+        flash[:alert] = flash[:alert] = @listing.errors.full_messages.reduce do |message,accumulator|
+          accumulator += "  •  #{message}"
+        end
 				format.html {render :new }
 			end
 		end
@@ -36,10 +38,14 @@ class ListingsController < ApplicationController
   def update
     @listing = current_user.listings.find(params[:id])
     if @listing.update(listing_params)
+      flash[:notice] = "#{@listing.title} was updated"
       @listing.categories_list(params[:listing][:categories])
       redirect_to current_user.listings.find(params[:id])
     else
-      format.html {render :edit }
+      flash[:alert] = flash[:alert] = @listing.errors.full_messages.reduce do |message,accumulator|
+        accumulator += "  •  #{message}"
+      end
+      render :edit 
     end
   end
 
@@ -54,10 +60,6 @@ class ListingsController < ApplicationController
 
   private
 
-  def find_business_from_listing
-    User.find_by(id: current_listing)
-  end
-
   def listing_params
     	params.require(:listing).permit(:title,
 																	    :description,
@@ -66,6 +68,8 @@ class ListingsController < ApplicationController
                                       :number_of_positions,
                                       :closing_date,
                                       :categories_list,
+                                      :location_city,
+                                      :location_state,
                                       :creator_id)
   end
 

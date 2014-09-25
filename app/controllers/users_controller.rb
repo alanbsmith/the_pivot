@@ -11,13 +11,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.welcome_email(@user).deliver
+      # UserMailer.welcome_email(@user).deliver
       sign_in @user
-      flash[:alert] = 'Account was sucsessfully created!'
+      flash[:notice] = 'Account was sucsessfully created!'
       redirect_to @user
     else
-      errors = []
-      flash[:alert] = @user.errors.full_messages
+      flash[:alert] = @user.errors.full_messages.reduce do |message,accumulator|
+        accumulator += "  •  #{message}"
+      end
       render :new
     end
   end
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     current_user.update(user_params)
-    flash[:alert] = 'Your resume was successfully uploaded'
+    flash[:notice] = 'Your resume was successfully uploaded'
     redirect_to cart_path(current_user.id)
   end
 

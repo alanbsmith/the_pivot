@@ -5,16 +5,12 @@ describe "the order view", type: :feature do
   context 'user is signed in' do
 
     before(:each) do
-      @default_user = User.create(email: "user@example.com",
-                                  password: "userpassword",
-                                  password_confirmation: "userpassword",
-                                  first_name: "user",
-                                  last_name: "whatever")
+      @user  = default_applicant
+      @order = User.find_by(email: @user.email).orders.create(user_id: @user.id)
 
-      @order = User.find_by(email: "user@example.com").orders.create(user_id: @default_user.id)
+      @listing  = default_job_listing
+      # @listing = listing
 
-      listing  = default_job_listing
-      @listing = listing
       category = FactoryGirl.create(:category)
       visit home_path
     end
@@ -29,32 +25,9 @@ describe "the order view", type: :feature do
       expect(page).to_not have_button('Remove this job')
     end
 
-    xit 'creates an application' do
-        resume = Resume.new
-          resume.user_id = @default_user.id
-          resume.attachment = "21st_Century_C.pdf"
-        resume.save!
-
-      default_login
-      expect(current_path).to eq("/users/#{@default_user.id}")
-
-      visit listing_path(@listing)
-      click_on('Apply for this job!')
-      click_on('your_jobs_link')
-      click_on('Apply')
-      click_on('Apply')
-      click_on('dashboard')
-      click_on('Previous Applications')
-
-      expect(page).to have_content(@listing.title)
-      click_on(@listing.title)
-
-      expect(page).to have_content(@listing.description)
-    end
-
+  
     it 'can view its previous applications' do
       default_login
-
       click_on('Previous Applications')
       expect(current_path).to eq(orders_path)
     end

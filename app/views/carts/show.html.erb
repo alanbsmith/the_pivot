@@ -1,62 +1,73 @@
+  <div class="container em-cart-padding">
+    <% if @cart.cart_listings.count > 1 %>
+      <h1>These are your selected jobs.</h1>
+    <% else %>
+      <h1>This is your selected job.</h1>
+    <% end %>
+    <% if @cart.cart_listings.empty? %>
+      <h3>There are currently no jobs in your cart!</h3>
+    <% else %>
+      <table class="table table-hover cart_table_padding">
+        <thead>
+          <tr>
+            <th class='col-md-2'>Title</th>
+            <th class='col-md-8'>Description</th>
+            <th class='col-md-2'>Closing Date</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @cart.cart_listings.each do |cart_listing| %>
+          <tr>
+            <td><%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %></td>
+            <td><%= truncate(cart_listing.listing.description, :length => 500) %></td>
+            <td><%= cart_listing.listing.closing_date.strftime('%b %d, %Y') %></td>
+            <td><%= link_to '', cart_listing ,method: :delete, class: "glyphicon glyphicon-remove em-glyph-style", id:"delete-x" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
 
 <div class="container">
-  <h1>Your Job Listings</h1>
-  <% if notice %>
-    <%= notice %>
-  <% end %>
+  <div class="col-md-6">
+    <% if signed_in? %>
+      <div class="row">
 
-  <% if @cart.cart_listings.empty? %>
-    <h3>There are currently no jobs in your cart!</h3>
-  <% else %>
-    <table class="table table-hover cart_table_padding">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Closing Date</th>
-          <th>Resume</th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @cart.cart_listings.each do |cart_listing| %>
-        <tr>
-          <td><%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %></td>
-          <td><%= truncate(cart_listing.listing.description, :length => 100) %></td>
-          <td><%= cart_listing.listing.closing_date.strftime('%b %d, %Y, %I:%M %p') %></td>
-          <td>
-            <%= form_for(@resume, html: {multipart: true} ) do |f| %>
-              <%= f.label :document, "Upload your Resume" %><br/>
-              <%= f.file_field :document %>
-              <%= f.submit "Upload Resume", :class => "btn btn-success btn-sm resume_button" %>
-            <% end %>
-          </td>
-          <td><%= link_to 'Remove this job', cart_listing ,method: :delete, class: "btn btn-danger btn-sm" %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
-
-  <% if signed_in? %>
-    <div class="row">
-      <%= form_for(@resume, html: {multipart: true} ) do |f| %>
-        <%= f.label :document, "Upload your Resume" %><br/>
-        <%= f.file_field :document %>
-        <%= f.submit "Upload Resume", :class => "btn btn-warning" %>
     <% end %>
-  <% end %>
+  </div>
+</div>
 
-  <div class="row-fluid push_buttons_down">
     <% if signed_in? %>
       <% if @cart.cart_listings.count > 0 %>
-        <%= link_to 'Apply', new_order_path, class: "btn btn-warning btn-lg apply_for_all_jobs" %>
+  <div class="col-md-5 col-md-offset-1">
+    <div>
+        <%= link_to 'Next: Confirm Your Applications', new_order_path, class: "btn btn-success btn-lg apply_for_all_jobs" %>
       <% end %>
-  </div>
-    <% else %>
-    <div class="row">
-      <h4> You need to <%= link_to "sign in", signin_path %> or <%= link_to "create an account", register_path %> to finish applying for these jobs!</h4>
     </div>
+  </div>
     <% end %>
 </div>
+
+
+<% if !signed_in? %>
+<div class="container em-push-top-50">
+  <div class="row">
+    <div class="col-md-3 col-md-offset-2 em-push-top-20  text-right">
+      <div class=" em-ready-apply ">Ready to apply?</div>
+      <div class=" em-push-20">Create an Account or Sign In</div>
+      <%= link_to "Create an Account", register_path, class: 'btn btn-warning' %>
+    </div>
+    <div class="col-md-3 em-border-left">
+        <%= form_for(:session, url: sessions_path, class: 'form-signin') do |f| %>
+          <%= f.text_field :email, class: "form-control", placeholder: "john@example.com" %></br>
+          <%= f.password_field :password, class: "form-control", placeholder: "your password" %></br>
+          <%= f.submit "Sign In", class: "btn btn-success  btn-block" %>
+        <% end %>
+    </div>
+  </div>
+
+</div>
+<% end %>

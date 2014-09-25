@@ -1,6 +1,7 @@
 require 'rails_helper'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'feature_helper'
 
 describe 'cart', type: :feature do
 
@@ -19,15 +20,14 @@ describe 'cart', type: :feature do
 
     click_link('Bakery')
 
-    expect(page).to have_content(@listing.title)
+    expect(page).to have_link(@listing.title)
     expect(page).to have_content(@listing.description)
-    expect(page).to have_link('Read more...')
   end
 
   it 'can view the details of a job listing' do
     expect(current_path).to eq(listings_path)
     click_link('Bakery')
-    click_link('Read more...')
+    click_link(@listing.title)
 
     expect(current_path).to eq(listing_path(@listing))
     expect(page).to have_content(@listing.title)
@@ -35,14 +35,14 @@ describe 'cart', type: :feature do
     expect(page).to have_content(@listing.pay_rate)
     expect(page).to have_content(@listing.employment_type)
     expect(page).to have_content(@listing.number_of_positions)
-    expect(page).to have_content(@listing.closing_date)
+    expect(page).to have_content(@listing.closing_date.strftime('%b %d, %Y'))
   end
 
   context 'cart CRUD' do
 
     before(:each)do
       visit listing_path(@listing)
-      click_button("Apply for this job!")
+      click_button("Add this Job")
       expect(page).to have_content("Pastry Chef has been added to your cart")
       click_link("your_jobs_link")
     end
@@ -53,16 +53,12 @@ describe 'cart', type: :feature do
 
     it 'cannot add multiples of the same listing to their cart' do
       visit listing_path(@listing)
-      click_button("Apply for this job!")
+      click_button("Add this Job")
       expect(page).to have_content("This job is already in your cart")
     end
 
-    it 'can upload a resume within the cart' do
-
-    end
-
     it 'can remove items from their cart' do
-      click_link("Remove this job")
+      click_link("delete-x")
       expect(page).to have_content("Listing was successfully removed form cart.")
       expect(page).to_not have_content(@listing.title)
     end
@@ -71,10 +67,10 @@ describe 'cart', type: :feature do
   it 'lists its number of jobs in the menu' do
     visit listing_path(@listing)
     expect(page).to have_content(0)
-    click_button("Apply for this job!")
+    click_button("Add this Job")
     expect(page).to have_content(1)
     click_link("You have")
-    click_link("Remove this job")
+    click_link("delete-x")
     expect(page).to_not have_content("You have")
   end
 end

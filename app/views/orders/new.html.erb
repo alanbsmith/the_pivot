@@ -1,35 +1,47 @@
 <div class="container">
-  <h1>Confirm your applications</h1>
-  <td><%= link_to "Back to Jobs", cart_path(@cart) %></td>
-  <div id= 'order_new_padding'>
-    <% @cart.listings.each do |listing| %>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Closing Date</th>
-            <th></th>
-          </tr>
-        </thead>
 
-        <tbody>
-          <tr>
-            <td><%= listing.title %></td>
-            <td><%= truncate(listing.description, :length => 100) %></td>
-            <td><%= listing.closing_date.strftime('%b %d, %Y, %I:%M %p') %></td>
-          </tr>
-        </tbody>
-      </table>
+    <% if @cart.listings.count == 1 %>
+      <h1>You have a job application.</h1>
+      <div class="lead"> Review your application below and click submit
+      your application when you are done.</div>
+    <% else %>
+      <h1>You have <%=@cart.listings.count %> job applications.</h1>
+      <div class="lead">Review your applications below and click submit
+      your applications when you are done.</div>
     <% end %>
+
+  </h1>
+  <td><%= link_to "Back to Jobs", cart_path %></td>
+  <div id= 'order_new_padding'>
+    <table class="table table-hover cart_table_padding">
+      <thead>
+        <tr>
+          <th class='col-md-2'>Title</th>
+          <th class='col-md-8'>Description</th>
+          <th class='col-md-2'>Closing Date</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @cart.cart_listings.each do |cart_listing| %>
+        <tr>
+          <td><%= cart_listing.listing.title %></td>
+          <td><%= truncate(cart_listing.listing.description, :length => 500) %></td>
+          <td><%= cart_listing.listing.closing_date.strftime('%b %d, %Y') %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 
-
-<%= form_for(@order) do |f| %>
-
-
-  <%= f.submit 'Apply', class: "btn btn-success"%>
+<div class="text-center">
+  <%= form_for(@order) do |f| %>
 
 
-<% end %>
+    <%= f.submit 'Submit Applications', class: "btn btn-lg btn-success"%>
+
+
+  <% end %>
+</div>
 </div>

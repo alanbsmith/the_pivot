@@ -15,7 +15,8 @@ describe 'user', type: :feature do
     user_register_a
     add_listing
     expect(page).to have_content("barista")
-    page.click_link "Edit"
+    page.visit listings_path
+    page.click_link "edit-listing"
     page.fill_in "Title", with: "real barista"
     page.click_button "Submit"
     expect(page).to have_content("real barista")
@@ -35,10 +36,13 @@ describe 'user', type: :feature do
 
   def add_listing
     page.click_link "add-job-listing"
-    page.fill_in      "Title",       with: "barista"
-    page.fill_in      "Description", with: "Grinding dem beans"
-    page.fill_in      "Pay rate",    with: "8.00/hr"
-    page.choose       "part-time"
+    page.fill_in "Title",                  with: "barista"
+    page.fill_in "Description",            with: "Grinding dem beans"
+    page.fill_in "Pay rate",               with: "8.00/hr"
+    page.fill_in "listing_location_city",  with: "Waco"
+    page.select  "TX"
+    page.choose  "part-time"
+
     page.click_button "Submit"
   end
 

@@ -10,16 +10,6 @@ class CartsController < ApplicationController
     @resume = Resume.new
   end
 
-  def destroy
-    @cart.destroy if @cart.id == session[:cart_id]
-    session[:cart_id] = nil
-
-    respond_to do |format|
-      format.html { cart_is_empty }
-      format.json { head :no_content }
-    end
-  end
-
   private
 
   def cart_is_empty
