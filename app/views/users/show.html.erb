@@ -3,7 +3,7 @@
 		<h1 class="text-center">Grow Your Posibilities.</h1>
 		<p  class=" lead text-center">Publish your Job Opportunities and Select the best people.</p>
 		<div class="col-md-6 col-md-offset-3 text-center">
-			<% if current_user.company_name == nil %>
+			<% if current_user.company_name == nil || current_user.company_name == "" %>
 				<% if @cart.listings.count == 0 %>
 				  <%= link_to "You haven't selected any jobs", @cart, :class => "btn btn-lg btn-default disabled" %><br><br>
 				<% else %>
