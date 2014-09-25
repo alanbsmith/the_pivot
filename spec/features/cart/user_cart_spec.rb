@@ -43,7 +43,7 @@ describe 'cart', type: :feature do
     before(:each)do
       visit listing_path(@listing)
       click_button("Add this Job")
-      expect(page).to have_content("Pastry Chef has been added to your cart")
+      expect(page).to have_content("Pastry Chef has been added to your folder.")
       click_link("your_jobs_link")
     end
 
@@ -54,12 +54,12 @@ describe 'cart', type: :feature do
     it 'cannot add multiples of the same listing to their cart' do
       visit listing_path(@listing)
       click_button("Add this Job")
-      expect(page).to have_content("This job is already in your cart")
+      expect(page).to have_content("This job is already in your folder")
     end
 
     it 'can remove items from their cart' do
       click_link("delete-x")
-      expect(page).to have_content("Listing was successfully removed form cart.")
+      expect(page).to have_content("Listing was successfully removed.")
       expect(page).to_not have_content(@listing.title)
     end
   end
@@ -69,7 +69,7 @@ describe 'cart', type: :feature do
     expect(page).to have_content(0)
     click_button("Add this Job")
     expect(page).to have_content(1)
-    click_link("You have")
+    click_link("your_jobs_link")
     click_link("delete-x")
     expect(page).to_not have_content("You have")
   end

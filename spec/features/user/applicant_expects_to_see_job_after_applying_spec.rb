@@ -24,7 +24,7 @@ describe 'user', type: :feature do
   it 'expects to see a job in their dashboard after applying' do
     visit listing_path(@listing)
     click_button("Add this Job")
-    expect(page).to have_content("Pastry Chef has been added to your cart.")
+    expect(page).to have_content("Pastry Chef has been added to your folder.")
 
     click_link("your_jobs_link")
     page.click_link('Next: Confirm Your Applications')

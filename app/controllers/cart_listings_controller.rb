@@ -7,11 +7,11 @@ class CartListingsController < ApplicationController
   def create
     listing = Listing.find(params[:listing_id])
     if @cart.listings.include?(listing)
-      redirect_to listings_path, alert: "This job is already in your cart."
+      redirect_to listings_path, alert: "This job is already in your folder."
     else
       @cart_listing = @cart.add_listing(listing.id)
       @cart_listing.save
-      redirect_to listings_path, notice: "#{listing.title} has been added to your cart."
+      redirect_to listings_path, notice: "#{listing.title} has been added to your folder."
     end
   end
 
@@ -34,7 +34,7 @@ class CartListingsController < ApplicationController
     @cart_listing.destroy
 
     respond_to do |format|
-      format.html { redirect_to cart_path(@cart_listing.cart), notice: 'Listing was successfully removed form cart.' }
+      format.html { redirect_to cart_path(@cart_listing.cart), notice: 'Listing was successfully removed.' }
       format.json { head :no_content }
     end
   end
