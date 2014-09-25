@@ -35,20 +35,14 @@
   <div class="col-md-6">
     <% if signed_in? %>
       <div class="row">
-        <div class="col-md-8 col-md-offset-4">
-          <%= form_for(@resume, html: {multipart: true} ) do |f| %>
-            <%= f.label :document, "Upload your Resume" %><br/>
-              <%= f.file_field :document %>
-            <%= f.submit "Upload Resume", :class => "em-upload-btn  btn btn-warning btn-sm" %>
-          <% end %>
-        </div>
+
     <% end %>
   </div>
 </div>
 
     <% if signed_in? %>
       <% if @cart.cart_listings.count > 0 %>
-  <div class="col-md-6">
+  <div class="col-md-5 col-md-offset-1">
     <div>
         <%= link_to 'Next: Confirm Your Applications', new_order_path, class: "btn btn-success btn-lg apply_for_all_jobs" %>
       <% end %>

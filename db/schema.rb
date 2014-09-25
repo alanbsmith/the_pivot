@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140923184309) do
     t.datetime "updated_at"
   end
 
+
   add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id", using: :btree
   add_index "categorizations", ["listing_id"], name: "index_categorizations_on_listing_id", using: :btree
 

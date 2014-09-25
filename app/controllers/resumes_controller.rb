@@ -4,7 +4,6 @@ class ResumesController < ApplicationController
 
   def index
     @orders  = Order.all
-    @resumes = Resume.all
   end
 
   def new
