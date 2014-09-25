@@ -54,6 +54,62 @@ class Seed
   end
 
   def generate_listings
+    Listing.create!(
+        title: 'Full Stack Developer/Ruby on Rails Expert',
+        description: 'Hotel Engine seeks a full stack developer to join our rapidly growing team and company. You will work directly with the executive team and help shape the future of our company. Our development team is small, focused and distributed and we want to add a self-starter who truly enjoys software engineering and development. We move quickly and have a passion for helping our clients.
+                      We have a great office in Denver, facing west, with unobstructed views of the mountains and downtown Denver. We have a work-hard, play-hard manta with three kegs on tap, shuffle board and ping pong. We offer paid gym membership, organic fruit delivery, paid vacation, sick days and holidays, 401k and supplemental insurance plan benefits.',
+        pay_rate: random_pay_rate,
+        employment_type: random_employment_type,
+        creator_id: random_creator_id,
+        closing_date: random_closing_date,
+        category_ids: random_category_id,
+        number_of_positions: random_number_of_positions,
+        location_city:  Faker::Address.city,
+        location_state: Faker::Address.state_abbr
+      )
+
+    Listing.create!(
+        title: 'Software Design Development Engineer',
+        description: "Amazon is looking for bright and talented software engineers with passion and proven experience for problem solving, coding, and design that want to help build a world class development team in Detroit, MI! This is an amazing opportunity with huge growth potential! So, if this speaks to you and you are interested making in history at Amazon, we are interested in you!
+                      The Seller Experience team is seeking software development engineers who will help drive the global expansion of our applications and services, with a significant opportunity to define a Seller and Buyer facing Amazon platform. 
+                      You’ll participate in developing a scalable framework for the improvement of the Seller Experience and collaborate with Amazon development teams to integrate their services with our applications and platform.
+                      Seller Experience is a part of Amazon's Seller Technology partner teams, responsible for the applications Amazon Sellers and internal customers use to provide world-class service to Amazon's global selling community. Millions of Sellers depend on our applications worldwide and you will be a key contributor on a leading platform development team where the work environment is fast-paced and collaborative. The success of our applications is a high priority within Amazon and this opportunity will influence the success of the program. If you love diverse challenges, know how to deliver, and thrive in a fast-paced, high visibility environment, we want to talk with you!",
+        pay_rate: random_pay_rate,
+        employment_type: random_employment_type,
+        creator_id: random_creator_id,
+        closing_date: random_closing_date,
+        category_ids: random_category_id,
+        number_of_positions: random_number_of_positions,
+        location_city:  Faker::Address.city,
+        location_state: Faker::Address.state_abbr
+      )
+
+    Listing.create!(
+            title: "Technical Account Manager",
+            description: "The Technical Account Manager provides a world-class client experience by offering post-sales technical and professional services support anticipating and resolving client issues in a manner that exceeds client expectations. The Technical Account Manager will serve as strategic advisor to clients and provide product functionality, technology, cross process guidance and implementation expertise by delivering a combination of technical consulting and project management skills in order to retain and support revenue growth by performing the following duties.",
+            pay_rate: random_pay_rate,
+            employment_type: random_employment_type,
+            creator_id: random_creator_id,
+            closing_date: random_closing_date,
+            category_ids: random_category_id,
+            number_of_positions: random_number_of_positions,
+            location_city:  Faker::Address.city,
+            location_state: Faker::Address.state_abbr
+          )
+
+    Listing.create!(
+            title: "Mid-Level Drupal Developer in Denver",
+            description: "The Technical Account Manager provides a world-class client experience by offering post-sales technical and professional services support anticipating and resolving client issues in a manner that exceeds client expectations. The Technical Account Manager will serve as strategic advisor to clients and provide product functionality, technology, cross process guidance and implementation expertise by delivering a combination of technical consulting and project management skills in order to retain and support revenue growth by performing the following duties.",
+            pay_rate: random_pay_rate,
+            employment_type: random_employment_type,
+            creator_id: random_creator_id,
+            closing_date: random_closing_date,
+            category_ids: random_category_id,
+            number_of_positions: random_number_of_positions,
+            location_city:  Faker::Address.city,
+            location_state: Faker::Address.state_abbr
+          )
+
     50.times do |i|
       listing = Listing.create!(
         title: Faker::Name.title,
