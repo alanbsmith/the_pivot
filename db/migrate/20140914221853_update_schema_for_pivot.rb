@@ -41,7 +41,7 @@ class UpdateSchemaForPivot < ActiveRecord::Migration
       t.text     "description"
       t.text     "pay_rate"
       t.text     "employment_type"
-      t.integer  "number_of_positions"
+      t.integer  "number_of_positions", default: 1
       t.datetime "closing_date"
       t.datetime "created_at"
       t.datetime "updated_at"
