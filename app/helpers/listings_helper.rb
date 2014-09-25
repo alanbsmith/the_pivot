@@ -7,7 +7,8 @@ module ListingsHelper
   end
 
   def has_company_name?(current_user)
-    current_user.company_name
+    current_user.company_name.to_s
+    current_user.company_name != ""
   end
 
   def company_listings(current_user)

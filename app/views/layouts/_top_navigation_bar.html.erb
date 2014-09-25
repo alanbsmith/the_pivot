@@ -7,12 +7,24 @@
            style:"color:orange"}
       %>
 
-      <div class="em-right col-md-8">
+      <div class="col-md-8" style="float:right; margin-top:5px">
         <%= link_to "Jobs",
           listings_path,
-          {class: "em-top-links em-f col-md-offset-4",
-           style: "color:white"}
+          {class: "em-top-links em-f ",
+           style: "color:white"
+          }
         %>
+
+        <% if @cart.listings.count > 0 %>
+          <%= link_to "Folder (#{@cart.listings.count})",
+              cart_path,
+              {class: "em-top-links em-f col-md-offset-2",
+               style: "color:white",
+               id: "your_jobs_link"}
+          %>
+        <% end %>
+
+
         <%= link_to "Hello #{current_user.first_name.capitalize}",
             current_user,
             {class: "em-top-links em-f col-md-offset-2",
@@ -27,16 +39,7 @@
 
       </div>
     </div>
-    <% if @cart.listings.count > 0 %>
-      <div class="em-sub-top-navbar" style="margin-top:10px">
-        <p class="text-center em-f">
-          <%= link_to "You have #{@cart.listings.count} job(s) ready to apply",
-              cart_path,
-              {id: "your_jobs_link"}
-          %>
-        </p>
-      </div>
-    <% end %>
+
   <% else %>
     <div class="container em-element">
       <%= link_to "EmployMe!",
@@ -44,13 +47,32 @@
           {class:"em-top-brand em-f",
            style:"color:orange"}
       %>
-      <div class="em-right col-md-8">
+      <div class="em-right col-md-10">
 
-        <%= link_to "Jobs",
-          listings_path,
-          {class: "em-top-links em-f col-md-offset-4",
-           style: "color:white"}
-        %>
+        <% if @cart.listings.count == 0 %>
+          <%= link_to "Jobs",
+            listings_path,
+            {class: "em-top-links em-f col-md-offset-4",
+             style: "color:white"
+             }
+          %>
+        <% else %>
+          <%= link_to "Jobs",
+            listings_path,
+            {class: "em-top-links em-f col-md-offset-1",
+             style: "color:white"}
+          %>
+        <% end %>
+        <% if @cart.listings.count > 0 %>
+          <%= link_to "Folder (#{@cart.listings.count})",
+              cart_path,
+              {class: "em-top-links em-f col-md-offset-2",
+               style: "color:white",
+               id: "your_jobs_link"}
+          %>
+        <% end %>
+
+
         <%= link_to "Register Now",
             new_user_path,
             {class: "em-top-links em-f col-md-offset-2",
@@ -63,16 +85,7 @@
         %>
       </div>
     </div>
-    <% if @cart.listings.count > 0 %>
-      <div class="em-sub-top-navbar">
-        <p class="text-center em-f">
-          <%= link_to "You have #{@cart.listings.count} job(s) ready to apply",
-              cart_path,
-              {id: "your_jobs_link"}
-          %>
-        </p>
-      </div>
-    <% end %>
+
   <% end %>
 
 </div>
