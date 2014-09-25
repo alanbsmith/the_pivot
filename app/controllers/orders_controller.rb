@@ -1,12 +1,11 @@
 class OrdersController < ApplicationController
   include SessionsHelper
   include OrdersHelper
+  include ListingsHelper
 
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
   def index
-    
-    # @user_company = User.find_by(id: listing.creator_id)
     if signed_in?
       @orders = current_user.orders
     else

@@ -1,44 +1,47 @@
-  <div class="container em-cart-padding">
-    <% if @cart.cart_listings.count > 1 %>
-      <h1>These are your selected jobs.</h1>
-    <% else %>
-      <h1>This is your selected job.</h1>
-    <% end %>
-    <% if @cart.cart_listings.empty? %>
-      <h3>There are currently no jobs in your cart!</h3>
-    <% else %>
-      <table class="table table-hover cart_table_padding">
-        <thead>
-          <tr>
-            <th class='col-md-2'>Title</th>
-            <th class='col-md-8'>Description</th>
-            <th class='col-md-2'>Closing Date</th>
-            <th></th>
-          </tr>
-        </thead>
+<div class="container em-cart-padding">
+  <% if @cart.cart_listings.count > 1 %>
+    <h1>These are your selected jobs.</h1>
+  <% else %>
+    <h1>This is your selected job.</h1>
+  <% end %>
 
-        <tbody>
-          <% @cart.cart_listings.each do |cart_listing| %>
-          <tr>
-            <td><%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %></td>
-            <td><%= truncate(cart_listing.listing.description, :length => 500) %></td>
-            <td><%= cart_listing.listing.closing_date.strftime('%b %d, %Y') %></td>
-            <td><%= link_to '', cart_listing ,method: :delete, class: "glyphicon glyphicon-remove em-glyph-style", id:"delete-x" %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
-  </div>
+  <% if @cart.cart_listings.empty? %>
+    <h3>There are currently no jobs in your cart!</h3>
+  <% else %>
+    <table class="table table-hover cart_table_padding">
+      <thead>
+        <tr>
+          <th class='col-md-2'>Title</th>
+          <th class='col-md-8'>Description</th>
+          <th class='col-md-2'>Closing Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @cart.cart_listings.each do |cart_listing| %>
+        <tr>
+          <td><%= link_to cart_listing.listing.title, listing_path(cart_listing.listing) %></td>
+          <td><%= truncate(cart_listing.listing.description, :length => 500) %></td>
+          <td><%= cart_listing.listing.closing_date.strftime('%b %d, %Y') %></td>
+          <td><%= link_to 'Remove this job', cart_listing ,method: :delete, class: "btn btn-danger btn-sm" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 
 <div class="container">
   <div class="col-md-6">
     <% if signed_in? %>
       <div class="row">
-
-    <% end %>
-  </div>
-</div>
+        <%= form_for(@resume, html: {multipart: true} ) do |f| %>
+          <%= f.label :attachment, "Upload your Resume" %><br/>
+          <%= f.file_field :attachment %>
+          <%= f.submit "Upload Resume", :class => "btn btn-success btn-sm resume_button" %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
 
     <% if signed_in? %>
       <% if @cart.cart_listings.count > 0 %>
@@ -68,6 +71,6 @@
         <% end %>
     </div>
   </div>
-
 </div>
 <% end %>
+</div>

@@ -15,5 +15,4 @@ class Order < ActiveRecord::Base
       cart_listings << listing
     end
   end
-
 end
