@@ -3,7 +3,7 @@ class ResumesController < ApplicationController
   include ResumesHelper
 
   def index
-    @orders  = Order.all
+    @company_orders  = Order.all
     @resumes = Resume.all
   end
 

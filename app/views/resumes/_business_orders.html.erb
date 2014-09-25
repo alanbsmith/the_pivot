@@ -1,1 +1,24 @@
-<h1>Business Orders!</h1>
+<h1>Here are the applicants for your current job postings</h1>
+  <table class="table table-hover cart_table_padding">
+    <thead>
+      <tr>
+        <th>Position Title</th>
+        <th>Applicant Name</th>
+        <th>Closing Date</th>
+        <th>Resume</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @company_orders.each do |order| %>
+        <% company_listings(order, current_user).each do |listing| %>
+          <tr>
+            <td><%= link_to listing.title, listing_path(listing) %></td>
+            <td><%= find_order_applicant_name(order) %></td>
+            <td><%= listing.closing_date.strftime('%b %d, %Y, %I:%M %p') %></td>
+            <td><%= link_to "View Resume", find_order_resume(order), :target => "_blank" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
