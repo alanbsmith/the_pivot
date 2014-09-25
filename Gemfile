@@ -45,7 +45,6 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem "faker"
 end
 
 group :development do    #access at rails/routes
