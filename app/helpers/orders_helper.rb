@@ -13,7 +13,7 @@ module OrdersHelper
     "#{user.first_name} #{user.last_name}"
   end
 
-  def company_listings( order, current_user)
+  def company_order_listings( order, current_user)
    order.listings.select { |listing| listing.creator_id == current_user.id }
   end
 end

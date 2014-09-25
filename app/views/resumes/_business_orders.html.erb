@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       <% @company_orders.each do |order| %>
-        <% company_listings(order, current_user).each do |listing| %>
+        <% company_order_listings(order, current_user).each do |listing| %>
           <tr>
             <td><%= link_to listing.title, listing_path(listing) %></td>
             <td><%= find_order_applicant_name(order) %></td>

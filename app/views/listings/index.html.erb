@@ -1,5 +1,7 @@
+<div class="container">
   <% if signed_in_as_business?(current_user) %>
     <%= render :partial => 'business_listings' %>
   <% else %>
     <%= render :partial => 'all_listings' %>
   <% end %>
+</div>

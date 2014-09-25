@@ -1,17 +1,23 @@
 .down_image {
-  background-image: url("line_people.jpg");
+  background-image: url(https://s3-us-west-2.amazonaws.com/employ-me-assets/em_working_team.jpg);
   background-size: cover;
-  height: 600px;
+  height: 300px;
+  border-bottom:solid;
+  border-color: gray;
+  border-width: 1px
 }
 
 .people_happy {
-  background-image: url("people_happy_web2.jpg");
+  background-image: url(https://s3-us-west-2.amazonaws.com/employ-me-assets/people_happy_web2.jpg);
   background-size: cover;
   height: 600px;
 }
 .back_color {
   margin-top: -20px;
-  background: #e8e8e8
+  background: #e8e8e8;
+}
+.body_back_color {
+  background: #e8e8e8;
 }
 .form_title {
   font-size: 50px;
@@ -80,7 +86,7 @@
   margin-top:50px;
 }
 .door {
-  background-image: url("door.png");
+  background-image: url(https://s3-us-west-2.amazonaws.com/employ-me-assets/door.png);
   background-size: cover;
   height: 100px;
   width: 100px;
@@ -171,5 +177,10 @@
 }
 
 .apply_for_all_jobs {
-  margin-left:4px;
+  margin-top:25px;
+}
+
+.alert {
+  font-size: 19px;
+  font-weight: 500;
 }

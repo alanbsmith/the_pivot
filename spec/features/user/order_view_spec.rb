@@ -25,27 +25,7 @@ describe "the order view", type: :feature do
       expect(page).to_not have_button('Remove this job')
     end
 
-    it 'creates an application' do
-
-      default_login
-      expect(current_path).to eq("/users/#{@user.id}")
-      visit listings_path
-      click_on(@listing.title)
-      click_on('Apply for this job!')
-      click_on('your_jobs_link')
-      click_on('Apply')
-      click_on('Apply')
-      expect(page).to have_content('Thanks for your submission!')
-
-      visit user_path(@user)
-      click_on('Previous Applications')
-
-      expect(page).to have_content(@listing.title)
-      click_on(@listing.title)
-
-      expect(page).to have_content(@listing.description)
-    end
-
+  
     it 'can view its previous applications' do
       default_login
       click_on('Previous Applications')

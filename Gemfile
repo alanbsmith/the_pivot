@@ -14,11 +14,13 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem "faker"
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'aasm'
 gem 'mini_magick', '~> 3.8.0'
 gem "devise", '~> 3.3.0'
 gem 'carrierwave', '~> 0.9'
+
 
 group :development, :test do
   gem 'pry'
@@ -34,7 +36,6 @@ group :development, :test do
   gem "simplecov", :require => false
   gem "nyan-cat-formatter"
   gem "unicorn"
-  gem "faker"
 end
 
 group :test do

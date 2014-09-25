@@ -10,4 +10,8 @@ module ResumesHelper
     resume.attachment_url.to_s
   end
 
+  def find_applicant_email(applicant_id)
+    applicant = User.find(applicant_id)
+    "#{applicant.email}"
+  end
 end

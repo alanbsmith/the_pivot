@@ -74,6 +74,7 @@ describe 'business user can CRUD a new listing' do
     user_register_a
     add_listing
     expect(page).to have_content("barista")
+    page.visit listings_path
     page.click_link "Edit"
     page.fill_in "Title", with: "real barista"
     page.click_button "Submit"
@@ -93,19 +94,22 @@ describe 'business user can CRUD a new listing' do
   end
 
   it 'can edit a listing' do
-    visit listings_path
-    page.click_link(@listing.title)
+    user_register_a
+    add_listing
+    page.visit listings_path
     expect(page).to have_link("Edit")
     click_link("Edit")
-    expect(current_path).to eq(edit_listing_path(@listing))
+    expect(current_path).to eq(edit_listing_path(Listing.last))
   end
 
 
   it 'can delete a listing' do
+    user_register_a
+    add_listing
     page.visit listing_path(@listing)
-
     expect(page).to have_content(@listing.title)
-    page.click_on "Delete this listing"
+    page.visit listings_path
+    page.click_on "Remove listing"
     page.visit listings_path
     expect(page).not_to have_content(@listing.title)
   end

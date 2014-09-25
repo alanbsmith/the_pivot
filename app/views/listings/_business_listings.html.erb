@@ -1,8 +1,11 @@
 <div class="container">
-  <h1>Your business listings</h1>
+  <div class="jumbotron">
+    <h1><%= "Job Postings for #{ current_user.company_name }" %></h1>
+    <%= link_to "Add a New Job Listing", new_listing_path, :class => "btn btn-lg btn-success", :id => "add-job-listing" %>
+  </div>
   <% unless company_listings(current_user) == nil %>
     <% company_listings(current_user).each do |listing| %>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="thumbnail">
           <div class="caption">
             <h3><%= link_to listing.title, listing_path(listing) %></h3>
@@ -11,8 +14,7 @@
             <p><strong><%= "$#{listing.pay_rate}" %></strong></p>
             <div class="text-center">
               <p>
-                <%= link_to 'View applicants', "#" %> |
-                <%= link_to 'Edit listing', edit_listing_path(listing) %> |
+                <%= link_to 'Edit listing', edit_listing_path(listing), id: "edit-listing" %> |
                 <%= link_to 'Remove listing', listing_path(listing), method: :delete %>
               </p>
             </div>
@@ -23,5 +25,4 @@
     <% else %>
     <h3>You don't have any listings at this time. Add one now!</h3>
   <% end %>
-  <%= link_to "Add a New Job Listing", new_listing_path, :class => "btn btn-success", :id => "add-job-listing" %>
 </div>

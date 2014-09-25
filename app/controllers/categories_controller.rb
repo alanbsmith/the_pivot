@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
       flash.notice = "A new category: '#{@category.title}' was successfully created"
       redirect_to administrator_categories_path
     else
-      format.html { render :new, notice: 'Fill in all of the fields before submitting'}
+      format.html { render :new, alert: 'Fill in all of the fields before submitting'}
     end
   end
 
